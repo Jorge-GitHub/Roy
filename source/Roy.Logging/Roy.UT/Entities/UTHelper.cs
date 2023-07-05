@@ -36,14 +36,14 @@ internal class UTHelper
     /// <returns>
     /// UT sample object.
     /// </returns>
-    public UTSampleObject GetDefaultSamplleObject()
+    public Artist GetDefaultSampleObject()
     {
-        return new UTSampleObject()
+        return new Artist()
         {
-            Name = "Homer",
-            Description = "Amazing Story to Log About.",
-            LastName = "Pegasus",
-            Id = "001"
+            Name = "Roy",
+            LastName = "Orbinson",
+            Description = "Roy Kelton Orbison was an American singer, songwriter, and musician.",            
+            Id = "#1"
         };
     }
 }

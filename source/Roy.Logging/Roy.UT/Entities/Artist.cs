@@ -3,7 +3,7 @@
 /// <summary>
 /// UT sample object.
 /// </summary>
-internal class UTSampleObject
+internal class Artist
 {
     public string Name { get; set; }
     public string LastName { get; set; }
