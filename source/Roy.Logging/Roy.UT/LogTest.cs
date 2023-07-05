@@ -16,7 +16,7 @@ public class LogTest
     [TestMethod]
     public void TestLog()
     {
-        UTSampleObject utObject = new UTHelper().GetDefaultSamplleObject();
+        Artist utObject = new UTHelper().GetDefaultSampleObject();
         utObject.LogAsync();
     }
 
@@ -27,7 +27,7 @@ public class LogTest
     public void TestFileNameLog()
     {
         UTHelper helper = new UTHelper();
-        UTSampleObject utObject = helper.GetDefaultSamplleObject();
+        Artist utObject = helper.GetDefaultSampleObject();
         LogExtension.Settings.LogFileName = "testLog.txt";
         string fileLocation = helper.GetfullPathToFile(
             LogExtension.Settings.LogDefaultFolderName,
@@ -44,7 +44,7 @@ public class LogTest
     public void TestLogSystemInformation()
     {
         LogExtension.Settings.LogSystemInformation = true;
-        UTSampleObject utObject = new UTHelper().GetDefaultSamplleObject();
+        Artist utObject = new UTHelper().GetDefaultSampleObject();
         utObject.LogAsync(new StackFrame(0, true));
         LogExtension.Settings.LogSystemInformation = false;
     }
