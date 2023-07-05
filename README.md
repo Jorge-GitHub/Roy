@@ -21,7 +21,7 @@ public void AmazingCode()
         ex.SaveAsync();
     }
 }
-
+```
 ### Logging and object or any data.
 
 The following code demonstrates basic usage of Roy logging. Just add Roy.Logging to your using statements.
@@ -38,5 +38,9 @@ public void AmazingCode()
       singer.Description = "Roy Kelton Orbison was an American singer, songwriter, and musician.";
       singer.LogAsync();
 }
-
-By default, the exceptions and logs will be saved on the bin folder for instance, "bin\Debug\net7.0". Inside this folder, Roy will create an “exception” and a "logs" folder. This behavior can be changed by using the object LogSetting. You can call make any changes to the settings by calling LogExtension.Settings static property. I will write more documentation as soon as I have some spare time.
+```
+By default, the exceptions and logs will be saved on the bin folder for instance, "bin\Debug\net7.0".
+Inside this folder, Roy will create an “exception” and a "logs" folder.
+This behavior can be changed by using the object LogSetting.
+You can call make any changes to the settings by calling LogExtension.Settings static property.
+I will write more documentation as soon as I have some spare time.
