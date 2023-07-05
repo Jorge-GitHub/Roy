@@ -43,6 +43,7 @@ public void AmazingCode()
 
 By default, the exceptions and logs will be saved on the bin folder for instance, "bin\Debug\net7.0".
 Inside this folder, Roy will create an “exception” and a "logs" folder.
-This behavior can be changed by using the object LogSetting.
-You can call make any changes to the settings by calling LogExtension.Settings static property.
+This behavior can be changed by using the object LogExtension.Settings static property.
+
+You can make any changes to the settings by calling LogExtension.Settings static property.
 I will write more documentation as soon as I have some spare time.
