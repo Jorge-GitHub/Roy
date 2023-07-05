@@ -37,6 +37,7 @@ public void AmazingCode()
       singer.LastName = "Orbinson";
       singer.Description = "Roy Kelton Orbison was an American singer, songwriter, and musician.";
       singer.LogAsync();
+      "Anything you want, you got it".LogAsync(); //You can log primitives too.
 }
 ```
 
