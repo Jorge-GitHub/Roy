@@ -69,4 +69,13 @@ public class LogSetting
     /// Flag that determinate whether to append or not the log.
     /// </summary>
     public bool AppendLog { get; set; }
+    /// <summary>
+    /// Flag that determinate whether to load the system information or not
+    /// on the exception logging.
+    /// </summary>
+    public bool ExceptionLogSystemInformation { get; set; } = true;
+    /// <summary>
+    /// Flag that determinate whether to load the system information or not.
+    /// </summary>
+    public bool LogSystemInformation { get; set; }
 }

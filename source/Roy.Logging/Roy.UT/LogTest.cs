@@ -36,4 +36,16 @@ public class LogTest
         LogExtension.Settings.LogFileName = string.Empty;
         Assert.IsTrue(File.Exists(fileLocation));
     }
+
+    /// <summary>
+    /// Test loading the system information.
+    /// </summary>
+    [TestMethod]
+    public void TestLogSystemInformation()
+    {
+        LogExtension.Settings.LogSystemInformation = true;
+        UTSampleObject utObject = new UTHelper().GetDefaultSamplleObject();
+        utObject.LogAsync(new StackFrame(0, true));
+        LogExtension.Settings.LogSystemInformation = false;
+    }
 }
