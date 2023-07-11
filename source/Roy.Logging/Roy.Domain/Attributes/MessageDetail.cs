@@ -4,7 +4,7 @@ using Roy.Domain.Contants;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace Roy.Domain;
+namespace Roy.Domain.Attributes;
 
 /// <summary>
 /// Message's detail.
@@ -62,7 +62,7 @@ public class MessageDetail
         string id, string message, StackFrame frame,
         bool loadSystemInformation)
     {
-        this.LoadObject(level, id, message, frame, loadSystemInformation);
+        LoadObject(level, id, message, frame, loadSystemInformation);
     }
 
 
@@ -84,16 +84,16 @@ public class MessageDetail
     /// <param name="loadSystemInformation">
     /// Flag that determinate whether to load the system information or not.
     /// </param>
-    private void LoadObject(Level level, string id, string message, 
+    private void LoadObject(Level level, string id, string message,
         StackFrame frame, bool loadSystemInformation)
     {
-        this.Date = DateTime.Now;
-        this.Level = level;
-        this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
-        this.Message = message;
+        Date = DateTime.Now;
+        Level = level;
+        Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
+        Message = message;
         if (loadSystemInformation)
         {
-            this.LoadSystemInformation(frame);
+            LoadSystemInformation(frame);
         }
     }
 
@@ -107,9 +107,9 @@ public class MessageDetail
     {
         try
         {
-            this.SetAssemblyLocation();
-            this.MachineInformation = new Machine(true);
-            this.StackFrame = new Frame(frame);
+            SetAssemblyLocation();
+            MachineInformation = new Machine(true);
+            StackFrame = new Frame(frame);
         }
         catch { }
     }
@@ -122,7 +122,7 @@ public class MessageDetail
         string location = Assembly.GetExecutingAssembly().Location;
         if (location.IsNotNullOrEmpty())
         {
-            this.AssemblyLocation = Path.GetDirectoryName(location);
+            AssemblyLocation = Path.GetDirectoryName(location);
         }
     }
 }

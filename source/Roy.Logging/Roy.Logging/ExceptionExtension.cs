@@ -1,4 +1,5 @@
 ﻿using Roy.Domain;
+using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
 using Roy.Logging.Helpers;
 using System.Diagnostics;

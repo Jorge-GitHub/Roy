@@ -1,7 +1,7 @@
 ﻿using Roy.Domain.Contants;
 using System.Diagnostics;
 
-namespace Roy.Domain;
+namespace Roy.Domain.Attributes;
 
 /// <summary>
 /// Exception details.
@@ -56,7 +56,7 @@ public class ExceptionDetail : MessageDetail
         bool loadSystemInformation)
         : base(level, id, message, frame, loadSystemInformation)
     {
-        this.LoadObject(exception, level, listOfParameters, frame);
+        LoadObject(exception, level, listOfParameters, frame);
     }
 
     /// <summary>
@@ -74,12 +74,12 @@ public class ExceptionDetail : MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    private void LoadObject(Exception exception, Level level, 
+    private void LoadObject(Exception exception, Level level,
         object[] listOfParameters, StackFrame frame)
     {
-        this.ExceptionMessage = exception.Message;
-        this.ListOfParameters = listOfParameters;
-        this.SetExceptionTrace(exception, level);
+        ExceptionMessage = exception.Message;
+        ListOfParameters = listOfParameters;
+        SetExceptionTrace(exception, level);
     }
 
     /// <summary>
@@ -95,8 +95,8 @@ public class ExceptionDetail : MessageDetail
     {
         if (level.Equals(Level.Trace) || level.Equals(Level.Debug))
         {
-            this.ExceptionTrace = exception;
-            this.StackTrace = exception.StackTrace ?? string.Empty;
+            ExceptionTrace = exception;
+            StackTrace = exception.StackTrace ?? string.Empty;
         }
     }
 }

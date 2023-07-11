@@ -12,4 +12,9 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Email\" />
+    <Folder Include="Features\Web\" />
+  </ItemGroup>
+
 </Project>
