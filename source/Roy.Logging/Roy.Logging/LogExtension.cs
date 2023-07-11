@@ -71,13 +71,13 @@ public static class LogExtension
     /// <param name="value">
     /// Value type to log.
     /// </param>
-    /// <param name="identity">
-    /// Log's Id.
+    /// <param name="message">
+    /// Log's message.
     /// </param>
     public static async void LogAsync<TValue>(this TValue value,
-        string identity)
+        string message)
     {
-        value.LogAsync(identity, string.Empty, LogExtension.Settings, null);
+        value.LogAsync(message, string.Empty, LogExtension.Settings, null);
     }
 
     /// <summary>
@@ -96,9 +96,9 @@ public static class LogExtension
     /// Custom message.
     /// </param>
     public static async void LogAsync<TValue>(this TValue value,
-        string identity, string message)
+        string message, string identity)
     {
-        value.LogAsync(identity, message, LogExtension.Settings, null);
+        value.LogAsync(message, identity, LogExtension.Settings, null);
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ public static class LogExtension
     /// Stack frame containing the method calling the log.
     /// </param>
     public static async void LogAsync<TValue>(this TValue value,
-        string identity, string message, LogSetting setting, StackFrame frame)
+        string message, string identity,  LogSetting setting, StackFrame frame)
     {
         try
         {

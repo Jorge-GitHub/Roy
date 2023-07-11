@@ -112,6 +112,22 @@ public static class ExceptionExtension
     /// <param name="exception">
     /// Exception.
     /// </param>
+    /// <param name="message">
+    /// Custom message.
+    /// </param>
+    public static async void SaveAsync(this Exception exception,
+        string message)
+    {
+        exception.SaveAsync(Level.Error, message, string.Empty,
+            LogExtension.Settings, null);
+    }
+
+    /// <summary>
+    /// Save the exception.
+    /// </summary>
+    /// <param name="exception">
+    /// Exception.
+    /// </param>
     /// <param name="identity">
     /// Exception's Id.
     /// </param>
@@ -119,9 +135,9 @@ public static class ExceptionExtension
     /// Custom message.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        string identity, string message)
+        string message, string identity)
     {
-        exception.SaveAsync(Level.Error, identity, message,
+        exception.SaveAsync(Level.Error, message, identity,
             LogExtension.Settings, null);
     }
 
@@ -141,10 +157,10 @@ public static class ExceptionExtension
     /// List of parameters.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        string identity, string message,
+        string message, string identity, 
         params object[] listOfParameters)
     {
-        exception.SaveAsync(Level.Error, identity, message,
+        exception.SaveAsync(Level.Error, message, identity,
             LogExtension.Settings, null, listOfParameters);
     }
 
@@ -167,10 +183,10 @@ public static class ExceptionExtension
     /// Stack frame containing the method calling the log.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        string identity, string message,
+        string message, string identity,
         StackFrame frame, params object[] listOfParameters)
     {
-        exception.SaveAsync(Level.Error, identity, message,
+        exception.SaveAsync(Level.Error, message, identity,
             LogExtension.Settings, frame, listOfParameters);
     }
 
@@ -199,7 +215,7 @@ public static class ExceptionExtension
     /// Stack frame containing the method calling the log.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        Level level, string identity, string message,
+        Level level, string message, string identity, 
         LogSetting setting, StackFrame frame, 
         params object[] listOfParameters)
     {
