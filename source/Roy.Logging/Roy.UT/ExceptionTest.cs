@@ -25,12 +25,12 @@ public class ExceptionTest
     [TestMethod]
     public void TestFileNameException()
     {
-        LogExtension.Settings.ExceptionFileName = "test.txt";
+        LogExtension.Settings.Exception.FileName = "test.txt";
         string fileLocation = new UTHelper().GetfullPathToFile(
-            LogExtension.Settings.ExceptionDefaultFolderName,
-            LogExtension.Settings.ExceptionFileName);
+            LogExtension.Settings.Exception.DefaultFolderName,
+            LogExtension.Settings.Exception.FileName);
         new Exception("Test file Name Exception").SaveAsync();
-        LogExtension.Settings.ExceptionFileName = string.Empty;
+        LogExtension.Settings.Exception.FileName = string.Empty;
         Assert.IsTrue(File.Exists(fileLocation));
     }
 }
