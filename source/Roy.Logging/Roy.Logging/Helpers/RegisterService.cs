@@ -1,26 +1,35 @@
 ﻿using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
 using Roy.Domain.Settings.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Roy.Logging.Helpers;
 
+/// <summary>
+/// Register service.
+/// </summary>
 internal class RegisterService
 {
-    //public async void Save()
-    //{
-    //    new FileService().SaveAsync(exceptionDetail,
-    //        exceptionDetail.Id,
-    //        setting?.Exception.FolderLocation,
-    //        setting?.Exception.FileName,
-    //        level, setting?.Exception.DefaultFolderName,
-    //        setting.Exception.Append);
+    /// <summary>
+    /// Save message.
+    /// </summary>
+    /// <param name="message">
+    /// Message to save.
+    /// </param>
+    /// <param name="setting">
+    /// Settings.
+    /// </param>
+    /// <param name="level">
+    /// Register (exception/log) level.
+    /// </param>
+    public async void SaveAsync(MessageDetail message,
+        Setting setting, Level level)
+    {
+        new FileService().SaveAsync(message, message.Id,
+            setting?.FolderLocation, setting?.FileName,
+            level, setting?.DefaultFolderName,
+            setting.Append);
 
-    //    new EmailService().SendAsync(exceptionDetail,
-    //        level, setting.Exception.Emails);
-    //}
+        new EmailService().SendAsync(message,
+            level, setting?.Emails);
+    }
 }

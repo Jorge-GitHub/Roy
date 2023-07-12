@@ -228,16 +228,9 @@ public static class ExceptionExtension
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, listOfParameters, 
                     frame, setting.Exception.LoadSystemInformation);
-                
-                new FileService().SaveAsync(exceptionDetail,
-                    exceptionDetail.Id,
-                    setting?.Exception.FolderLocation,
-                    setting?.Exception.FileName,
-                    level, setting?.Exception.DefaultFolderName,
-                    setting.Exception.Append);
 
-                new EmailService().SendAsync(exceptionDetail, 
-                    level, setting.Exception.Emails);
+                new RegisterService().SaveAsync(
+                    exceptionDetail, setting.Exception, level);
             }
         }
         catch { }

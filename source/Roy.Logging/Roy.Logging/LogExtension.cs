@@ -138,14 +138,8 @@ public static class LogExtension
                     identity, message, frame,
                     setting.Log.LoadSystemInformation);
 
-                new FileService().SaveAsync(detail,
-                    identity, setting.Log.FolderLocation,
-                    setting.Log.FileName,
-                    Level.Log, setting.Log.DefaultFolderName,
-                    setting.Log.Append);
-
-                new EmailService().SendAsync(detail,
-                    Level.Log, setting.Exception.Emails);
+                new RegisterService().SaveAsync(
+                    detail, setting.Log, Level.Log);
             }
         }
         catch { }
