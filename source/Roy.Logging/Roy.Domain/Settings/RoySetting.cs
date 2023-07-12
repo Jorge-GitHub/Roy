@@ -1,6 +1,4 @@
 ﻿using Roy.Domain.Settings.Attributes;
-using Roy.Domain.Settings.Web.EmailAspect;
-using System.Diagnostics;
 
 namespace Roy.Domain.Settings;
 
