@@ -4,6 +4,10 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Roy Logging Extension</Title>
+    <Authors>Jorge Gonzalez</Authors>
+    <PackageProjectUrl>https://github.com/Jorge-GitHub/Roy</PackageProjectUrl>
+    <Description>Anything you want, you got it. Anything you need, you got it. Anything at all. Logging service library.</Description>
   </PropertyGroup>
 
   <ItemGroup>
