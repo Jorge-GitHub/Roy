@@ -223,22 +223,21 @@ public static class ExceptionExtension
         try
         {
             setting = setting ?? LogExtension.Settings;
-            if (exception != null && setting != null && setting.Log.Enable)
+            if (exception != null && setting != null && !setting.Log.Disable)
             {                
-                bool appendLog = setting != null ? setting.Exception.Append : false;
-                bool logSystemInformation = setting != null ? 
-                    setting.Exception.LoadSystemInformation : true;
-                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, listOfParameters, 
-                    frame, logSystemInformation);
+                    frame, setting.Exception.LoadSystemInformation);
                 
                 new FileService().SaveAsync(exceptionDetail,
                     exceptionDetail.Id,
                     setting?.Exception.FolderLocation,
                     setting?.Exception.FileName,
                     level, setting?.Exception.DefaultFolderName,
-                    appendLog);
+                    setting.Exception.Append);
+
+                new EmailService().SendAsync(exceptionDetail, 
+                    level, setting.Exception.Emails);
             }
         }
         catch { }

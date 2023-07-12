@@ -129,23 +129,23 @@ public static class LogExtension
         try
         {
             setting = setting ?? LogExtension.Settings;
-            if (value != null && setting != null && setting.Log.Enable)
+            if (value != null && setting != null && !setting.Log.Disable)
             {                
                 identity = identity.IsNotNullOrEmpty() ? identity
                     : Guid.NewGuid().ToString("N");
-               
-                bool appendLog = setting != null ? setting.Log.Append : false;
-                bool logSystemInformation = setting != null ?
-                    setting.Log.LoadSystemInformation : false;
-
+                
                 LogDetail detail = new LogDetail(value, Level.Log,
-                    identity, message, frame, logSystemInformation);
+                    identity, message, frame,
+                    setting.Log.LoadSystemInformation);
 
                 new FileService().SaveAsync(detail,
-                    identity, setting?.Log.FolderLocation,
-                    setting?.Log.FileName,
-                    Level.Log, setting?.Log.DefaultFolderName,
-                    appendLog);
+                    identity, setting.Log.FolderLocation,
+                    setting.Log.FileName,
+                    Level.Log, setting.Log.DefaultFolderName,
+                    setting.Log.Append);
+
+                new EmailService().SendAsync(detail,
+                    Level.Log, setting.Exception.Emails);
             }
         }
         catch { }

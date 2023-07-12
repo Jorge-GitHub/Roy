@@ -42,10 +42,10 @@ public class Setting
     /// </summary>
     public bool Append { get; set; }
     /// <summary>
-    /// Determinate whether the exception/log  is enable or not. By default is true.
-    /// You can disable all the exception/logs' logging by settings this value to false.
+    /// Determinate whether the exception/log  is enable or not.
+    /// You can disable all the exception/logs' logging by settings this value to true.
     /// </summary>
-    public bool Enable { get; set; } = true;
+    public bool Disable { get; set; }
     /// <summary>
     /// Flag that determinate whether to load the system information or not
     /// on the exception/log logging.
