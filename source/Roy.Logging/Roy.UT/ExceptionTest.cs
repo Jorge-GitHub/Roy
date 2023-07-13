@@ -1,4 +1,6 @@
-﻿using Roy.Domain.Settings.Web.EmailAspect;
+﻿using Roy.Domain.Contants;
+using Roy.Domain.Settings;
+using Roy.Domain.Settings.Web.EmailAspect;
 using Roy.Logging;
 using Roy.UT.Entities;
 using System.Diagnostics;
@@ -26,12 +28,12 @@ public class ExceptionTest
     [TestMethod]
     public void TestFileNameException()
     {
-        LogExtension.Settings.Exception.FileName = "test.txt";
+        SettingExtension.Settings.Exception.FileName = "test.txt";
         string fileLocation = new UTHelper().GetfullPathToFile(
-            LogExtension.Settings.Exception.DefaultFolderName,
-            LogExtension.Settings.Exception.FileName);
+            SettingExtension.Settings.Exception.DefaultFolderName,
+            SettingExtension.Settings.Exception.FileName);
         new Exception("Test file Name Exception").SaveAsync();
-        LogExtension.Settings.Exception.FileName = string.Empty;
+        SettingExtension.Settings.Exception.FileName = string.Empty;
         Assert.IsTrue(File.Exists(fileLocation));
     }
 
@@ -41,28 +43,23 @@ public class ExceptionTest
     [TestMethod]
     public void TestEmailException()
     {
-        LogExtension.Settings.Exception.Emails.Add(this.GetEmailSetting());
+        SettingExtension.Settings.Exception.Emails.Add(
+            new UTHelper().GetEmailSetting());
         new Exception("Test Exception").SaveAsync(new StackFrame(1, true));
     }
 
     /// <summary>
-    /// Get the email settings.
+    /// Test that a particular level error will not be send to the user.
     /// </summary>
-    /// <returns>
-    /// Email settings.
-    /// </returns>
-    private EmailSetting GetEmailSetting()
+    [TestMethod]
+    public void TestEmailExceptionNotSendingEmailToLevel()
     {
-        EmailSetting settings = new EmailSetting();
-        settings.Server.Host = "smtp.ethereal.email";
-        settings.From = "roy@yahoo.com";
-        settings.DefaultIsTextBody = false;
-        settings.UserAccount = "robbie.hermiston@ethereal.email";
-        settings.UserPassword = "76kqGgRwUfDF2gCQ66";
-        ReceiverSetting receiver = new ReceiverSetting();
-        receiver.To = "royorbinson@gmail.com";
-        settings.Receivers.Add(receiver);
-
-        return settings;
+        EmailSetting setting = new UTHelper().GetEmailSetting();
+        setting.LevelsToReport.Add(Level.Warning);
+        SettingExtension.Settings.Exception.Emails.Add(setting);
+        SettingExtension.Settings.Exception.SaveLogOnFile = false;
+        // This exception will not be send to the user because it is not an error
+        // but a Warning. The default level log is Error.
+        new Exception("Test Warning Not Send").SaveAsync(new StackFrame(1, true));
     }
 }

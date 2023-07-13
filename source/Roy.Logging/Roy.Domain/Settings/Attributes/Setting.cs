@@ -55,4 +55,8 @@ public class Setting
     /// Email settings.
     /// </summary>
     public List<EmailSetting> Emails { get; set; } = new List<EmailSetting>();
+    /// <summary>
+    /// Flag that determinate whether to save the log in a file or not.
+    /// </summary>
+    public bool SaveLogOnFile { get; set; }
 }

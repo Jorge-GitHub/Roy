@@ -53,6 +53,10 @@ public class EmailSetting
     /// </summary>
     public List<Level> LevelsToReport { get; set; }
     /// <summary>
+    /// Flag that determinate whether to disable or not sending the emails to the list.
+    /// </summary>
+    public bool DisableEmailSending { get; set; }
+    /// <summary>
     /// Constructor.
     /// </summary>
     public EmailSetting()

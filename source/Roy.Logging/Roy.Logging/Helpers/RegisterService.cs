@@ -26,10 +26,13 @@ internal class RegisterService
     {
         try
         {
-            new FileService().SaveAsync(message, message.Id,
-                setting?.FolderLocation, setting?.FileName,
-                level, setting?.DefaultFolderName,
-                setting.Append);
+            if (setting.SaveLogOnFile)
+            {
+                new FileService().SaveAsync(message, message.Id,
+                    setting?.FolderLocation, setting?.FileName,
+                    level, setting?.DefaultFolderName,
+                    setting.Append);
+            }
         } catch { }
 
         try

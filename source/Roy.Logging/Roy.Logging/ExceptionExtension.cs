@@ -19,8 +19,8 @@ public static class ExceptionExtension
     /// </param>
     public static async void SaveAsync(this Exception exception)
     {
-        exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, LogExtension.Settings, null, null);
+        exception.SaveAsync(SettingExtension.Settings.Exception.DefaultLevel,
+            string.Empty, string.Empty, SettingExtension.Settings, null, null);
     }
 
     /// <summary>
@@ -34,8 +34,8 @@ public static class ExceptionExtension
     /// </param>
     public static async void SaveAsync(this Exception exception, StackFrame frame)
     {
-        exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, LogExtension.Settings, frame, null);
+        exception.SaveAsync(SettingExtension.Settings.Exception.DefaultLevel,
+            string.Empty, string.Empty, SettingExtension.Settings, frame, null);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public static class ExceptionExtension
     public static async void SaveAsync(this Exception exception, Level level)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, null, null);
+            SettingExtension.Settings, null, null);
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public static class ExceptionExtension
         StackFrame frame)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, frame, null);
+            SettingExtension.Settings, frame, null);
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public static class ExceptionExtension
         string message)
     {
         exception.SaveAsync(Level.Error, message, string.Empty,
-            LogExtension.Settings, null);
+            SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -139,7 +139,7 @@ public static class ExceptionExtension
         string message, string identity)
     {
         exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, null);
+            SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public static class ExceptionExtension
         params object[] listOfParameters)
     {
         exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, null, listOfParameters);
+            SettingExtension.Settings, null, listOfParameters);
     }
 
     /// <summary>
@@ -188,7 +188,7 @@ public static class ExceptionExtension
         StackFrame frame, params object[] listOfParameters)
     {
         exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, frame, listOfParameters);
+            SettingExtension.Settings, frame, listOfParameters);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public static class ExceptionExtension
     {
         try
         {
-            setting = setting ?? LogExtension.Settings;
+            setting = setting ?? SettingExtension.Settings;
             if (exception != null && setting != null && !setting.Log.Disable)
             {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,

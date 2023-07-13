@@ -30,7 +30,9 @@ public class RoySetting
     {
         this.Exception = new Setting();
         this.Exception.DefaultFolderName = "exceptions";
+        this.Exception.SaveLogOnFile = true;
         this.Log = new Setting();
         this.Log.DefaultFolderName = "logs";
+        this.Log.SaveLogOnFile = true;
     }
 }

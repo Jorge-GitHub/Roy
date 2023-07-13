@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Roy.Domain.Settings.Web.EmailAspect;
+using System.Reflection;
 
 namespace Roy.UT.Entities;
 
@@ -45,5 +46,27 @@ internal class UTHelper
             Description = "Roy Kelton Orbison was an American singer, songwriter, and musician.",            
             Id = "#1"
         };
+    }
+
+    /// <summary>
+    /// Get the email settings.
+    /// </summary>
+    /// <returns>
+    /// Email settings.
+    /// </returns>
+    public EmailSetting GetEmailSetting()
+    {
+        EmailSetting settings = new EmailSetting();
+        settings.Server.Host = "smtp.ethereal.email";
+        settings.From = "roy@yahoo.com";
+        settings.DefaultIsTextBody = false;
+        settings.UserAccount = "robbie.hermiston@ethereal.email";
+        // This is a fake SMTP that is why I am hard coding this fake password.
+        settings.UserPassword = "76kqGgRwUfDF2gCQ66";
+        ReceiverSetting receiver = new ReceiverSetting();
+        receiver.To = "royorbinson@gmail.com";
+        settings.Receivers.Add(receiver);
+
+        return settings;
     }
 }

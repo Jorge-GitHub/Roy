@@ -15,11 +15,6 @@ public static class LogExtension
     /// <summary>
     /// Log settings.
     /// </summary>
-    public static RoySetting Settings { get; set; } = new RoySetting();
-
-    /// <summary>
-    /// Log settings.
-    /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
     /// </typeparam>
@@ -28,7 +23,7 @@ public static class LogExtension
     /// </param>
     public static void LogAsync<TValue>(this TValue value)
     {
-        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, null);
+        value.LogAsync(string.Empty, string.Empty, SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -45,7 +40,7 @@ public static class LogExtension
     /// </param>
     public static void LogAsync<TValue>(this TValue value, StackFrame frame)
     {
-        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, frame);
+        value.LogAsync(string.Empty, string.Empty, SettingExtension.Settings, frame);
     }
 
     /// <summary>
@@ -78,7 +73,7 @@ public static class LogExtension
     public static async void LogAsync<TValue>(this TValue value,
         string message)
     {
-        value.LogAsync(message, string.Empty, LogExtension.Settings, null);
+        value.LogAsync(message, string.Empty, SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -99,7 +94,7 @@ public static class LogExtension
     public static async void LogAsync<TValue>(this TValue value,
         string message, string identity)
     {
-        value.LogAsync(message, identity, LogExtension.Settings, null);
+        value.LogAsync(message, identity, SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -128,7 +123,7 @@ public static class LogExtension
     {
         try
         {
-            setting = setting ?? LogExtension.Settings;
+            setting = setting ?? SettingExtension.Settings;
             if (value != null && setting != null && !setting.Log.Disable)
             {                
                 identity = identity.IsNotNullOrEmpty() ? identity
@@ -142,16 +137,5 @@ public static class LogExtension
             }
         }
         catch { }
-    }
-
-    /// <summary>
-    /// Create a copy of the log settings.
-    /// </summary>
-    /// <returns>
-    /// A copy of the log settings.
-    /// </returns>
-    public static RoySetting CopySettings()
-    {
-        return LogExtension.Settings.Copy<RoySetting>();
     }
 }

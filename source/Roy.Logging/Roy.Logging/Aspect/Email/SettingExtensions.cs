@@ -125,15 +125,17 @@ internal static class SettingExtensions
     {
         if (setting.DefaultEmailSubject.IsNullOrEmpty())
         {
-            string logging = isAnException ? StringValues.ExceptionLabel 
-                : StringValues.LoggingLabel;
+            string logging = isAnException ? 
+                StringValues.ExceptionLabel : StringValues.LoggingLabel;
             setting.DefaultEmailSubject = $"Roy {logging} - Issue Level: {level.ToString()} - Id: {issueId}";
         }
 
         if (setting.DefaultEmailBody.IsNullOrEmpty())
         {
-            setting.DefaultEmailBody = RoyValues.ResourceManager.GetString(
-                StringValues.DefaultHTMLBodyId);
+            string htmlBodyId = isAnException ? 
+                StringValues.ExceptionHTMLBodyId : StringValues.LogHTMLBodyId;
+            setting.DefaultEmailBody = RoyValues.ResourceManager
+                .GetString(htmlBodyId);
         }
     }
 }
