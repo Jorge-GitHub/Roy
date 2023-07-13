@@ -58,13 +58,13 @@ internal static class EmailSettingExtensions
         // SET BODY HERE.
         string body = receiver.Body.ToDefaultValueIfEmpty(
             setting.DefaultEmailBody);
-        if (!isTextBody)
+        if (isTextBody)
         {
-            builder.HtmlBody = body;
+            builder.TextBody = body;            
         }
         else
         {
-            builder.TextBody = body;
+            builder.HtmlBody = body;
         }
 
         return builder.ToMessageBody();

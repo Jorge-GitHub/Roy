@@ -54,9 +54,8 @@ public class ExceptionTest
     private EmailSetting GetEmailSetting()
     {
         EmailSetting settings = new EmailSetting();
-        settings.Server.Port = 587;
         settings.Server.Host = "smtp.ethereal.email";
-        settings.From = "webutility@yahoo.com";
+        settings.From = "roy@yahoo.com";
         settings.DefaultIsTextBody = false;
         settings.UserAccount = "robbie.hermiston@ethereal.email";
         settings.UserPassword = "76kqGgRwUfDF2gCQ66";
