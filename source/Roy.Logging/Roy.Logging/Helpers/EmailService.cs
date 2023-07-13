@@ -33,7 +33,6 @@ public class EmailService
                 if (!setting.LevelsToReport.HasElements() || 
                     setting.LevelsToReport.Any(item => item.Equals(level)))
                 {
-                    //var detail = (value is LogDetail) ? (LogDetail)value : (ExceptionDetail)value;
                     this.Utility.Send(setting, bodyDetail, level);
                 }
             }

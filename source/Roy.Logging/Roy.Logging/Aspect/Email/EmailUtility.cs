@@ -23,7 +23,7 @@ internal class EmailUtility
     /// </param>
     public void Send(EmailSetting setting, MessageDetail bodyDetail, Level level)
     {
-        this.SetDefaultSubject(setting, level, bodyDetail is ExceptionDetail);
+        setting.SetDefaultValues(level, bodyDetail is ExceptionDetail);
         foreach (ReceiverSetting receiver in setting.Receivers)
         {
             this.Send(setting, receiver, bodyDetail);
@@ -65,27 +65,6 @@ internal class EmailUtility
         {
             client.Disconnect(true);
             client.Dispose();
-        }
-    }
-
-    /// <summary>
-    /// Set the default subject if the subject in the settings is empty.
-    /// </summary>
-    /// <param name="setting">
-    /// Email settings.
-    /// </param>
-    /// <param name="level">
-    /// Issue level.
-    /// </param>
-    /// <param name="isAnException">
-    /// Flag that determinate whether the issue is an exception or a log.
-    /// </param>
-    private void SetDefaultSubject(EmailSetting setting, Level level, bool isAnException)
-    {
-        if(setting.DefaultEmailSubject.IsNullOrEmpty())
-        {
-            string logging = isAnException ? "Exception" : "Logging";
-            setting.DefaultEmailSubject = $"Roy {logging} - Issue Level: {level.ToString()}";
         }
     }
 }

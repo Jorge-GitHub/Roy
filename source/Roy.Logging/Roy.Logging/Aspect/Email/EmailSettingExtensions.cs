@@ -2,7 +2,9 @@
 using Avalon.Base.Extension.Types;
 using Avalon.Base.Extension.Types.StringExtensions;
 using MimeKit;
+using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.EmailAspect;
+using Roy.Logging.Resources;
 
 namespace Roy.Logging.Aspect.Email;
 
@@ -31,7 +33,7 @@ internal static class EmailSettingExtensions
         message.Bcc.AddEmails(receiver.BCC);
         message.Cc.AddEmails(receiver.CC);
         message.Body = setting.ToMessageBody(receiver);
-
+        
         return message;
     }
 
@@ -92,6 +94,35 @@ internal static class EmailSettingExtensions
                 }
                 addressList.AddRange(addresses);
             }
+        }
+    }
+
+    /// <summary>
+    /// Set the default values.
+    /// </summary>
+    /// <param name="setting">
+    /// Email settings.
+    /// </param>
+    /// <param name="level">
+    /// Issue level.
+    /// </param>
+    /// <param name="isAnException">
+    /// Flag that determinate whether the issue is an exception or a log.
+    /// </param>
+    public static void SetDefaultValues(this EmailSetting setting, 
+        Level level, bool isAnException)
+    {
+        if (setting.DefaultEmailSubject.IsNullOrEmpty())
+        {
+            string logging = isAnException ? StringValues.ExceptionLabel 
+                : StringValues.LoggingLabel;
+            setting.DefaultEmailSubject = $"Roy {logging} - Issue Level: {level.ToString()}";
+        }
+
+        if (setting.DefaultEmailBody.IsNullOrEmpty())
+        {
+            setting.DefaultEmailBody = RoyValues.ResourceManager.GetString(
+                StringValues.DefaultHTMLBodyId);
         }
     }
 }
