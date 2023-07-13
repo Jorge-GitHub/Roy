@@ -1,7 +1,7 @@
 ﻿namespace Roy.Domain.Contants;
 
 /// <summary>
-/// Exception level.
+/// Exception/log level.
 /// </summary>
 public enum Level
 {

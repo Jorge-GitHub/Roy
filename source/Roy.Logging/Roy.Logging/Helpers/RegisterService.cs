@@ -24,12 +24,18 @@ internal class RegisterService
     public async void SaveAsync(MessageDetail message,
         Setting setting, Level level)
     {
-        new FileService().SaveAsync(message, message.Id,
-            setting?.FolderLocation, setting?.FileName,
-            level, setting?.DefaultFolderName,
-            setting.Append);
+        try
+        {
+            new FileService().SaveAsync(message, message.Id,
+                setting?.FolderLocation, setting?.FileName,
+                level, setting?.DefaultFolderName,
+                setting.Append);
+        } catch { }
 
-        new EmailService().SendAsync(message,
-            level, setting?.Emails);
+        try
+        {
+            new EmailService().SendAsync(message,
+                level, setting?.Emails);
+        } catch { }
     }
 }

@@ -2,7 +2,7 @@
 using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.EmailAspect;
-using System.Net.Mail;
+using Roy.Logging.Aspect.Email;
 
 namespace Roy.Logging.Helpers;
 
@@ -11,11 +11,12 @@ namespace Roy.Logging.Helpers;
 /// </summary>
 public class EmailService
 {
+    private EmailUtility Utility { get; set; } = new EmailUtility();
     /// <summary>
     /// Send exception/log.
     /// </summary>
-    /// <param name="value">
-    /// Value to send.
+    /// <param name="bodyDetail">
+    /// Object used to populate the body message.
     /// </param>
     /// <param name="level">
     /// Exception/log's Level.
@@ -23,22 +24,19 @@ public class EmailService
     /// <param name="Emails">
     /// Emails to process.
     /// </param>
-    public async void SendAsync(MessageDetail value, Level level, List<EmailSetting> emails)
+    public async void SendAsync(MessageDetail bodyDetail, Level level, List<EmailSetting> settings)
     {
-         if(emails.HasElements())
+        if (settings.HasElements())
         {
-            foreach(EmailSetting email in emails)
+            foreach (EmailSetting setting in settings)
             {
-
+                if (!setting.LevelsToReport.HasElements() || 
+                    setting.LevelsToReport.Any(item => item.Equals(level)))
+                {
+                    //var detail = (value is LogDetail) ? (LogDetail)value : (ExceptionDetail)value;
+                    this.Utility.Send(setting, bodyDetail);
+                }
             }
         }
-    }
-
-    public async void SendAsync(MessageDetail value, Level level, EmailSetting email)
-    {
-        //MimeMessage t = new SmtpClient();
-
-        var detail = (value is LogDetail) ? value as MessageDetail : value as ExceptionDetail;
-
     }
 }

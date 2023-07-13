@@ -6,14 +6,6 @@
 public class ServerSetting
 {
     /// <summary>
-    /// From email.
-    /// </summary>
-    public string FromMail { get; set; }
-    /// <summary>
-    /// Display from value.
-    /// </summary>
-    public string FromDisplayName { get; set; }
-    /// <summary>
     /// Server's password.
     /// </summary>
     public string HostPassword { get; set; }
@@ -25,4 +17,9 @@ public class ServerSetting
     /// Email server port. Default value is 587.
     /// </summary>
     public int Port { get; set; } = 587;
+    /// <summary>
+    /// Email server time out. default value -1.
+    /// To enable time out set this value to greater than 0.
+    /// </summary>
+    public int TimeOut { get; set; } = -1;
 }
