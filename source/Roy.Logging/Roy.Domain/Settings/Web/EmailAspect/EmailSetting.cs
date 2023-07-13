@@ -37,15 +37,28 @@ public class EmailSetting
     /// </summary>
     public bool DefaultIsTextBody { get; set; }
     /// <summary>
+    /// Flag that indicate if the email will be send by using SSL.
+    /// </summary>
+    public bool EnableSSL { get; set; }
+    /// <summary>
     /// Server settings.
     /// </summary>
     public ServerSetting Server { get; set; }
     /// <summary>
     /// Email receivers.
     /// </summary>
-    public List<ReceiverSetting> Receivers { get; set; } = new List<ReceiverSetting>();
+    public List<ReceiverSetting> Receivers { get; set; }
     /// <summary>
     /// Exception levels to report. If null or empty, it will email all the exceptions. 
     /// </summary>
-    public List<Level> LevelsToReport { get; set; } = new List<Level>();
+    public List<Level> LevelsToReport { get; set; }
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public EmailSetting()
+    {
+        this.Server= new ServerSetting();
+        this.Receivers= new List<ReceiverSetting>();
+        this.LevelsToReport = new List<Level>();
+    }
 }

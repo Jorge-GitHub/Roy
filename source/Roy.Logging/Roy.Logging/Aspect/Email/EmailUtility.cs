@@ -49,7 +49,7 @@ internal class EmailUtility
         SmtpClient client = new SmtpClient();
         try
         {
-            client.Connect(setting.Server.Host, setting.Server.Port);
+            client.Connect(setting.Server.Host, setting.Server.Port, setting.EnableSSL);
             if (setting.UserAccount.IsNotNullOrEmpty())
             {
                 client.Authenticate(setting.UserAccount, setting.UserPassword);
@@ -60,7 +60,7 @@ internal class EmailUtility
             }
             client.Send(message);
         }
-        catch { throw; }
+        catch { } // We let the system keep sending emails to the other recipients.
         finally
         {
             client.Disconnect(true);
