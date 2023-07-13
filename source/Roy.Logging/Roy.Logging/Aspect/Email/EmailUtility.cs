@@ -2,6 +2,7 @@
 using MailKit.Net.Smtp;
 using MimeKit;
 using Roy.Domain.Attributes;
+using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.EmailAspect;
 
 namespace Roy.Logging.Aspect.Email;
@@ -17,8 +18,12 @@ internal class EmailUtility
     /// <param name="bodyDetail">
     /// Object used to populate the body message.
     /// </param>
-    public void Send(EmailSetting setting, MessageDetail bodyDetail)
+    /// <param name="level">
+    /// Exception/log's Level.
+    /// </param>
+    public void Send(EmailSetting setting, MessageDetail bodyDetail, Level level)
     {
+        this.SetDefaultSubject(setting, level, bodyDetail is ExceptionDetail);
         foreach (ReceiverSetting receiver in setting.Receivers)
         {
             this.Send(setting, receiver, bodyDetail);
@@ -37,7 +42,7 @@ internal class EmailUtility
     /// <param name="bodyDetail">
     /// Object used to populate the body message.
     /// </param>
-    public void Send(EmailSetting setting, ReceiverSetting receiver, 
+    private void Send(EmailSetting setting, ReceiverSetting receiver, 
         MessageDetail bodyDetail)
     {
         MimeMessage message = setting.ToMimeMessage(receiver);
@@ -60,6 +65,27 @@ internal class EmailUtility
         {
             client.Disconnect(true);
             client.Dispose();
+        }
+    }
+
+    /// <summary>
+    /// Set the default subject if the subject in the settings is empty.
+    /// </summary>
+    /// <param name="setting">
+    /// Email settings.
+    /// </param>
+    /// <param name="level">
+    /// Issue level.
+    /// </param>
+    /// <param name="isAnException">
+    /// Flag that determinate whether the issue is an exception or a log.
+    /// </param>
+    private void SetDefaultSubject(EmailSetting setting, Level level, bool isAnException)
+    {
+        if(setting.DefaultEmailSubject.IsNullOrEmpty())
+        {
+            string logging = isAnException ? "Exception" : "Logging";
+            setting.DefaultEmailSubject = $"Roy {logging} - Issue Level: {level.ToString()}";
         }
     }
 }
