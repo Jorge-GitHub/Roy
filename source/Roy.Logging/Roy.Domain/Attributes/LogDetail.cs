@@ -35,9 +35,9 @@ public class LogDetail : MessageDetail
     /// Flag that determinate whether to load the system information or not.
     /// </param>
     public LogDetail(object LogValue,
-        Level level, string id, string message,
-        StackFrame frame, bool loadSystemInformation)
-        : base(level, id, message, frame, loadSystemInformation)
+        string id, string message, StackFrame frame, bool 
+        loadSystemInformation)
+        : base(Level.Log, id, message, frame, loadSystemInformation)
     {
         LoadObject(LogValue);
     }

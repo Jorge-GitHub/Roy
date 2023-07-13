@@ -2,13 +2,14 @@
 using Avalon.Base.Extension.Types;
 using Avalon.Base.Extension.Types.StringExtensions;
 using MimeKit;
+using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Resources;
 
 namespace Roy.Logging.Aspect.Email;
 
-internal static class EmailSettingExtensions
+internal static class SettingExtensions
 {
     /// <summary>
     /// Convert an EmailSetting into a MimeMessage.
@@ -19,10 +20,14 @@ internal static class EmailSettingExtensions
     /// <param name="receiver">
     /// Receiver settings.
     /// </param>
+    /// <param name="bodyDetail">
+    /// Object used to populate the body message.
+    /// </param>
     /// <returns>
     /// MimeMessage.
     /// </returns>
-    public static MimeMessage ToMimeMessage(this EmailSetting setting, ReceiverSetting receiver)
+    public static MimeMessage ToMimeMessage(this EmailSetting setting, 
+        ReceiverSetting receiver, MessageDetail bodyDetail)
     {
         MimeMessage message = new MimeMessage();
         message.From.Add(new MailboxAddress(
@@ -32,7 +37,7 @@ internal static class EmailSettingExtensions
         message.To.AddEmails(receiver.To);
         message.Bcc.AddEmails(receiver.BCC);
         message.Cc.AddEmails(receiver.CC);
-        message.Body = setting.ToMessageBody(receiver);
+        message.Body = setting.ToMessageBody(receiver, bodyDetail);
         
         return message;
     }
@@ -46,18 +51,21 @@ internal static class EmailSettingExtensions
     /// <param name="receiver">
     /// Receiver settings.
     /// </param>
+    /// <param name="bodyDetail">
+    /// Object used to populate the body message.
+    /// </param>
     /// <returns>
     /// Message body.
     /// </returns>
     public static MimeEntity ToMessageBody(this EmailSetting setting, 
-        ReceiverSetting receiver)
+        ReceiverSetting receiver, MessageDetail bodyDetail)
     {
         BodyBuilder builder = new BodyBuilder();
         bool isTextBody = receiver.IsTextBody.HasValue ? 
             receiver.IsTextBody.Value : setting.DefaultIsTextBody;
-        // SET BODY HERE.
         string body = receiver.Body.ToDefaultValueIfEmpty(
-            setting.DefaultEmailBody);
+                setting.DefaultEmailBody);
+        body = new Decorator().GenerateBody(body, bodyDetail);
         if (isTextBody)
         {
             builder.TextBody = body;            
@@ -109,14 +117,17 @@ internal static class EmailSettingExtensions
     /// <param name="isAnException">
     /// Flag that determinate whether the issue is an exception or a log.
     /// </param>
+    /// <param name="issueId">
+    /// Issue's ID.
+    /// </param>
     public static void SetDefaultValues(this EmailSetting setting, 
-        Level level, bool isAnException)
+        Level level, bool isAnException, string issueId)
     {
         if (setting.DefaultEmailSubject.IsNullOrEmpty())
         {
             string logging = isAnException ? StringValues.ExceptionLabel 
                 : StringValues.LoggingLabel;
-            setting.DefaultEmailSubject = $"Roy {logging} - Issue Level: {level.ToString()}";
+            setting.DefaultEmailSubject = $"Roy {logging} - Issue Level: {level.ToString()} - Id: {issueId}";
         }
 
         if (setting.DefaultEmailBody.IsNullOrEmpty())

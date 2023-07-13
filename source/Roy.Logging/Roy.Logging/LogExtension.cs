@@ -134,9 +134,8 @@ public static class LogExtension
                 identity = identity.IsNotNullOrEmpty() ? identity
                     : Guid.NewGuid().ToString("N");
                 
-                LogDetail detail = new LogDetail(value, Level.Log,
-                    identity, message, frame,
-                    setting.Log.LoadSystemInformation);
+                LogDetail detail = new LogDetail(value, identity, 
+                    message, frame, setting.Log.LoadSystemInformation);
 
                 new RegisterService().SaveAsync(
                     detail, setting.Log, Level.Log);

@@ -23,7 +23,7 @@ internal class EmailUtility
     /// </param>
     public void Send(EmailSetting setting, MessageDetail bodyDetail, Level level)
     {
-        setting.SetDefaultValues(level, bodyDetail is ExceptionDetail);
+        setting.SetDefaultValues(level, bodyDetail is ExceptionDetail, bodyDetail.Id);
         foreach (ReceiverSetting receiver in setting.Receivers)
         {
             this.Send(setting, receiver, bodyDetail);
@@ -45,7 +45,7 @@ internal class EmailUtility
     private void Send(EmailSetting setting, ReceiverSetting receiver, 
         MessageDetail bodyDetail)
     {
-        MimeMessage message = setting.ToMimeMessage(receiver);
+        MimeMessage message = setting.ToMimeMessage(receiver, bodyDetail);
         SmtpClient client = new SmtpClient();
         try
         {
