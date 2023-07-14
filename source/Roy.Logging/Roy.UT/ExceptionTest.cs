@@ -58,10 +58,11 @@ public class ExceptionTest
     [TestMethod]
     public void TestEmailExceptionFrenchVersion()
     {
-        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("fr");
         SettingExtension.Settings.Exception.Emails.Add(
             new UTHelper().GetEmailSetting());
-        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
+        SettingExtension.Settings.Exception.Emails[0].Language = Language.French;
+        new Exception("Test Exception").SaveAsync(
+            Level.Emergency, new StackFrame(1, true));
     }
 
     /// <summary>

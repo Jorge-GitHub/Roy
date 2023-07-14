@@ -62,9 +62,9 @@ internal class UTHelper
         settings.From = "roy@yahoo.com";
         settings.DisplayNameFrom = "ROY Logger";
         settings.DefaultIsTextBody = false;
-        settings.UserAccount = "jody.dicki4@ethereal.email";
+        settings.UserAccount = "immanuel.spinka88@ethereal.email";
         // This is a fake SMTP that is why I am hard coding this fake password.
-        settings.UserPassword = "w4jZJapEphGkb2DbYH";
+        settings.UserPassword = "KkRSKRtKwnXfqtnvew";
         ReceiverSetting receiver = new ReceiverSetting();
         receiver.To = "royorbinson@gmail.com";
         settings.Receivers.Add(receiver);

@@ -2,6 +2,7 @@
 using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
 using Roy.Logging.Extensions;
+using System.Globalization;
 using System.Text;
 using System.Text.Json;
 
@@ -22,12 +23,15 @@ internal class MessageDecorator
     /// <param name="bodyDetail">
     /// Body detail to used for replacing the values.
     /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
     /// <returns>
     /// Message to be send to the user.
     /// </returns>
-    public void Decorate(StringBuilder body, MessageDetail bodyDetail)
+    public void Decorate(StringBuilder body, MessageDetail bodyDetail, CultureInfo culture)
     {
-        this.PopulateMessageDetails(body, bodyDetail);
+        this.PopulateMessageDetails(body, bodyDetail, culture);
         if (bodyDetail is ExceptionDetail)
         {
             this.PopulateExceptionDetails(body, (ExceptionDetail)bodyDetail);
@@ -47,14 +51,18 @@ internal class MessageDecorator
     /// <param name="bodyDetail">
     /// Object used to populate the body message.
     /// </param>
-    private void PopulateMessageDetails(StringBuilder body, MessageDetail bodyDetail)
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void PopulateMessageDetails(StringBuilder body, 
+        MessageDetail bodyDetail, CultureInfo culture)
     {
         body.Replace(Tags.Id, bodyDetail.Id);
         body.Replace(Tags.Message, bodyDetail.Message);
         body.Replace(Tags.Date, bodyDetail.Date.ToString(
             StringValues.LogDateFormat));
         body.Replace(Tags.AssemblyLocation, bodyDetail.AssemblyLocation);
-        body.Replace(Tags.Level, bodyDetail.Level.ToCurrentCultureString());
+        body.Replace(Tags.Level, bodyDetail.Level.ToCurrentCultureString(culture));
         body.Replace(Tags.CurrentYear, DateTime.Now.Year.ToString());
         body.Replace(Tags.StackFrameJSON,
             this.SerializeObject(bodyDetail.StackFrame));

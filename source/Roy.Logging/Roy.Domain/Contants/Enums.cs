@@ -33,8 +33,9 @@ public enum Level
 /// </summary>
 public enum Language
 {
-    English,
-    Spanish,
-    French,
-    German
+    None = 0,
+    English = 1,
+    Spanish = 2,
+    French = 3,
+    German = 4
 }
