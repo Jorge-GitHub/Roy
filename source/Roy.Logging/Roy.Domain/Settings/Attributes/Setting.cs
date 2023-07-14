@@ -1,4 +1,5 @@
 ﻿using Roy.Domain.Contants;
+using Roy.Domain.Settings.Web.APIAspect;
 using Roy.Domain.Settings.Web.EmailAspect;
 
 namespace Roy.Domain.Settings.Attributes;
@@ -36,7 +37,7 @@ public class Setting
     /// <summary>
     /// Default notification level.
     /// </summary>
-    public Level DefaultLevel { get; set; } = Level.Error;
+    public Level DefaultLevel { get; set; }
     /// <summary>
     /// Flag that determinate whether to append or not the exception/log.
     /// </summary>
@@ -50,13 +51,28 @@ public class Setting
     /// Flag that determinate whether to load the system information or not
     /// on the exception/log logging.
     /// </summary>
-    public bool LoadSystemInformation { get; set; } = true;
-    /// <summary>
-    /// Email settings.
-    /// </summary>
-    public List<EmailSetting> Emails { get; set; } = new List<EmailSetting>();
+    public bool LoadSystemInformation { get; set; }
     /// <summary>
     /// Flag that determinate whether to save the log in a file or not.
     /// </summary>
     public bool SaveLogOnFile { get; set; }
+    /// <summary>
+    /// Email settings.
+    /// </summary>
+    public List<EmailSetting> Emails { get; set; }
+    /// <summary>
+    /// APIs settings.
+    /// </summary>
+    public List<APISetting> APIs { get; set; }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public Setting()
+    {
+        this.Emails = new List<EmailSetting>();
+        this.APIs = new List<APISetting>();
+        this.LoadSystemInformation = true;
+        this.DefaultLevel = Level.Error;
+    }
 }

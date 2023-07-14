@@ -1,6 +1,5 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
 using Roy.Domain.Settings.Attributes;
 
 namespace Roy.Logging.Helpers;
@@ -19,20 +18,13 @@ internal class RegisterService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    /// <param name="level">
-    /// Register (exception/log) level.
-    /// </param>
-    public async void SaveAsync(MessageDetail message,
-        Setting setting, Level level)
+    public async void SaveAsync(MessageDetail message, Setting setting)
     {
         try
         {
             if (setting.SaveLogOnFile)
             {
-                new FileService().SaveAsync(message, message.Id,
-                    setting?.FolderLocation, setting?.FileName,
-                    level, setting?.DefaultFolderName,
-                    setting.Append);
+                new FileService().SaveAsync(message, setting);
             }
         } catch { }
 
@@ -40,8 +32,15 @@ internal class RegisterService
         {
             if (setting.Emails.HasElements())
             {
-                new EmailService().SendAsync(message,
-                level, setting?.Emails);
+                new EmailService().SendAsync(message, setting?.Emails);
+            }
+        } catch { }
+
+        try
+        {
+            if(setting.APIs.HasElements())
+            {
+                new APIService().PostAsync(message, setting?.APIs);
             }
         } catch { }
     }

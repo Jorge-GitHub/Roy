@@ -35,6 +35,8 @@ public class ExceptionTest
             SettingExtension.Settings.Exception.FileName);
         new Exception("Test file Name Exception").SaveAsync();
         SettingExtension.Settings.Exception.FileName = string.Empty;
+        // We are running async so we need to wait a few seconds to be sure the file is there.
+        Thread.Sleep(10000);
         Assert.IsTrue(File.Exists(fileLocation));
     }
 

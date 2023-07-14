@@ -1,5 +1,7 @@
 ﻿using Avalon.Base.Extension.Types;
+using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
+using Roy.Domain.Settings.Attributes;
 using System.Reflection;
 using System.Text.Json;
 
@@ -11,44 +13,20 @@ namespace Roy.Logging.Helpers;
 internal class FileService
 {
     /// <summary>
-    /// Save the exception.
-    /// </summary>
-    /// <param name="exceptionDetail">
-    /// Exception's detail.
+    /// Save the issue in a file.
+    /// </summary> 
+    /// <param name="message">
+    /// Object to save.
     /// </param>
-    /// <param name="logId">
-    /// Log's Id.
+    /// <param name="setting">
+    /// Settings.
     /// </param>
-    /// <param name="folderLocation">
-    /// Folder location to save the exception.
-    /// If null or empty, the folder to use will be the running 
-    /// assembly location + exceptions.
-    /// </param>
-    /// <param name="fileName">
-    /// File's name.
-    /// If null or empty, each exception will have its own file.
-    /// The file's name will be the exception's Id.
-    /// </param>
-    /// <param name="defaultFolderLocationName">
-    /// Default folder location name to use in case the folder 
-    /// location is null or empty.
-    /// </param>
-    /// <param name="level">
-    /// Log's level
-    /// </param>
-    /// <param name="appendLog">
-    /// Flag that determinate whether to append or not the log.
-    /// </param>
-    public async void SaveAsync<TValue>(TValue value,
-        string logId, string folderLocation, string fileName,
-        Level level, string defaultFolderLocationName,
-        bool appendLog)
+    public async void SaveAsync(MessageDetail message, Setting setting)
     {
-        string fileLocation = this.GetFileLocation(
-            folderLocation, fileName, logId,
-            level, defaultFolderLocationName);
-        string json = JsonSerializer.Serialize(value);
-        this.LogTextAsync(json, fileLocation, appendLog);
+        string fileLocation = this.GetFileLocation(setting.FolderLocation, 
+            setting.FileName, message.Id, message.Level, setting.DefaultFolderName);
+        string json = JsonSerializer.Serialize(message);
+        this.LogTextAsync(json, fileLocation, setting.Append);
     }
 
     /// <summary>

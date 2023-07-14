@@ -16,10 +16,19 @@ public class ServerSetting
     /// <summary>
     /// Email server port. Default value is 587.
     /// </summary>
-    public int Port { get; set; } = 587;
+    public int Port { get; set; }
     /// <summary>
     /// Email server time out. default value -1.
     /// To enable time out set this value to greater than 0.
     /// </summary>
-    public int TimeOut { get; set; } = -1;
+    public int TimeOut { get; set; }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public ServerSetting()
+    {
+        this.Port = 587;
+        this.TimeOut = -1;
+    }
 }

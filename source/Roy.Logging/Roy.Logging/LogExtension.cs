@@ -1,6 +1,5 @@
 ﻿using Avalon.Base.Extension.Types;
 using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
 using Roy.Domain.Settings;
 using Roy.Logging.Helpers;
 using System.Diagnostics;
@@ -133,7 +132,7 @@ public static class LogExtension
                     message, frame, setting.Log.LoadSystemInformation);
 
                 new RegisterService().SaveAsync(
-                    detail, setting.Log, Level.Log);
+                    detail, setting.Log);
             }
         }
         catch { }

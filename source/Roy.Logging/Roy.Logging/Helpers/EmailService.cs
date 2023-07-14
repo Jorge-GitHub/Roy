@@ -1,6 +1,5 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Aspect.Email;
 
@@ -11,30 +10,34 @@ namespace Roy.Logging.Helpers;
 /// </summary>
 public class EmailService
 {
-    private EmailUtility Utility { get; set; } = new EmailUtility();
+    private EmailUtility Utility { get; set; }
     /// <summary>
     /// Send exception/log.
     /// </summary>
     /// <param name="bodyDetail">
     /// Object used to populate the body message.
     /// </param>
-    /// <param name="level">
-    /// Exception/log's Level.
-    /// </param>
     /// <param name="Emails">
     /// Emails to process.
     /// </param>
-    public async void SendAsync(MessageDetail bodyDetail, Level level,
-        List<EmailSetting> settings)
+    public async void SendAsync(MessageDetail bodyDetail, List<EmailSetting> settings)
     {
         foreach (EmailSetting setting in settings)
         {
             if ((!setting.LevelsToReport.HasElements() ||
-                setting.LevelsToReport.Any(item => item.Equals(level)))
+                setting.LevelsToReport.Any(item => item.Equals(bodyDetail.Level)))
                 && !setting.DisableEmailSending)
             {
-                this.Utility.Send(setting, bodyDetail, level);
+                this.Utility.Send(setting, bodyDetail);
             }
         }
+    }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public EmailService()
+    {
+        this.Utility = new EmailUtility();
     }
 }
