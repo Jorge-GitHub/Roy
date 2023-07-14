@@ -1,4 +1,5 @@
-﻿using Roy.Domain.Attributes;
+﻿using Avalon.Base.Extension.Collections;
+using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
 using Roy.Domain.Settings.Attributes;
 
@@ -37,8 +38,11 @@ internal class RegisterService
 
         try
         {
-            new EmailService().SendAsync(message,
+            if (setting.Emails.HasElements())
+            {
+                new EmailService().SendAsync(message,
                 level, setting?.Emails);
+            }
         } catch { }
     }
 }

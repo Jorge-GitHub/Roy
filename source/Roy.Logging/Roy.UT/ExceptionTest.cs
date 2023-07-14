@@ -4,6 +4,7 @@ using Roy.Domain.Settings.Web.EmailAspect;
 using Roy.Logging;
 using Roy.UT.Entities;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Roy.UT;
 
@@ -45,7 +46,20 @@ public class ExceptionTest
     {
         SettingExtension.Settings.Exception.Emails.Add(
             new UTHelper().GetEmailSetting());
-        new Exception("Test Exception").SaveAsync(new StackFrame(1, true));
+        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
+    }
+
+
+    /// <summary>
+    /// Default test execution.
+    /// </summary>
+    [TestMethod]
+    public void TestEmailExceptionFrenchVersion()
+    {
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("fr");
+        SettingExtension.Settings.Exception.Emails.Add(
+            new UTHelper().GetEmailSetting());
+        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
     }
 
     /// <summary>

@@ -27,16 +27,13 @@ public class EmailService
     public async void SendAsync(MessageDetail bodyDetail, Level level,
         List<EmailSetting> settings)
     {
-        if (settings.HasElements())
+        foreach (EmailSetting setting in settings)
         {
-            foreach (EmailSetting setting in settings)
+            if ((!setting.LevelsToReport.HasElements() ||
+                setting.LevelsToReport.Any(item => item.Equals(level)))
+                && !setting.DisableEmailSending)
             {
-                if ((!setting.LevelsToReport.HasElements() || 
-                    setting.LevelsToReport.Any(item => item.Equals(level)))
-                    && !setting.DisableEmailSending)
-                {
-                    this.Utility.Send(setting, bodyDetail, level);
-                }
+                this.Utility.Send(setting, bodyDetail, level);
             }
         }
     }

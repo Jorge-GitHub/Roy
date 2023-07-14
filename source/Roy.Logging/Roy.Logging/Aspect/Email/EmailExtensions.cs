@@ -5,11 +5,15 @@ using MimeKit;
 using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.EmailAspect;
+using Roy.Logging.Extensions;
 using Roy.Logging.Resources;
+using Roy.Logging.Resources.Languages.EmailTemplate;
+using System.Globalization;
+using System.Text;
 
 namespace Roy.Logging.Aspect.Email;
 
-internal static class SettingExtensions
+internal static class EmailExtensions
 {
     /// <summary>
     /// Convert an EmailSetting into a MimeMessage.
@@ -125,9 +129,13 @@ internal static class SettingExtensions
     {
         if (setting.DefaultEmailSubject.IsNullOrEmpty())
         {
-            string logging = isAnException ? 
-                StringValues.ExceptionLabel : StringValues.LoggingLabel;
-            setting.DefaultEmailSubject = $"Roy {logging} - Issue Level: {level.ToString()} - Id: {issueId}";
+            string subjectHolderId = isAnException ? 
+                StringValues.ExceptionSubject : StringValues.RoyLoginSubject;
+            StringBuilder subject = new StringBuilder(EmailLabels.ResourceManager
+                .GetString(subjectHolderId, CultureInfo.DefaultThreadCurrentCulture));
+            subject.Replace(EmailLabel.IssueIdTag, issueId);
+            subject.Replace(EmailLabel.LevelTag, level.ToCurrentCultureString());
+            setting.DefaultEmailSubject = subject.ToString();
         }
 
         if (setting.DefaultEmailBody.IsNullOrEmpty())

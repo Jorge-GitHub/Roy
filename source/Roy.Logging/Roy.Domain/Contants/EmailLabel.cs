@@ -112,7 +112,7 @@ public struct EmailLabel
     /// <summary>
     /// Id tag for replacing Error Id label on the HTML template.
     /// </summary>
-    public const string ErrorIdTag = "*|ErrorID|*";
+    public const string ErrorIdTag = "*|ErrorId|*";
     /// <summary>
     /// Id tag for replacing issue date label on the HTML template.
     /// </summary>
@@ -205,4 +205,12 @@ public struct EmailLabel
     /// Id tag for replacing value logged in JSON format label on the HTML template.
     /// </summary>
     public const string ValueLoggedInJSONFormatTag = "*|ValueLoggedInJSONFormat|*";
+    /// <summary>
+    /// Id tag for replacing value logged in JSON format label on the HTML template.
+    /// </summary>
+    public const string IssueIdTag = "*|IssueId|*";
+    /// <summary>
+    /// Id tag for replacing value logged in JSON format label on the HTML template.
+    /// </summary>
+    public const string LevelTag = "*|Level|*";
 }

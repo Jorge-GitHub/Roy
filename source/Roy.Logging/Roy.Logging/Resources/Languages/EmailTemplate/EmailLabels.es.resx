@@ -141,6 +141,9 @@
   <data name="ExceptionMessageTag" xml:space="preserve">
     <value>Mensaje de Excepción:</value>
   </data>
+  <data name="ExceptionSubject" xml:space="preserve">
+    <value>Roy Excepción - Nivel de Problema: *|Level|* - Identificación: *|IssueId|*</value>
+  </data>
   <data name="FullExceptionInJSONFormat" xml:space="preserve">
     <value>Excepción Completa en Formato JSON:</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="ParametersListInJSONFormat" xml:space="preserve">
     <value>Lista de Parámetros en Formato JSON:</value>
+  </data>
+  <data name="RoyLoginSubject" xml:space="preserve">
+    <value>Roy Registro - Nivel de Problema: *|Level|* - Identificación: *|IssueId|*</value>
   </data>
   <data name="ServerInformationHeader" xml:space="preserve">
     <value>INFORMACIÓN DEL SERVIDOR/COMPUTADORA</value>
