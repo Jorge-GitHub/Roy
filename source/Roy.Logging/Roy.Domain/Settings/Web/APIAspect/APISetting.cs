@@ -15,4 +15,8 @@ public class APISetting
     /// Flag that determinate whether to disable or not the posting of the messages.
     /// </summary>
     public bool DisablePost { get; set; }
+    /// <summary>
+    /// API's URL to post the message.
+    /// </summary>
+    public string URL { get; set; }
 }

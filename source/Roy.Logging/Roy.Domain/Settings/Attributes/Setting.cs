@@ -54,6 +54,7 @@ public class Setting
     public bool LoadSystemInformation { get; set; }
     /// <summary>
     /// Flag that determinate whether to save the log in a file or not.
+    /// The default value is true.
     /// </summary>
     public bool SaveLogOnFile { get; set; }
     /// <summary>

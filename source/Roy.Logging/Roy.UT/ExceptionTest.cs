@@ -78,4 +78,16 @@ public class ExceptionTest
         // but a Warning. The default level log is Error.
         new Exception("Test Warning Not Send").SaveAsync(new StackFrame(1, true));
     }
+
+    /// <summary>
+    /// Default test execution.
+    /// </summary>
+    [TestMethod]
+    public void TestAPIException()
+    {
+        SettingExtension.Settings.Exception.APIs.AddRange(
+            new UTHelper().GetAPISetting());
+        SettingExtension.Settings.Exception.SaveLogOnFile = false;
+        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
+    }
 }

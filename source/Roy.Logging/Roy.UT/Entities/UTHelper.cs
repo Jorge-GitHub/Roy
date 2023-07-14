@@ -1,4 +1,5 @@
-﻿using Roy.Domain.Settings.Web.EmailAspect;
+﻿using Roy.Domain.Settings.Web.APIAspect;
+using Roy.Domain.Settings.Web.EmailAspect;
 using System.Reflection;
 
 namespace Roy.UT.Entities;
@@ -69,5 +70,20 @@ internal class UTHelper
         settings.Receivers.Add(receiver);
 
         return settings;
+    }
+
+    /// <summary>
+    /// Get API settings.
+    /// </summary>
+    /// <returns>
+    /// API settings.
+    /// </returns>
+    public List<APISetting> GetAPISetting()
+    {
+        List< APISetting> apis = new List<APISetting>();
+        apis.Add(new APISetting() { URL = "https://api.restful-api.dev/objects" });
+        apis.Add(new APISetting() { URL = "https://jsonplaceholder.typicode.com/posts" });
+
+        return apis;
     }
 }

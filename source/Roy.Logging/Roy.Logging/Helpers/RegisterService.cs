@@ -32,7 +32,7 @@ internal class RegisterService
         {
             if (setting.Emails.HasElements())
             {
-                new EmailService().SendAsync(message, setting?.Emails);
+                new EmailService().SendAsync(message, setting.Emails);
             }
         } catch { }
 
@@ -40,7 +40,7 @@ internal class RegisterService
         {
             if(setting.APIs.HasElements())
             {
-                new APIService().PostAsync(message, setting?.APIs);
+                new APIService().PostAsync(message, setting.APIs);
             }
         } catch { }
     }

@@ -1,8 +1,6 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.APIAspect;
-using Roy.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Aspect.API;
 
 namespace Roy.Logging.Helpers;
@@ -14,16 +12,24 @@ internal class APIService
 {
     private APIUtility Utility { get; set; }
 
-
-    public async void PostAsync(MessageDetail bodyDetail, List<APISetting> settings)
+    /// <summary>
+    /// Post the message to the APIs.
+    /// </summary>
+    /// <param name="message">
+    /// Message to post.
+    /// </param>
+    /// <param name="settings">
+    /// API settings.
+    /// </param>
+    public async void PostAsync(MessageDetail message, List<APISetting> settings)
     {
-        foreach (APISetting setting in settings)
+        foreach (APISetting api in settings)
         {
-            if ((!setting.LevelsToPost.HasElements() ||
-                setting.LevelsToPost.Any(item => item.Equals(bodyDetail.Level)))
-                && !setting.DisablePost)
+            if ((!api.LevelsToPost.HasElements() ||
+                api.LevelsToPost.Any(item => item.Equals(message.Level)))
+                && !api.DisablePost)
             {
-                this.Utility.Post();
+                this.Utility.Post(api, message);
             }
         }
     }
