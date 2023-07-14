@@ -59,6 +59,7 @@ internal class UTHelper
         EmailSetting settings = new EmailSetting();
         settings.Server.Host = "smtp.ethereal.email";
         settings.From = "roy@yahoo.com";
+        settings.DisplayNameFrom = "ROY Logger";
         settings.DefaultIsTextBody = false;
         settings.UserAccount = "robbie.hermiston@ethereal.email";
         // This is a fake SMTP that is why I am hard coding this fake password.
