@@ -118,78 +118,78 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssemblyLocationTag" xml:space="preserve">
-    <value>Assembly Location:</value>
+    <value>Lieu d'assemblage :</value>
   </data>
   <data name="CLRVersion" xml:space="preserve">
-    <value>.NET CLR Version:</value>
+    <value>Version .NET CLR :</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright</value>
+    <value>Droits d'auteur</value>
   </data>
   <data name="CustomMessage" xml:space="preserve">
-    <value>Custom Message:</value>
+    <value>Message personnalisé:</value>
   </data>
   <data name="DomainName" xml:space="preserve">
-    <value>Domain Name:</value>
+    <value>Nom de domaine:</value>
   </data>
   <data name="ErrorId" xml:space="preserve">
-    <value>Error Id:</value>
+    <value>Identifiant d'erreur :</value>
   </data>
   <data name="ExceptionInformationHeader" xml:space="preserve">
-    <value>EXCEPTION INFORMATION</value>
+    <value>INFORMATIONS EXCEPTIONNELLES</value>
   </data>
   <data name="ExceptionMessageTag" xml:space="preserve">
-    <value>Exception Message:</value>
+    <value>Message d'exception :</value>
   </data>
   <data name="FullExceptionInJSONFormat" xml:space="preserve">
-    <value>Full Exception in JSON Format:</value>
+    <value>Exception complète au format JSON :</value>
   </data>
   <data name="FullIssueInJSONFormat" xml:space="preserve">
-    <value>Full Issue in JSON Format:</value>
+    <value>Numéro complet au format JSON :</value>
   </data>
   <data name="HelpLinkTag" xml:space="preserve">
-    <value>Help Link:</value>
+    <value>Lien d'aide :</value>
   </data>
   <data name="IssueDate" xml:space="preserve">
-    <value>Date:</value>
+    <value>Datte:</value>
   </data>
   <data name="IssueLevel" xml:space="preserve">
-    <value>Issue Level:</value>
+    <value>Niveau d'émission :</value>
   </data>
   <data name="LogId" xml:space="preserve">
-    <value>Log Id:</value>
+    <value>Identifiant de journal :</value>
   </data>
   <data name="LogInformationHeader" xml:space="preserve">
-    <value>LOG INFORMATION</value>
+    <value>INFORMATIONS DU JOURNAL</value>
   </data>
   <data name="OperativeSystem" xml:space="preserve">
-    <value>Operative System:</value>
+    <value>Système opérationnel:</value>
   </data>
   <data name="OperativeSystemVersion" xml:space="preserve">
-    <value>Operative System Version:</value>
+    <value>Version du système d'exploitation :</value>
   </data>
   <data name="ParametersListInJSONFormat" xml:space="preserve">
-    <value>Parameters List In JSON Format:</value>
+    <value>Liste des paramètres au format JSON :</value>
   </data>
   <data name="ServerInformationHeader" xml:space="preserve">
-    <value>SERVER/COMPUTER INFORMATION</value>
+    <value>INFORMATIONS SUR LE SERVEUR/ORDINATEUR</value>
   </data>
   <data name="ServerName" xml:space="preserve">
-    <value>Server/Computer Name:</value>
+    <value>Nom du serveur/ordinateur :</value>
   </data>
   <data name="SourceTag" xml:space="preserve">
     <value>Source:</value>
   </data>
   <data name="StackFrameInJSONFormat" xml:space="preserve">
-    <value>Stack Frame in JSON Format:</value>
+    <value>Cadre de pile au format JSON :</value>
   </data>
   <data name="StackTraceTag" xml:space="preserve">
-    <value>Stack Trace:</value>
+    <value>Trace de la pile:</value>
   </data>
   <data name="UserAccountName" xml:space="preserve">
-    <value>User Account Name:</value>
+    <value>Nom du compte utilisateur :</value>
   </data>
   <data name="ValueLoggedInJSONFormat" xml:space="preserve">
-    <value>Value Logged in JSON Format:</value>
+    <value>Valeur enregistrée au format JSON :</value>
   </data>
 </root>

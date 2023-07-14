@@ -259,7 +259,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to StackTrace:.
+        ///   Looks up a localized string similar to Stack Trace:.
         /// </summary>
         public static string StackTraceTag {
             get {
