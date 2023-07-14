@@ -10,11 +10,11 @@ public class RoySetting
     /// <summary>
     /// Exception settings.
     /// </summary>
-    public Setting Exception { get; set; }
+    public IssueSetting Exception { get; set; }
     /// <summary>
     /// Exception settings.
     /// </summary>
-    public Setting Log { get; set; }
+    public IssueSetting Log { get; set; }
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -28,10 +28,10 @@ public class RoySetting
     /// </summary>
     private void LoadObject()
     {
-        this.Exception = new Setting();
+        this.Exception = new IssueSetting();
         this.Exception.DefaultFolderName = "exceptions";
         this.Exception.SaveLogOnFile = true;
-        this.Log = new Setting();
+        this.Log = new IssueSetting();
         this.Log.DefaultFolderName = "logs";
         this.Log.SaveLogOnFile = true;
     }

@@ -18,7 +18,7 @@ internal class RegisterService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    public async void SaveAsync(MessageDetail message, Setting setting)
+    public async void SaveAsync(MessageDetail message, IssueSetting setting)
     {
         try
         {
