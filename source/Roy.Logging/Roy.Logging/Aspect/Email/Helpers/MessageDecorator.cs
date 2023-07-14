@@ -1,6 +1,7 @@
 ﻿using Roy.Domain.Application;
 using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
+using Roy.Logging.Extensions;
 using System.Text;
 using System.Text.Json;
 
@@ -53,7 +54,7 @@ internal class MessageDecorator
         body.Replace(Tags.Date, bodyDetail.Date.ToString(
             StringValues.LogDateFormat));
         body.Replace(Tags.AssemblyLocation, bodyDetail.AssemblyLocation);
-        body.Replace(Tags.Level, bodyDetail.Level.ToString());
+        body.Replace(Tags.Level, bodyDetail.Level.ToCurrentCultureString());
         body.Replace(Tags.CurrentYear, DateTime.Now.Year.ToString());
         body.Replace(Tags.StackFrameJSON,
             this.SerializeObject(bodyDetail.StackFrame));

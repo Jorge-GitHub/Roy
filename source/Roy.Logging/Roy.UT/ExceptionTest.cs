@@ -4,6 +4,7 @@ using Roy.Domain.Settings.Web.EmailAspect;
 using Roy.Logging;
 using Roy.UT.Entities;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Roy.UT;
 
@@ -34,6 +35,8 @@ public class ExceptionTest
             SettingExtension.Settings.Exception.FileName);
         new Exception("Test file Name Exception").SaveAsync();
         SettingExtension.Settings.Exception.FileName = string.Empty;
+        // We are running async so we need to wait a few seconds to be sure the file is there.
+        Thread.Sleep(10000);
         Assert.IsTrue(File.Exists(fileLocation));
     }
 
@@ -45,7 +48,20 @@ public class ExceptionTest
     {
         SettingExtension.Settings.Exception.Emails.Add(
             new UTHelper().GetEmailSetting());
-        new Exception("Test Exception").SaveAsync(new StackFrame(1, true));
+        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
+    }
+
+
+    /// <summary>
+    /// Default test execution.
+    /// </summary>
+    [TestMethod]
+    public void TestEmailExceptionFrenchVersion()
+    {
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("fr");
+        SettingExtension.Settings.Exception.Emails.Add(
+            new UTHelper().GetEmailSetting());
+        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
     }
 
     /// <summary>
@@ -61,5 +77,17 @@ public class ExceptionTest
         // This exception will not be send to the user because it is not an error
         // but a Warning. The default level log is Error.
         new Exception("Test Warning Not Send").SaveAsync(new StackFrame(1, true));
+    }
+
+    /// <summary>
+    /// Default test execution.
+    /// </summary>
+    [TestMethod]
+    public void TestAPIException()
+    {
+        SettingExtension.Settings.Exception.APIs.AddRange(
+            new UTHelper().GetAPISetting());
+        SettingExtension.Settings.Exception.SaveLogOnFile = false;
+        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
     }
 }

@@ -133,6 +133,15 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Roy Exception - Issue Level: *|Level|* - Id: *|IssueId|*.
+        /// </summary>
+        public static string ExceptionSubject {
+            get {
+                return ResourceManager.GetString("ExceptionSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Exception in JSON Format:.
         /// </summary>
         public static string FullExceptionInJSONFormat {
@@ -219,6 +228,15 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         public static string ParametersListInJSONFormat {
             get {
                 return ResourceManager.GetString("ParametersListInJSONFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roy Logging - Issue Level: *|Level|* - Id: *|IssueId|*.
+        /// </summary>
+        public static string RoyLoginSubject {
+            get {
+                return ResourceManager.GetString("RoyLoginSubject", resourceCulture);
             }
         }
         

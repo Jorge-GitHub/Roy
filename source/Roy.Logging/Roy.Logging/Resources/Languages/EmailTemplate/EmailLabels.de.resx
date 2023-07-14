@@ -118,84 +118,84 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AssemblyLocationTag" xml:space="preserve">
-    <value>Lieu d'assemblage :</value>
+    <value>Montageort:</value>
   </data>
   <data name="CLRVersion" xml:space="preserve">
-    <value>Version .NET CLR :</value>
+    <value>.NET CLR-Version:</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Droits d'auteur</value>
+    <value>Urheberrechte ©</value>
   </data>
   <data name="CustomMessage" xml:space="preserve">
-    <value>Message personnalisé:</value>
+    <value>Benutzerdefinierte Nachricht:</value>
   </data>
   <data name="DomainName" xml:space="preserve">
-    <value>Nom de domaine:</value>
+    <value>Domainname:</value>
   </data>
   <data name="ErrorId" xml:space="preserve">
-    <value>Identifiant d'erreur :</value>
+    <value>Fehler-ID:</value>
   </data>
   <data name="ExceptionInformationHeader" xml:space="preserve">
-    <value>INFORMATIONS EXCEPTIONNELLES</value>
+    <value>AUSNAHMENINFORMATIONEN</value>
   </data>
   <data name="ExceptionMessageTag" xml:space="preserve">
-    <value>Message d'exception :</value>
+    <value>Ausnahmemeldung:</value>
   </data>
   <data name="ExceptionSubject" xml:space="preserve">
-    <value>Roy Exception - Niveau de Problème: *|Level|* - Identifiant: *|IssueId|*</value>
+    <value>Roy Ausnahme - Problemstufe: *|Level|* - Ausweis: *|IssueId|*</value>
   </data>
   <data name="FullExceptionInJSONFormat" xml:space="preserve">
-    <value>Exception complète au format JSON :</value>
+    <value>Vollständige Ausnahme im JSON-Format:</value>
   </data>
   <data name="FullIssueInJSONFormat" xml:space="preserve">
-    <value>Numéro complet au format JSON :</value>
+    <value>Vollständige Ausgabe im JSON-Format:</value>
   </data>
   <data name="HelpLinkTag" xml:space="preserve">
-    <value>Lien d'aide :</value>
+    <value>Hilfelink:</value>
   </data>
   <data name="IssueDate" xml:space="preserve">
-    <value>Datte:</value>
+    <value>Datum:</value>
   </data>
   <data name="IssueLevel" xml:space="preserve">
-    <value>Niveau d'émission :</value>
+    <value>Problemstufe:</value>
   </data>
   <data name="LogId" xml:space="preserve">
-    <value>Identifiant de journal :</value>
+    <value>Protokoll-ID:</value>
   </data>
   <data name="LogInformationHeader" xml:space="preserve">
-    <value>INFORMATIONS DU JOURNAL</value>
+    <value>PROTOKOLLINFORMATIONEN</value>
   </data>
   <data name="OperativeSystem" xml:space="preserve">
-    <value>Système opérationnel:</value>
+    <value>Betriebssystem:</value>
   </data>
   <data name="OperativeSystemVersion" xml:space="preserve">
-    <value>Version du système d'exploitation :</value>
+    <value>Betriebssystemversion:</value>
   </data>
   <data name="ParametersListInJSONFormat" xml:space="preserve">
-    <value>Liste des paramètres au format JSON :</value>
+    <value>Parameterliste im JSON-Format:</value>
   </data>
   <data name="RoyLoginSubject" xml:space="preserve">
-    <value>Roy Enregistrement - Niveau de Problème: *|Level|* - Identifiant: *|IssueId|*</value>
+    <value>Roy Protokollierung - Issue Level: *|Level|* - Id: *|IssueId|*</value>
   </data>
   <data name="ServerInformationHeader" xml:space="preserve">
-    <value>INFORMATIONS SUR LE SERVEUR/ORDINATEUR</value>
+    <value>SERVER-/COMPUTER-INFORMATIONEN</value>
   </data>
   <data name="ServerName" xml:space="preserve">
-    <value>Nom du serveur/ordinateur :</value>
+    <value>Server-/Computername:</value>
   </data>
   <data name="SourceTag" xml:space="preserve">
-    <value>Source:</value>
+    <value>Quelle:</value>
   </data>
   <data name="StackFrameInJSONFormat" xml:space="preserve">
-    <value>Cadre de pile au format JSON :</value>
+    <value>Stapelrahmen im JSON-Format:</value>
   </data>
   <data name="StackTraceTag" xml:space="preserve">
-    <value>Trace de la pile:</value>
+    <value>Stack-Trace:</value>
   </data>
   <data name="UserAccountName" xml:space="preserve">
-    <value>Nom du compte utilisateur :</value>
+    <value>Benutzerkontoname:</value>
   </data>
   <data name="ValueLoggedInJSONFormat" xml:space="preserve">
-    <value>Valeur enregistrée au format JSON :</value>
+    <value>Im JSON-Format protokollierter Wert:</value>
   </data>
 </root>

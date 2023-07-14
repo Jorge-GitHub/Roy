@@ -56,6 +56,7 @@ public class EmailSetting
     /// Flag that determinate whether to disable or not sending the emails to the list.
     /// </summary>
     public bool DisableEmailSending { get; set; }
+
     /// <summary>
     /// Constructor.
     /// </summary>

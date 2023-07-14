@@ -30,6 +30,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>EmailLabels.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Languages\LevelLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LevelLabel.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\RoyValues.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -41,6 +46,10 @@
     <EmbeddedResource Update="Resources\Languages\EmailTemplate\EmailLabels.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmailLabels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Languages\LevelLabel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LevelLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\RoyValues.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

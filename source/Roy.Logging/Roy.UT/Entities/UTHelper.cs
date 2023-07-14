@@ -1,4 +1,5 @@
-﻿using Roy.Domain.Settings.Web.EmailAspect;
+﻿using Roy.Domain.Settings.Web.APIAspect;
+using Roy.Domain.Settings.Web.EmailAspect;
 using System.Reflection;
 
 namespace Roy.UT.Entities;
@@ -61,13 +62,28 @@ internal class UTHelper
         settings.From = "roy@yahoo.com";
         settings.DisplayNameFrom = "ROY Logger";
         settings.DefaultIsTextBody = false;
-        settings.UserAccount = "robbie.hermiston@ethereal.email";
+        settings.UserAccount = "jody.dicki4@ethereal.email";
         // This is a fake SMTP that is why I am hard coding this fake password.
-        settings.UserPassword = "76kqGgRwUfDF2gCQ66";
+        settings.UserPassword = "w4jZJapEphGkb2DbYH";
         ReceiverSetting receiver = new ReceiverSetting();
         receiver.To = "royorbinson@gmail.com";
         settings.Receivers.Add(receiver);
 
         return settings;
+    }
+
+    /// <summary>
+    /// Get API settings.
+    /// </summary>
+    /// <returns>
+    /// API settings.
+    /// </returns>
+    public List<APISetting> GetAPISetting()
+    {
+        List< APISetting> apis = new List<APISetting>();
+        apis.Add(new APISetting() { URL = "https://api.restful-api.dev/objects" });
+        apis.Add(new APISetting() { URL = "https://jsonplaceholder.typicode.com/posts" });
+
+        return apis;
     }
 }

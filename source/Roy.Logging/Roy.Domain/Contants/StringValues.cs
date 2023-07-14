@@ -11,13 +11,13 @@ public struct StringValues
     /// </summary>
     public const string LogHTMLBodyId = "LogHTMLBody";
     /// <summary>
-    /// Exception label.
+    /// Exception subject.
     /// </summary>
-    public const string ExceptionLabel = "Exception";
+    public const string ExceptionSubject = "ExceptionSubject";
     /// <summary>
-    /// Logging label.
+    /// Logging subject.
     /// </summary>
-    public const string LoggingLabel = "Logging";
+    public const string RoyLoginSubject = "RoyLoginSubject";
     /// <summary>
     /// Long date format.
     /// </summary>

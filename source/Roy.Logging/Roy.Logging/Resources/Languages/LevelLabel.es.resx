@@ -117,85 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AssemblyLocationTag" xml:space="preserve">
-    <value>Lieu d'assemblage :</value>
+  <data name="Alert" xml:space="preserve">
+    <value>Alerta</value>
   </data>
-  <data name="CLRVersion" xml:space="preserve">
-    <value>Version .NET CLR :</value>
+  <data name="Critical" xml:space="preserve">
+    <value>Crítico</value>
   </data>
-  <data name="Copyright" xml:space="preserve">
-    <value>Droits d'auteur</value>
+  <data name="Debug" xml:space="preserve">
+    <value>Depurar</value>
   </data>
-  <data name="CustomMessage" xml:space="preserve">
-    <value>Message personnalisé:</value>
+  <data name="Emergency" xml:space="preserve">
+    <value>Emergencia</value>
   </data>
-  <data name="DomainName" xml:space="preserve">
-    <value>Nom de domaine:</value>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
   </data>
-  <data name="ErrorId" xml:space="preserve">
-    <value>Identifiant d'erreur :</value>
+  <data name="Information" xml:space="preserve">
+    <value>Información</value>
   </data>
-  <data name="ExceptionInformationHeader" xml:space="preserve">
-    <value>INFORMATIONS EXCEPTIONNELLES</value>
+  <data name="Log" xml:space="preserve">
+    <value>Registro</value>
   </data>
-  <data name="ExceptionMessageTag" xml:space="preserve">
-    <value>Message d'exception :</value>
+  <data name="None" xml:space="preserve">
+    <value>Ninguna</value>
   </data>
-  <data name="ExceptionSubject" xml:space="preserve">
-    <value>Roy Exception - Niveau de Problème: *|Level|* - Identifiant: *|IssueId|*</value>
+  <data name="Notice" xml:space="preserve">
+    <value>Aviso</value>
   </data>
-  <data name="FullExceptionInJSONFormat" xml:space="preserve">
-    <value>Exception complète au format JSON :</value>
+  <data name="Trace" xml:space="preserve">
+    <value>Rastro</value>
   </data>
-  <data name="FullIssueInJSONFormat" xml:space="preserve">
-    <value>Numéro complet au format JSON :</value>
-  </data>
-  <data name="HelpLinkTag" xml:space="preserve">
-    <value>Lien d'aide :</value>
-  </data>
-  <data name="IssueDate" xml:space="preserve">
-    <value>Datte:</value>
-  </data>
-  <data name="IssueLevel" xml:space="preserve">
-    <value>Niveau d'émission :</value>
-  </data>
-  <data name="LogId" xml:space="preserve">
-    <value>Identifiant de journal :</value>
-  </data>
-  <data name="LogInformationHeader" xml:space="preserve">
-    <value>INFORMATIONS DU JOURNAL</value>
-  </data>
-  <data name="OperativeSystem" xml:space="preserve">
-    <value>Système opérationnel:</value>
-  </data>
-  <data name="OperativeSystemVersion" xml:space="preserve">
-    <value>Version du système d'exploitation :</value>
-  </data>
-  <data name="ParametersListInJSONFormat" xml:space="preserve">
-    <value>Liste des paramètres au format JSON :</value>
-  </data>
-  <data name="RoyLoginSubject" xml:space="preserve">
-    <value>Roy Enregistrement - Niveau de Problème: *|Level|* - Identifiant: *|IssueId|*</value>
-  </data>
-  <data name="ServerInformationHeader" xml:space="preserve">
-    <value>INFORMATIONS SUR LE SERVEUR/ORDINATEUR</value>
-  </data>
-  <data name="ServerName" xml:space="preserve">
-    <value>Nom du serveur/ordinateur :</value>
-  </data>
-  <data name="SourceTag" xml:space="preserve">
-    <value>Source:</value>
-  </data>
-  <data name="StackFrameInJSONFormat" xml:space="preserve">
-    <value>Cadre de pile au format JSON :</value>
-  </data>
-  <data name="StackTraceTag" xml:space="preserve">
-    <value>Trace de la pile:</value>
-  </data>
-  <data name="UserAccountName" xml:space="preserve">
-    <value>Nom du compte utilisateur :</value>
-  </data>
-  <data name="ValueLoggedInJSONFormat" xml:space="preserve">
-    <value>Valeur enregistrée au format JSON :</value>
+  <data name="Warning" xml:space="preserve">
+    <value>Advertencia</value>
   </data>
 </root>

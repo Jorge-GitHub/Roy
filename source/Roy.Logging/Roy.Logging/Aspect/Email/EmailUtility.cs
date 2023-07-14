@@ -2,31 +2,31 @@
 using MailKit.Net.Smtp;
 using MimeKit;
 using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
 using Roy.Domain.Settings.Web.EmailAspect;
 
 namespace Roy.Logging.Aspect.Email;
 
+/// <summary>
+/// Email service.
+/// </summary>
 internal class EmailUtility
 {
     /// <summary>
     /// Sends an email.
     /// </summary>
     /// <param name="setting">
-    /// Email settings object.
+    /// Email settings.
     /// </param>
-    /// <param name="bodyDetail">
+    /// <param name="message">
     /// Object used to populate the body message.
     /// </param>
-    /// <param name="level">
-    /// Exception/log's Level.
-    /// </param>
-    public void Send(EmailSetting setting, MessageDetail bodyDetail, Level level)
+    public void Send(EmailSetting setting, MessageDetail message)
     {
-        setting.SetDefaultValues(level, bodyDetail is ExceptionDetail, bodyDetail.Id);
+        setting.SetDefaultValues(message.Level, 
+            message is ExceptionDetail, message.Id);
         foreach (ReceiverSetting receiver in setting.Receivers)
         {
-            this.Send(setting, receiver, bodyDetail);
+            this.Send(setting, receiver, message);
         }
     }
 
