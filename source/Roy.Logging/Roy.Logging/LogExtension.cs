@@ -1,6 +1,7 @@
 ﻿using Avalon.Base.Extension.Types;
-using Roy.Domain;
+using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
+using Roy.Domain.Settings;
 using Roy.Logging.Helpers;
 using System.Diagnostics;
 
@@ -14,11 +15,6 @@ public static class LogExtension
     /// <summary>
     /// Log settings.
     /// </summary>
-    public static LogSetting Settings { get; set; } = new LogSetting();
-
-    /// <summary>
-    /// Log settings.
-    /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
     /// </typeparam>
@@ -27,7 +23,7 @@ public static class LogExtension
     /// </param>
     public static void LogAsync<TValue>(this TValue value)
     {
-        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, null);
+        value.LogAsync(string.Empty, string.Empty, SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -44,7 +40,7 @@ public static class LogExtension
     /// </param>
     public static void LogAsync<TValue>(this TValue value, StackFrame frame)
     {
-        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, frame);
+        value.LogAsync(string.Empty, string.Empty, SettingExtension.Settings, frame);
     }
 
     /// <summary>
@@ -57,7 +53,7 @@ public static class LogExtension
     /// Value type to log.
     /// </param>
     public static async void LogAsync<TValue>(this TValue value,
-        LogSetting settings)
+        RoySetting settings)
     {
         value.LogAsync(string.Empty, string.Empty, settings, null);
     }
@@ -71,13 +67,13 @@ public static class LogExtension
     /// <param name="value">
     /// Value type to log.
     /// </param>
-    /// <param name="identity">
-    /// Log's Id.
+    /// <param name="message">
+    /// Log's message.
     /// </param>
     public static async void LogAsync<TValue>(this TValue value,
-        string identity)
+        string message)
     {
-        value.LogAsync(identity, string.Empty, LogExtension.Settings, null);
+        value.LogAsync(message, string.Empty, SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -96,9 +92,9 @@ public static class LogExtension
     /// Custom message.
     /// </param>
     public static async void LogAsync<TValue>(this TValue value,
-        string identity, string message)
+        string message, string identity)
     {
-        value.LogAsync(identity, message, LogExtension.Settings, null);
+        value.LogAsync(message, identity, SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -123,41 +119,23 @@ public static class LogExtension
     /// Stack frame containing the method calling the log.
     /// </param>
     public static async void LogAsync<TValue>(this TValue value,
-        string identity, string message, LogSetting setting, StackFrame frame)
+        string message, string identity,  RoySetting setting, StackFrame frame)
     {
         try
         {
-            if (value != null)
-            {
-                setting = setting ?? LogExtension.Settings;
+            setting = setting ?? SettingExtension.Settings;
+            if (value != null && setting != null && !setting.Log.Disable)
+            {                
                 identity = identity.IsNotNullOrEmpty() ? identity
                     : Guid.NewGuid().ToString("N");
-               
-                bool appendLog = setting != null ? setting.AppendException : false;
-                bool logSystemInformation = setting != null ?
-                    setting.LogSystemInformation : false;
+                
+                LogDetail detail = new LogDetail(value, identity, 
+                    message, frame, setting.Log.LoadSystemInformation);
 
-                LogDetail detail = new LogDetail(value, Level.Log,
-                    identity, message, frame, logSystemInformation);
-
-                new FileService().SaveAsync(detail,
-                    identity, setting?.LogFolderLocation,
-                    setting?.LogFileName,
-                    Level.Log, setting?.LogDefaultFolderName,
-                    appendLog);
+                new RegisterService().SaveAsync(
+                    detail, setting.Log, Level.Log);
             }
         }
         catch { }
-    }
-
-    /// <summary>
-    /// Create a copy of the log settings.
-    /// </summary>
-    /// <returns>
-    /// A copy of the log settings.
-    /// </returns>
-    public static LogSetting CopySettings()
-    {
-        return LogExtension.Settings.Copy<LogSetting>();
     }
 }

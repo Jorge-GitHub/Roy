@@ -1,4 +1,7 @@
-﻿using Roy.Logging;
+﻿using Roy.Domain.Contants;
+using Roy.Domain.Settings;
+using Roy.Domain.Settings.Web.EmailAspect;
+using Roy.Logging;
 using Roy.UT.Entities;
 using System.Diagnostics;
 
@@ -25,12 +28,38 @@ public class ExceptionTest
     [TestMethod]
     public void TestFileNameException()
     {
-        LogExtension.Settings.ExceptionFileName = "test.txt";
+        SettingExtension.Settings.Exception.FileName = "test.txt";
         string fileLocation = new UTHelper().GetfullPathToFile(
-            LogExtension.Settings.ExceptionDefaultFolderName,
-            LogExtension.Settings.ExceptionFileName);
+            SettingExtension.Settings.Exception.DefaultFolderName,
+            SettingExtension.Settings.Exception.FileName);
         new Exception("Test file Name Exception").SaveAsync();
-        LogExtension.Settings.ExceptionFileName = string.Empty;
+        SettingExtension.Settings.Exception.FileName = string.Empty;
         Assert.IsTrue(File.Exists(fileLocation));
+    }
+
+    /// <summary>
+    /// Default test execution.
+    /// </summary>
+    [TestMethod]
+    public void TestEmailException()
+    {
+        SettingExtension.Settings.Exception.Emails.Add(
+            new UTHelper().GetEmailSetting());
+        new Exception("Test Exception").SaveAsync(new StackFrame(1, true));
+    }
+
+    /// <summary>
+    /// Test that a particular level error will not be send to the user.
+    /// </summary>
+    [TestMethod]
+    public void TestEmailExceptionNotSendingEmailToLevel()
+    {
+        EmailSetting setting = new UTHelper().GetEmailSetting();
+        setting.LevelsToReport.Add(Level.Warning);
+        SettingExtension.Settings.Exception.Emails.Add(setting);
+        SettingExtension.Settings.Exception.SaveLogOnFile = false;
+        // This exception will not be send to the user because it is not an error
+        // but a Warning. The default level log is Error.
+        new Exception("Test Warning Not Send").SaveAsync(new StackFrame(1, true));
     }
 }

@@ -1,5 +1,6 @@
-﻿using Roy.Domain;
+﻿using Roy.Domain.Attributes;
 using Roy.Domain.Contants;
+using Roy.Domain.Settings;
 using Roy.Logging.Helpers;
 using System.Diagnostics;
 
@@ -18,8 +19,8 @@ public static class ExceptionExtension
     /// </param>
     public static async void SaveAsync(this Exception exception)
     {
-        exception.SaveAsync(LogExtension.Settings.DefaultExceptionLevel,
-            string.Empty, string.Empty, LogExtension.Settings, null, null);
+        exception.SaveAsync(SettingExtension.Settings.Exception.DefaultLevel,
+            string.Empty, string.Empty, SettingExtension.Settings, null, null);
     }
 
     /// <summary>
@@ -33,8 +34,8 @@ public static class ExceptionExtension
     /// </param>
     public static async void SaveAsync(this Exception exception, StackFrame frame)
     {
-        exception.SaveAsync(LogExtension.Settings.DefaultExceptionLevel,
-            string.Empty, string.Empty, LogExtension.Settings, frame, null);
+        exception.SaveAsync(SettingExtension.Settings.Exception.DefaultLevel,
+            string.Empty, string.Empty, SettingExtension.Settings, frame, null);
     }
 
     /// <summary>
@@ -47,9 +48,9 @@ public static class ExceptionExtension
     /// Settings.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        LogSetting settings)
+        RoySetting settings)
     {
-        exception.SaveAsync(settings.DefaultExceptionLevel,
+        exception.SaveAsync(settings.Exception.DefaultLevel,
             string.Empty, string.Empty, settings, null, null);
     }
 
@@ -65,7 +66,7 @@ public static class ExceptionExtension
     public static async void SaveAsync(this Exception exception, Level level)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, null, null);
+            SettingExtension.Settings, null, null);
     }
 
     /// <summary>
@@ -84,7 +85,7 @@ public static class ExceptionExtension
         StackFrame frame)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, frame, null);
+            SettingExtension.Settings, frame, null);
     }
 
     /// <summary>
@@ -100,10 +101,26 @@ public static class ExceptionExtension
     /// Settings.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        Level level, LogSetting settings)
+        Level level, RoySetting settings)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
             settings, null, null);
+    }
+
+    /// <summary>
+    /// Save the exception.
+    /// </summary>
+    /// <param name="exception">
+    /// Exception.
+    /// </param>
+    /// <param name="message">
+    /// Custom message.
+    /// </param>
+    public static async void SaveAsync(this Exception exception,
+        string message)
+    {
+        exception.SaveAsync(Level.Error, message, string.Empty,
+            SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -119,10 +136,10 @@ public static class ExceptionExtension
     /// Custom message.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        string identity, string message)
+        string message, string identity)
     {
-        exception.SaveAsync(Level.Error, identity, message,
-            LogExtension.Settings, null);
+        exception.SaveAsync(Level.Error, message, identity,
+            SettingExtension.Settings, null);
     }
 
     /// <summary>
@@ -141,11 +158,11 @@ public static class ExceptionExtension
     /// List of parameters.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        string identity, string message,
+        string message, string identity, 
         params object[] listOfParameters)
     {
-        exception.SaveAsync(Level.Error, identity, message,
-            LogExtension.Settings, null, listOfParameters);
+        exception.SaveAsync(Level.Error, message, identity,
+            SettingExtension.Settings, null, listOfParameters);
     }
 
     /// <summary>
@@ -167,11 +184,11 @@ public static class ExceptionExtension
     /// Stack frame containing the method calling the log.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        string identity, string message,
+        string message, string identity,
         StackFrame frame, params object[] listOfParameters)
     {
-        exception.SaveAsync(Level.Error, identity, message,
-            LogExtension.Settings, frame, listOfParameters);
+        exception.SaveAsync(Level.Error, message, identity,
+            SettingExtension.Settings, frame, listOfParameters);
     }
 
     /// <summary>
@@ -199,30 +216,21 @@ public static class ExceptionExtension
     /// Stack frame containing the method calling the log.
     /// </param>
     public static async void SaveAsync(this Exception exception,
-        Level level, string identity, string message,
-        LogSetting setting, StackFrame frame, 
+        Level level, string message, string identity, 
+        RoySetting setting, StackFrame frame, 
         params object[] listOfParameters)
     {
         try
         {
-            if (exception != null)
-            {
-                setting = setting ?? LogExtension.Settings;
-                
-                bool appendLog = setting != null ? setting.AppendException : false;
-                bool logSystemInformation = setting != null ? 
-                    setting.ExceptionLogSystemInformation: true;
-                
+            setting = setting ?? SettingExtension.Settings;
+            if (exception != null && setting != null && !setting.Log.Disable)
+            {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, listOfParameters, 
-                    frame, logSystemInformation);
-                
-                new FileService().SaveAsync(exceptionDetail,
-                    exceptionDetail.Id,
-                    setting?.ExceptionFolderLocation,
-                    setting?.ExceptionFileName,
-                    level, setting?.ExceptionDefaultFolderName,
-                    appendLog);
+                    frame, setting.Exception.LoadSystemInformation);
+
+                new RegisterService().SaveAsync(
+                    exceptionDetail, setting.Exception, level);
             }
         }
         catch { }

@@ -1,7 +1,7 @@
 ﻿using Roy.Domain.Contants;
 using System.Diagnostics;
 
-namespace Roy.Domain;
+namespace Roy.Domain.Attributes;
 
 /// <summary>
 /// Log's detail.
@@ -35,11 +35,11 @@ public class LogDetail : MessageDetail
     /// Flag that determinate whether to load the system information or not.
     /// </param>
     public LogDetail(object LogValue,
-        Level level, string id, string message,
-        StackFrame frame, bool loadSystemInformation) 
-        : base(level, id, message, frame, loadSystemInformation)
+        string id, string message, StackFrame frame, bool 
+        loadSystemInformation)
+        : base(Level.Log, id, message, frame, loadSystemInformation)
     {
-        this.LoadObject(LogValue);
+        LoadObject(LogValue);
     }
 
     /// <summary>
@@ -62,6 +62,6 @@ public class LogDetail : MessageDetail
     /// </param>
     private void LoadObject(object logValue)
     {
-        this.LogValue = logValue;
+        LogValue = logValue;
     }
 }
