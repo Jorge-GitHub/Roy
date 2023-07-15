@@ -29,12 +29,12 @@ public class LogTest
     {
         UTHelper helper = new UTHelper();
         Artist utObject = helper.GetDefaultSampleObject();
-        SettingExtension.Settings.Log.FileName = "testLog.txt";
+        LogExtension.Settings.Log.FileName = "testLog.txt";
         string fileLocation = helper.GetfullPathToFile(
-            SettingExtension.Settings.Log.DefaultFolderName,
-            SettingExtension.Settings.Log.FileName);
+            LogExtension.Settings.Log.DefaultFolderName,
+            LogExtension.Settings.Log.FileName);
         utObject.LogAsync();
-        SettingExtension.Settings.Log.FileName = string.Empty;
+        LogExtension.Settings.Log.FileName = string.Empty;
         Assert.IsTrue(File.Exists(fileLocation));
     }
 
@@ -44,10 +44,10 @@ public class LogTest
     [TestMethod]
     public void TestLogSystemInformation()
     {
-        SettingExtension.Settings.Log.LoadSystemInformation = true;
+        LogExtension.Settings.Log.LoadSystemInformation = true;
         Artist utObject = new UTHelper().GetDefaultSampleObject();
         utObject.LogAsync(new StackFrame(0, true));
-        SettingExtension.Settings.Log.LoadSystemInformation = false;
+        LogExtension.Settings.Log.LoadSystemInformation = false;
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class LogTest
     [TestMethod]
     public void TestEmailLog()
     {
-        SettingExtension.Settings.Log.Emails.Add(
+        LogExtension.Settings.Log.Emails.Add(
             new UTHelper().GetEmailSetting());
         Artist utObject = new UTHelper().GetDefaultSampleObject();
         utObject.LogAsync(new StackFrame(0, true));

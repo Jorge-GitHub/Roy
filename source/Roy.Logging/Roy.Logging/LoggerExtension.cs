@@ -9,7 +9,7 @@ namespace Roy.Logging;
 /// <summary>
 /// Log extensions.
 /// </summary>
-public static class LogExtension
+public static class LoggerExtension
 {
     /// <summary>
     /// Log settings.
@@ -22,7 +22,7 @@ public static class LogExtension
     /// </param>
     public static void LogAsync<TValue>(this TValue value)
     {
-        value.LogAsync(string.Empty, string.Empty, SettingExtension.Settings, null);
+        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, null);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public static class LogExtension
     /// </param>
     public static void LogAsync<TValue>(this TValue value, StackFrame frame)
     {
-        value.LogAsync(string.Empty, string.Empty, SettingExtension.Settings, frame);
+        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, frame);
     }
 
     /// <summary>
@@ -72,7 +72,7 @@ public static class LogExtension
     public static async void LogAsync<TValue>(this TValue value,
         string message)
     {
-        value.LogAsync(message, string.Empty, SettingExtension.Settings, null);
+        value.LogAsync(message, string.Empty, LogExtension.Settings, null);
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public static class LogExtension
     public static async void LogAsync<TValue>(this TValue value,
         string message, string identity)
     {
-        value.LogAsync(message, identity, SettingExtension.Settings, null);
+        value.LogAsync(message, identity, LogExtension.Settings, null);
     }
 
     /// <summary>
@@ -122,7 +122,7 @@ public static class LogExtension
     {
         try
         {
-            setting = setting ?? SettingExtension.Settings;
+            setting = setting ?? LogExtension.Settings;
             if (value != null && setting != null && !setting.Log.Disable)
             {                
                 identity = identity.IsNotNullOrEmpty() ? identity

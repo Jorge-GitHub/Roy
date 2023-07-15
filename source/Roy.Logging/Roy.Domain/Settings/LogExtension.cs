@@ -2,7 +2,7 @@
 
 namespace Roy.Domain.Settings;
 
-public static class SettingExtension
+public static class LogExtension
 {
     /// <summary>
     /// Log settings.
@@ -17,6 +17,6 @@ public static class SettingExtension
     /// </returns>
     public static RoySetting CopySettings()
     {
-        return SettingExtension.Settings.Copy<RoySetting>();
+        return LogExtension.Settings.Copy<RoySetting>();
     }
 }
