@@ -25,12 +25,22 @@ internal class SystemEventLogService
         string json = this.GetJson(message);
         if (OperatingSystem.IsWindows())
         {
-            using (EventLog eventLog = new EventLog(
-                StringValues.ApplicationLogName))
+            EventLog eventLog = null;
+            try
             {
+                eventLog = new EventLog(StringValues.ApplicationLogName);
                 eventLog.Source = StringValues.ApplicationLogName;
                 eventLog.WriteEntry(json.LimitLength(31000),
                    message.Level.ToEventLogEntryType());
+            }
+            catch { }
+            finally
+            {
+                if (eventLog != null)
+                {
+                    eventLog.Close();
+                    eventLog.Dispose();
+                }
             }
         }
     }
