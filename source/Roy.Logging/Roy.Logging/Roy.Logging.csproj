@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://github.com/Jorge-GitHub/Roy</PackageProjectUrl>
     <Description>Anything you want, you got it. Anything you need, you got it. Anything at all. Logging service library.</Description>
     <ApplicationIcon>roy.ico</ApplicationIcon>
-    <Version>1.0.0.5</Version>
+    <Version>1.0.0.6</Version>
     <PackageId>Roy.Logging</PackageId>
     <Copyright>2023</Copyright>
     <PackageIcon>roy-nutget.png</PackageIcon>
@@ -25,7 +25,7 @@ Easy to use.</PackageReleaseNotes>
   <ItemGroup>
     <Content Include="roy.ico" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Include="..\..\..\README.md">
       <Pack>True</Pack>
@@ -38,17 +38,19 @@ Easy to use.</PackageReleaseNotes>
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\Roy.Domain\bin\Release\net7.0\Roy.Domain.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MailKit" Version="4.1.0" />
+    <PackageReference Include="Net.AvalonTeam.Base.Extensions" Version="1.0.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Roy.Domain\Roy.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Avalon.Base.Extension">
-      <HintPath>..\..\Libraries\Avalon\Avalon.Base.Extension.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
