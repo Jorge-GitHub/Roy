@@ -27,3 +27,15 @@ public enum Level
     Information,
     Log
 }
+
+/// <summary>
+/// Languages.
+/// </summary>
+public enum Language
+{
+    None = 0,
+    English = 1,
+    Spanish = 2,
+    French = 3,
+    German = 4
+}

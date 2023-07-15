@@ -1,4 +1,5 @@
 ﻿using Roy.Domain.Contants;
+using System.Globalization;
 
 namespace Roy.Domain.Settings.Web.EmailAspect;
 
@@ -7,6 +8,7 @@ namespace Roy.Domain.Settings.Web.EmailAspect;
 /// </summary>
 public class EmailSetting
 {
+    private Language _Language;
     /// <summary>
     /// User account's name.
     /// </summary>
@@ -56,6 +58,14 @@ public class EmailSetting
     /// Flag that determinate whether to disable or not sending the emails to the list.
     /// </summary>
     public bool DisableEmailSending { get; set; }
+    /// <summary>
+    /// Language.
+    /// </summary>
+    public Language Language { get; set; }
+    /// <summary>
+    /// Culture.
+    /// </summary>
+    public CultureInfo Culture { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -65,5 +75,7 @@ public class EmailSetting
         this.Server= new ServerSetting();
         this.Receivers= new List<ReceiverSetting>();
         this.LevelsToReport = new List<Level>();
+        this.Language = Language.English;
+        this.Culture = new CultureInfo("en");
     }
 }

@@ -7,7 +7,7 @@ namespace Roy.Domain.Settings.Attributes;
 /// <summary>
 /// Settings.
 /// </summary>
-public class Setting
+public class IssueSetting
 {
     /// <summary>
     /// Folder Location to save the application's exceptions/logs.
@@ -69,7 +69,7 @@ public class Setting
     /// <summary>
     /// Constructor.
     /// </summary>
-    public Setting()
+    public IssueSetting()
     {
         this.Emails = new List<EmailSetting>();
         this.APIs = new List<APISetting>();

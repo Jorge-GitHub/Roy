@@ -21,7 +21,7 @@ internal class FileService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    public async void SaveAsync(MessageDetail message, Setting setting)
+    public async void SaveAsync(MessageDetail message, IssueSetting setting)
     {
         string fileLocation = this.GetFileLocation(setting.FolderLocation, 
             setting.FileName, message.Id, message.Level, setting.DefaultFolderName);

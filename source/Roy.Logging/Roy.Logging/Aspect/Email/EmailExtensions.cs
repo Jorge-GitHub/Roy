@@ -69,7 +69,7 @@ internal static class EmailExtensions
             receiver.IsTextBody.Value : setting.DefaultIsTextBody;
         string body = receiver.Body.ToDefaultValueIfEmpty(
                 setting.DefaultEmailBody);
-        body = new Decorator().GenerateBody(body, bodyDetail);
+        body = new Decorator().GenerateBody(body, bodyDetail, setting.Culture);
         if (isTextBody)
         {
             builder.TextBody = body;            
@@ -127,14 +127,16 @@ internal static class EmailExtensions
     public static void SetDefaultValues(this EmailSetting setting, 
         Level level, bool isAnException, string issueId)
     {
+        setting.Culture = setting.Language.ToCultureInfo();
+
         if (setting.DefaultEmailSubject.IsNullOrEmpty())
         {
             string subjectHolderId = isAnException ? 
                 StringValues.ExceptionSubject : StringValues.RoyLoginSubject;
             StringBuilder subject = new StringBuilder(EmailLabels.ResourceManager
-                .GetString(subjectHolderId, CultureInfo.DefaultThreadCurrentCulture));
+                .GetString(subjectHolderId, setting.Culture));
             subject.Replace(EmailLabel.IssueIdTag, issueId);
-            subject.Replace(EmailLabel.LevelTag, level.ToCurrentCultureString());
+            subject.Replace(EmailLabel.LevelTag, level.ToCurrentCultureString(setting.Culture));
             setting.DefaultEmailSubject = subject.ToString();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Roy.Domain.Attributes;
 using Roy.Logging.Aspect.Email.Helpers;
+using System.Globalization;
 using System.Text;
 
 namespace Roy.Logging.Aspect.Email;
@@ -18,14 +19,17 @@ internal class Decorator
     /// <param name="bodyDetail">
     /// Body detail to used for replacing the values.
     /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
     /// <returns>
     /// Message to be send to the user.
     /// </returns>
-    public string GenerateBody(string content, MessageDetail bodyDetail)
+    public string GenerateBody(string content, MessageDetail bodyDetail, CultureInfo culture)
     {
         StringBuilder body = new StringBuilder(content);
-        new LabelDecorator().Decorate(body, bodyDetail is ExceptionDetail);
-        new MessageDecorator().Decorate(body, bodyDetail);
+        new LabelDecorator().Decorate(body, bodyDetail is ExceptionDetail, culture);
+        new MessageDecorator().Decorate(body, bodyDetail, culture);
 
         return body.ToString();
     }

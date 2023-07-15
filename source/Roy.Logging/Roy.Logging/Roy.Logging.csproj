@@ -4,11 +4,38 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Title>Roy Logging Extension</Title>
+    <Title>Roy Logging</Title>
     <Authors>Jorge Gonzalez</Authors>
     <PackageProjectUrl>https://github.com/Jorge-GitHub/Roy</PackageProjectUrl>
     <Description>Anything you want, you got it. Anything you need, you got it. Anything at all. Logging service library.</Description>
+    <ApplicationIcon>roy.ico</ApplicationIcon>
+    <Version>1.0.0.4</Version>
+    <PackageId>Roy.Logging</PackageId>
+    <Copyright>2023</Copyright>
+    <PackageIcon>roy.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Jorge-GitHub/Roy</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Log;Exception Handling;Logging;Logger;Roy;Exception</PackageTags>
+    <PackageReleaseNotes>Log data such as exception and issues into your folder system, email, or post them into an API for further handling.
+Easy to use.</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="roy.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\resources\roy.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.1.0" />

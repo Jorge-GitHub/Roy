@@ -29,12 +29,12 @@ public class ExceptionTest
     [TestMethod]
     public void TestFileNameException()
     {
-        SettingExtension.Settings.Exception.FileName = "test.txt";
+        LogExtension.Settings.Exception.FileName = "test.txt";
         string fileLocation = new UTHelper().GetfullPathToFile(
-            SettingExtension.Settings.Exception.DefaultFolderName,
-            SettingExtension.Settings.Exception.FileName);
+            LogExtension.Settings.Exception.DefaultFolderName,
+            LogExtension.Settings.Exception.FileName);
         new Exception("Test file Name Exception").SaveAsync();
-        SettingExtension.Settings.Exception.FileName = string.Empty;
+        LogExtension.Settings.Exception.FileName = string.Empty;
         // We are running async so we need to wait a few seconds to be sure the file is there.
         Thread.Sleep(10000);
         Assert.IsTrue(File.Exists(fileLocation));
@@ -46,7 +46,7 @@ public class ExceptionTest
     [TestMethod]
     public void TestEmailException()
     {
-        SettingExtension.Settings.Exception.Emails.Add(
+        LogExtension.Settings.Exception.Emails.Add(
             new UTHelper().GetEmailSetting());
         new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
     }
@@ -58,10 +58,11 @@ public class ExceptionTest
     [TestMethod]
     public void TestEmailExceptionFrenchVersion()
     {
-        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("fr");
-        SettingExtension.Settings.Exception.Emails.Add(
+        LogExtension.Settings.Exception.Emails.Add(
             new UTHelper().GetEmailSetting());
-        new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
+        LogExtension.Settings.Exception.Emails[0].Language = Language.French;
+        new Exception("Test Exception").SaveAsync(
+            Level.Emergency, new StackFrame(1, true));
     }
 
     /// <summary>
@@ -72,8 +73,8 @@ public class ExceptionTest
     {
         EmailSetting setting = new UTHelper().GetEmailSetting();
         setting.LevelsToReport.Add(Level.Warning);
-        SettingExtension.Settings.Exception.Emails.Add(setting);
-        SettingExtension.Settings.Exception.SaveLogOnFile = false;
+        LogExtension.Settings.Exception.Emails.Add(setting);
+        LogExtension.Settings.Exception.SaveLogOnFile = false;
         // This exception will not be send to the user because it is not an error
         // but a Warning. The default level log is Error.
         new Exception("Test Warning Not Send").SaveAsync(new StackFrame(1, true));
@@ -85,9 +86,9 @@ public class ExceptionTest
     [TestMethod]
     public void TestAPIException()
     {
-        SettingExtension.Settings.Exception.APIs.AddRange(
+        LogExtension.Settings.Exception.APIs.AddRange(
             new UTHelper().GetAPISetting());
-        SettingExtension.Settings.Exception.SaveLogOnFile = false;
+        LogExtension.Settings.Exception.SaveLogOnFile = false;
         new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
     }
 }

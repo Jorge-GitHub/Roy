@@ -21,74 +21,65 @@ internal class LabelDecorator
     /// <param name="isAnException">
     /// Flag that determinate whether this is a HTML exception message or not.
     /// </param>
-    public void Decorate(StringBuilder body, bool isAnException)
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    public void Decorate(StringBuilder body, bool isAnException, CultureInfo culture)
     {
         body.Replace(EmailLabel.IssueDateTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.IssueDate, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.IssueDate, culture));
         body.Replace(EmailLabel.IssueLevelTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.IssueLevel, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.IssueLevel, culture));
         body.Replace(EmailLabel.CustomMessageTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.CustomMessage, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.CustomMessage, culture));
         body.Replace(EmailLabel.AssemblyLocationTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.AssemblyLocation, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.AssemblyLocation, culture));
         body.Replace(EmailLabel.StackFrameInJSONFormatTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.StackFrameInJSONFormat, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.StackFrameInJSONFormat, culture));
         body.Replace(EmailLabel.FullIssueInJSONFormatTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.FullIssueInJSONFormat, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.FullIssueInJSONFormat, culture));
         body.Replace(EmailLabel.CopyrightTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.Copyright, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.Copyright, culture));
 
-        this.ReplaceMachineInformationLabels(body);
+        this.ReplaceMachineInformationLabels(body, culture);
 
         if (isAnException)
         {
-            this.ReplaceExceptionDetailsLabels(body);
+            this.ReplaceExceptionDetailsLabels(body, culture);
         }
         else
         {
-            this.ReplaceLogDetailsLabels(body);
+            this.ReplaceLogDetailsLabels(body, culture);
         }
     }
 
-     /// <summary>
+    /// <summary>
     /// Replace the exception email labels.
     /// </summary>
     /// <param name="body">
     /// String containing the HTML with the labels to be replaced.
     /// </param>
-    private void ReplaceExceptionDetailsLabels(StringBuilder body)
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void ReplaceExceptionDetailsLabels(StringBuilder body, CultureInfo culture)
     {
         body.Replace(EmailLabel.ExceptionInformationHeaderTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ExceptionInformationHeader,
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.ExceptionInformationHeader, culture));
         body.Replace(EmailLabel.ErrorIdTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ErrorId, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.ErrorId, culture));
         body.Replace(EmailLabel.ExceptionMessageTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ExceptionMessage,
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.ExceptionMessage, culture));
         body.Replace(EmailLabel.ParametersListInJSONFormatTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ParametersListInJSONFormat, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.ParametersListInJSONFormat, culture));
         body.Replace(EmailLabel.SourceTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.Source, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.Source, culture));
         body.Replace(EmailLabel.StackTraceTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.StackTrace, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.StackTrace, culture));
         body.Replace(EmailLabel.HelpLinkTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.HelpLink, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.HelpLink, culture));
         body.Replace(EmailLabel.FullExceptionInJSONFormatTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.FullExceptionInJSONFormat, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.FullExceptionInJSONFormat, culture));
     }
 
     /// <summary>
@@ -97,17 +88,17 @@ internal class LabelDecorator
     /// <param name="body">
     /// String containing the HTML with the labels to be replaced.
     /// </param>
-    private void ReplaceLogDetailsLabels(StringBuilder body)
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void ReplaceLogDetailsLabels(StringBuilder body, CultureInfo culture)
     {
         body.Replace(EmailLabel.LogInformationHeaderTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.LogInformationHeader,
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.LogInformationHeader, culture));
         body.Replace(EmailLabel.LogIdTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.LogId, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.LogId, culture));
         body.Replace(EmailLabel.ValueLoggedInJSONFormatTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ValueLoggedInJSONFormat, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.ValueLoggedInJSONFormat, culture));
     }
 
     /// <summary>
@@ -116,31 +107,26 @@ internal class LabelDecorator
     /// <param name="body">
     /// String containing the HTML with the labels to be replaced.
     /// </param>
-    private void ReplaceMachineInformationLabels(StringBuilder body)
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void ReplaceMachineInformationLabels(StringBuilder body, CultureInfo culture)
     {
         body.Replace(EmailLabel.ServerInformationHeaderTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ServerInformationHeader, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.ServerInformationHeader, culture));
         body.Replace(EmailLabel.DomainNameTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.DomainName, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.DomainName, culture));
         body.Replace(EmailLabel.CLRVersionTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.CLRVersion, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.CLRVersion, culture));
         body.Replace(EmailLabel.ServerNameTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ServerName, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.ServerName, culture));
         body.Replace(EmailLabel.OperativeSystemTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.OperativeSystem, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.OperativeSystem, culture));
         body.Replace(EmailLabel.OperativeSystemTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.OperativeSystem, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.OperativeSystem, culture));
         body.Replace(EmailLabel.UserAccountNameTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.UserAccountName, 
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.UserAccountName, culture));
         body.Replace(EmailLabel.OperativeSystemVersionTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.OperativeSystemVersion,
-            CultureInfo.DefaultThreadCurrentCulture));
+            .GetString(EmailLabel.OperativeSystemVersion, culture));
     }
 }
