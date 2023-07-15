@@ -46,6 +46,7 @@ Easy to use.</PackageReleaseNotes>
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="7.0.0" />
     <PackageReference Include="Net.AvalonTeam.Base.Extensions" Version="1.0.0.2" />
   </ItemGroup>
 

@@ -58,6 +58,10 @@ public class IssueSetting
     /// </summary>
     public bool SaveLogOnFile { get; set; }
     /// <summary>
+    /// Flag that determinate whether to save the issue on the (Windows/Linux) event system.
+    /// </summary>
+    public bool SaveIssueOnEventSystem { get; set; }
+    /// <summary>
     /// Email settings.
     /// </summary>
     public List<EmailSetting> Emails { get; set; }

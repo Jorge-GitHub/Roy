@@ -22,4 +22,8 @@ public struct StringValues
     /// Long date format.
     /// </summary>
     public const string LogDateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
+    /// <summary>
+    /// Log name used for logging events in the application area.
+    /// </summary>
+    public const string ApplicationLogName = "Application";
 }

@@ -1,6 +1,7 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Domain.Attributes;
 using Roy.Domain.Settings.Attributes;
+using Roy.Logging.Extensions;
 
 namespace Roy.Logging.Helpers;
 
@@ -26,7 +27,8 @@ internal class RegisterService
             {
                 new FileService().SaveAsync(message, setting);
             }
-        } catch { }
+        }
+        catch { }
 
         try
         {
@@ -34,14 +36,26 @@ internal class RegisterService
             {
                 new EmailService().SendAsync(message, setting.Emails);
             }
-        } catch { }
+        }
+        catch { }
 
         try
         {
-            if(setting.APIs.HasElements())
+            if (setting.APIs.HasElements())
             {
                 new APIService().PostAsync(message, setting.APIs);
             }
-        } catch { }
+        }
+        catch { }
+
+
+        try
+        {
+            if (setting.SaveIssueOnEventSystem)
+            {
+                new SystemEventLogService().LogAsync(message);
+            }
+        }
+        catch { }
     }
 }
