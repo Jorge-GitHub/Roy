@@ -28,7 +28,7 @@ internal class SystemEventLogService
         }
         else if(OperatingSystem.IsLinux())
         {
-
+            this.LogEventOnLinux(json, message.Level);
         }
     }
 
@@ -64,6 +64,33 @@ internal class SystemEventLogService
                 eventLog.Dispose();
             }
         }
+    }
+
+    /// <summary>
+    /// Log event on Linux.
+    /// </summary>
+    /// <param name="message">
+    /// Message to save.
+    /// </param>
+    /// <param name="level">
+    /// Issue level.
+    /// </param>
+    /// <remarks>
+    /// On Linux/Unix logging is done by console output. this 
+    /// output is redirect to a log file or the system logging console. 
+    /// this is controlled by how the application is started.
+    /// </remarks>
+    public void LogEventOnLinux(string message, Level level)
+    {
+        if (level.Equals(Level.Error)
+            || level.Equals(Level.Critical)
+            || level.Equals(Level.Emergency)
+            || level.Equals(Level.Alert))
+        {
+            Console.Error.WriteLine(message);
+            return;
+        }
+        Console.WriteLine(message);
     }
 
     /// <summary>
