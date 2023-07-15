@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -8,7 +8,12 @@
     <Authors>Jorge Gonzalez</Authors>
     <PackageProjectUrl>https://github.com/Jorge-GitHub/Roy</PackageProjectUrl>
     <Description>Anything you want, you got it. Anything you need, you got it. Anything at all. Logging service library.</Description>
+    <ApplicationIcon>roy.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="roy.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.1.0" />
