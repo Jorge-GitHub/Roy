@@ -91,4 +91,17 @@ public class ExceptionTest
         LogExtension.Settings.Exception.SaveLogOnFile = false;
         new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
     }
+
+    /// <summary>
+    /// Test logging the issue on the system event.
+    /// </summary>
+    [TestMethod]
+    public void TesLogOnSystemEvent()
+    {
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = true;
+        new Exception("Test Exception on System Event").SaveAsync(
+            Level.Debug);
+        Thread.Sleep(1000);
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = false;
+    }
 }
