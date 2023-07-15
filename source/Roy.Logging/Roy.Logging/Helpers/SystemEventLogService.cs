@@ -4,7 +4,6 @@ using Roy.Domain.Contants;
 using Roy.Logging.Extensions;
 using System.Diagnostics;
 using System.Text.Json;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Roy.Logging.Helpers;
 
@@ -25,22 +24,44 @@ internal class SystemEventLogService
         string json = this.GetJson(message);
         if (OperatingSystem.IsWindows())
         {
-            EventLog eventLog = null;
-            try
+            this.LogEventOnWindows(json, message.Level);
+        }
+        else if(OperatingSystem.IsLinux())
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// Log event on windows.
+    /// </summary>
+    /// <param name="message">
+    /// Message to save.
+    /// </param>
+    /// <remarks>
+    /// Windows maximum number of characters per event is around 32000.
+    /// We limit it to 31000.
+    /// </remarks>
+    /// <param name="level">
+    /// Issue level.
+    /// </param>
+    private void LogEventOnWindows(string message, Level level)
+    {
+        EventLog eventLog = null;
+        try
+        {
+            eventLog = new EventLog(StringValues.ApplicationLogName);
+            eventLog.Source = StringValues.ApplicationLogName;
+            eventLog.WriteEntry(message.LimitLength(31000),
+               level.ToEventLogEntryType());
+        }
+        catch { }
+        finally
+        {
+            if (eventLog != null)
             {
-                eventLog = new EventLog(StringValues.ApplicationLogName);
-                eventLog.Source = StringValues.ApplicationLogName;
-                eventLog.WriteEntry(json.LimitLength(31000),
-                   message.Level.ToEventLogEntryType());
-            }
-            catch { }
-            finally
-            {
-                if (eventLog != null)
-                {
-                    eventLog.Close();
-                    eventLog.Dispose();
-                }
+                eventLog.Close();
+                eventLog.Dispose();
             }
         }
     }
