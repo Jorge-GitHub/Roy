@@ -1,5 +1,7 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extension.Collections;
+using Avalon.Base.Extension.Types;
 using Roy.Domain.Attributes;
+using Roy.Domain.Settings.Attributes;
 using Roy.Logging.Aspect.SystemLog;
 using Roy.Logging.Extensions;
 using System.Text.Json;
@@ -14,24 +16,32 @@ internal class SystemEventLogService
     /// <param name="message">
     /// Message to save.
     /// </param>
+    /// <param name="setting">
+    /// Settings.
+    /// </param>
     /// <remarks>
     /// Windows maximum number of characters per event is around 32000.
     /// We limit it to 31000.
     /// </remarks>
-    public async void LogAsync(MessageDetail message)
+    public async void LogAsync(MessageDetail message, IssueSetting setting)
     {
         try
         {
-            string json = this.GetJson(message);
-            if (json.IsNotNullOrEmpty())
+            if ((!setting.LevelsToLogOnSystemEvent.HasElements() 
+                || setting.LevelsToLogOnSystemEvent.Any(
+                    item => item.Equals(message.Level))))
             {
-                if (OperatingSystem.IsWindows())
+                string json = this.GetJson(message);
+                if (json.IsNotNullOrEmpty())
                 {
-                    new WindowsEvent().Log(json, message.Level);
-                }
-                else if (OperatingSystem.IsLinux())
-                {
-                    new LinuxEvent().Log(json, message.Level);
+                    if (OperatingSystem.IsWindows())
+                    {
+                        new WindowsEvent().Log(json, message.Level);
+                    }
+                    else if (OperatingSystem.IsLinux())
+                    {
+                        new LinuxEvent().Log(json, message.Level);
+                    }
                 }
             }
         }

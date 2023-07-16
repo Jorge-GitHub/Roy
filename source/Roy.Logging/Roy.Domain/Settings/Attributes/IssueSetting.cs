@@ -69,6 +69,14 @@ public class IssueSetting
     /// APIs settings.
     /// </summary>
     public List<APISetting> APIs { get; set; }
+    /// <summary>
+    /// Logs to save on a file. If null or empty, it will log/save any issue.
+    /// </summary>
+    public List<Level> LevelsToSaveOnFile { get; set; }
+    /// <summary>
+    /// Logs to log into the system event log. If null or empty, it will log/save any issue.
+    /// </summary>
+    public List<Level> LevelsToLogOnSystemEvent { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -79,5 +87,7 @@ public class IssueSetting
         this.APIs = new List<APISetting>();
         this.LoadSystemInformation = true;
         this.DefaultLevel = Level.Error;
+        this.LevelsToSaveOnFile = new List<Level>();
+        this.LevelsToLogOnSystemEvent = new List<Level>();
     }
 }

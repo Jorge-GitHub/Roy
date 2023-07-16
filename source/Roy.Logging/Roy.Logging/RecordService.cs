@@ -53,7 +53,7 @@ internal class RecordService
         {
             if (setting.SaveIssueOnEventSystem)
             {
-                new SystemEventLogService().LogAsync(message);
+                new SystemEventLogService().LogAsync(message, setting);
             }
         }
         catch { }

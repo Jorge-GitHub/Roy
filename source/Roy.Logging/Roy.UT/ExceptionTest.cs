@@ -104,4 +104,19 @@ public class ExceptionTest
         Thread.Sleep(1000);
         LogExtension.Settings.Exception.SaveIssueOnEventSystem = false;
     }
+
+    /// <summary>
+    /// Test logging the issue on the system event.
+    /// </summary>
+    [TestMethod]
+    public void TesIgnoreLevelToLog()
+    {
+        LogExtension.Settings.Exception.LevelsToSaveOnFile.Add(Level.Warning);
+        LogExtension.Settings.Exception.LevelsToLogOnSystemEvent.Add(Level.Warning);
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = true;
+        new Exception("Test Exception on System Event")
+            .SaveAsync(Level.Debug);
+        Thread.Sleep(1000);
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = false;
+    }
 }
