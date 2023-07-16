@@ -1,8 +1,8 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Avalon.Base.Extension.Types;
+using Roy.Logging.Aspect.SystemLog;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Attributes;
-using Roy.Logging.Aspect.SystemLog;
 using Roy.Logging.Extensions;
 using System.Text.Json;
 
@@ -31,7 +31,7 @@ internal class SystemEventLogService
                 || setting.LevelsToLogOnSystemEvent.Any(
                     item => item.Equals(message.Level))))
             {
-                string json = this.GetJson(message);
+                string json = this.GetJSON(message);
                 if (json.IsNotNullOrEmpty())
                 {
                     if (OperatingSystem.IsWindows())
@@ -57,7 +57,7 @@ internal class SystemEventLogService
     /// <returns>
     /// JSON.
     /// </returns>
-    private string GetJson(MessageDetail message)
+    private string GetJSON(MessageDetail message)
     {
         if(message.IsExceptionType())
         {
