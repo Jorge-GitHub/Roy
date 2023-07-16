@@ -5,6 +5,9 @@ using System.Globalization;
 
 namespace Roy.Logging.Extensions;
 
+/// <summary>
+/// Level extensions.
+/// </summary>
 public static class LevelExtensions
 {
     /// <summary>

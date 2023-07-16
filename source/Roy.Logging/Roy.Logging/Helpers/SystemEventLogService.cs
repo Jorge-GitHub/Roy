@@ -1,8 +1,7 @@
 ﻿using Avalon.Base.Extension.Types;
 using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
+using Roy.Logging.Aspect.SystemLog;
 using Roy.Logging.Extensions;
-using System.Diagnostics;
 using System.Text.Json;
 
 namespace Roy.Logging.Helpers;
@@ -21,76 +20,22 @@ internal class SystemEventLogService
     /// </remarks>
     public async void LogAsync(MessageDetail message)
     {
-        string json = this.GetJson(message);
-        if (OperatingSystem.IsWindows())
-        {
-            this.LogEventOnWindows(json, message.Level);
-        }
-        else if(OperatingSystem.IsLinux())
-        {
-            this.LogEventOnLinux(json, message.Level);
-        }
-    }
-
-    /// <summary>
-    /// Log event on windows.
-    /// </summary>
-    /// <param name="message">
-    /// Message to save.
-    /// </param>
-    /// <remarks>
-    /// Windows maximum number of characters per event is around 32000.
-    /// We limit it to 31000.
-    /// </remarks>
-    /// <param name="level">
-    /// Issue level.
-    /// </param>
-    private void LogEventOnWindows(string message, Level level)
-    {
-        EventLog eventLog = null;
         try
         {
-            eventLog = new EventLog(StringValues.ApplicationLogName);
-            eventLog.Source = StringValues.ApplicationLogName;
-            eventLog.WriteEntry(message.LimitLength(31000),
-               level.ToEventLogEntryType());
-        }
-        catch { }
-        finally
-        {
-            if (eventLog != null)
+            string json = this.GetJson(message);
+            if (json.IsNotNullOrEmpty())
             {
-                eventLog.Close();
-                eventLog.Dispose();
+                if (OperatingSystem.IsWindows())
+                {
+                    new WindowsEvent().Log(json, message.Level);
+                }
+                else if (OperatingSystem.IsLinux())
+                {
+                    new LinuxEvent().Log(json, message.Level);
+                }
             }
         }
-    }
-
-    /// <summary>
-    /// Log event on Linux.
-    /// </summary>
-    /// <param name="message">
-    /// Message to save.
-    /// </param>
-    /// <param name="level">
-    /// Issue level.
-    /// </param>
-    /// <remarks>
-    /// On Linux/Unix logging is done by console output. this 
-    /// output is redirect to a log file or the system logging console. 
-    /// this is controlled by how the application is started.
-    /// </remarks>
-    public void LogEventOnLinux(string message, Level level)
-    {
-        if (level.Equals(Level.Error)
-            || level.Equals(Level.Critical)
-            || level.Equals(Level.Emergency)
-            || level.Equals(Level.Alert))
-        {
-            Console.Error.WriteLine(message);
-            return;
-        }
-        Console.WriteLine(message);
+        catch { }
     }
 
     /// <summary>

@@ -5,27 +5,27 @@
 /// </summary>
 public enum Level
 {
-    None,
+    None = 0,
     /// <summary>
     /// Logs that contain the most detailed messages. 
     /// These messages may contain sensitive application data.
     /// The full exception will be logged.
     /// </summary>
-    Trace,
+    Trace = 1,
     /// <summary>
     /// Logs that contain the most detailed messages. 
     /// These messages may contain sensitive application data.
     /// The full exception will be logged.
     /// </summary>
-    Debug,
-    Emergency,
-    Alert,
-    Critical,
-    Error,
-    Warning,
-    Notice,
-    Information,
-    Log
+    Debug = 2,
+    Emergency = 3,
+    Alert = 4,
+    Critical = 5,
+    Error = 6,
+    Warning = 7,
+    Notice = 8,
+    Information = 9,
+    Log = 10
 }
 
 /// <summary>

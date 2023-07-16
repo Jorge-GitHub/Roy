@@ -26,4 +26,8 @@ public struct StringValues
     /// Log name used for logging events in the application area.
     /// </summary>
     public const string ApplicationLogName = "Application";
+    /// <summary>
+    /// Roy.
+    /// </summary>
+    public const string Roy = "Roy";
 }
