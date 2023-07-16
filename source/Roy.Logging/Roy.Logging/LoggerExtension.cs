@@ -131,7 +131,7 @@ public static class LoggerExtension
                 LogDetail detail = new LogDetail(value, identity, 
                     message, frame, setting.Log.LoadSystemInformation);
 
-                new RegisterService().SaveAsync(
+                new RecordService().SaveAsync(
                     detail, setting.Log);
             }
         }

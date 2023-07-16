@@ -229,7 +229,7 @@ public static class ExceptionExtension
                     level, identity, message, listOfParameters, 
                     frame, setting.Exception.LoadSystemInformation);
 
-                new RegisterService().SaveAsync(exceptionDetail, 
+                new RecordService().SaveAsync(exceptionDetail, 
                     setting.Exception);
             }
         }

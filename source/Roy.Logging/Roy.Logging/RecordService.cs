@@ -1,13 +1,14 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Domain.Attributes;
 using Roy.Domain.Settings.Attributes;
+using Roy.Logging.Helpers;
 
-namespace Roy.Logging.Helpers;
+namespace Roy.Logging;
 
 /// <summary>
 /// Register service.
 /// </summary>
-internal class RegisterService
+internal class RecordService
 {
     /// <summary>
     /// Save message.
