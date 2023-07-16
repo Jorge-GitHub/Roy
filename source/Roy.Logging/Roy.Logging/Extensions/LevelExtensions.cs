@@ -1,4 +1,4 @@
-﻿using Roy.Domain.Contants;
+﻿using Roy.Logging.Domain.Contants;
 using Roy.Logging.Resources.Languages;
 using System.Diagnostics;
 using System.Globalization;

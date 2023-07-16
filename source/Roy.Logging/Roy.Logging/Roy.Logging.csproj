@@ -38,20 +38,9 @@ Easy to use.</PackageReleaseNotes>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\Roy.Domain\bin\Release\net7.0\Roy.Domain.dll">
-      <Pack>true</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MailKit" Version="4.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="7.0.0" />
     <PackageReference Include="Net.AvalonTeam.Base.Extensions" Version="1.0.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Roy.Domain\Roy.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

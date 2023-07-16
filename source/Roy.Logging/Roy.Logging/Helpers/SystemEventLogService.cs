@@ -1,7 +1,7 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Avalon.Base.Extension.Types;
-using Roy.Domain.Attributes;
-using Roy.Domain.Settings.Attributes;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Aspect.SystemLog;
 using Roy.Logging.Extensions;
 using System.Text.Json;

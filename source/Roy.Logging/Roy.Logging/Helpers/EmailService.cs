@@ -1,6 +1,6 @@
 ﻿using Avalon.Base.Extension.Collections;
-using Roy.Domain.Attributes;
-using Roy.Domain.Settings.Web.EmailAspect;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Aspect.Email;
 
 namespace Roy.Logging.Helpers;

@@ -1,6 +1,6 @@
 ﻿using Avalon.Base.Extension.Collections;
-using Roy.Domain.Attributes;
-using Roy.Domain.Settings.Attributes;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Helpers;
 
 namespace Roy.Logging;

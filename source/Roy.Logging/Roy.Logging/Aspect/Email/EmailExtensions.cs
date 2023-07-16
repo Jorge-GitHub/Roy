@@ -2,13 +2,12 @@
 using Avalon.Base.Extension.Types;
 using Avalon.Base.Extension.Types.StringExtensions;
 using MimeKit;
-using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
-using Roy.Domain.Settings.Web.EmailAspect;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Extensions;
 using Roy.Logging.Resources;
 using Roy.Logging.Resources.Languages.EmailTemplate;
-using System.Globalization;
 using System.Text;
 
 namespace Roy.Logging.Aspect.Email;

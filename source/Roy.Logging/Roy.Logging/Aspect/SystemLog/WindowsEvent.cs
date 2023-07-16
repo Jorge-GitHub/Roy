@@ -1,5 +1,5 @@
 ﻿using Avalon.Base.Extension.Types;
-using Roy.Domain.Contants;
+using Roy.Logging.Domain.Contants;
 using Roy.Logging.Extensions;
 using System.Diagnostics;
 

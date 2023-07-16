@@ -1,6 +1,6 @@
 ﻿using Avalon.Base.Extension.Types;
-using Roy.Domain.Attributes;
-using Roy.Domain.Settings;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings;
 using Roy.Logging.Helpers;
 using System.Diagnostics;
 

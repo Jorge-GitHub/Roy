@@ -1,8 +1,8 @@
 ﻿using Avalon.Base.Extension.Types;
 using MailKit.Net.Smtp;
 using MimeKit;
-using Roy.Domain.Attributes;
-using Roy.Domain.Settings.Web.EmailAspect;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Extensions;
 
 namespace Roy.Logging.Aspect.Email;

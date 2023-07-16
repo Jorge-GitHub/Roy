@@ -1,6 +1,6 @@
-﻿using Roy.Domain.Contants;
-using Roy.Domain.Settings;
-using Roy.Domain.Settings.Web.EmailAspect;
+﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging;
 using Roy.UT.Entities;
 using System.Diagnostics;

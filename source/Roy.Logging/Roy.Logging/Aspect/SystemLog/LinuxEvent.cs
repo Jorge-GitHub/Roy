@@ -1,6 +1,6 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Avalon.Base.Extension.Types.StringExtensions;
-using Roy.Domain.Contants;
+using Roy.Logging.Domain.Contants;
 using System.Runtime.InteropServices;
 
 namespace Roy.Logging.Aspect.SystemLog;

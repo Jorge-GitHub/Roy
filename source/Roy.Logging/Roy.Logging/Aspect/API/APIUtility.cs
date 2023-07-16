@@ -1,6 +1,6 @@
 ﻿using Avalon.Base.Extension.Types;
-using Roy.Domain.Attributes;
-using Roy.Domain.Settings.Web.APIAspect;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Web.APIAspect;
 using Roy.Logging.Extensions;
 using System.Net.Http.Json;
 

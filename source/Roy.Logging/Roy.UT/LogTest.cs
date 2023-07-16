@@ -1,4 +1,4 @@
-﻿using Roy.Domain.Settings;
+﻿using Roy.Logging.Domain.Settings;
 using Roy.Logging;
 using Roy.UT.Entities;
 using System.Diagnostics;

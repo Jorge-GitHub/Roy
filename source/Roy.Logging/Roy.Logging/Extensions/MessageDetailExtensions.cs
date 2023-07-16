@@ -1,4 +1,4 @@
-﻿using Roy.Domain.Attributes;
+﻿using Roy.Logging.Domain.Attributes;
 
 namespace Roy.Logging.Extensions;
 

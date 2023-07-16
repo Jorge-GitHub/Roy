@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Roy.Domain\Roy.Domain.csproj" />
     <ProjectReference Include="..\Roy.Logging\Roy.Logging.csproj" />
   </ItemGroup>
 
