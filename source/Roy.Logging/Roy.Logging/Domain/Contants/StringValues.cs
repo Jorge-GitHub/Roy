@@ -1,5 +1,8 @@
-﻿namespace Roy.Domain.Contants;
+﻿namespace Roy.Logging.Domain.Contants;
 
+/// <summary>
+/// String values.
+/// </summary>
 public struct StringValues
 {
     /// <summary>

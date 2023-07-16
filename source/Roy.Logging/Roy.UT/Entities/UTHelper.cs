@@ -1,5 +1,5 @@
-﻿using Roy.Domain.Settings.Web.APIAspect;
-using Roy.Domain.Settings.Web.EmailAspect;
+﻿using Roy.Logging.Domain.Settings.Web.APIAspect;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using System.Reflection;
 
 namespace Roy.UT.Entities;

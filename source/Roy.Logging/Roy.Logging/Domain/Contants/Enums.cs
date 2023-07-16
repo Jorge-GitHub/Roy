@@ -1,4 +1,4 @@
-﻿namespace Roy.Domain.Contants;
+﻿namespace Roy.Logging.Domain.Contants;
 
 /// <summary>
 /// Exception/log level.

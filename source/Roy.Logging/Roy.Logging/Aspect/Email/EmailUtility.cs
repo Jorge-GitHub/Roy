@@ -1,8 +1,9 @@
 ﻿using Avalon.Base.Extension.Types;
 using MailKit.Net.Smtp;
 using MimeKit;
-using Roy.Domain.Attributes;
-using Roy.Domain.Settings.Web.EmailAspect;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
+using Roy.Logging.Extensions;
 
 namespace Roy.Logging.Aspect.Email;
 
@@ -22,8 +23,8 @@ internal class EmailUtility
     /// </param>
     public void Send(EmailSetting setting, MessageDetail message)
     {
-        setting.SetDefaultValues(message.Level, 
-            message is ExceptionDetail, message.Id);
+        setting.SetDefaultValues(message.Level,
+            message.IsExceptionType(), message.Id);
         foreach (ReceiverSetting receiver in setting.Receivers)
         {
             this.Send(setting, receiver, message);

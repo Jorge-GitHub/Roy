@@ -1,6 +1,6 @@
-﻿using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
-using Roy.Domain.Settings;
+﻿using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings;
 using Roy.Logging.Helpers;
 using System.Diagnostics;
 
@@ -229,7 +229,7 @@ public static class ExceptionExtension
                     level, identity, message, listOfParameters, 
                     frame, setting.Exception.LoadSystemInformation);
 
-                new RegisterService().SaveAsync(exceptionDetail, 
+                new RecordService().SaveAsync(exceptionDetail, 
                     setting.Exception);
             }
         }

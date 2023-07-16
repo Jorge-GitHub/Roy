@@ -1,5 +1,5 @@
-﻿using Roy.Domain.Attributes;
-using Roy.Logging.Aspect.Email.Helpers;
+﻿using Roy.Logging.Aspect.Email.Helpers;
+using Roy.Logging.Domain.Attributes;
 using System.Globalization;
 using System.Text;
 

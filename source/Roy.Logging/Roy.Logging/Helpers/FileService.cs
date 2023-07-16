@@ -1,7 +1,8 @@
-﻿using Avalon.Base.Extension.Types;
-using Roy.Domain.Attributes;
-using Roy.Domain.Contants;
-using Roy.Domain.Settings.Attributes;
+﻿using Avalon.Base.Extension.Collections;
+using Avalon.Base.Extension.Types;
+using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Attributes;
 using System.Reflection;
 using System.Text.Json;
 
@@ -23,10 +24,15 @@ internal class FileService
     /// </param>
     public async void SaveAsync(MessageDetail message, IssueSetting setting)
     {
-        string fileLocation = this.GetFileLocation(setting.FolderLocation, 
-            setting.FileName, message.Id, message.Level, setting.DefaultFolderName);
-        string json = JsonSerializer.Serialize(message);
-        this.LogTextAsync(json, fileLocation, setting.Append);
+        if ((!setting.LevelsToSaveOnFile.HasElements() 
+            || setting.LevelsToSaveOnFile.Any(
+                item => item.Equals(message.Level))))
+        {
+            string fileLocation = this.GetFileLocation(setting.FolderLocation,
+                setting.FileName, message.Id, message.Level, setting.DefaultFolderName);
+            string json = JsonSerializer.Serialize(message);
+            this.LogTextAsync(json, fileLocation, setting.Append);
+        }
     }
 
     /// <summary>

@@ -1,6 +1,6 @@
-﻿using Roy.Domain.Contants;
-using Roy.Domain.Settings;
-using Roy.Domain.Settings.Web.EmailAspect;
+﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging;
 using Roy.UT.Entities;
 using System.Diagnostics;
@@ -90,5 +90,33 @@ public class ExceptionTest
             new UTHelper().GetAPISetting());
         LogExtension.Settings.Exception.SaveLogOnFile = false;
         new Exception("Test Exception").SaveAsync(Level.Emergency, new StackFrame(1, true));
+    }
+
+    /// <summary>
+    /// Test logging the issue on the system event.
+    /// </summary>
+    [TestMethod]
+    public void TesLogOnSystemEvent()
+    {
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = true;
+        new Exception("Test Exception on System Event").SaveAsync(
+            Level.Debug);
+        Thread.Sleep(1000);
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = false;
+    }
+
+    /// <summary>
+    /// Test logging the issue on the system event.
+    /// </summary>
+    [TestMethod]
+    public void TesIgnoreLevelToLog()
+    {
+        LogExtension.Settings.Exception.LevelsToSaveOnFile.Add(Level.Warning);
+        LogExtension.Settings.Exception.LevelsToLogOnSystemEvent.Add(Level.Warning);
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = true;
+        new Exception("Test Exception on System Event")
+            .SaveAsync(Level.Debug);
+        Thread.Sleep(1000);
+        LogExtension.Settings.Exception.SaveIssueOnEventSystem = false;
     }
 }

@@ -1,8 +1,8 @@
-﻿using Roy.Domain.Contants;
-using Roy.Domain.Settings.Web.APIAspect;
-using Roy.Domain.Settings.Web.EmailAspect;
+﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Web.APIAspect;
+using Roy.Logging.Domain.Settings.Web.EmailAspect;
 
-namespace Roy.Domain.Settings.Attributes;
+namespace Roy.Logging.Domain.Settings.Attributes;
 
 /// <summary>
 /// Settings.
