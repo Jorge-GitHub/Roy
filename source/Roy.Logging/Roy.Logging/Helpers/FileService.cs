@@ -3,6 +3,7 @@ using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Settings.Attributes;
+using Roy.Logging.Extensions;
 using System.Reflection;
 using System.Text.Json;
 
@@ -28,11 +29,31 @@ internal class FileService
             || setting.LevelsToSaveOnFile.Any(
                 item => item.Equals(message.Level))))
         {
+
             string fileLocation = this.GetFileLocation(setting.FolderLocation,
                 setting.FileName, message.Id, message.Level, setting.DefaultFolderName);
-            string json = JsonSerializer.Serialize(message);
+            string json = this.GetJSON(message);
             this.LogTextAsync(json, fileLocation, setting.Append);
         }
+    }
+
+    /// <summary>
+    /// Get the JSON to log.
+    /// </summary>
+    /// <param name="message">
+    /// Message to log.
+    /// </param>
+    /// <returns>
+    /// JSON.
+    /// </returns>
+    private string GetJSON(MessageDetail message)
+    {
+        if (message.IsExceptionType())
+        {
+            return JsonSerializer.Serialize(message as ExceptionDetail);
+        }
+
+        return JsonSerializer.Serialize(message as LogDetail);
     }
 
     /// <summary>
