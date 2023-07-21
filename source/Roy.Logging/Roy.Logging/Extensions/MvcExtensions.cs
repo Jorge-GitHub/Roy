@@ -14,7 +14,7 @@ public static class MvcExtensions
     /// <param name="app">
     /// Web application.
     /// </param>
-    public static void LoadRoy(this WebApplication app)
+    public static void UseRoyExceptionHandler(this WebApplication app)
     {
         app.UseExceptionHandler(appError =>
         {
