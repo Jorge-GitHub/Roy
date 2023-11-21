@@ -56,7 +56,7 @@ public class ExceptionDetail : MessageDetail
         bool loadSystemInformation)
         : base(level, id, message, frame, loadSystemInformation)
     {
-        LoadObject(exception, level, listOfParameters, frame);
+        this.LoadObject(exception, level, listOfParameters, frame);
     }
 
     /// <summary>
@@ -77,9 +77,9 @@ public class ExceptionDetail : MessageDetail
     private void LoadObject(Exception exception, Level level,
         object[] listOfParameters, StackFrame frame)
     {
-        ExceptionMessage = exception.Message;
-        ListOfParameters = listOfParameters;
-        SetExceptionTrace(exception, level);
+        this.ExceptionMessage = exception.Message;
+        this.ListOfParameters = listOfParameters;
+        this.SetExceptionTrace(exception, level);
     }
 
     /// <summary>
@@ -95,8 +95,8 @@ public class ExceptionDetail : MessageDetail
     {
         if (level.Equals(Level.Trace) || level.Equals(Level.Debug))
         {
-            ExceptionTrace = exception;
-            StackTrace = exception.StackTrace ?? string.Empty;
+            this.ExceptionTrace = exception;
+            this.StackTrace = exception.StackTrace ?? string.Empty;
         }
     }
 }
