@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Diagnostics;
 namespace Roy.Logging.Extensions;
 
 /// <summary>
-/// Mvc extensions.
+/// MVC extensions.
 /// </summary>
 public static class MvcExtensions
 {
