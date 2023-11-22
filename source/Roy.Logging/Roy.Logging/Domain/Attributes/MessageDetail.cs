@@ -1,5 +1,5 @@
 ﻿using Avalon.Base.Extension.Types;
-using Roy.Logging.Domain.Application;
+using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Settings.Attributes;
 using System.Diagnostics;
@@ -39,7 +39,7 @@ public class MessageDetail
     /// <summary>
     /// Stack frame making the call to the method.
     /// </summary>
-    public Frame StackFrame { get; set; }
+    public Method StackFrame { get; set; }
 
     /// <summary>
     /// Loads the object.
@@ -114,7 +114,7 @@ public class MessageDetail
             }
             if (logSettings.LogMethodInformation)
             {
-                this.StackFrame = new Frame(frame);
+                this.StackFrame = new Method(frame);
             }
         }
         catch { }

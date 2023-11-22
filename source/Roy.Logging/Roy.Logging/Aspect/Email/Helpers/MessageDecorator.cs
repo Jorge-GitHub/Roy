@@ -1,4 +1,4 @@
-﻿using Roy.Logging.Domain.Application;
+﻿using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Extensions;

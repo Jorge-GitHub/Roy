@@ -1,4 +1,4 @@
-﻿namespace Roy.Logging.Domain.Application;
+﻿namespace Roy.Logging.Domain.Program;
 
 /// <summary>
 /// Machine environment.
