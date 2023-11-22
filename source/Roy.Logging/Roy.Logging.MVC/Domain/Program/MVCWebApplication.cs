@@ -20,7 +20,11 @@ public class MVCWebApplication : WebApplication
     /// <param name="load">
     /// Flag that indicates whether to load/build the object or not.
     /// </param>
-    public MVCWebApplication(bool load) : base(load)
+    /// <param name="loadBrowserInformation">
+    /// Flag that indicates whether to load the browser information or not.
+    /// </param>
+    public MVCWebApplication(bool load, bool loadBrowserInformation) 
+        : base(load, loadBrowserInformation)
     {
         this.loadObject(load);
     }
@@ -37,7 +41,10 @@ public class MVCWebApplication : WebApplication
         {
             try
             {
+                if (!this.FailedToLoad)
+                {
 
+                }
             }
             catch
             {

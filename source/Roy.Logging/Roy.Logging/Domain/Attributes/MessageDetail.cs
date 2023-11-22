@@ -45,10 +45,6 @@ public class MessageDetail
     /// </summary>
     public WebApplication WebApplicationInformation { get; set; }
     /// <summary>
-    /// Browser's information.
-    /// </summary>
-    public WebBrowser WebBrowserInformation { get; set; }
-    /// <summary>
     /// Stack frame making the call to the method.
     /// </summary>
     public Method StackFrame { get; set; }
