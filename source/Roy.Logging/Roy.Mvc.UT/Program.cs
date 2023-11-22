@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Diagnostics;
 using Roy.Logging.MVC.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
-
-app.UseRoyExceptionHandler(builder, true);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -24,5 +23,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseRoyExceptionHandler(builder, true, true);
 
 app.Run();

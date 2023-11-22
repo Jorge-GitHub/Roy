@@ -11,9 +11,6 @@ namespace Roy.Mvc.UT.Pages
         public string? RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
-        public ErrorModel()
-        {
-        }
 
         public void OnGet()
         {
