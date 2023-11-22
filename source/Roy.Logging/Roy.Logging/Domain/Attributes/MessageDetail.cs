@@ -1,6 +1,7 @@
 ﻿using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Application;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Attributes;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -55,14 +56,14 @@ public class MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    /// <param name="loadSystemInformation">
-    /// Flag that determinate whether to load the system information or not.
+    /// <param name="logSettings">
+    /// Log settings.
     /// </param>
     public MessageDetail(Level level,
         string id, string message, StackFrame frame,
-        bool loadSystemInformation)
+        LogSetting logSettings)
     {
-        this.LoadObject(level, id, message, frame, loadSystemInformation);
+        this.LoadObject(level, id, message, frame, logSettings);
     }
 
     /// <summary>
@@ -80,35 +81,41 @@ public class MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    /// <param name="loadSystemInformation">
-    /// Flag that determinate whether to load the system information or not.
+    /// <param name="logSettings">
+    /// Log settings.
     /// </param>
     private void LoadObject(Level level, string id, string message,
-        StackFrame frame, bool loadSystemInformation)
+        StackFrame frame, LogSetting logSettings)
     {
         this.Date = DateTime.Now;
         this.Level = level;
         this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
         this.Message = message;
-        if (loadSystemInformation)
-        {
-            this.LoadSystemInformation(frame);
-        }
+        this.LoadInformation(logSettings, frame);
     }
 
     /// <summary>
     /// Load the system information.
     /// </summary>
+    /// <param name="logSettings">
+    /// Log settings.
+    /// </param>
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    private void LoadSystemInformation(StackFrame frame)
+    private void LoadInformation(LogSetting logSettings, StackFrame frame)
     {
         try
         {
             this.SetAssemblyLocation();
-            this.MachineInformation = new Machine(true);
-            this.StackFrame = new Frame(frame);
+            if (logSettings.LogApplicationInformation)
+            {
+                this.MachineInformation = new Machine(true);
+            }
+            if (logSettings.LogMethodInformation)
+            {
+                this.StackFrame = new Frame(frame);
+            }
         }
         catch { }
     }

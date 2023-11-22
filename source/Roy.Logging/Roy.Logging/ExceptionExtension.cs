@@ -227,7 +227,7 @@ public static class ExceptionExtension
             {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, listOfParameters, 
-                    frame, setting.Exception.LoadSystemInformation);
+                    frame, setting.Exception.LogSettings);
 
                 new RecordService().SaveAsync(exceptionDetail, 
                     setting.Exception);

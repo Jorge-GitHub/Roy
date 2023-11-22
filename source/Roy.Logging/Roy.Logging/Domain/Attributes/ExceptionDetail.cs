@@ -1,4 +1,5 @@
 ﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Attributes;
 using System.Diagnostics;
 
 namespace Roy.Logging.Domain.Attributes;
@@ -47,14 +48,14 @@ public class ExceptionDetail : MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    /// <param name="loadSystemInformation">
-    /// Flag that determinate whether to load the system information or not.
+    /// <param name="logSettings">
+    /// Log settings.
     /// </param>
     public ExceptionDetail(Exception exception,
         Level level, string id, string message,
         object[] listOfParameters, StackFrame frame,
-        bool loadSystemInformation)
-        : base(level, id, message, frame, loadSystemInformation)
+        LogSetting logSettings)
+        : base(level, id, message, frame, logSettings)
     {
         this.LoadObject(exception, level, listOfParameters);
     }

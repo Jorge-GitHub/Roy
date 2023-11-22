@@ -129,7 +129,7 @@ public static class LoggerExtension
                     : Guid.NewGuid().ToString("N");
                 
                 LogDetail detail = new LogDetail(value, identity, 
-                    message, frame, setting.Log.LoadSystemInformation);
+                    message, frame, setting.Log.LogSettings);
 
                 new RecordService().SaveAsync(
                     detail, setting.Log);
