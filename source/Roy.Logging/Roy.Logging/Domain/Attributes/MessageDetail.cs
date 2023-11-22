@@ -62,7 +62,7 @@ public class MessageDetail
         string id, string message, StackFrame frame,
         bool loadSystemInformation)
     {
-        LoadObject(level, id, message, frame, loadSystemInformation);
+        this.LoadObject(level, id, message, frame, loadSystemInformation);
     }
 
 
@@ -87,10 +87,10 @@ public class MessageDetail
     private void LoadObject(Level level, string id, string message,
         StackFrame frame, bool loadSystemInformation)
     {
-        Date = DateTime.Now;
-        Level = level;
-        Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
-        Message = message;
+        this.Date = DateTime.Now;
+        this.Level = level;
+        this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
+        this.Message = message;
         if (loadSystemInformation)
         {
             LoadSystemInformation(frame);
@@ -107,9 +107,9 @@ public class MessageDetail
     {
         try
         {
-            SetAssemblyLocation();
-            MachineInformation = new Machine(true);
-            StackFrame = new Frame(frame);
+            this.SetAssemblyLocation();
+            this.MachineInformation = new Machine(true);
+            this.StackFrame = new Frame(frame);
         }
         catch { }
     }
@@ -122,7 +122,7 @@ public class MessageDetail
         string location = Assembly.GetExecutingAssembly().Location;
         if (location.IsNotNullOrEmpty())
         {
-            AssemblyLocation = Path.GetDirectoryName(location);
+            this.AssemblyLocation = Path.GetDirectoryName(location);
         }
     }
 }

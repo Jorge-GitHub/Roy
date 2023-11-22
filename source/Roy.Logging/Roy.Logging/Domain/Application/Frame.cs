@@ -55,11 +55,15 @@ public class Frame
     /// </param>
     private void LoadObject(StackFrame frame)
     {
-        if(frame !=null)
+        if(frame.IsNotNull())
         {
-            this.LoadMethodInformation(frame.GetMethod());
-            this.CallerFileName = frame.GetFileName();
-            this.CallerLineNumber = frame.GetFileLineNumber();
+            try
+            {
+                this.LoadMethodInformation(frame.GetMethod());
+                this.CallerFileName = frame.GetFileName();
+                this.CallerLineNumber = frame.GetFileLineNumber();
+            }
+            catch { }
         }
     }
 

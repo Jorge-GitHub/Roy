@@ -58,12 +58,16 @@ public class Machine
     {
         if (load)
         {
-            this.CLRVersion = Environment.Version.ToString();
-            this.DomainName = Environment.UserDomainName;
-            this.Name = Environment.MachineName;
-            this.OperativeSystemVersion = Environment.OSVersion.VersionString;
-            this.UserAccountName = Environment.UserName;
-            this.OperativeSystem = this.GetOperativeSystem();
+            try
+            {
+                this.CLRVersion = Environment.Version.ToString();
+                this.DomainName = Environment.UserDomainName;
+                this.Name = Environment.MachineName;
+                this.OperativeSystemVersion = Environment.OSVersion.VersionString;
+                this.UserAccountName = Environment.UserName;
+                this.OperativeSystem = this.GetOperativeSystem();
+            } 
+            catch { }
         }
     }
 
