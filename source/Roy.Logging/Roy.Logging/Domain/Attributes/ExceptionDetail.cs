@@ -56,7 +56,7 @@ public class ExceptionDetail : MessageDetail
         bool loadSystemInformation)
         : base(level, id, message, frame, loadSystemInformation)
     {
-        this.LoadObject(exception, level, listOfParameters, frame);
+        this.LoadObject(exception, level, listOfParameters);
     }
 
     /// <summary>
@@ -71,11 +71,8 @@ public class ExceptionDetail : MessageDetail
     /// <param name="listOfParameters">
     /// List of parameters.
     /// </param>
-    /// <param name="frame">
-    /// Stack frame containing the method calling the log.
-    /// </param>
     private void LoadObject(Exception exception, Level level,
-        object[] listOfParameters, StackFrame frame)
+        object[] listOfParameters)
     {
         this.ExceptionMessage = exception.Message;
         this.ListOfParameters = listOfParameters;

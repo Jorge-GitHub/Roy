@@ -65,7 +65,6 @@ public class MessageDetail
         this.LoadObject(level, id, message, frame, loadSystemInformation);
     }
 
-
     /// <summary>
     /// Loads the object.
     /// </summary>
@@ -93,7 +92,7 @@ public class MessageDetail
         this.Message = message;
         if (loadSystemInformation)
         {
-            LoadSystemInformation(frame);
+            this.LoadSystemInformation(frame);
         }
     }
 
