@@ -64,9 +64,7 @@ public class WebApplication : Application
     /// <summary>
     /// constructor.
     /// </summary>
-    public WebApplication()
-    {
-    }
+    public WebApplication() { }
 
     /// <summary>
     /// Constructor that builds the object.
@@ -74,39 +72,5 @@ public class WebApplication : Application
     /// <param name="load">
     /// Flag that indicates whether to load/build the object or not.
     /// </param>
-    /// <param name="loadBrowserInformation">
-    /// Flag that indicates whether to load the browser information or not.
-    /// </param>
-    public WebApplication(bool load, bool loadBrowserInformation) : base(load)
-    {
-        this.loadObject(load, loadBrowserInformation);
-    }
-
-    /// <summary>
-    /// Loads the object.
-    /// </summary>
-    /// <param name="load">
-    /// Flag that indicates whether to load/build the object or not.
-    /// </param>
-    private void loadObject(bool load, bool loadBrowserInformation)
-    {
-        if (load)
-        {
-            try
-            {
-                if(!this.FailedToLoad)
-                {
-
-                }
-                if(loadBrowserInformation)
-                {
-
-                }
-            }
-            catch
-            {
-                this.FailedToLoad = true;
-            }
-        }
-    }
+    public WebApplication(bool load) : base(load) { } 
 }

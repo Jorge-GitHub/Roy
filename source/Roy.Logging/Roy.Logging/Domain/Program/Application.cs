@@ -24,9 +24,7 @@ public class Application
     /// <summary>
     /// constructor.
     /// </summary>
-    public Application()
-    {
-    }
+    public Application() { }
 
     /// <summary>
     /// Constructor that builds the object.

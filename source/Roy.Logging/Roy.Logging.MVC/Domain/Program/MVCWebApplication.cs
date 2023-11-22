@@ -1,4 +1,5 @@
-﻿using Roy.Logging.Domain.Program;
+﻿using Microsoft.AspNetCore.Http;
+using Roy.Logging.Domain.Program;
 
 namespace Roy.Logging.MVC.Domain.Program;
 
@@ -17,39 +18,64 @@ public class MVCWebApplication : WebApplication
     /// <summary>
     /// Constructor that builds the object.
     /// </summary>
-    /// <param name="load">
-    /// Flag that indicates whether to load/build the object or not.
+    /// <param name="context">
+    /// HTTP-specific information about an individual HTTP request.
     /// </param>
     /// <param name="loadBrowserInformation">
     /// Flag that indicates whether to load the browser information or not.
     /// </param>
-    public MVCWebApplication(bool load, bool loadBrowserInformation) 
-        : base(load, loadBrowserInformation)
+    public MVCWebApplication(HttpContext context, bool loadBrowserInformation) 
+        : base(true)
     {
-        this.loadObject(load);
+        this.loadObject(context, loadBrowserInformation);
     }
 
     /// <summary>
     /// Loads the object.
     /// </summary>
-    /// <param name="load">
-    /// Flag that indicates whether to load/build the object or not.
+    /// <param name="context">
+    /// HTTP-specific information about an individual HTTP request.
     /// </param>
-    private void loadObject(bool load)
+    /// <param name="loadBrowserInformation">
+    /// Flag that indicates whether to load the browser information or not.
+    /// </param>
+    private void loadObject(HttpContext context, bool loadBrowserInformation)
     {
-        if (load)
+        try
         {
-            try
+            if (!this.FailedToLoad)
             {
-                if (!this.FailedToLoad)
-                {
-
-                }
+                var userAgent = context.Request.Headers.UserAgent;
             }
-            catch
+            if (loadBrowserInformation)
             {
-                this.FailedToLoad = true;
+                this.WebBrowserInformation = this.LoadBrowserInformation(context);
             }
         }
+        catch
+        {
+            this.FailedToLoad = true;
+        }
+    }
+
+    /// <summary>
+    /// Load browser information.
+    /// </summary>
+    /// <param name="loadBrowserInformation">
+    /// Flag that indicates whether to load the browser information or not.
+    /// </param>
+    private WebBrowser LoadBrowserInformation(HttpContext context)
+    {
+        try
+        {
+            WebBrowser browser = new WebBrowser();
+
+            return browser;
+        }
+        catch
+        {
+        }
+
+        return null;
     }
 }
