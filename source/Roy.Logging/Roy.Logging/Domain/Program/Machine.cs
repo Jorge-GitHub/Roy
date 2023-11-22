@@ -1,4 +1,6 @@
-﻿namespace Roy.Logging.Domain.Program;
+﻿using Roy.Logging.Domain.Contants;
+
+namespace Roy.Logging.Domain.Program;
 
 /// <summary>
 /// Machine environment.
@@ -29,6 +31,10 @@ public class Machine
     /// Operative system.
     /// </summary>
     public string OperativeSystem { get; set; }
+    /// <summary>
+    /// Flag that determinate whether the object failed to load.
+    /// </summary>
+    public bool FailedToLoad { get; set; }
 
     /// <summary>
     /// constructor.
@@ -66,8 +72,11 @@ public class Machine
                 this.OperativeSystemVersion = Environment.OSVersion.VersionString;
                 this.UserAccountName = Environment.UserName;
                 this.OperativeSystem = this.GetOperativeSystem();
-            } 
-            catch { }
+            }
+            catch
+            {
+                this.FailedToLoad = true;
+            }
         }
     }
 
@@ -82,12 +91,12 @@ public class Machine
     {
         if (OperatingSystem.IsWindows())
         {
-            return "Windows";
+            return StringValues.Windows;
         }
         if (OperatingSystem.IsLinux())
         {
-            return "Linux";
+            return StringValues.Linux;
         }
-        return "Other";
+        return StringValues.Other;
     }
 }

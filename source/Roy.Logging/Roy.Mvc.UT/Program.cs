@@ -24,6 +24,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.UseRoyExceptionHandler(builder, true, true);
+app.UseRoyExceptionHandler(builder, true);
 
 app.Run();

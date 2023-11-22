@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Roy.Logging.Domain.Settings;
 
 namespace Roy.Logging.MVC;
 
@@ -14,17 +15,13 @@ internal static class ErrorService
     /// <param name="context">
     /// HTTP-specific information about an individual HTTP request.
     /// </param>
-    /// <param name="logRequestInformation">
-    /// Flag that determinate whether to log the request information, 
-    /// such as browser and user information.
-    /// </param>
-    public static void LogError(HttpContext context, bool logRequestInformation)
+    public static void LogError(HttpContext context)
     {
         if (context != null)
         {
             try
             {
-                if (logRequestInformation)
+                if (LogExtension.Settings.Exception.LogSettings.LogApplicationInformation)
                 {
                     var userAgent = context.Request.Headers.UserAgent;
                 }

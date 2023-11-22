@@ -130,8 +130,8 @@ internal static class EmailExtensions
 
         if (setting.DefaultEmailSubject.IsNullOrEmpty())
         {
-            string subjectHolderId = isAnException ? 
-                StringValues.ExceptionSubject : StringValues.RoyLoginSubject;
+            string subjectHolderId = isAnException ?
+                ResourceKey.ExceptionSubject : ResourceKey.RoyLoginSubject;
             StringBuilder subject = new StringBuilder(EmailLabels.ResourceManager
                 .GetString(subjectHolderId, setting.Culture));
             subject.Replace(EmailLabel.IssueIdTag, issueId);
@@ -141,8 +141,8 @@ internal static class EmailExtensions
 
         if (setting.DefaultEmailBody.IsNullOrEmpty())
         {
-            string htmlBodyId = isAnException ? 
-                StringValues.ExceptionHTMLBodyId : StringValues.LogHTMLBodyId;
+            string htmlBodyId = isAnException ?
+                ResourceKey.ExceptionHTMLBodyId : ResourceKey.LogHTMLBodyId;
             setting.DefaultEmailBody = RoyValues.ResourceManager
                 .GetString(htmlBodyId);
         }

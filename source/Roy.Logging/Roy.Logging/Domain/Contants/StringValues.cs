@@ -6,22 +6,6 @@
 public struct StringValues
 {
     /// <summary>
-    /// Id used to get the exception HTML body message from the resources.
-    /// </summary>
-    public const string ExceptionHTMLBodyId = "ExceptionHTMLBody";
-    /// <summary>
-    /// Id used to get the log HTML body message from the resources.
-    /// </summary>
-    public const string LogHTMLBodyId = "LogHTMLBody";
-    /// <summary>
-    /// Exception subject.
-    /// </summary>
-    public const string ExceptionSubject = "ExceptionSubject";
-    /// <summary>
-    /// Logging subject.
-    /// </summary>
-    public const string RoyLoginSubject = "RoyLoginSubject";
-    /// <summary>
     /// Long date format.
     /// </summary>
     public const string LogDateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
@@ -33,4 +17,16 @@ public struct StringValues
     /// Roy.
     /// </summary>
     public const string Roy = "Roy";
+    /// <summary>
+    /// Windows.
+    /// </summary>
+    public const string Windows = "Windows";
+    /// <summary>
+    /// Linux.
+    /// </summary>
+    public const string Linux = "Linux";
+    /// <summary>
+    /// Other.
+    /// </summary>
+    public const string Other = "Other";
 }

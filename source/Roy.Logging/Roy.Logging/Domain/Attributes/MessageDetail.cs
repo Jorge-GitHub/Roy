@@ -37,6 +37,18 @@ public class MessageDetail
     /// </summary>
     public Machine MachineInformation { get; set; }
     /// <summary>
+    /// Application's information.
+    /// </summary>
+    public Application ApplicationInformation { get; set; }
+    /// <summary>
+    /// Web application's information.
+    /// </summary>
+    public WebApplication WebApplicationInformation { get; set; }
+    /// <summary>
+    /// Browser's information.
+    /// </summary>
+    public WebBrowser WebBrowserInformation { get; set; }
+    /// <summary>
     /// Stack frame making the call to the method.
     /// </summary>
     public Method StackFrame { get; set; }
@@ -108,7 +120,15 @@ public class MessageDetail
         try
         {
             this.SetAssemblyLocation();
+            if (logSettings.LogBrowserInformation)
+            {
+                
+            }
             if (logSettings.LogApplicationInformation)
+            {
+
+            }
+            if (logSettings.LogMachineInformation)
             {
                 this.MachineInformation = new Machine(true);
             }

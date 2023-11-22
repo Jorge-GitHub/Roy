@@ -18,6 +18,10 @@ public class LogSetting
     /// Flag that determinate whether to load the application information or not.
     /// </summary>
     public bool LogApplicationInformation { get; set; }
+    /// <summary>
+    /// Flag that determinate whether to load the machine/server information or not.
+    /// </summary>
+    public bool LogMachineInformation { get; set; }
 
     /// <summary>
     /// Constructor.

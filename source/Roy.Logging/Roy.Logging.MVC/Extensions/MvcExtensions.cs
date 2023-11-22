@@ -22,17 +22,12 @@ public static class MvcExtensions
     /// <param name="loadSettings">
     /// Flag that determinate whether to load or  not the settings.
     /// </param>
-    /// <param name="logRequestInformation">
-    /// Optional: Flag that determinate whether to log the request information, 
-    /// such as browser and user information.
-    /// </param>
     /// <remarks>
     /// We will use the default settings if we fail to load the 
     /// settings from the configuration file.
     /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app,
-        WebApplicationBuilder builder, bool loadSettings,
-        bool logRequestInformation = false)
+        WebApplicationBuilder builder, bool loadSettings)
     {
         RoySetting settings = null;
         if (loadSettings && builder.IsNotNull())
@@ -44,7 +39,7 @@ public static class MvcExtensions
             }
             catch { }
         }
-        app.UseRoyExceptionHandler(settings, logRequestInformation);
+        app.UseRoyExceptionHandler(settings);
     }
 
     /// <summary>
@@ -56,21 +51,17 @@ public static class MvcExtensions
     /// <param name="settings">
     /// Settings.
     /// </param>
-    /// <param name="logRequestInformation">
-    /// Optional: Flag that determinate whether to log the request information, 
-    /// such as browser and user information.
-    /// </param>
     /// <remarks>
     /// We will use the default settings if the settings parameter is null.
     /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app, 
-        RoySetting settings, bool logRequestInformation = false)
+        RoySetting settings)
     {
         if (settings.IsNotNull())
         {
             LogExtension.Settings = settings;
         }
-        app.UseRoyExceptionHandler(logRequestInformation);
+        app.UseRoyExceptionHandler();
     }
 
     /// <summary>
@@ -79,17 +70,12 @@ public static class MvcExtensions
     /// <param name="app">
     /// Web application.
     /// </param>
-    /// <param name="logRequestInformation">
-    /// Optional: Flag that determinate whether to log the request information, 
-    /// such as browser and user information.
-    /// </param>
-    public static void UseRoyExceptionHandler(this WebApplication app, 
-        bool logRequestInformation = false)
+    public static void UseRoyExceptionHandler(this WebApplication app)
     {
         app.UseExceptionHandler(appError =>
         {
             appError.Run(async context => {
-                ErrorService.LogError(context, logRequestInformation);
+                ErrorService.LogError(context);
             });
         });
     }
