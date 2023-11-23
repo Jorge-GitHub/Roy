@@ -32,7 +32,7 @@ public static class WebApplicationHttpContextExtensions
                 if (context.Request.QueryString.IsNotNull())
                 {
                     webAppContext.CurrentURL = $"{context.Request.Scheme}://{context.Request.Host}{context.Request.Path.ToString()}{context.Request.QueryString.ToString()}";
-                    webAppContext.CurentURLParameters = context.Request.QueryString.ToString();
+                    webAppContext.CurrentURLParameters = context.Request.QueryString.ToString();
                 }
                 if (context.Request.Headers.IsNotNull())
                 {

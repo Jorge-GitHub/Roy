@@ -12,7 +12,7 @@ public class WebApplicationHttpContext
     /// <summary>
     /// Current page parameters.
     /// </summary>
-    public string CurentURLParameters { get; set; }
+    public string CurrentURLParameters { get; set; }
     /// <summary>
     /// Previous URL.
     /// </summary>
@@ -38,7 +38,7 @@ public class WebApplicationHttpContext
     /// </summary>
     public List<string> HeadersValues { get; set; }
     /// <summary>
-    /// User preference languages.
+    /// User preference language.
     /// </summary>
     public string UserLanguagePreferences { get; set; }
     /// <summary>

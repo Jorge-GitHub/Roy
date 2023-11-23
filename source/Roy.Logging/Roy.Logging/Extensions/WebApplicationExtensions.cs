@@ -20,7 +20,7 @@ public static class WebApplicationExtensions
         this WebApplicationHttpContext webApplicationContext)
     {
         WebApplication application = new WebApplication(true);
-        application.CurentURLParameters = webApplicationContext.CurentURLParameters;
+        application.CurrentURLParameters = webApplicationContext.CurrentURLParameters;
         application.CurrentURL = webApplicationContext.CurrentURL;
         application.PreviousURL = webApplicationContext.PreviousURL;
         application.UserHostIP = webApplicationContext.UserHostIP;

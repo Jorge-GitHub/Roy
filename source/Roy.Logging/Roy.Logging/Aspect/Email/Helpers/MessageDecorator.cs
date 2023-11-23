@@ -274,6 +274,12 @@ internal class MessageDecorator
             else
             {
                 body.Replace(Tags.AssemblyLocation, application.AssemblyLocation);
+                body.Replace(Tags.ApplicationIsDebuggingEnabled, application.IsDebuggingEnabled.ToString());
+                body.Replace(Tags.ApplicationPhysicalApplicationPath, application.PhysicalApplicationPath);
+                body.Replace(Tags.ApplicationFriendlyName, application.FriendlyName);
+                body.Replace(Tags.ApplicationIsFullyTrusted, application.IsFullyTrusted.ToString());
+                body.Replace(Tags.ApplicationUserDomainName, application.UserDomainName);
+                body.Replace(Tags.ApplicationUserName, application.UserName);
             }
         }
         else
@@ -288,23 +294,36 @@ internal class MessageDecorator
     /// <param name="body">
     /// String containing the tags to be replaced.
     /// </param>
-    /// <param name="application">
+    /// <param name="webApplication">
     /// Application object to use to replace the tags.
     /// </param>
     /// <param name="culture">
     /// Culture info.
     /// </param>
     private void PopulateWebApplicationInformation(StringBuilder body, 
-        WebApplication application, CultureInfo culture)
+        WebApplication webApplication, CultureInfo culture)
     {
-        this.PopulateApplicationInformation(body, application, culture);
-        if (application.FailedToLoad)
+        this.PopulateApplicationInformation(body, webApplication, culture);
+        if (webApplication.FailedToLoad)
         {
-
+            TagHelper.SetFailedToLoadTagDetails(body,
+                EmailLabels.ResourceManager
+                .GetString(EmailLabel.FailedToLoad, culture),
+                TagsList.WebApplicationTags);
         }
         else
         {
-
+            body.Replace(Tags.WebApplicationCurrentURL, webApplication.CurrentURL);
+            body.Replace(Tags.WebApplicationCurrentURLParameters, webApplication.CurrentURLParameters);
+            body.Replace(Tags.WebApplicationPreviousURL, webApplication.PreviousURL);
+            body.Replace(Tags.WebApplicationUserHostIP, webApplication.UserHostIP);
+            body.Replace(Tags.WebApplicationIsSecureConnection, webApplication.IsSecureConnection.ToString());
+            body.Replace(Tags.WebApplicationUserDomainName, webApplication.UserDomainName);
+            body.Replace(Tags.WebApplicationCookiesValues, webApplication.CookiesValues
+                .ToStringStringBuilder().ToString());
+            body.Replace(Tags.WebApplicationHeadersValues, webApplication.HeadersValues
+                .ToStringStringBuilder().ToString());
+            body.Replace(Tags.WebApplicationUserLanguagePreferences, webApplication.UserLanguagePreferences);
         }
     }
 
@@ -316,6 +335,6 @@ internal class MessageDecorator
     /// </param>
     private void CleanWebApplicationInformationDetails(StringBuilder body)
     {
-
+        this.TagHelper.CleanTagDetails(body, TagsList.WebApplicationTags);
     }
 }

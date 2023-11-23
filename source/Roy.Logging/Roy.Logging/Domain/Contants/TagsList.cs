@@ -31,12 +31,24 @@ public static class TagsList
     /// </summary>
     public static readonly string[] ApplicationTags =
     {
-        Tags.AssemblyLocation
+        Tags.AssemblyLocation, Tags.ApplicationIsDebuggingEnabled,
+        Tags.ApplicationPhysicalApplicationPath, Tags.ApplicationFriendlyName,
+        Tags.ApplicationIsFullyTrusted, Tags.ApplicationUserDomainName,
+        Tags.ApplicationUserName
     };
     /// <summary>
-    /// Application tags.
+    /// Web application tags.
     /// </summary>
     public static readonly string[] WebApplicationTags =
     {
+        Tags.WebApplicationCurrentURL,
+        Tags.WebApplicationCurrentURLParameters,
+        Tags.WebApplicationPreviousURL,
+        Tags.WebApplicationUserHostIP,
+        Tags.WebApplicationIsSecureConnection,
+        Tags.WebApplicationUserDomainName,
+        Tags.WebApplicationCookiesValues,
+        Tags.WebApplicationHeadersValues,
+        Tags.WebApplicationUserLanguagePreferences,
     };
 }

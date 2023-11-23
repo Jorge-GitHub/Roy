@@ -14,7 +14,7 @@ public class WebApplication : Application
     /// <summary>
     /// Current page parameters.
     /// </summary>
-    public string CurentURLParameters { get; set; }
+    public string CurrentURLParameters { get; set; }
     /// <summary>
     /// Previous URL.
     /// </summary>
