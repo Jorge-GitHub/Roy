@@ -1,7 +1,7 @@
 ﻿using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
-using Roy.Logging.Helpers;
 using System.Diagnostics;
 
 namespace Roy.Logging;
@@ -17,10 +17,15 @@ public static class ExceptionExtension
     /// <param name="exception">
     /// Exception.
     /// </param>
-    public static async void SaveAsync(this Exception exception)
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
+    public static async void SaveAsync(this Exception exception,
+        WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, LogExtension.Settings, null, null);
+            string.Empty, string.Empty, LogExtension.Settings, null, null,
+            webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -32,10 +37,15 @@ public static class ExceptionExtension
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    public static async void SaveAsync(this Exception exception, StackFrame frame)
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
+    public static async void SaveAsync(this Exception exception, StackFrame frame,
+        WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, LogExtension.Settings, frame, null);
+            string.Empty, string.Empty, LogExtension.Settings, frame, null,
+            webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -47,11 +57,15 @@ public static class ExceptionExtension
     /// <param name="settings">
     /// Settings.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
     public static async void SaveAsync(this Exception exception,
-        RoySetting settings)
+        RoySetting settings, WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, settings, null, null);
+            string.Empty, string.Empty, settings, null, null, 
+            webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -63,10 +77,14 @@ public static class ExceptionExtension
     /// <param name="level">
     /// Exception's level
     /// </param>
-    public static async void SaveAsync(this Exception exception, Level level)
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
+    public static async void SaveAsync(this Exception exception, Level level,
+        WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, null, null);
+            LogExtension.Settings, null, null, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -81,11 +99,14 @@ public static class ExceptionExtension
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
     public static async void SaveAsync(this Exception exception, Level level,
-        StackFrame frame)
+        StackFrame frame, WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, frame, null);
+            LogExtension.Settings, frame, null, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -100,11 +121,15 @@ public static class ExceptionExtension
     /// <param name="settings">
     /// Settings.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
     public static async void SaveAsync(this Exception exception,
-        Level level, RoySetting settings)
+        Level level, RoySetting settings, 
+        WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            settings, null, null);
+            settings, null, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -116,11 +141,14 @@ public static class ExceptionExtension
     /// <param name="message">
     /// Custom message.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
     public static async void SaveAsync(this Exception exception,
-        string message)
+        string message, WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(Level.Error, message, string.Empty,
-            LogExtension.Settings, null);
+            LogExtension.Settings, null, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -135,11 +163,15 @@ public static class ExceptionExtension
     /// <param name="message">
     /// Custom message.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
     public static async void SaveAsync(this Exception exception,
-        string message, string identity)
+        string message, string identity, 
+        WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, null);
+            LogExtension.Settings, null, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -157,12 +189,16 @@ public static class ExceptionExtension
     /// <param name="listOfParameters">
     /// List of parameters.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
     public static async void SaveAsync(this Exception exception,
-        string message, string identity, 
+        string message, string identity,
+        WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
         exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, null, listOfParameters);
+            LogExtension.Settings, null, webApplicationHttpContext, listOfParameters);
     }
 
     /// <summary>
@@ -176,6 +212,9 @@ public static class ExceptionExtension
     /// </param>
     /// <param name="message">
     /// Custom message.
+    /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
     /// </param>
     /// <param name="listOfParameters">
     /// List of parameters.
@@ -185,10 +224,11 @@ public static class ExceptionExtension
     /// </param>
     public static async void SaveAsync(this Exception exception,
         string message, string identity,
-        StackFrame frame, params object[] listOfParameters)
+        StackFrame frame, WebApplicationHttpContext? webApplicationHttpContext = null, 
+        params object[] listOfParameters)
     {
         exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, frame, listOfParameters);
+            LogExtension.Settings, frame, webApplicationHttpContext, listOfParameters);
     }
 
     /// <summary>
@@ -205,6 +245,9 @@ public static class ExceptionExtension
     /// </param>
     /// <param name="message">
     /// Custom message.
+    /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
     /// </param>
     /// <param name="listOfParameters">
     /// List of parameters.
@@ -217,7 +260,8 @@ public static class ExceptionExtension
     /// </param>
     public static async void SaveAsync(this Exception exception,
         Level level, string message, string identity, 
-        RoySetting setting, StackFrame frame, 
+        RoySetting setting, StackFrame frame,
+        WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
         try
