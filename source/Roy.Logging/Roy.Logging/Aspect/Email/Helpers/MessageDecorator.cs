@@ -111,8 +111,7 @@ internal class MessageDecorator
         }
         else
         {
-            this.TagHelper.CleanTagDetails(body, 
-                this.TagHelper.ExceptionTraceTags);
+            this.TagHelper.CleanTagDetails(body, TagsList.ExceptionTraceTags);
         }
     }
 
@@ -176,7 +175,7 @@ internal class MessageDecorator
         }
         else
         {
-            this.TagHelper.CleanTagDetails(body, this.TagHelper.MethodTags);
+            this.TagHelper.CleanTagDetails(body, TagsList.MethodTags);
         }
     }
 
@@ -202,7 +201,7 @@ internal class MessageDecorator
                 TagHelper.SetFailedToLoadTagDetails(body,
                     EmailLabels.ResourceManager
                     .GetString(EmailLabel.FailedToLoad, culture),
-                    this.TagHelper.MachineTags);
+                    TagsList.MachineTags);
             }
             else
             {
@@ -216,7 +215,7 @@ internal class MessageDecorator
         }
         else
         {
-            this.TagHelper.CleanTagDetails(body, this.TagHelper.MachineTags);
+            this.TagHelper.CleanTagDetails(body, TagsList.MachineTags);
         }
     }
 
@@ -270,7 +269,7 @@ internal class MessageDecorator
                 TagHelper.SetFailedToLoadTagDetails(body,
                     EmailLabels.ResourceManager
                     .GetString(EmailLabel.FailedToLoad, culture),
-                    this.TagHelper.ApplicationTags);
+                    TagsList.ApplicationTags);
             }
             else
             {
@@ -279,7 +278,7 @@ internal class MessageDecorator
         }
         else
         {
-            this.TagHelper.CleanTagDetails(body, this.TagHelper.ApplicationTags);
+            this.TagHelper.CleanTagDetails(body, TagsList.ApplicationTags);
         }
     }
 

@@ -1,5 +1,4 @@
 ﻿using Avalon.Base.Extension.Collections;
-using Roy.Logging.Domain.Contants;
 using System.Text;
 
 namespace Roy.Logging.Aspect.Email.Helpers;
@@ -9,40 +8,6 @@ namespace Roy.Logging.Aspect.Email.Helpers;
 /// </summary>
 internal class TagDecorator
 {
-    /// <summary>
-    /// Exception trace tags.
-    /// </summary>
-    public string[] ExceptionTraceTags = new string[] { Tags.Source, Tags.HelpLink };
-    /// <summary>
-    /// Method tags.
-    /// </summary>
-    public string[] MethodTags = new string[]
-    {
-        Tags.MethodCallerFileName, Tags.MethodCallerMethodName,
-        Tags.MethodCallerLineNumber, Tags.MethodParametersJSON
-    };
-    /// <summary>
-    /// Machine tags.
-    /// </summary>
-    public string[] MachineTags = new string[]
-    {
-        Tags.MachineCLRVersion, Tags.MachineDomainName,
-        Tags.MachineName, Tags.MachineOperativeSystem,
-        Tags.MachineOperativeSystemVersion, Tags.MachineUserAccountName
-    };
-    /// <summary>
-    /// Application tags.
-    /// </summary>
-    public string[] ApplicationTags = new string[]
-    {
-        Tags.AssemblyLocation
-    };
-    /// <summary>
-    /// Application tags.
-    /// </summary>
-    public string[] WebApplicationTags = new string[]
-    {
-    };
     /// <summary>
     /// Cleans the tags details.
     /// </summary>
