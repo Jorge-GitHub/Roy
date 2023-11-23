@@ -24,8 +24,7 @@ internal static class ErrorService
             {
                 if (LogExtension.Settings.Exception.LogSettings.LogApplicationInformation)
                 {
-                    MVCWebApplication application = new MVCWebApplication(context, 
-                        LogExtension.Settings.Exception.LogSettings.LogBrowserInformation);
+                    MVCWebApplication application = new MVCWebApplication(context);
                 }
                 var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                 if (contextFeature != null)

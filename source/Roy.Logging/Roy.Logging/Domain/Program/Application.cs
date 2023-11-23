@@ -32,6 +32,14 @@ public class Application
     /// </summary>
     public bool? IsFullyTrusted { get; set; }
     /// <summary>
+    /// Network domain name associated with the current user.
+    /// </summary>
+    public string UserDomainName { get; set; }
+    /// <summary>
+    /// User name of the current thread.
+    /// </summary>
+    public string UserName { get; set; }
+    /// <summary>
     /// Flag that determinate whether the object failed to load.
     /// </summary>
     public bool FailedToLoad { get; set; }
@@ -66,6 +74,8 @@ public class Application
             {
                 this.AssemblyLocation = this.GetAssemblyLocation();
                 this.IsDebuggingEnabled = Debugger.IsAttached;
+                this.UserDomainName = Environment.UserDomainName;
+                this.UserName = Environment.UserName;
                 if (AppDomain.CurrentDomain.IsNotNull())
                 {
                     this.PhysicalApplicationPath = AppDomain.CurrentDomain.BaseDirectory;
@@ -88,7 +98,7 @@ public class Application
     /// </returns>
     private string GetAssemblyLocation()
     {
-        string location = Assembly.GetExecutingAssembly().Location;
+        string location = Assembly.GetExecutingAssembly()?.Location;
 
         return location.IsNotNullOrEmpty() ? 
             Path.GetDirectoryName(location) : string.Empty;

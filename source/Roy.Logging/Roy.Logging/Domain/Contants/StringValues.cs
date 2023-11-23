@@ -29,4 +29,8 @@ public struct StringValues
     /// Other.
     /// </summary>
     public const string Other = "Other";
+    /// <summary>
+    /// Failed To Load.
+    /// </summary>
+    public const string FailedToLoad = "Failed To Load";
 }

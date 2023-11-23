@@ -11,10 +11,6 @@ public class LogSetting
     /// </summary>
     public bool LogMethodInformation { get; set; }
     /// <summary>
-    /// Flag that determinate whether to load the browser information or not.
-    /// </summary>
-    public bool LogBrowserInformation { get; set; }
-    /// <summary>
     /// Flag that determinate whether to load the application information or not.
     /// </summary>
     public bool LogApplicationInformation { get; set; }

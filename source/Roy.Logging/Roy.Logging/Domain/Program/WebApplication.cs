@@ -20,30 +20,9 @@ public class WebApplication : Application
     /// </summary>
     public string PreviousURL {  get; set; }
     /// <summary>
-    /// Previous page parameters.
-    /// </summary>
-    public string PreviousURLParameters { get; set; }
-    /// <summary>
-    /// User's DNS.
-    /// </summary>
-    public string UserDNS { get; set; }
-    /// <summary>
     /// User's Host's IP.
     /// </summary>
     public string UserHostIP { get; set; }
-    /// <summary>
-    /// User preference languages.
-    /// </summary>
-    public string UserLanguagePreferences { get; set; }
-    /// <summary>
-    /// Flag that indicates whether custom errors are 
-    /// enabled for the current HTTP request.
-    /// </summary>
-    public bool IsCustomErrorEnabled { get; set; }
-    /// <summary>
-    /// Server's name.
-    /// </summary>
-    public string ServerName { get; set; }
     /// <summary>
     /// Flag that indicates whether the application is running in a secure connection.
     /// </summary>
@@ -57,9 +36,13 @@ public class WebApplication : Application
     /// </summary>
     public string CookiesValues { get; set; }
     /// <summary>
-    /// Browser's information.
+    /// Headers values.
     /// </summary>
-    public WebBrowser WebBrowserInformation { get; set; }
+    public string HeadersValues { get; set; }
+    /// <summary>
+    /// User preference languages.
+    /// </summary>
+    public string UserLanguagePreferences { get; set; }
 
     /// <summary>
     /// constructor.
