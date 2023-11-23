@@ -73,14 +73,19 @@ public class Application
                     this.IsFullyTrusted = AppDomain.CurrentDomain.IsFullyTrusted;
                 }
             }
-            catch 
+            catch
             {
                 this.FailedToLoad = true;
             }
         }
     }
 
-    // Get assembly location.
+    /// <summary>
+    /// Get assembly location.
+    /// </summary>
+    /// <returns>
+    /// Assembly location.
+    /// </returns>
     private string GetAssemblyLocation()
     {
         string location = Assembly.GetExecutingAssembly().Location;
