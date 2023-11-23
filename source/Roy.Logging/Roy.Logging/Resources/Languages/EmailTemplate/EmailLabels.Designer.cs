@@ -142,6 +142,15 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed To Load.
+        /// </summary>
+        public static string FailedToLoad {
+            get {
+                return ResourceManager.GetString("FailedToLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Exception in JSON Format:.
         /// </summary>
         public static string FullExceptionInJSONFormat {

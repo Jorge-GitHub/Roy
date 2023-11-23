@@ -89,4 +89,20 @@ public struct Tags
     /// Id tag for replacing the issue in JSON format on the HTML template.
     /// </summary>
     public const string LogValueJSON = "*|LogValueJSON|*";
+    /// <summary>
+    /// Id tag for replacing method caller file name on the HTML template.
+    /// </summary>
+    public const string MethodCallerFileName = "*|Method_CallerFileName|*";
+    /// <summary>
+    /// Id tag for replacing method caller name on the HTML template.
+    /// </summary>
+    public const string MethodCallerMethodName = "*|Method_CallerMethodName|*";
+    /// <summary>
+    /// Id tag for replacing method caller line number on the HTML template.
+    /// </summary>
+    public const string MethodCallerLineNumber = "*|Method_CallerLineNumber|*";
+    /// <summary>
+    /// Id tag for replacing method parameters in JSON format on the HTML template.
+    /// </summary>
+    public const string MethodParametersJSON = "*|Method_Parameters|*";
 }

@@ -98,6 +98,10 @@ public struct EmailLabel
     /// </summary>
     public const string LogInformationHeader = "LogInformationHeader";
     /// <summary>
+    /// Id tag for replacing the failed to load label on the HTML template.
+    /// </summary>
+    public const string FailedToLoad = "FailedToLoad";
+    /// <summary>
     /// Id tag for replacing log Id label on the HTML template.
     /// </summary>
     public const string LogId = "LogId";

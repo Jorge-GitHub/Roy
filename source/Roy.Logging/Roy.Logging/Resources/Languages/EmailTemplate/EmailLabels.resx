@@ -144,6 +144,9 @@
   <data name="ExceptionSubject" xml:space="preserve">
     <value>Roy Exception - Issue Level: *|Level|* - Id: *|IssueId|*</value>
   </data>
+  <data name="FailedToLoad" xml:space="preserve">
+    <value>Failed To Load</value>
+  </data>
   <data name="FullExceptionInJSONFormat" xml:space="preserve">
     <value>Full Exception in JSON Format:</value>
   </data>

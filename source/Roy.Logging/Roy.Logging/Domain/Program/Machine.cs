@@ -39,9 +39,7 @@ public class Machine
     /// <summary>
     /// constructor.
     /// </summary>
-    public Machine()
-    {
-    }
+    public Machine() { }
 
     /// <summary>
     /// Constructor that builds the object.

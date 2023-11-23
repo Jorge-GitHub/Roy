@@ -29,10 +29,6 @@ public class MessageDetail
     /// </summary>
     public string Message { get; set; }
     /// <summary>
-    /// Assembly that the current code is running from.
-    /// </summary>
-    public string AssemblyLocation { get; set; }
-    /// <summary>
     /// Machine/Server information.
     /// </summary>
     public Machine MachineInformation { get; set; }
