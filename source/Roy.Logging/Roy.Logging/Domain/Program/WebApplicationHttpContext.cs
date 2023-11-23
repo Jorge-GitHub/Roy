@@ -32,11 +32,11 @@ public class WebApplicationHttpContext
     /// <summary>
     /// Cookies values.
     /// </summary>
-    public string CookiesValues { get; set; }
+    public List<string> CookiesValues { get; set; }
     /// <summary>
     /// Headers values.
     /// </summary>
-    public string HeadersValues { get; set; }
+    public List<string> HeadersValues { get; set; }
     /// <summary>
     /// User preference languages.
     /// </summary>

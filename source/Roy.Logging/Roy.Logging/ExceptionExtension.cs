@@ -186,11 +186,11 @@ public static class ExceptionExtension
     /// <param name="message">
     /// Custom message.
     /// </param>
-    /// <param name="listOfParameters">
-    /// List of parameters.
-    /// </param>
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
+    /// </param>
+    /// <param name="listOfParameters">
+    /// List of parameters.
     /// </param>
     public static async void SaveAsync(this Exception exception,
         string message, string identity,
@@ -213,14 +213,14 @@ public static class ExceptionExtension
     /// <param name="message">
     /// Custom message.
     /// </param>
+    /// <param name="frame">
+    /// Stack frame containing the method calling the log.
+    /// </param>
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
     /// <param name="listOfParameters">
     /// List of parameters.
-    /// </param>
-    /// <param name="frame">
-    /// Stack frame containing the method calling the log.
     /// </param>
     public static async void SaveAsync(this Exception exception,
         string message, string identity,
@@ -246,17 +246,17 @@ public static class ExceptionExtension
     /// <param name="message">
     /// Custom message.
     /// </param>
-    /// <param name="webApplicationHttpContext">
-    /// Optional: Web application HttpContext details.
-    /// </param>
-    /// <param name="listOfParameters">
-    /// List of parameters.
-    /// </param>
     /// <param name="setting">
     /// Log's settings.
     /// </param>
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
+    /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Optional: Web application HttpContext details.
+    /// </param>
+    /// <param name="listOfParameters">
+    /// List of parameters.
     /// </param>
     public static async void SaveAsync(this Exception exception,
         Level level, string message, string identity, 

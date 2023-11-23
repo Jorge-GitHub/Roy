@@ -21,14 +21,15 @@ public static class WebApplicationHttpContextExtensions
     /// <returns>
     /// Web application HttpContext object.
     /// </returns>
-    public static WebApplicationHttpContext ToWebApplicationHttpContext(
+    public static WebApplicationHttpContext? ToWebApplicationHttpContext(
         this HttpContext context)
     {
-        WebApplicationHttpContext webAppContext = new WebApplicationHttpContext();
         try
         {
             if (context.Request.IsNotNull())
             {
+                WebApplicationHttpContext webAppContext = new WebApplicationHttpContext();
+
                 if (context.Request.QueryString.IsNotNull())
                 {
                     webAppContext.CurrentURL = $"{context.Request.Scheme}://{context.Request.Host}{context.Request.Path.ToString()}{context.Request.QueryString.ToString()}";
@@ -54,14 +55,16 @@ public static class WebApplicationHttpContextExtensions
                 webAppContext.IsSecureConnection = context.Request.IsHttps;
                 webAppContext.CookiesValues = WebApplicationHttpContextExtensions
                     .GetValues(context.Request.Cookies);
-            }
+
+                return webAppContext;
+            }           
         }
         catch
         {
-            webAppContext.FailedToLoad = true;
+            return new WebApplicationHttpContext() { FailedToLoad = true };
         }
 
-        return webAppContext;
+        return null;
     }
 
     /// <summary>
@@ -73,27 +76,25 @@ public static class WebApplicationHttpContextExtensions
     /// <returns>
     /// key value pair list value.
     /// </returns>
-    public static string GetValues(this IEnumerable<KeyValuePair<string, string>> values)
+    public static List<string> GetValues(this IEnumerable<KeyValuePair<string, string>> values)
     {
+        List<string> stringValues = new List<string>();
         try
         {
             if (values.IsNotNull() && values.Count() > 0)
             {
-                StringBuilder stringValue = new StringBuilder();
                 foreach (KeyValuePair<string, string> item in values)
                 {
-                    stringValue.Append($"{item.Key}:{item.Value}");
+                    stringValues.Add($"{item.Key}:{item.Value}");
                 }
-
-                return stringValue.ToString();
             }
         }
         catch
         {
-            return StringValue.FailedToLoad;
+            stringValues.Add(StringValue.FailedToLoad);
         }
 
-        return string.Empty;
+        return stringValues;
     }
 
     /// <summary>
@@ -105,27 +106,25 @@ public static class WebApplicationHttpContextExtensions
     /// <returns>
     /// key value pair list value.
     /// </returns>
-    public static string GetValues(this IEnumerable<KeyValuePair<string, StringValues>> values)
+    public static List<string> GetValues(this IEnumerable<KeyValuePair<string, StringValues>> values)
     {
+        List<string> stringValues = new List<string>();
         try
         {
             if (values.IsNotNull() && values.Count() > 0)
             {
-                StringBuilder stringValue = new StringBuilder();
                 foreach (KeyValuePair<string, StringValues> item in values)
                 {
-                    stringValue.Append($"{item.Key}:{item.Value}");
+                    stringValues.Add($"{item.Key}:{item.Value}");
                 }
-
-                return stringValue.ToString();
             }
         }
         catch
         {
-            return StringValue.FailedToLoad;
+            stringValues.Add(StringValue.FailedToLoad);
         }
 
-        return string.Empty;
+        return stringValues;
     }
 
 }
