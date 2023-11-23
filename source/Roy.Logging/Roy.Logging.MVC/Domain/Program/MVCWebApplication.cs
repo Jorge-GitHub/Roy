@@ -1,6 +1,5 @@
 ﻿using Avalon.Base.Extension.Types;
 using Microsoft.AspNetCore.Http;
-using Org.BouncyCastle.Asn1.Ocsp;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using System.Text;
@@ -75,8 +74,7 @@ public class MVCWebApplication : WebApplication
                 this.UserLanguagePreferences = context.Request.Headers["Accept-Language"]
                     .ToString().Split(";").FirstOrDefault()?.Split(",").FirstOrDefault();
                 this.PreviousURL = context.Request.Headers.Referer.ToString();
-                this.GetHeadersValues(context);
-                var test = context.Request.Headers["Referer"].ToString();
+                this.HeadersValues = this.GetHeadersValues(context);
             }
             if (context.Connection.IsNotNull())
             {

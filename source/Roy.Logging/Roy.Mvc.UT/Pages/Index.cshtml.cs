@@ -7,7 +7,6 @@ namespace Roy.Mvc.UT.Pages
         public void OnGet()
         {
             FileStream file = new FileStream("filedoesnotexist.json", FileMode.Open);
-            // throw new NotImplementedException();
         }
     }
 }
