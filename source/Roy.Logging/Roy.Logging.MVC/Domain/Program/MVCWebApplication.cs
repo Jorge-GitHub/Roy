@@ -43,10 +43,7 @@ public class MVCWebApplication : WebApplication
     {
         try
         {
-            if (!this.FailedToLoad)
-            {
-                var userAgent = context.Request.Headers.UserAgent;
-            }
+            var userAgent = context.Request.Headers.UserAgent;
             if (loadBrowserInformation)
             {
                 this.WebBrowserInformation = this.LoadBrowserInformation(context);
@@ -69,7 +66,7 @@ public class MVCWebApplication : WebApplication
         try
         {
             WebBrowser browser = new WebBrowser();
-
+            //browser.BrowserID = context.Request
             return browser;
         }
         catch

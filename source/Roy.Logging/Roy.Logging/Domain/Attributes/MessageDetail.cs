@@ -115,14 +115,9 @@ public class MessageDetail
     {
         try
         {
-            this.SetAssemblyLocation();
-            if (logSettings.LogBrowserInformation)
-            {
-                
-            }
             if (logSettings.LogApplicationInformation)
             {
-
+                this.ApplicationInformation = new Application(true);
             }
             if (logSettings.LogMachineInformation)
             {
@@ -134,17 +129,5 @@ public class MessageDetail
             }
         }
         catch { }
-    }
-
-    /// <summary>
-    /// Set assembly location.
-    /// </summary>
-    private void SetAssemblyLocation()
-    {
-        string location = Assembly.GetExecutingAssembly().Location;
-        if (location.IsNotNullOrEmpty())
-        {
-            this.AssemblyLocation = Path.GetDirectoryName(location);
-        }
     }
 }

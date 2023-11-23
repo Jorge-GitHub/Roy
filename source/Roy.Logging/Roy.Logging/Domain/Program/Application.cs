@@ -1,4 +1,8 @@
-﻿namespace Roy.Logging.Domain.Program;
+﻿using Avalon.Base.Extension.Types;
+using System.Diagnostics;
+using System.Reflection;
+
+namespace Roy.Logging.Domain.Program;
 
 /// <summary>
 /// Application details.
@@ -15,7 +19,18 @@ public class Application
     /// executing server application's root directory.
     /// </summary>
     public string PhysicalApplicationPath { get; set; }
-
+    /// <summary>
+    /// Assembly that the current code is running from.
+    /// </summary>
+    public string AssemblyLocation { get; set; }
+    /// <summary>
+    /// Application friendly name.
+    /// </summary>
+    public string FriendlyName { get; set; }
+    /// <summary>
+    /// Flag that determinate whether the application is executing in full trust.
+    /// </summary>
+    public bool IsFullyTrusted { get; set; }
     /// <summary>
     /// Flag that determinate whether the object failed to load.
     /// </summary>
@@ -49,12 +64,28 @@ public class Application
         {
             try
             {
-
+                this.AssemblyLocation = this.GetAssemblyLocation();
+                this.IsDebuggingEnabled = Debugger.IsAttached;
+                if (AppDomain.CurrentDomain.IsNotNull())
+                {
+                    this.PhysicalApplicationPath = AppDomain.CurrentDomain.BaseDirectory;
+                    this.FriendlyName = AppDomain.CurrentDomain.FriendlyName;
+                    this.IsFullyTrusted = AppDomain.CurrentDomain.IsFullyTrusted;
+                }
             }
             catch 
             {
                 this.FailedToLoad = true;
             }
         }
+    }
+
+    // Get assembly location.
+    private string GetAssemblyLocation()
+    {
+        string location = Assembly.GetExecutingAssembly().Location;
+
+        return location.IsNotNullOrEmpty() ? 
+            Path.GetDirectoryName(location) : string.Empty;
     }
 }
