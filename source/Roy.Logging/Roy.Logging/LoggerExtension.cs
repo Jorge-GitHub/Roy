@@ -156,7 +156,7 @@ public static class LoggerExtension
                     : Guid.NewGuid().ToString("N");
                 
                 LogDetail detail = new LogDetail(value, identity, 
-                    message, frame, setting.Log.LogSettings);
+                    message, frame, setting.Log.LogSettings, webApplicationHttpContext);
 
                 new RecordService().SaveAsync(
                     detail, setting.Log);

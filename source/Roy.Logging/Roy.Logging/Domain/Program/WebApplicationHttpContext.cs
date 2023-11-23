@@ -26,9 +26,9 @@ public class WebApplicationHttpContext
     /// </summary>
     public bool IsSecureConnection { get; set; }
     /// <summary>
-    /// Domain's name.
+    /// Network domain name associated with the current user.
     /// </summary>
-    public string DomainName { get; set; }
+    public string UserDomainName { get; set; }
     /// <summary>
     /// Cookies values.
     /// </summary>

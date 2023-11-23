@@ -1,4 +1,5 @@
 ﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings.Attributes;
 using System.Diagnostics;
 
@@ -35,9 +36,13 @@ public class LogDetail : MessageDetail
     /// <param name="logSettings">
     /// Log settings.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
+    /// </param>
     public LogDetail(object LogValue,
-        string id, string message, StackFrame frame, LogSetting logSettings)
-        : base(Level.Log, id, message, frame, logSettings)
+        string id, string message, StackFrame frame, LogSetting logSettings,
+        WebApplicationHttpContext webApplicationHttpContext)
+        : base(Level.Log, id, message, frame, logSettings, webApplicationHttpContext)
     {
         this.LoadObject(LogValue);
     }

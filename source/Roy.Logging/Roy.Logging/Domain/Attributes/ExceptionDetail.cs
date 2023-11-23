@@ -1,4 +1,5 @@
 ﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings.Attributes;
 using System.Diagnostics;
 
@@ -51,11 +52,14 @@ public class ExceptionDetail : MessageDetail
     /// <param name="logSettings">
     /// Log settings.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
+    /// </param>
     public ExceptionDetail(Exception exception,
         Level level, string id, string message,
         object[] listOfParameters, StackFrame frame,
-        LogSetting logSettings)
-        : base(level, id, message, frame, logSettings)
+        LogSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
+        : base(level, id, message, frame, logSettings, webApplicationHttpContext)
     {
         this.LoadObject(exception, level, listOfParameters);
     }

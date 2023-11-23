@@ -1,9 +1,9 @@
 ﻿using Avalon.Base.Extension.Types;
-using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings.Attributes;
+using Roy.Logging.Extensions;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace Roy.Logging.Domain.Attributes;
 
@@ -67,11 +67,14 @@ public class MessageDetail
     /// <param name="logSettings">
     /// Log settings.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
+    /// </param>
     public MessageDetail(Level level,
         string id, string message, StackFrame frame,
-        LogSetting logSettings)
+        LogSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
     {
-        this.LoadObject(level, id, message, frame, logSettings);
+        this.LoadObject(level, id, message, frame, logSettings, webApplicationHttpContext);
     }
 
     /// <summary>
@@ -92,14 +95,18 @@ public class MessageDetail
     /// <param name="logSettings">
     /// Log settings.
     /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
+    /// </param>
     private void LoadObject(Level level, string id, string message,
-        StackFrame frame, LogSetting logSettings)
+        StackFrame frame, LogSetting logSettings,
+        WebApplicationHttpContext webApplicationHttpContext)
     {
         this.Date = DateTime.Now;
         this.Level = level;
         this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
         this.Message = message;
-        this.LoadInformation(logSettings, frame);
+        this.LoadInformation(logSettings, frame, webApplicationHttpContext);
     }
 
     /// <summary>
@@ -111,13 +118,25 @@ public class MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    private void LoadInformation(LogSetting logSettings, StackFrame frame)
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
+    /// </param>
+    private void LoadInformation(LogSetting logSettings, StackFrame frame,
+        WebApplicationHttpContext webApplicationHttpContext)
     {
         try
         {
             if (logSettings.LogApplicationInformation)
             {
-                this.ApplicationInformation = new Application(true);
+                if (webApplicationHttpContext.IsNotNull())
+                {
+                    this.WebApplicationInformation = webApplicationHttpContext
+                        .ToWebApplication();
+                }
+                else
+                {
+                    this.ApplicationInformation = new Application(true);
+                }
             }
             if (logSettings.LogMachineInformation)
             {

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
-using System.Text;
 
 namespace Roy.Logging.MVC.Extensions;
 
@@ -50,7 +49,7 @@ public static class WebApplicationHttpContextExtensions
                 }
                 if (context.Request.Host.IsNotNull())
                 {
-                    webAppContext.DomainName = context.Request.Host.Value;
+                    webAppContext.UserDomainName = context.Request.Host.Value;
                 }
                 webAppContext.IsSecureConnection = context.Request.IsHttps;
                 webAppContext.CookiesValues = WebApplicationHttpContextExtensions
