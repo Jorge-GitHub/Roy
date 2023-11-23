@@ -30,7 +30,7 @@ public class Application
     /// <summary>
     /// Flag that determinate whether the application is executing in full trust.
     /// </summary>
-    public bool IsFullyTrusted { get; set; }
+    public bool? IsFullyTrusted { get; set; }
     /// <summary>
     /// Flag that determinate whether the object failed to load.
     /// </summary>
