@@ -91,12 +91,12 @@ public class Machine
     {
         if (OperatingSystem.IsWindows())
         {
-            return StringValues.Windows;
+            return StringValue.Windows;
         }
         if (OperatingSystem.IsLinux())
         {
-            return StringValues.Linux;
+            return StringValue.Linux;
         }
-        return StringValues.Other;
+        return StringValue.Other;
     }
 }

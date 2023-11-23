@@ -3,7 +3,7 @@
 /// <summary>
 /// String values.
 /// </summary>
-public struct StringValues
+public struct StringValue
 {
     /// <summary>
     /// Long date format.

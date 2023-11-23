@@ -28,8 +28,8 @@ internal class WindowsEvent
         EventLog eventLog = null;
         try
         {
-            eventLog = new EventLog(StringValues.ApplicationLogName);
-            eventLog.Source = StringValues.ApplicationLogName;
+            eventLog = new EventLog(StringValue.ApplicationLogName);
+            eventLog.Source = StringValue.ApplicationLogName;
             eventLog.WriteEntry(message.LimitLength(31000),
                level.ToEventLogEntryType());
         }

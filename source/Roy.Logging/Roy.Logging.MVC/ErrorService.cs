@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
 using Roy.Logging.MVC.Domain.Program;
+using Roy.Logging.MVC.Extensions;
 
 namespace Roy.Logging.MVC;
 
@@ -22,9 +24,10 @@ internal static class ErrorService
         {
             try
             {
+                WebApplicationHttpContext webAppContect = null;
                 if (LogExtension.Settings.Exception.LogSettings.LogApplicationInformation)
                 {
-                    MVCWebApplication application = new MVCWebApplication(context);
+                    webAppContect = context.ToWebApplicationHttpContext();
                 }
                 var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                 if (contextFeature != null)

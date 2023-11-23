@@ -110,7 +110,7 @@ internal class LinuxEvent
     private void SysLog(List<string> lines, Level level)
     {
  
-        this.WriteLinesOnSysLog(this.GetSysLogLevel(level), lines, StringValues.Roy);
+        this.WriteLinesOnSysLog(this.GetSysLogLevel(level), lines, StringValue.Roy);
     }
 
     /// <summary>
