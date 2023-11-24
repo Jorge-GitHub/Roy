@@ -9,6 +9,7 @@ using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace Roy.Logging.Aspect.Email.Helpers;
 
@@ -83,9 +84,51 @@ internal class MessageDecorator
             StringValue.LogDateFormat));
         body.Replace(Tags.Level, bodyDetail.Level.ToCurrentCultureString(culture));
         body.Replace(Tags.CurrentYear, DateTime.Now.Year.ToString());
-        this.PopulateMethodInformation(body, bodyDetail.StackFrame);
-        this.PopulateMachineInformation(body, bodyDetail.MachineInformation, culture);
-        this.PopulateApplicationInformation(body, bodyDetail, culture);
+        this.PopulateInformationDetails(body, bodyDetail, culture, settings);
+    }
+
+    /// <summary>
+    /// Populate the information details.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the tags to be replaced.
+    /// </param>
+    /// <param name="bodyDetail">
+    /// Object used to populate the body message.
+    /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
+    private void PopulateInformationDetails(StringBuilder body,
+        MessageDetail bodyDetail, CultureInfo culture, LogSetting settings)
+    {
+        if (settings.LogMethodInformation)
+        {
+            this.PopulateMethodInformation(body, bodyDetail.StackFrame);
+        }
+        else
+        {
+
+        }
+        if (settings.LogMachineInformation)
+        {
+            this.PopulateMachineInformation(body, bodyDetail.MachineInformation, culture);
+        }
+        else
+        {
+
+        }
+        if (settings.LogApplicationInformation)
+        {
+            this.PopulateApplicationInformation(body, bodyDetail, culture);
+        }
+        else
+        {
+
+        }
     }
 
     /// <summary>

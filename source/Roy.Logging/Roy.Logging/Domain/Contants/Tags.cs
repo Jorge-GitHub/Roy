@@ -165,4 +165,20 @@ public struct Tags
     /// Id tag for replacing the web application user preference language value on the HTML template.
     /// </summary>
     public const string WebApplicationUserLanguagePreferences = "*|WebApplication_UserLanguagePreferences|*";
+    /// <summary>
+    /// Id tag that use to know where the method information sections starts.
+    /// </summary>
+    public const string MethodStartTag = "<!--*|MethodSTART|*-->";
+    /// <summary>
+    /// Id tag that use to know where the method information sections ends.
+    /// </summary>
+    public const string MethodEndTag = "<!--*|MethodEND|*-->";
+    /// <summary>
+    /// Id tag that use to know where the machine information sections starts.
+    /// </summary>
+    public const string MachineStartTag = "<!--*|MachineSTART|*-->";
+    /// <summary>
+    /// Id tag that use to know where the machine information sections ends.
+    /// </summary>
+    public const string MachineEndTag = "<!--*|MachineEND|*-->";
 }
