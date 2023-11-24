@@ -61,6 +61,60 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Friendly Name.
+        /// </summary>
+        public static string ApplicationFriendlyName {
+            get {
+                return ResourceManager.GetString("ApplicationFriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Information.
+        /// </summary>
+        public static string ApplicationInformationHeader {
+            get {
+                return ResourceManager.GetString("ApplicationInformationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is Debugging Enabled.
+        /// </summary>
+        public static string ApplicationIsDebuggingEnabled {
+            get {
+                return ResourceManager.GetString("ApplicationIsDebuggingEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is Fully Trusted.
+        /// </summary>
+        public static string ApplicationIsFullyTrusted {
+            get {
+                return ResourceManager.GetString("ApplicationIsFullyTrusted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Physical Path.
+        /// </summary>
+        public static string ApplicationPhysicalApplicationPath {
+            get {
+                return ResourceManager.GetString("ApplicationPhysicalApplicationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Domain Name.
+        /// </summary>
+        public static string ApplicationUserDomainName {
+            get {
+                return ResourceManager.GetString("ApplicationUserDomainName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assembly Location:.
         /// </summary>
         public static string AssemblyLocationTag {

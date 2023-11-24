@@ -30,7 +30,7 @@ public class Application
     /// <summary>
     /// Flag that determinate whether the application is executing in full trust.
     /// </summary>
-    public bool? IsFullyTrusted { get; set; }
+    public bool IsFullyTrusted { get; set; }
     /// <summary>
     /// Network domain name associated with the current user.
     /// </summary>

@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationFriendlyName" xml:space="preserve">
+    <value>Friendly Name</value>
+  </data>
+  <data name="ApplicationInformationHeader" xml:space="preserve">
+    <value>Application Information</value>
+  </data>
+  <data name="ApplicationIsDebuggingEnabled" xml:space="preserve">
+    <value>Is Debugging Enabled</value>
+  </data>
+  <data name="ApplicationIsFullyTrusted" xml:space="preserve">
+    <value>Is Fully Trusted</value>
+  </data>
+  <data name="ApplicationPhysicalApplicationPath" xml:space="preserve">
+    <value>Physical Path</value>
+  </data>
+  <data name="ApplicationUserDomainName" xml:space="preserve">
+    <value>User Domain Name</value>
+  </data>
   <data name="AssemblyLocationTag" xml:space="preserve">
     <value>Assembly Location:</value>
   </data>

@@ -257,4 +257,52 @@ public struct EmailLabel
     /// Id tag for replacing method information header label on the HTML template.
     /// </summary>
     public const string MethodParameters = "MethodParameters";
+    /// <summary>
+    /// Id tag for replacing the application information header label on the HTML template.
+    /// </summary>
+    public const string ApplicationInformationHeaderTag = "*|ApplicationInformationHeader|*";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running on debugging mode or not label on the HTML template.
+    /// </summary>
+    public const string ApplicationIsDebuggingEnabledTag = "*|ApplicationIsDebuggingEnabled|*";
+    /// <summary>
+    /// Id tag for replacing the application physical path label on the HTML template.
+    /// </summary>
+    public const string ApplicationPhysicalApplicationPathTag = "*|ApplicationPhysicalApplicationPath|*";
+    /// <summary>
+    /// Id tag for replacing the application friendly name label on the HTML template.
+    /// </summary>
+    public const string ApplicationFriendlyNameTag = "*|ApplicationFriendlyName|*";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running in trust mode or not label on the HTML template.
+    /// </summary>
+    public const string ApplicationIsFullyTrustedTag = "*|ApplicationIsFullyTrusted|*";
+    /// <summary>
+    /// Id tag for replacing the application user domain name label on the HTML template.
+    /// </summary>
+    public const string ApplicationUserDomainNameTag = "*|ApplicationUserDomainName|*";
+    /// <summary>
+    /// Id tag for replacing the application information header label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationInformationHeader = "ApplicationInformationHeader";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running on debugging mode or not label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationIsDebuggingEnabled = "ApplicationIsDebuggingEnabled";
+    /// <summary>
+    /// Id tag for replacing the application physical path label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationPhysicalApplicationPath = "ApplicationPhysicalApplicationPath";
+    /// <summary>
+    /// Id tag for replacing the application friendly name label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationFriendlyName = "ApplicationFriendlyName";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running in trust mode or not label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationIsFullyTrusted = "ApplicationIsFullyTrusted";
+    /// <summary>
+    /// Id tag for replacing the application user domain name label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationUserDomainName = "ApplicationUserDomainName";
 }

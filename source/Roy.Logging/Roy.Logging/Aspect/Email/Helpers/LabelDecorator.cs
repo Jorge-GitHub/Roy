@@ -40,9 +40,9 @@ internal class LabelDecorator
             .GetString(EmailLabel.FullIssueInJSONFormat, culture));
         body.Replace(EmailLabel.CopyrightTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.Copyright, culture));
-
         this.ReplaceMachineInformationLabels(body, culture);
         this.ReplaceMethodInformationLabels(body, culture);
+        this.ReplaceApplicationInformationLabels(body, culture);
 
         if (isAnException)
         {
@@ -158,4 +158,52 @@ internal class LabelDecorator
             EmailLabels.ResourceManager.GetString(
                 EmailLabel.MethodParameters, culture));
     }
+
+
+    /// <summary>
+    /// Replace the application information labels.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the HTML with the labels to be replaced.
+    /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void ReplaceApplicationInformationLabels(StringBuilder body, CultureInfo culture)
+    {
+        body.Replace(EmailLabel.ApplicationInformationHeaderTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.ApplicationInformationHeader, culture));
+        body.Replace(EmailLabel.ApplicationIsDebuggingEnabledTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.ApplicationIsDebuggingEnabled, culture));
+        body.Replace(EmailLabel.ApplicationPhysicalApplicationPathTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.ApplicationPhysicalApplicationPath, culture));
+        body.Replace(EmailLabel.ApplicationFriendlyNameTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.ApplicationFriendlyName, culture));
+        body.Replace(EmailLabel.ApplicationIsFullyTrustedTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.ApplicationIsFullyTrusted, culture));
+        body.Replace(EmailLabel.ApplicationUserDomainNameTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.ApplicationUserDomainName, culture));
+        this.ReplaceWebApplicationInformationLabels(body, culture);
+    }
+
+    /// <summary>
+    /// Replace the web application information labels.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the HTML with the labels to be replaced.
+    /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void ReplaceWebApplicationInformationLabels(StringBuilder body, CultureInfo culture)
+    {
+
+    }
+
 }

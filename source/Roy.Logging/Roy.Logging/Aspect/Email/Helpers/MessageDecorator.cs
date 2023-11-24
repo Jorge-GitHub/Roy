@@ -9,7 +9,6 @@ using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 
 namespace Roy.Logging.Aspect.Email.Helpers;
 
@@ -321,10 +320,12 @@ internal class MessageDecorator
             else
             {
                 body.Replace(Tags.AssemblyLocation, application.AssemblyLocation);
-                body.Replace(Tags.ApplicationIsDebuggingEnabled, application.IsDebuggingEnabled.ToString());
+                body.Replace(Tags.ApplicationIsDebuggingEnabled, 
+                    this.TagHelper.GetCultureTrueOrFalse(application.IsDebuggingEnabled, culture));
                 body.Replace(Tags.ApplicationPhysicalApplicationPath, application.PhysicalApplicationPath);
                 body.Replace(Tags.ApplicationFriendlyName, application.FriendlyName);
-                body.Replace(Tags.ApplicationIsFullyTrusted, application.IsFullyTrusted.ToString());
+                body.Replace(Tags.ApplicationIsFullyTrusted,
+                    this.TagHelper.GetCultureTrueOrFalse(application.IsFullyTrusted, culture));
                 body.Replace(Tags.ApplicationUserDomainName, application.UserDomainName);
                 body.Replace(Tags.ApplicationUserName, application.UserName);
             }
@@ -364,7 +365,8 @@ internal class MessageDecorator
             body.Replace(Tags.WebApplicationCurrentURLParameters, webApplication.CurrentURLParameters);
             body.Replace(Tags.WebApplicationPreviousURL, webApplication.PreviousURL);
             body.Replace(Tags.WebApplicationUserHostIP, webApplication.UserHostIP);
-            body.Replace(Tags.WebApplicationIsSecureConnection, webApplication.IsSecureConnection.ToString());
+            body.Replace(Tags.WebApplicationIsSecureConnection,
+                this.TagHelper.GetCultureTrueOrFalse(webApplication.IsSecureConnection, culture));
             body.Replace(Tags.WebApplicationUserDomainName, webApplication.UserDomainName);
             body.Replace(Tags.WebApplicationCookiesValues, webApplication.CookiesValues
                 .ToStringStringBuilder().ToString());

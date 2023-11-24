@@ -58,7 +58,12 @@ Easy to use.</PackageReleaseNotes>
       <AutoGen>True</AutoGen>
       <DependentUpon>EmailLabels.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Languages\LevelLabel.Designer.cs">
+    <Compile Update="Resources\Languages\General.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>General.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Languages\Level\LevelLabel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>LevelLabel.resx</DependentUpon>
@@ -75,7 +80,11 @@ Easy to use.</PackageReleaseNotes>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmailLabels.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Languages\LevelLabel.resx">
+    <EmbeddedResource Update="Resources\Languages\General.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>General.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Languages\Level\LevelLabel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LevelLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>

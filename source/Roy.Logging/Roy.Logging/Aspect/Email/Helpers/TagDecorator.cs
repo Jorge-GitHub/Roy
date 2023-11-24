@@ -1,4 +1,7 @@
 ﻿using Avalon.Base.Extension.Collections;
+using Roy.Logging.Domain.Contants;
+using Roy.Logging.Resources.Languages;
+using System.Globalization;
 using System.Text;
 
 namespace Roy.Logging.Aspect.Email.Helpers;
@@ -45,6 +48,30 @@ internal class TagDecorator
         params string[] tags)
     {
         this.SetTagDetails(body, failedToLoadText, tags);
+    }
+
+    /// <summary>
+    /// Get the language version for true or false.
+    /// </summary>
+    /// <param name="value">
+    /// Flag that determinate whether to return true or false.
+    /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    /// <returns>
+    /// Language version for true or false.
+    /// </returns>
+    public string GetCultureTrueOrFalse(bool value, CultureInfo culture)
+    {
+        if (value)
+        {
+            return General.ResourceManager.GetString(
+                GeneralLabel.True, culture);
+        }
+
+        return General.ResourceManager.GetString(
+            GeneralLabel.False, culture);
     }
 
     /// <summary>
