@@ -1,5 +1,6 @@
 ﻿using Roy.Logging.Aspect.Email.Helpers;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Attributes;
 using System.Globalization;
 using System.Text;
 
@@ -22,14 +23,18 @@ internal class Decorator
     /// <param name="culture">
     /// Culture info.
     /// </param>
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
     /// <returns>
     /// Message to be send to the user.
     /// </returns>
-    public string GenerateBody(string content, MessageDetail bodyDetail, CultureInfo culture)
+    public string GenerateBody(string content, MessageDetail bodyDetail, 
+        CultureInfo culture, LogSetting settings)
     {
         StringBuilder body = new StringBuilder(content);
         new LabelDecorator().Decorate(body, bodyDetail is ExceptionDetail, culture);
-        new MessageDecorator().Decorate(body, bodyDetail, culture);
+        new MessageDecorator().Decorate(body, bodyDetail, culture, settings);
 
         return body.ToString();
     }

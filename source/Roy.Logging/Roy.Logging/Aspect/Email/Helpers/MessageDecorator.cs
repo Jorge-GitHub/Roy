@@ -3,6 +3,7 @@ using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
+using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Extensions;
 using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Globalization;
@@ -41,12 +42,13 @@ internal class MessageDecorator
     /// <param name="culture">
     /// Culture info.
     /// </param>
-    /// <returns>
-    /// Message to be send to the user.
-    /// </returns>
-    public void Decorate(StringBuilder body, MessageDetail bodyDetail, CultureInfo culture)
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
+    public void Decorate(StringBuilder body, MessageDetail bodyDetail, 
+        CultureInfo culture, LogSetting settings)
     {
-        this.PopulateMessageDetails(body, bodyDetail, culture);
+        this.PopulateMessageDetails(body, bodyDetail, culture, settings);
         if (bodyDetail is ExceptionDetail)
         {
             this.PopulateExceptionDetails(body, (ExceptionDetail)bodyDetail);
@@ -69,8 +71,11 @@ internal class MessageDecorator
     /// <param name="culture">
     /// Culture info.
     /// </param>
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
     private void PopulateMessageDetails(StringBuilder body, 
-        MessageDetail bodyDetail, CultureInfo culture)
+        MessageDetail bodyDetail, CultureInfo culture, LogSetting settings)
     {
         body.Replace(Tags.Id, bodyDetail.Id);
         body.Replace(Tags.Message, bodyDetail.Message);
