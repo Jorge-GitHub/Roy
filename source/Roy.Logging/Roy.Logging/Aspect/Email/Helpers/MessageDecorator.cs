@@ -8,7 +8,6 @@ using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 
 namespace Roy.Logging.Aspect.Email.Helpers;
 
