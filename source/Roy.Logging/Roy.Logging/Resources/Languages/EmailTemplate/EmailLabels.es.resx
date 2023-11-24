@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationFriendlyName" xml:space="preserve">
-    <value>Nombre amigable</value>
+    <value>Nombre Amigable</value>
   </data>
   <data name="ApplicationInformationHeader" xml:space="preserve">
-    <value>Información de la aplicación</value>
+    <value>Información de la Aplicación</value>
   </data>
   <data name="ApplicationIsDebuggingEnabled" xml:space="preserve">
-    <value>Está habilitada la depuración</value>
+    <value>Está Habilitada la Depuración</value>
   </data>
   <data name="ApplicationIsFullyTrusted" xml:space="preserve">
-    <value>Es de plena confianza</value>
+    <value>Es de Plena Confianza</value>
   </data>
   <data name="ApplicationPhysicalApplicationPath" xml:space="preserve">
-    <value>Localización de la aplicación</value>
+    <value>Localización de la Aplicación</value>
   </data>
   <data name="ApplicationUserDomainName" xml:space="preserve">
-    <value>Nombre de dominio del usuario</value>
+    <value>Nombre de Dominio del Usuario</value>
   </data>
   <data name="AssemblyLocationTag" xml:space="preserve">
     <value>Lugar de Montaje:</value>
@@ -187,19 +187,19 @@
     <value>INFORMACIÓN DE REGISTRO</value>
   </data>
   <data name="MethodCallerFileName" xml:space="preserve">
-    <value>Nombre del archivo del llamador del método</value>
+    <value>Nombre del Archivo del Llamador del Método</value>
   </data>
   <data name="MethodCallerLineNumber" xml:space="preserve">
-    <value>Método Número de línea de la persona que llama</value>
+    <value>Número de Línea de el Método que Llama</value>
   </data>
   <data name="MethodCallerMethodName" xml:space="preserve">
-    <value>Nombre del método que llama al método</value>
+    <value>Nombre del Método que Llama al Método</value>
   </data>
   <data name="MethodInformationHeader" xml:space="preserve">
-    <value>Información del método</value>
+    <value>Información del Método</value>
   </data>
   <data name="MethodParameters" xml:space="preserve">
-    <value>Parámetros del método</value>
+    <value>Parámetros del Método</value>
   </data>
   <data name="OperativeSystem" xml:space="preserve">
     <value>Sistema Operativo:</value>
@@ -233,5 +233,32 @@
   </data>
   <data name="ValueLoggedInJSONFormat" xml:space="preserve">
     <value>Valor Registrado en Formato JSON:</value>
+  </data>
+  <data name="WebApplicationCookiesValues" xml:space="preserve">
+    <value>Valores de las Cookies</value>
+  </data>
+  <data name="WebApplicationCurrentURL" xml:space="preserve">
+    <value>URL Actual</value>
+  </data>
+  <data name="WebApplicationCurrentURLParameters" xml:space="preserve">
+    <value>Parámetros de URL Actuales</value>
+  </data>
+  <data name="WebApplicationHeadersValues" xml:space="preserve">
+    <value>Valores de Encabezados</value>
+  </data>
+  <data name="WebApplicationIsSecureConnection" xml:space="preserve">
+    <value>Conexión Segura</value>
+  </data>
+  <data name="WebApplicationPreviousURL" xml:space="preserve">
+    <value>URL Anterior</value>
+  </data>
+  <data name="WebApplicationUserDomainName" xml:space="preserve">
+    <value>Dominio de Usuario</value>
+  </data>
+  <data name="WebApplicationUserHostIP" xml:space="preserve">
+    <value>IP de Usuario</value>
+  </data>
+  <data name="WebApplicationUserLanguagePreferences" xml:space="preserve">
+    <value>Idioma Preferido del Usuario</value>
   </data>
 </root>

@@ -110,7 +110,7 @@ internal class MessageDecorator
         }
         else
         {
-
+            this.RemoveMethodInformationSection(body);
         }
         if (settings.LogMachineInformation)
         {
@@ -118,7 +118,7 @@ internal class MessageDecorator
         }
         else
         {
-
+            this.RemoveMachineInformationSection(body);
         }
         if (settings.LogApplicationInformation)
         {
@@ -126,7 +126,7 @@ internal class MessageDecorator
         }
         else
         {
-
+            this.RemoveApplicationInformationSection(body);
         }
     }
 
@@ -287,8 +287,8 @@ internal class MessageDecorator
         }
         else
         {
-            this.PopulateApplicationInformation(body, bodyDetail.ApplicationInformation, 
-                culture);
+            this.PopulateApplicationInformation(body, 
+                bodyDetail.ApplicationInformation, culture);
             this.CleanWebApplicationInformationDetails(body);
         }
     }
@@ -385,5 +385,49 @@ internal class MessageDecorator
     private void CleanWebApplicationInformationDetails(StringBuilder body)
     {
         this.TagHelper.CleanTagDetails(body, TagsList.WebApplicationTags);
+    }
+
+    /// <summary>
+    /// Remove the method information section.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the tags to be replaced.
+    /// </param>
+    private void RemoveMethodInformationSection(StringBuilder body)
+    {
+
+    }
+
+    /// <summary>
+    /// Remove the machine information section.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the tags to be replaced.
+    /// </param>
+    private void RemoveMachineInformationSection(StringBuilder body)
+    {
+
+    }
+
+    /// <summary>
+    /// Remove the application information section.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the tags to be replaced.
+    /// </param>
+    private void RemoveApplicationInformationSection(StringBuilder body)
+    {
+        this.RemoveWebApplicationInformationSection(body);
+    }
+
+    /// <summary>
+    /// Remove the web application information section.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the tags to be replaced.
+    /// </param>
+    private void RemoveWebApplicationInformationSection(StringBuilder body)
+    {
+
     }
 }

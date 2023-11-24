@@ -121,13 +121,13 @@
     <value>Freundlicher Name</value>
   </data>
   <data name="ApplicationInformationHeader" xml:space="preserve">
-    <value>Bewerbungs informationen</value>
+    <value>Bewerbungs Informationen</value>
   </data>
   <data name="ApplicationIsDebuggingEnabled" xml:space="preserve">
     <value>Ist das Debuggen aktiviert?</value>
   </data>
   <data name="ApplicationIsFullyTrusted" xml:space="preserve">
-    <value>Ist voll vertrauenswürdig</value>
+    <value>Ist Voll Vertrauenswürdig</value>
   </data>
   <data name="ApplicationPhysicalApplicationPath" xml:space="preserve">
     <value>Physischer Weg</value>
@@ -233,5 +233,32 @@
   </data>
   <data name="ValueLoggedInJSONFormat" xml:space="preserve">
     <value>Im JSON-Format protokollierter Wert:</value>
+  </data>
+  <data name="WebApplicationCookiesValues" xml:space="preserve">
+    <value>Cookies-Werte</value>
+  </data>
+  <data name="WebApplicationCurrentURL" xml:space="preserve">
+    <value>Aktuelle URL</value>
+  </data>
+  <data name="WebApplicationCurrentURLParameters" xml:space="preserve">
+    <value>Aktuelle URL-Parameter</value>
+  </data>
+  <data name="WebApplicationHeadersValues" xml:space="preserve">
+    <value>Header-Werte</value>
+  </data>
+  <data name="WebApplicationIsSecureConnection" xml:space="preserve">
+    <value>Sichere Verbindung</value>
+  </data>
+  <data name="WebApplicationPreviousURL" xml:space="preserve">
+    <value>Vorherige URL</value>
+  </data>
+  <data name="WebApplicationUserDomainName" xml:space="preserve">
+    <value>Benutzerdomäne</value>
+  </data>
+  <data name="WebApplicationUserHostIP" xml:space="preserve">
+    <value>Benutzer-IP</value>
+  </data>
+  <data name="WebApplicationUserLanguagePreferences" xml:space="preserve">
+    <value>Vom Benutzer bevorzugte Sprache</value>
   </data>
 </root>

@@ -203,7 +203,33 @@ internal class LabelDecorator
     /// </param>
     private void ReplaceWebApplicationInformationLabels(StringBuilder body, CultureInfo culture)
     {
-
+        body.Replace(EmailLabel.WebApplicationCurrentURLTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationCurrentURL, culture));
+        body.Replace(EmailLabel.WebApplicationCurrentURLParametersTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationCurrentURLParameters, culture));
+        body.Replace(EmailLabel.WebApplicationPreviousURLTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationPreviousURL, culture));
+        body.Replace(EmailLabel.WebApplicationUserHostIPTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationUserHostIPTag, culture));
+        body.Replace(EmailLabel.WebApplicationIsSecureConnectionTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationIsSecureConnectionTag, culture));
+        body.Replace(EmailLabel.WebApplicationUserDomainNameTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationUserDomainName, culture));
+        body.Replace(EmailLabel.WebApplicationUserLanguagePreferencesTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationUserLanguagePreferences, culture));
+        body.Replace(EmailLabel.WebApplicationCookiesValuesTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationCookiesValues, culture));
+        body.Replace(EmailLabel.WebApplicationHeadersValuesTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.WebApplicationHeadersValues, culture));
     }
 
 }

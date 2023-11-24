@@ -305,4 +305,76 @@ public struct EmailLabel
     /// Id tag for replacing the application user domain name label on the HTML template (Language resource).
     /// </summary>
     public const string ApplicationUserDomainName = "ApplicationUserDomainName";
+    /// <summary>
+    /// Id tag for replacing the web application current URL label on the HTML template.
+    /// </summary>
+    public const string WebApplicationCurrentURLTag = "*|WebApplicationCurrentURL|*";
+    /// <summary>
+    /// Id tag for replacing the web application current URL parameters label on the HTML template.
+    /// </summary>
+    public const string WebApplicationCurrentURLParametersTag = "*|WebApplicationCurrentURLParameters|*";
+    /// <summary>
+    /// Id tag for replacing the web application previous URL label on the HTML template.
+    /// </summary>
+    public const string WebApplicationPreviousURLTag = "*|WebApplicationPreviousURL|*";
+    /// <summary>
+    /// Id tag for replacing the web application current user IP label on the HTML template.
+    /// </summary>
+    public const string WebApplicationUserHostIPTag = "*|WebApplicationUserHostIP|*";
+    /// <summary>
+    /// Id tag for replacing the web application flag that determinate whether connection to the user is secure label on the HTML template.
+    /// </summary>
+    public const string WebApplicationIsSecureConnectionTag = "*|WebApplicationIsSecureConnection|*";
+    /// <summary>
+    /// Id tag for replacing the web application current user domain name label on the HTML template.
+    /// </summary>
+    public const string WebApplicationUserDomainNameTag = "*|WebApplicationUserDomainName|*";
+    /// <summary>
+    /// Id tag for replacing the web application current user prefer language label on the HTML template.
+    /// </summary>
+    public const string WebApplicationUserLanguagePreferencesTag = "*|WebApplicationUserLanguagePreferences|*";
+    /// <summary>
+    /// Id tag for replacing the web application cookies label on the HTML template.
+    /// </summary>
+    public const string WebApplicationCookiesValuesTag = "*|WebApplicationCookiesValues|*";
+    /// <summary>
+    /// Id tag for replacing the web application header label on the HTML template.
+    /// </summary>
+    public const string WebApplicationHeadersValuesTag = "*|WebApplicationHeadersValues|*";
+    /// <summary>
+    /// Id tag for replacing the web application current URL label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationCurrentURL = "WebApplicationCurrentURL";
+    /// <summary>
+    /// Id tag for replacing the web application current URL parameters label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationCurrentURLParameters = "WebApplicationCurrentURLParameters";
+    /// <summary>
+    /// Id tag for replacing the web application previous URL label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationPreviousURL = "WebApplicationPreviousURL";
+    /// <summary>
+    /// Id tag for replacing the web application current user IP label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationUserHostIP = "WebApplicationUserHostIP";
+    /// <summary>
+    /// Id tag for replacing the web application flag that determinate whether connection to the user is secure label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationIsSecureConnection = "WebApplicationIsSecureConnection";
+    /// <summary>
+    /// Id tag for replacing the web application current user domain name label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationUserDomainName = "WebApplicationUserDomainName";
+    /// <summary>
+    /// Id tag for replacing the web application current user preferred language label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationUserLanguagePreferences = "WebApplicationUserLanguagePreferences";
+    /// <summary>
+    /// Id tag for replacing the web application cookies label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationCookiesValues = "WebApplicationCookiesValues";
+    /// <summary>
+    /// Id tag for replacing the web application header label on the HTML template(Language resource) .
+    /// </summary>
+    public const string WebApplicationHeadersValues = "WebApplicationHeadersValues";
 }
