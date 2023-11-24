@@ -42,6 +42,7 @@ internal class LabelDecorator
             .GetString(EmailLabel.Copyright, culture));
 
         this.ReplaceMachineInformationLabels(body, culture);
+        this.ReplaceMethodInformationLabels(body, culture);
 
         if (isAnException)
         {
@@ -128,5 +129,33 @@ internal class LabelDecorator
             .GetString(EmailLabel.UserAccountName, culture));
         body.Replace(EmailLabel.OperativeSystemVersionTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.OperativeSystemVersion, culture));
+    }
+
+    /// <summary>
+    /// Replace the method information labels.
+    /// </summary>
+    /// <param name="body">
+    /// String containing the HTML with the labels to be replaced.
+    /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void ReplaceMethodInformationLabels(StringBuilder body, CultureInfo culture)
+    {
+        body.Replace(EmailLabel.MethodInformationHeaderTag, 
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.MethodInformationHeader, culture));
+        body.Replace(EmailLabel.MethodCallerFileNameTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.MethodCallerFileName, culture));
+        body.Replace(EmailLabel.MethodCallerMethodNameTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.MethodCallerMethodName, culture));
+        body.Replace(EmailLabel.MethodCallerLineNumberTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.MethodCallerLineNumber, culture));
+        body.Replace(EmailLabel.MethodParametersTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.MethodParameters, culture));
     }
 }

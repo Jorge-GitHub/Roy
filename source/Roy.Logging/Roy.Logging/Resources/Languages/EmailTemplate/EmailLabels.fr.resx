@@ -168,6 +168,21 @@
   <data name="LogInformationHeader" xml:space="preserve">
     <value>INFORMATIONS DU JOURNAL</value>
   </data>
+  <data name="MethodCallerFileName" xml:space="preserve">
+    <value>Nom du fichier de l'appelant de la méthode</value>
+  </data>
+  <data name="MethodCallerLineNumber" xml:space="preserve">
+    <value>Numéro de ligne de l'appelant de la méthode</value>
+  </data>
+  <data name="MethodCallerMethodName" xml:space="preserve">
+    <value>Nom de la méthode de l’appelant de la méthode</value>
+  </data>
+  <data name="MethodInformationHeader" xml:space="preserve">
+    <value>Informations sur la méthode</value>
+  </data>
+  <data name="MethodParameters" xml:space="preserve">
+    <value>Paramètres de la méthode</value>
+  </data>
   <data name="OperativeSystem" xml:space="preserve">
     <value>Système opérationnel:</value>
   </data>

@@ -217,4 +217,44 @@ public struct EmailLabel
     /// Id tag for replacing value logged in JSON format label on the HTML template.
     /// </summary>
     public const string LevelTag = "*|Level|*";
+    /// <summary>
+    /// Id tag for replacing the method information header label on the HTML template.
+    /// </summary>
+    public const string MethodInformationHeaderTag = "*|MethodInformationHeader|*";
+    /// <summary>
+    /// Id tag for replacing the method caller file name label on the HTML template.
+    /// </summary>
+    public const string MethodCallerFileNameTag = "*|MethodCallerFileName|*";
+    /// <summary>
+    /// Id tag for replacing the method caller name label on the HTML template.
+    /// </summary>
+    public const string MethodCallerMethodNameTag = "*|MethodCallerMethodName|*";
+    /// <summary>
+    /// Id tag for replacing the method caller line number label on the HTML template.
+    /// </summary>
+    public const string MethodCallerLineNumberTag = "*|MethodCallerLineNumber|*";
+    /// <summary>
+    /// Id tag for replacing the method caller parameters label on the HTML template.
+    /// </summary>
+    public const string MethodParametersTag = "*|MethodParameters|*";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodInformationHeader = "MethodInformationHeaderHeader";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodCallerFileName = "MethodCallerFileName";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodCallerMethodName = "MethodCallerMethodName";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodCallerLineNumber = "MethodCallerLineNumber";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodParameters = "MethodParameters";
 }

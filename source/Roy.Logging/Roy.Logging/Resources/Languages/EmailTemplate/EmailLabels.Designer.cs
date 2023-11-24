@@ -214,6 +214,51 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Method Caller File Name.
+        /// </summary>
+        public static string MethodCallerFileName {
+            get {
+                return ResourceManager.GetString("MethodCallerFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Caller Line Number.
+        /// </summary>
+        public static string MethodCallerLineNumber {
+            get {
+                return ResourceManager.GetString("MethodCallerLineNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Caller Method Name.
+        /// </summary>
+        public static string MethodCallerMethodName {
+            get {
+                return ResourceManager.GetString("MethodCallerMethodName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Information.
+        /// </summary>
+        public static string MethodInformationHeader {
+            get {
+                return ResourceManager.GetString("MethodInformationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Parameters.
+        /// </summary>
+        public static string MethodParameters {
+            get {
+                return ResourceManager.GetString("MethodParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operative System:.
         /// </summary>
         public static string OperativeSystem {
