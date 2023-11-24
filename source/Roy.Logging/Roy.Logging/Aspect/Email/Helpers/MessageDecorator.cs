@@ -1,4 +1,5 @@
 ﻿using Avalon.Base.Extension.Collections;
+using Avalon.Base.Extension.System.Text;
 using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
@@ -395,7 +396,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveMethodInformationSection(StringBuilder body)
     {
-
+        body.RemoveBetween(Tags.MethodStartTag, Tags.MethodEndTag);
     }
 
     /// <summary>
@@ -406,7 +407,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveMachineInformationSection(StringBuilder body)
     {
-
+        body.RemoveBetween(Tags.MachineStartTag, Tags.MachineEndTag);
     }
 
     /// <summary>
@@ -417,6 +418,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveApplicationInformationSection(StringBuilder body)
     {
+        body.RemoveBetween(Tags.ApplicationStartTag, Tags.ApplicationEndTag);
         this.RemoveWebApplicationInformationSection(body);
     }
 
@@ -428,6 +430,6 @@ internal class MessageDecorator
     /// </param>
     private void RemoveWebApplicationInformationSection(StringBuilder body)
     {
-
+        body.RemoveBetween(Tags.WebApplicationStartTag, Tags.WebApplicationEndTag);
     }
 }

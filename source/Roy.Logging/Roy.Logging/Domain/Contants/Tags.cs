@@ -181,4 +181,20 @@ public struct Tags
     /// Id tag that use to know where the machine information sections ends.
     /// </summary>
     public const string MachineEndTag = "<!--*|MachineEND|*-->";
+    /// <summary>
+    /// Id tag that use to know where the application information sections starts.
+    /// </summary>
+    public const string ApplicationStartTag = "<!--*|ApplicationSTART|*-->";
+    /// <summary>
+    /// Id tag that use to know where the application information sections ends.
+    /// </summary>
+    public const string ApplicationEndTag = "<!--*|ApplicationEND|*-->";
+    /// <summary>
+    /// Id tag that use to know where the web application information sections starts.
+    /// </summary>
+    public const string WebApplicationStartTag = "<!--*|WebApplicationSTART|*-->";
+    /// <summary>
+    /// Id tag that use to know where the web application information sections ends.
+    /// </summary>
+    public const string WebApplicationEndTag = "<!--*|WebApplicationEND|*-->";
 }
