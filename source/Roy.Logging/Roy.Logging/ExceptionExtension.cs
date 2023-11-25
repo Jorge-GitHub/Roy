@@ -1,4 +1,6 @@
-﻿using Roy.Logging.Domain.Attributes;
+﻿using Avalon.Base.Extension.Types;
+using Avalon.Base.Extension.Types.BooleanExtensions;
+using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
@@ -267,7 +269,8 @@ public static class ExceptionExtension
         try
         {
             setting = setting ?? LogExtension.Settings;
-            if (exception != null && setting != null && !setting.Log.Disable)
+            if (exception.IsNotNull() && setting.IsNotNull() 
+                && setting.Log.Disable.IsNotTrue())
             {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, listOfParameters, 

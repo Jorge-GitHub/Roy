@@ -1,4 +1,5 @@
 ﻿using Avalon.Base.Extension.Types;
+using Avalon.Base.Extension.Types.BooleanExtensions;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
@@ -150,7 +151,8 @@ public static class LoggerExtension
         try
         {
             setting = setting ?? LogExtension.Settings;
-            if (value != null && setting != null && !setting.Log.Disable)
+            if (value.IsNotNull() && setting.IsNotNull() 
+                && setting.Log.Disable.IsNotTrue())
             {                
                 identity = identity.IsNotNullOrEmpty() ? identity
                     : Guid.NewGuid().ToString("N");
