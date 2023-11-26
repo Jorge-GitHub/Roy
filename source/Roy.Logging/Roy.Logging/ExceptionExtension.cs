@@ -26,8 +26,8 @@ public static class ExceptionExtension
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, LogExtension.Settings, null, null,
-            webApplicationHttpContext, null);
+            string.Empty, string.Empty, LogExtension.Settings, null,
+            webApplicationHttpContext);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public static class ExceptionExtension
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, LogExtension.Settings, frame, null,
+            string.Empty, string.Empty, LogExtension.Settings, frame, 
             webApplicationHttpContext, null);
     }
 
@@ -66,7 +66,7 @@ public static class ExceptionExtension
         RoySetting settings, WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(settings.Exception.DefaultLevel,
-            string.Empty, string.Empty, settings, null, null, 
+            string.Empty, string.Empty, settings, null, 
             webApplicationHttpContext, null);
     }
 
@@ -86,7 +86,7 @@ public static class ExceptionExtension
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, null, null, webApplicationHttpContext, null);
+            LogExtension.Settings, null, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public static class ExceptionExtension
         StackFrame frame, WebApplicationHttpContext? webApplicationHttpContext = null)
     {
         exception.SaveAsync(level, string.Empty, string.Empty,
-            LogExtension.Settings, frame, null, webApplicationHttpContext, null);
+            LogExtension.Settings, frame, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -263,7 +263,7 @@ public static class ExceptionExtension
     public static async void SaveAsync(this Exception exception,
         Level level, string message, string identity, 
         RoySetting setting, StackFrame frame,
-        WebApplicationHttpContext? webApplicationHttpContext = null,
+        WebApplicationHttpContext webApplicationHttpContext,
         params object[] listOfParameters)
     {
         try
