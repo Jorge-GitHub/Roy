@@ -44,10 +44,10 @@ public class LogTest
     [TestMethod]
     public void TestLogSystemInformation()
     {
-        LogExtension.Settings.Log.LoadSystemInformation = true;
+        LogExtension.Settings.Log.LogSettings.LogMethodInformation = true;
         Artist utObject = new UTHelper().GetDefaultSampleObject();
         utObject.LogAsync(new StackFrame(0, true));
-        LogExtension.Settings.Log.LoadSystemInformation = false;
+        LogExtension.Settings.Log.LogSettings.LogMethodInformation = false;
     }
 
     /// <summary>

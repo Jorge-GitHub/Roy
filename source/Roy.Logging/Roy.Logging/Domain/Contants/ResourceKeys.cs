@@ -1,9 +1,6 @@
 ﻿namespace Roy.Logging.Domain.Contants;
 
-/// <summary>
-/// String values.
-/// </summary>
-public struct StringValues
+public struct ResourceKey
 {
     /// <summary>
     /// Id used to get the exception HTML body message from the resources.
@@ -21,16 +18,4 @@ public struct StringValues
     /// Logging subject.
     /// </summary>
     public const string RoyLoginSubject = "RoyLoginSubject";
-    /// <summary>
-    /// Long date format.
-    /// </summary>
-    public const string LogDateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
-    /// <summary>
-    /// Log name used for logging events in the application area.
-    /// </summary>
-    public const string ApplicationLogName = "Application";
-    /// <summary>
-    /// Roy.
-    /// </summary>
-    public const string Roy = "Roy";
 }

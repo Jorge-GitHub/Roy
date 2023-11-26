@@ -34,7 +34,8 @@ internal class RecordService
         {
             if (setting.Emails.HasElements())
             {
-                new EmailService().SendAsync(message, setting.Emails);
+                new EmailService().SendAsync(message, setting.Emails, 
+                    setting.LogSettings);
             }
         }
         catch { }

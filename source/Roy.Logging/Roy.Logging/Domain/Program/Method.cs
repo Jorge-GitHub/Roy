@@ -3,12 +3,12 @@ using Avalon.Base.Extension.Types;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace Roy.Logging.Domain.Application;
+namespace Roy.Logging.Domain.Program;
 
 /// <summary>
 /// Stack frame making the call to the method.
 /// </summary>
-public class Frame
+public class Method
 {
     /// <summary>
     /// File name containing the code being executed. This
@@ -34,7 +34,7 @@ public class Frame
     /// <summary>
     /// Constructor.
     /// </summary>
-    public Frame() { }
+    public Method() { }
 
     /// <summary>
     /// Constructor.
@@ -42,7 +42,7 @@ public class Frame
     /// <param name="frame">
     /// Stack frame containing the caller member information.
     /// </param>
-    public Frame(StackFrame frame) 
+    public Method(StackFrame frame) 
     {
         this.LoadObject(frame);
     }
@@ -55,11 +55,15 @@ public class Frame
     /// </param>
     private void LoadObject(StackFrame frame)
     {
-        if(frame !=null)
+        if(frame.IsNotNull())
         {
-            this.LoadMethodInformation(frame.GetMethod());
-            this.CallerFileName = frame.GetFileName();
-            this.CallerLineNumber = frame.GetFileLineNumber();
+            try
+            {
+                this.LoadMethodInformation(frame.GetMethod());
+                this.CallerFileName = frame.GetFileName();
+                this.CallerLineNumber = frame.GetFileLineNumber();
+            }
+            catch { }
         }
     }
 

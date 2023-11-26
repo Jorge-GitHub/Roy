@@ -48,11 +48,6 @@ public class IssueSetting
     /// </summary>
     public bool Disable { get; set; }
     /// <summary>
-    /// Flag that determinate whether to load the system information or not
-    /// on the exception/log logging.
-    /// </summary>
-    public bool LoadSystemInformation { get; set; }
-    /// <summary>
     /// Flag that determinate whether to save the log in a file or not.
     /// The default value is true.
     /// </summary>
@@ -77,6 +72,10 @@ public class IssueSetting
     /// Logs to log into the system event log. If null or empty, it will log/save any issue.
     /// </summary>
     public List<Level> LevelsToLogOnSystemEvent { get; set; }
+    /// <summary>
+    /// Log settings
+    /// </summary>
+    public LogSetting LogSettings { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -85,7 +84,7 @@ public class IssueSetting
     {
         this.Emails = new List<EmailSetting>();
         this.APIs = new List<APISetting>();
-        this.LoadSystemInformation = true;
+        this.LogSettings = new LogSetting();
         this.DefaultLevel = Level.Error;
         this.LevelsToSaveOnFile = new List<Level>();
         this.LevelsToLogOnSystemEvent = new List<Level>();

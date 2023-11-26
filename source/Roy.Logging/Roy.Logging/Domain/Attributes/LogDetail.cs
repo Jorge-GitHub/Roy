@@ -1,4 +1,6 @@
 ﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Program;
+using Roy.Logging.Domain.Settings.Attributes;
 using System.Diagnostics;
 
 namespace Roy.Logging.Domain.Attributes;
@@ -31,15 +33,18 @@ public class LogDetail : MessageDetail
     /// <param name="frame">
     /// Stack frame. For diagnostics purposes.
     /// </param>
-    /// <param name="loadSystemInformation">
-    /// Flag that determinate whether to load the system information or not.
+    /// <param name="logSettings">
+    /// Log settings.
+    /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
     /// </param>
     public LogDetail(object LogValue,
-        string id, string message, StackFrame frame, bool 
-        loadSystemInformation)
-        : base(Level.Log, id, message, frame, loadSystemInformation)
+        string id, string message, StackFrame frame, LogSetting logSettings,
+        WebApplicationHttpContext webApplicationHttpContext)
+        : base(Level.Log, id, message, frame, logSettings, webApplicationHttpContext)
     {
-        LoadObject(LogValue);
+        this.LoadObject(LogValue);
     }
 
     /// <summary>

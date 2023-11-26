@@ -1,5 +1,5 @@
 ﻿using Roy.Logging.Domain.Contants;
-using Roy.Logging.Resources.Languages;
+using Roy.Logging.Resources.Languages.Level;
 using System.Diagnostics;
 using System.Globalization;
 

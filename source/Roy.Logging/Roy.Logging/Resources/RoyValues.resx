@@ -208,12 +208,6 @@
                                     &lt;/span&gt;
                                 &lt;/p&gt;
                                 &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
-                                    *|AssemblyLocationTag|*
-                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
-                                        *|AssemblyLocation|*
-                                    &lt;/span&gt;
-                                &lt;/p&gt;
-                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
                                     *|FullExceptionInJSONFormat|*
                                     &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
                                         *|ExceptionJSON|*
@@ -238,6 +232,45 @@
                                 &lt;hr /&gt;
                             &lt;/td&gt;
                         &lt;/tr&gt;
+                        &lt;!--*|MethodSTART|*--&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;h4 style="text-align:center; margin:10px;"&gt;
+                                    *|MethodInformationHeader|*
+                                &lt;/h4&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodParameters|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_Parameters|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodCallerFileName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_CallerFileName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodCallerMethodName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_CallerMethodName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodCallerLineNumber|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_CallerLineNumber|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;hr /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;!--*|MethodEND|*--&gt;
+                        &lt;!--*|MachineSTART|*--&gt;
                         &lt;tr&gt;
                             &lt;td&gt;
                                 &lt;h4 style="text-align:center; margin:10px;"&gt;
@@ -281,6 +314,118 @@
                                 &lt;/p&gt;
                             &lt;/td&gt;
                         &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;hr /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;!--*|MachineEND|*--&gt;
+                        &lt;!--*|ApplicationSTART|*--&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;h4 style="text-align:center; margin:10px;"&gt;
+                                    *|ApplicationInformationHeader|*
+                                &lt;/h4&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationIsDebuggingEnabled|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_IsDebuggingEnabled|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationPhysicalApplicationPath|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_PhysicalApplicationPath|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationFriendlyName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_FriendlyName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationIsFullyTrusted|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_IsFullyTrusted|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationUserDomainName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_UserDomainName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationUserName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_UserName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;!--*|WebApplicationSTART|*--&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationCurrentURL|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_CurrentURL|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationCurrentURLParameters|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_CurrentURLParameters|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationPreviousURL|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_PreviousURL|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationUserHostIP|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_UserHostIP|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationIsSecureConnection|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_IsSecureConnection|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationUserDomainName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_UserDomainName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationUserLanguagePreferences|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_UserLanguagePreferences|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationCookiesValues|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_CookiesValues|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationHeadersValues|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_HeadersValues|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;!--*|WebApplicationEND|*--&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;hr /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;!--*|ApplicationEND|*--&gt;
                         &lt;tr&gt;
                             &lt;td width="500px" height="5px"
                                 style="padding: 5px; background:none repeat scroll 0 0 #E9EAEE;"&gt;
@@ -374,12 +519,6 @@
                                     &lt;/span&gt;
                                 &lt;/p&gt;
                                 &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
-                                    *|AssemblyLocationTag|*
-                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
-                                        *|AssemblyLocation|*
-                                    &lt;/span&gt;
-                                &lt;/p&gt;
-                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
                                     *|StackFrameInJSONFormat|*
                                     &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
                                         *|StackFrameJSON|*
@@ -398,6 +537,45 @@
                                 &lt;hr /&gt;
                             &lt;/td&gt;
                         &lt;/tr&gt;
+                        &lt;!--*|MethodSTART|*--&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;h4 style="text-align:center; margin:10px;"&gt;
+                                    *|MethodInformationHeader|*
+                                &lt;/h4&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodParameters|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_Parameters|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodCallerFileName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_CallerFileName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodCallerMethodName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_CallerMethodName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|MethodCallerLineNumber|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Method_CallerLineNumber|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;hr /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;!--*|MethodEND|*--&gt;
+                        &lt;!--*|MachineSTART|*--&gt;
                         &lt;tr&gt;
                             &lt;td&gt;
                                 &lt;h4 style="text-align:center; margin:10px;"&gt;
@@ -441,6 +619,118 @@
                                 &lt;/p&gt;
                             &lt;/td&gt;
                         &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;hr /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;!--*|MachineEND|*--&gt;
+                        &lt;!--*|ApplicationSTART|*--&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;h4 style="text-align:center; margin:10px;"&gt;
+                                    *|ApplicationInformationHeader|*
+                                &lt;/h4&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationIsDebuggingEnabled|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_IsDebuggingEnabled|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationPhysicalApplicationPath|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_PhysicalApplicationPath|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationFriendlyName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_FriendlyName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationIsFullyTrusted|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_IsFullyTrusted|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationUserDomainName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_UserDomainName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|ApplicationUserName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|Application_UserName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;!--*|WebApplicationSTART|*--&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationCurrentURL|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_CurrentURL|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationCurrentURLParameters|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_CurrentURLParameters|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationPreviousURL|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_PreviousURL|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationUserHostIP|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_UserHostIP|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationIsSecureConnection|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_IsSecureConnection|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationUserDomainName|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_UserDomainName|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationUserLanguagePreferences|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_UserLanguagePreferences|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationCookiesValues|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_CookiesValues|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
+                                    *|WebApplicationHeadersValues|*
+                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
+                                        *|WebApplication_HeadersValues|*
+                                    &lt;/span&gt;
+                                &lt;/p&gt;
+                                &lt;!--*|WebApplicationEND|*--&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;hr /&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;!--*|ApplicationEND|*--&gt;
                         &lt;tr&gt;
                             &lt;td width="500px" height="5px"
                                 style="padding: 5px; background:none repeat scroll 0 0 #E9EAEE;"&gt;

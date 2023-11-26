@@ -1,4 +1,6 @@
 ﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Program;
+using Roy.Logging.Domain.Settings.Attributes;
 using System.Diagnostics;
 
 namespace Roy.Logging.Domain.Attributes;
@@ -47,16 +49,19 @@ public class ExceptionDetail : MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    /// <param name="loadSystemInformation">
-    /// Flag that determinate whether to load the system information or not.
+    /// <param name="logSettings">
+    /// Log settings.
+    /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
     /// </param>
     public ExceptionDetail(Exception exception,
         Level level, string id, string message,
         object[] listOfParameters, StackFrame frame,
-        bool loadSystemInformation)
-        : base(level, id, message, frame, loadSystemInformation)
+        LogSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
+        : base(level, id, message, frame, logSettings, webApplicationHttpContext)
     {
-        LoadObject(exception, level, listOfParameters, frame);
+        this.LoadObject(exception, level, listOfParameters);
     }
 
     /// <summary>
@@ -71,15 +76,12 @@ public class ExceptionDetail : MessageDetail
     /// <param name="listOfParameters">
     /// List of parameters.
     /// </param>
-    /// <param name="frame">
-    /// Stack frame containing the method calling the log.
-    /// </param>
     private void LoadObject(Exception exception, Level level,
-        object[] listOfParameters, StackFrame frame)
+        object[] listOfParameters)
     {
-        ExceptionMessage = exception.Message;
-        ListOfParameters = listOfParameters;
-        SetExceptionTrace(exception, level);
+        this.ExceptionMessage = exception.Message;
+        this.ListOfParameters = listOfParameters;
+        this.SetExceptionTrace(exception, level);
     }
 
     /// <summary>
@@ -95,8 +97,8 @@ public class ExceptionDetail : MessageDetail
     {
         if (level.Equals(Level.Trace) || level.Equals(Level.Debug))
         {
-            ExceptionTrace = exception;
-            StackTrace = exception.StackTrace ?? string.Empty;
+            this.ExceptionTrace = exception;
+            this.StackTrace = exception.StackTrace ?? string.Empty;
         }
     }
 }

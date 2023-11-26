@@ -4,6 +4,7 @@ using Avalon.Base.Extension.Types.StringExtensions;
 using MimeKit;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Extensions;
 using Roy.Logging.Resources;
@@ -26,11 +27,14 @@ internal static class EmailExtensions
     /// <param name="bodyDetail">
     /// Object used to populate the body message.
     /// </param>
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
     /// <returns>
     /// MimeMessage.
     /// </returns>
     public static MimeMessage ToMimeMessage(this EmailSetting setting, 
-        ReceiverSetting receiver, MessageDetail bodyDetail)
+        ReceiverSetting receiver, MessageDetail bodyDetail, LogSetting settings)
     {
         MimeMessage message = new MimeMessage();
         message.From.Add(new MailboxAddress(
@@ -40,7 +44,7 @@ internal static class EmailExtensions
         message.To.AddEmails(receiver.To);
         message.Bcc.AddEmails(receiver.BCC);
         message.Cc.AddEmails(receiver.CC);
-        message.Body = setting.ToMessageBody(receiver, bodyDetail);
+        message.Body = setting.ToMessageBody(receiver, bodyDetail, settings);
         
         return message;
     }
@@ -57,18 +61,23 @@ internal static class EmailExtensions
     /// <param name="bodyDetail">
     /// Object used to populate the body message.
     /// </param>
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
     /// <returns>
     /// Message body.
     /// </returns>
     public static MimeEntity ToMessageBody(this EmailSetting setting, 
-        ReceiverSetting receiver, MessageDetail bodyDetail)
+        ReceiverSetting receiver, MessageDetail bodyDetail,
+        LogSetting settings)
     {
         BodyBuilder builder = new BodyBuilder();
         bool isTextBody = receiver.IsTextBody.HasValue ? 
             receiver.IsTextBody.Value : setting.DefaultIsTextBody;
         string body = receiver.Body.ToDefaultValueIfEmpty(
                 setting.DefaultEmailBody);
-        body = new Decorator().GenerateBody(body, bodyDetail, setting.Culture);
+        body = new Decorator().GenerateBody(
+            body, bodyDetail, setting.Culture, settings);
         if (isTextBody)
         {
             builder.TextBody = body;            
@@ -130,8 +139,8 @@ internal static class EmailExtensions
 
         if (setting.DefaultEmailSubject.IsNullOrEmpty())
         {
-            string subjectHolderId = isAnException ? 
-                StringValues.ExceptionSubject : StringValues.RoyLoginSubject;
+            string subjectHolderId = isAnException ?
+                ResourceKey.ExceptionSubject : ResourceKey.RoyLoginSubject;
             StringBuilder subject = new StringBuilder(EmailLabels.ResourceManager
                 .GetString(subjectHolderId, setting.Culture));
             subject.Replace(EmailLabel.IssueIdTag, issueId);
@@ -141,8 +150,8 @@ internal static class EmailExtensions
 
         if (setting.DefaultEmailBody.IsNullOrEmpty())
         {
-            string htmlBodyId = isAnException ? 
-                StringValues.ExceptionHTMLBodyId : StringValues.LogHTMLBodyId;
+            string htmlBodyId = isAnException ?
+                ResourceKey.ExceptionHTMLBodyId : ResourceKey.LogHTMLBodyId;
             setting.DefaultEmailBody = RoyValues.ResourceManager
                 .GetString(htmlBodyId);
         }

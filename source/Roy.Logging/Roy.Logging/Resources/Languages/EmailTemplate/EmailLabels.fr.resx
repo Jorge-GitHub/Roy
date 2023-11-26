@@ -117,41 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationFriendlyName" xml:space="preserve">
+    <value>Nom Familier:</value>
+  </data>
+  <data name="ApplicationInformationHeader" xml:space="preserve">
+    <value>INFORMATIONS SUR LA DEMANDE</value>
+  </data>
+  <data name="ApplicationIsDebuggingEnabled" xml:space="preserve">
+    <value>Le Débogage est-il Activé:</value>
+  </data>
+  <data name="ApplicationIsFullyTrusted" xml:space="preserve">
+    <value>Est Entièrement Fiable:</value>
+  </data>
+  <data name="ApplicationPhysicalApplicationPath" xml:space="preserve">
+    <value>Chemin Physique:</value>
+  </data>
+  <data name="ApplicationUserDomainName" xml:space="preserve">
+    <value>Nom de Domaine Utilisateur:</value>
+  </data>
+  <data name="ApplicationUserName" xml:space="preserve">
+    <value>Nom d'Utilisateur de l'Application:</value>
+  </data>
   <data name="AssemblyLocationTag" xml:space="preserve">
-    <value>Lieu d'assemblage :</value>
+    <value>Lieu d'Assemblage :</value>
   </data>
   <data name="CLRVersion" xml:space="preserve">
     <value>Version .NET CLR :</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Droits d'auteur</value>
+    <value>Droits d'Auteur</value>
   </data>
   <data name="CustomMessage" xml:space="preserve">
-    <value>Message personnalisé:</value>
+    <value>Message Personnalisé:</value>
   </data>
   <data name="DomainName" xml:space="preserve">
-    <value>Nom de domaine:</value>
+    <value>Nom de Domaine::</value>
   </data>
   <data name="ErrorId" xml:space="preserve">
-    <value>Identifiant d'erreur :</value>
+    <value>Identifiant d'Erreur :</value>
   </data>
   <data name="ExceptionInformationHeader" xml:space="preserve">
     <value>INFORMATIONS EXCEPTIONNELLES</value>
   </data>
   <data name="ExceptionMessageTag" xml:space="preserve">
-    <value>Message d'exception :</value>
+    <value>Message d'Exception :</value>
   </data>
   <data name="ExceptionSubject" xml:space="preserve">
     <value>Roy Exception - Niveau de Problème: *|Level|* - Identifiant: *|IssueId|*</value>
   </data>
+  <data name="FailedToLoad" xml:space="preserve">
+    <value>Échec du Chargement</value>
+  </data>
   <data name="FullExceptionInJSONFormat" xml:space="preserve">
-    <value>Exception complète au format JSON :</value>
+    <value>Exception Complète au Format JSON :</value>
   </data>
   <data name="FullIssueInJSONFormat" xml:space="preserve">
-    <value>Numéro complet au format JSON :</value>
+    <value>Numéro Complet au Format JSON :</value>
   </data>
   <data name="HelpLinkTag" xml:space="preserve">
-    <value>Lien d'aide :</value>
+    <value>Lien d'Aide :</value>
   </data>
   <data name="IssueDate" xml:space="preserve">
     <value>Datte:</value>
@@ -160,19 +184,34 @@
     <value>Niveau d'émission :</value>
   </data>
   <data name="LogId" xml:space="preserve">
-    <value>Identifiant de journal :</value>
+    <value>Identifiant de Journal :</value>
   </data>
   <data name="LogInformationHeader" xml:space="preserve">
     <value>INFORMATIONS DU JOURNAL</value>
   </data>
+  <data name="MethodCallerFileName" xml:space="preserve">
+    <value>Nom du Fichier de l'appelant de la Méthode:</value>
+  </data>
+  <data name="MethodCallerLineNumber" xml:space="preserve">
+    <value>Numéro de Ligne de l'appelant de la Méthode:</value>
+  </data>
+  <data name="MethodCallerMethodName" xml:space="preserve">
+    <value>Nom de la Méthode de l’appelant de la Méthode:</value>
+  </data>
+  <data name="MethodInformationHeader" xml:space="preserve">
+    <value>Informations sur la Méthode</value>
+  </data>
+  <data name="MethodParameters" xml:space="preserve">
+    <value>Paramètres de la Méthode:</value>
+  </data>
   <data name="OperativeSystem" xml:space="preserve">
-    <value>Système opérationnel:</value>
+    <value>Système Opérationnel:</value>
   </data>
   <data name="OperativeSystemVersion" xml:space="preserve">
-    <value>Version du système d'exploitation :</value>
+    <value>Version du Système d'Exploitation :</value>
   </data>
   <data name="ParametersListInJSONFormat" xml:space="preserve">
-    <value>Liste des paramètres au format JSON :</value>
+    <value>Liste des Paramètres au Format JSON :</value>
   </data>
   <data name="RoyLoginSubject" xml:space="preserve">
     <value>Roy Enregistrement - Niveau de Problème: *|Level|* - Identifiant: *|IssueId|*</value>
@@ -187,15 +226,42 @@
     <value>Source:</value>
   </data>
   <data name="StackFrameInJSONFormat" xml:space="preserve">
-    <value>Cadre de pile au format JSON :</value>
+    <value>Cadre de Pile au Format JSON :</value>
   </data>
   <data name="StackTraceTag" xml:space="preserve">
-    <value>Trace de la pile:</value>
+    <value>Trace de la Pile:</value>
   </data>
   <data name="UserAccountName" xml:space="preserve">
-    <value>Nom du compte utilisateur :</value>
+    <value>Nom du Compte Utilisateur :</value>
   </data>
   <data name="ValueLoggedInJSONFormat" xml:space="preserve">
-    <value>Valeur enregistrée au format JSON :</value>
+    <value>Valeur Enregistrée au Format JSON :</value>
+  </data>
+  <data name="WebApplicationCookiesValues" xml:space="preserve">
+    <value>Valeurs des Cookies:</value>
+  </data>
+  <data name="WebApplicationCurrentURL" xml:space="preserve">
+    <value>URL Actuelle:</value>
+  </data>
+  <data name="WebApplicationCurrentURLParameters" xml:space="preserve">
+    <value>Paramètres d'URL Actuels:</value>
+  </data>
+  <data name="WebApplicationHeadersValues" xml:space="preserve">
+    <value>Valeurs des En-têtes:</value>
+  </data>
+  <data name="WebApplicationIsSecureConnection" xml:space="preserve">
+    <value>Connexion Sécurisée:</value>
+  </data>
+  <data name="WebApplicationPreviousURL" xml:space="preserve">
+    <value>URL Précédente:</value>
+  </data>
+  <data name="WebApplicationUserDomainName" xml:space="preserve">
+    <value>Domaine Utilisateur:</value>
+  </data>
+  <data name="WebApplicationUserHostIP" xml:space="preserve">
+    <value>IP de l'Utilisateur:</value>
+  </data>
+  <data name="WebApplicationUserLanguagePreferences" xml:space="preserve">
+    <value>Langue Préférée de l'Utilisateur:</value>
   </data>
 </root>

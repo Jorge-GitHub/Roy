@@ -98,6 +98,10 @@ public struct EmailLabel
     /// </summary>
     public const string LogInformationHeader = "LogInformationHeader";
     /// <summary>
+    /// Id tag for replacing the failed to load label on the HTML template.
+    /// </summary>
+    public const string FailedToLoad = "FailedToLoad";
+    /// <summary>
     /// Id tag for replacing log Id label on the HTML template.
     /// </summary>
     public const string LogId = "LogId";
@@ -213,4 +217,172 @@ public struct EmailLabel
     /// Id tag for replacing value logged in JSON format label on the HTML template.
     /// </summary>
     public const string LevelTag = "*|Level|*";
+    /// <summary>
+    /// Id tag for replacing the method information header label on the HTML template.
+    /// </summary>
+    public const string MethodInformationHeaderTag = "*|MethodInformationHeader|*";
+    /// <summary>
+    /// Id tag for replacing the method caller file name label on the HTML template.
+    /// </summary>
+    public const string MethodCallerFileNameTag = "*|MethodCallerFileName|*";
+    /// <summary>
+    /// Id tag for replacing the method caller name label on the HTML template.
+    /// </summary>
+    public const string MethodCallerMethodNameTag = "*|MethodCallerMethodName|*";
+    /// <summary>
+    /// Id tag for replacing the method caller line number label on the HTML template.
+    /// </summary>
+    public const string MethodCallerLineNumberTag = "*|MethodCallerLineNumber|*";
+    /// <summary>
+    /// Id tag for replacing the method caller parameters label on the HTML template.
+    /// </summary>
+    public const string MethodParametersTag = "*|MethodParameters|*";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodInformationHeader = "MethodInformationHeader";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodCallerFileName = "MethodCallerFileName";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodCallerMethodName = "MethodCallerMethodName";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodCallerLineNumber = "MethodCallerLineNumber";
+    /// <summary>
+    /// Id tag for replacing method information header label on the HTML template.
+    /// </summary>
+    public const string MethodParameters = "MethodParameters";
+    /// <summary>
+    /// Id tag for replacing the application information header label on the HTML template.
+    /// </summary>
+    public const string ApplicationInformationHeaderTag = "*|ApplicationInformationHeader|*";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running on debugging mode or not label on the HTML template.
+    /// </summary>
+    public const string ApplicationIsDebuggingEnabledTag = "*|ApplicationIsDebuggingEnabled|*";
+    /// <summary>
+    /// Id tag for replacing the application physical path label on the HTML template.
+    /// </summary>
+    public const string ApplicationPhysicalApplicationPathTag = "*|ApplicationPhysicalApplicationPath|*";
+    /// <summary>
+    /// Id tag for replacing the application friendly name label on the HTML template.
+    /// </summary>
+    public const string ApplicationFriendlyNameTag = "*|ApplicationFriendlyName|*";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running in trust mode or not label on the HTML template.
+    /// </summary>
+    public const string ApplicationIsFullyTrustedTag = "*|ApplicationIsFullyTrusted|*";
+    /// <summary>
+    /// Id tag for replacing the application user domain name label on the HTML template.
+    /// </summary>
+    public const string ApplicationUserDomainNameTag = "*|ApplicationUserDomainName|*";
+    /// <summary>
+    /// Id tag for replacing the application user domain name label on the HTML template.
+    /// </summary>
+    public const string ApplicationUserNameTag = "*|ApplicationUserName|*";
+    /// <summary>
+    /// Id tag for replacing the application information header label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationInformationHeader = "ApplicationInformationHeader";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running on debugging mode or not label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationIsDebuggingEnabled = "ApplicationIsDebuggingEnabled";
+    /// <summary>
+    /// Id tag for replacing the application physical path label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationPhysicalApplicationPath = "ApplicationPhysicalApplicationPath";
+    /// <summary>
+    /// Id tag for replacing the application friendly name label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationFriendlyName = "ApplicationFriendlyName";
+    /// <summary>
+    /// Id tag for replacing the flag that determinate whether the application is running in trust mode or not label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationIsFullyTrusted = "ApplicationIsFullyTrusted";
+    /// <summary>
+    /// Id tag for replacing the application user domain name label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationUserDomainName = "ApplicationUserDomainName";
+    /// <summary>
+    /// Id tag for replacing the application user name label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationUserName = "ApplicationUserName";
+    /// <summary>
+    /// Id tag for replacing the web application current URL label on the HTML template.
+    /// </summary>
+    public const string WebApplicationCurrentURLTag = "*|WebApplicationCurrentURL|*";
+    /// <summary>
+    /// Id tag for replacing the web application current URL parameters label on the HTML template.
+    /// </summary>
+    public const string WebApplicationCurrentURLParametersTag = "*|WebApplicationCurrentURLParameters|*";
+    /// <summary>
+    /// Id tag for replacing the web application previous URL label on the HTML template.
+    /// </summary>
+    public const string WebApplicationPreviousURLTag = "*|WebApplicationPreviousURL|*";
+    /// <summary>
+    /// Id tag for replacing the web application current user IP label on the HTML template.
+    /// </summary>
+    public const string WebApplicationUserHostIPTag = "*|WebApplicationUserHostIP|*";
+    /// <summary>
+    /// Id tag for replacing the web application flag that determinate whether connection to the user is secure label on the HTML template.
+    /// </summary>
+    public const string WebApplicationIsSecureConnectionTag = "*|WebApplicationIsSecureConnection|*";
+    /// <summary>
+    /// Id tag for replacing the web application current user domain name label on the HTML template.
+    /// </summary>
+    public const string WebApplicationUserDomainNameTag = "*|WebApplicationUserDomainName|*";
+    /// <summary>
+    /// Id tag for replacing the web application current user prefer language label on the HTML template.
+    /// </summary>
+    public const string WebApplicationUserLanguagePreferencesTag = "*|WebApplicationUserLanguagePreferences|*";
+    /// <summary>
+    /// Id tag for replacing the web application cookies label on the HTML template.
+    /// </summary>
+    public const string WebApplicationCookiesValuesTag = "*|WebApplicationCookiesValues|*";
+    /// <summary>
+    /// Id tag for replacing the web application header label on the HTML template.
+    /// </summary>
+    public const string WebApplicationHeadersValuesTag = "*|WebApplicationHeadersValues|*";
+    /// <summary>
+    /// Id tag for replacing the web application current URL label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationCurrentURL = "WebApplicationCurrentURL";
+    /// <summary>
+    /// Id tag for replacing the web application current URL parameters label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationCurrentURLParameters = "WebApplicationCurrentURLParameters";
+    /// <summary>
+    /// Id tag for replacing the web application previous URL label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationPreviousURL = "WebApplicationPreviousURL";
+    /// <summary>
+    /// Id tag for replacing the web application current user IP label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationUserHostIP = "WebApplicationUserHostIP";
+    /// <summary>
+    /// Id tag for replacing the web application flag that determinate whether connection to the user is secure label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationIsSecureConnection = "WebApplicationIsSecureConnection";
+    /// <summary>
+    /// Id tag for replacing the web application current user domain name label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationUserDomainName = "WebApplicationUserDomainName";
+    /// <summary>
+    /// Id tag for replacing the web application current user preferred language label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationUserLanguagePreferences = "WebApplicationUserLanguagePreferences";
+    /// <summary>
+    /// Id tag for replacing the web application cookies label on the HTML template (Language resource).
+    /// </summary>
+    public const string WebApplicationCookiesValues = "WebApplicationCookiesValues";
+    /// <summary>
+    /// Id tag for replacing the web application header label on the HTML template(Language resource) .
+    /// </summary>
+    public const string WebApplicationHeadersValues = "WebApplicationHeadersValues";
 }

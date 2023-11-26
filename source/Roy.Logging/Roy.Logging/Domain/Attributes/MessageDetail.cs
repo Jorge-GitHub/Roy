@@ -1,8 +1,9 @@
 ﻿using Avalon.Base.Extension.Types;
-using Roy.Logging.Domain.Application;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Program;
+using Roy.Logging.Domain.Settings.Attributes;
+using Roy.Logging.Extensions;
 using System.Diagnostics;
-using System.Reflection;
 
 namespace Roy.Logging.Domain.Attributes;
 
@@ -28,17 +29,21 @@ public class MessageDetail
     /// </summary>
     public string Message { get; set; }
     /// <summary>
-    /// Assembly that the current code is running from.
-    /// </summary>
-    public string AssemblyLocation { get; set; }
-    /// <summary>
     /// Machine/Server information.
     /// </summary>
     public Machine MachineInformation { get; set; }
     /// <summary>
+    /// Application's information.
+    /// </summary>
+    public Application ApplicationInformation { get; set; }
+    /// <summary>
+    /// Web application's information.
+    /// </summary>
+    public WebApplication WebApplicationInformation { get; set; }
+    /// <summary>
     /// Stack frame making the call to the method.
     /// </summary>
-    public Frame StackFrame { get; set; }
+    public Method StackFrame { get; set; }
 
     /// <summary>
     /// Loads the object.
@@ -55,16 +60,18 @@ public class MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    /// <param name="loadSystemInformation">
-    /// Flag that determinate whether to load the system information or not.
+    /// <param name="logSettings">
+    /// Log settings.
+    /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
     /// </param>
     public MessageDetail(Level level,
         string id, string message, StackFrame frame,
-        bool loadSystemInformation)
+        LogSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
     {
-        LoadObject(level, id, message, frame, loadSystemInformation);
+        this.LoadObject(level, id, message, frame, logSettings, webApplicationHttpContext);
     }
-
 
     /// <summary>
     /// Loads the object.
@@ -81,48 +88,61 @@ public class MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    /// <param name="loadSystemInformation">
-    /// Flag that determinate whether to load the system information or not.
+    /// <param name="logSettings">
+    /// Log settings.
+    /// </param>
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
     /// </param>
     private void LoadObject(Level level, string id, string message,
-        StackFrame frame, bool loadSystemInformation)
+        StackFrame frame, LogSetting logSettings,
+        WebApplicationHttpContext webApplicationHttpContext)
     {
-        Date = DateTime.Now;
-        Level = level;
-        Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
-        Message = message;
-        if (loadSystemInformation)
-        {
-            LoadSystemInformation(frame);
-        }
+        this.Date = DateTime.Now;
+        this.Level = level;
+        this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
+        this.Message = message;
+        this.LoadInformation(logSettings, frame, webApplicationHttpContext);
     }
 
     /// <summary>
     /// Load the system information.
     /// </summary>
+    /// <param name="logSettings">
+    /// Log settings.
+    /// </param>
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    private void LoadSystemInformation(StackFrame frame)
+    /// <param name="webApplicationHttpContext">
+    /// Web application HttpContext details.
+    /// </param>
+    private void LoadInformation(LogSetting logSettings, StackFrame frame,
+        WebApplicationHttpContext webApplicationHttpContext)
     {
         try
         {
-            SetAssemblyLocation();
-            MachineInformation = new Machine(true);
-            StackFrame = new Frame(frame);
+            if (logSettings.LogApplicationInformation)
+            {
+                if (webApplicationHttpContext.IsNotNull())
+                {
+                    this.WebApplicationInformation = webApplicationHttpContext
+                        .ToWebApplication();
+                }
+                else
+                {
+                    this.ApplicationInformation = new Application(true);
+                }
+            }
+            if (logSettings.LogMachineInformation)
+            {
+                this.MachineInformation = new Machine(true);
+            }
+            if (logSettings.LogMethodInformation)
+            {
+                this.StackFrame = new Method(frame);
+            }
         }
         catch { }
-    }
-
-    /// <summary>
-    /// Set assembly location.
-    /// </summary>
-    private void SetAssemblyLocation()
-    {
-        string location = Assembly.GetExecutingAssembly().Location;
-        if (location.IsNotNullOrEmpty())
-        {
-            AssemblyLocation = Path.GetDirectoryName(location);
-        }
     }
 }

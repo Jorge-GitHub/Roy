@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Roy.Logging.Resources.Languages {
+namespace Roy.Logging.Resources.Languages.Level {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Roy.Logging.Resources.Languages {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Roy.Logging.Resources.Languages.LevelLabel", typeof(LevelLabel).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Roy.Logging.Resources.Languages.Level.LevelLabel", typeof(LevelLabel).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

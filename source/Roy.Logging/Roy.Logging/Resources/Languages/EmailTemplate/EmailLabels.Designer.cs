@@ -61,6 +61,69 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Friendly Name:.
+        /// </summary>
+        public static string ApplicationFriendlyName {
+            get {
+                return ResourceManager.GetString("ApplicationFriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to APPLICATION INFORMATION.
+        /// </summary>
+        public static string ApplicationInformationHeader {
+            get {
+                return ResourceManager.GetString("ApplicationInformationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debugging Enabled:.
+        /// </summary>
+        public static string ApplicationIsDebuggingEnabled {
+            get {
+                return ResourceManager.GetString("ApplicationIsDebuggingEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fully Trusted:.
+        /// </summary>
+        public static string ApplicationIsFullyTrusted {
+            get {
+                return ResourceManager.GetString("ApplicationIsFullyTrusted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Physical Path:.
+        /// </summary>
+        public static string ApplicationPhysicalApplicationPath {
+            get {
+                return ResourceManager.GetString("ApplicationPhysicalApplicationPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Domain Name:.
+        /// </summary>
+        public static string ApplicationUserDomainName {
+            get {
+                return ResourceManager.GetString("ApplicationUserDomainName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application User Name:.
+        /// </summary>
+        public static string ApplicationUserName {
+            get {
+                return ResourceManager.GetString("ApplicationUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assembly Location:.
         /// </summary>
         public static string AssemblyLocationTag {
@@ -142,6 +205,15 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed To Load.
+        /// </summary>
+        public static string FailedToLoad {
+            get {
+                return ResourceManager.GetString("FailedToLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Exception in JSON Format:.
         /// </summary>
         public static string FullExceptionInJSONFormat {
@@ -201,6 +273,51 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         public static string LogInformationHeader {
             get {
                 return ResourceManager.GetString("LogInformationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Caller File Name:.
+        /// </summary>
+        public static string MethodCallerFileName {
+            get {
+                return ResourceManager.GetString("MethodCallerFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Caller Line Number:.
+        /// </summary>
+        public static string MethodCallerLineNumber {
+            get {
+                return ResourceManager.GetString("MethodCallerLineNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Caller Method Name:.
+        /// </summary>
+        public static string MethodCallerMethodName {
+            get {
+                return ResourceManager.GetString("MethodCallerMethodName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Information.
+        /// </summary>
+        public static string MethodInformationHeader {
+            get {
+                return ResourceManager.GetString("MethodInformationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Parameters:.
+        /// </summary>
+        public static string MethodParameters {
+            get {
+                return ResourceManager.GetString("MethodParameters", resourceCulture);
             }
         }
         
@@ -300,6 +417,87 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         public static string ValueLoggedInJSONFormat {
             get {
                 return ResourceManager.GetString("ValueLoggedInJSONFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cookies Values:.
+        /// </summary>
+        public static string WebApplicationCookiesValues {
+            get {
+                return ResourceManager.GetString("WebApplicationCookiesValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current URL:.
+        /// </summary>
+        public static string WebApplicationCurrentURL {
+            get {
+                return ResourceManager.GetString("WebApplicationCurrentURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current URL Parameters:.
+        /// </summary>
+        public static string WebApplicationCurrentURLParameters {
+            get {
+                return ResourceManager.GetString("WebApplicationCurrentURLParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Headers Values:.
+        /// </summary>
+        public static string WebApplicationHeadersValues {
+            get {
+                return ResourceManager.GetString("WebApplicationHeadersValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secure Connection:.
+        /// </summary>
+        public static string WebApplicationIsSecureConnection {
+            get {
+                return ResourceManager.GetString("WebApplicationIsSecureConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous URL:.
+        /// </summary>
+        public static string WebApplicationPreviousURL {
+            get {
+                return ResourceManager.GetString("WebApplicationPreviousURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Domain:.
+        /// </summary>
+        public static string WebApplicationUserDomainName {
+            get {
+                return ResourceManager.GetString("WebApplicationUserDomainName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User IP:.
+        /// </summary>
+        public static string WebApplicationUserHostIP {
+            get {
+                return ResourceManager.GetString("WebApplicationUserHostIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Preferred Language:.
+        /// </summary>
+        public static string WebApplicationUserLanguagePreferences {
+            get {
+                return ResourceManager.GetString("WebApplicationUserLanguagePreferences", resourceCulture);
             }
         }
     }

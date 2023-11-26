@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "Avalon.Base.Extension/1.0.0": {
+      "Avalon.Base.Extension/1.0.0.3": {
         "runtime": {
           "Avalon.Base.Extension.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "Avalon.Base.Extension/1.0.0": {
+    "Avalon.Base.Extension/1.0.0.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

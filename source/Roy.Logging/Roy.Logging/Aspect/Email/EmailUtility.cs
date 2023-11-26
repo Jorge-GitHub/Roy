@@ -2,6 +2,7 @@
 using MailKit.Net.Smtp;
 using MimeKit;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Extensions;
 
@@ -21,13 +22,16 @@ internal class EmailUtility
     /// <param name="message">
     /// Object used to populate the body message.
     /// </param>
-    public void Send(EmailSetting setting, MessageDetail message)
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
+    public void Send(EmailSetting setting, MessageDetail message, LogSetting settings)
     {
         setting.SetDefaultValues(message.Level,
             message.IsExceptionType(), message.Id);
         foreach (ReceiverSetting receiver in setting.Receivers)
         {
-            this.Send(setting, receiver, message);
+            this.Send(setting, receiver, message, settings);
         }
     }
 
@@ -43,10 +47,13 @@ internal class EmailUtility
     /// <param name="bodyDetail">
     /// Object used to populate the body message.
     /// </param>
+    /// <param name="settings">
+    /// Log settings.
+    /// </param>
     private void Send(EmailSetting setting, ReceiverSetting receiver, 
-        MessageDetail bodyDetail)
+        MessageDetail bodyDetail, LogSetting settings)
     {
-        MimeMessage message = setting.ToMimeMessage(receiver, bodyDetail);
+        MimeMessage message = setting.ToMimeMessage(receiver, bodyDetail, settings);
         SmtpClient client = new SmtpClient();
         try
         {

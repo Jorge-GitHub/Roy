@@ -1,4 +1,6 @@
-﻿namespace Roy.Logging.Domain.Application;
+﻿using Roy.Logging.Domain.Contants;
+
+namespace Roy.Logging.Domain.Program;
 
 /// <summary>
 /// Machine environment.
@@ -29,13 +31,15 @@ public class Machine
     /// Operative system.
     /// </summary>
     public string OperativeSystem { get; set; }
+    /// <summary>
+    /// Flag that determinate whether the object failed to load.
+    /// </summary>
+    public bool FailedToLoad { get; set; }
 
     /// <summary>
     /// constructor.
     /// </summary>
-    public Machine()
-    {
-    }
+    public Machine() { }
 
     /// <summary>
     /// Constructor that builds the object.
@@ -58,12 +62,19 @@ public class Machine
     {
         if (load)
         {
-            this.CLRVersion = Environment.Version.ToString();
-            this.DomainName = Environment.UserDomainName;
-            this.Name = Environment.MachineName;
-            this.OperativeSystemVersion = Environment.OSVersion.VersionString;
-            this.UserAccountName = Environment.UserName;
-            this.OperativeSystem = this.GetOperativeSystem();
+            try
+            {
+                this.CLRVersion = Environment.Version.ToString();
+                this.DomainName = Environment.UserDomainName;
+                this.Name = Environment.MachineName;
+                this.OperativeSystemVersion = Environment.OSVersion.VersionString;
+                this.UserAccountName = Environment.UserName;
+                this.OperativeSystem = this.GetOperativeSystem();
+            }
+            catch
+            {
+                this.FailedToLoad = true;
+            }
         }
     }
 
@@ -78,12 +89,12 @@ public class Machine
     {
         if (OperatingSystem.IsWindows())
         {
-            return "Windows";
+            return StringValue.Windows;
         }
         if (OperatingSystem.IsLinux())
         {
-            return "Linux";
+            return StringValue.Linux;
         }
-        return "Other";
+        return StringValue.Other;
     }
 }
