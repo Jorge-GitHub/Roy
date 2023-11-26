@@ -217,10 +217,10 @@ internal class LabelDecorator
                 EmailLabel.WebApplicationPreviousURL, culture));
         body.Replace(EmailLabel.WebApplicationUserHostIPTag,
             EmailLabels.ResourceManager.GetString(
-                EmailLabel.WebApplicationUserHostIPTag, culture));
+                EmailLabel.WebApplicationUserHostIP, culture));
         body.Replace(EmailLabel.WebApplicationIsSecureConnectionTag,
             EmailLabels.ResourceManager.GetString(
-                EmailLabel.WebApplicationIsSecureConnectionTag, culture));
+                EmailLabel.WebApplicationIsSecureConnection, culture));
         body.Replace(EmailLabel.WebApplicationUserDomainNameTag,
             EmailLabels.ResourceManager.GetString(
                 EmailLabel.WebApplicationUserDomainName, culture));
