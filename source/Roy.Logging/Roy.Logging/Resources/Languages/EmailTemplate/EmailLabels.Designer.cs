@@ -61,7 +61,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Friendly Name.
+        ///   Looks up a localized string similar to Friendly Name:.
         /// </summary>
         public static string ApplicationFriendlyName {
             get {
@@ -79,7 +79,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Debugging Enabled.
+        ///   Looks up a localized string similar to Debugging Enabled:.
         /// </summary>
         public static string ApplicationIsDebuggingEnabled {
             get {
@@ -88,7 +88,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fully Trusted.
+        ///   Looks up a localized string similar to Fully Trusted:.
         /// </summary>
         public static string ApplicationIsFullyTrusted {
             get {
@@ -97,7 +97,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Physical Path.
+        ///   Looks up a localized string similar to Physical Path:.
         /// </summary>
         public static string ApplicationPhysicalApplicationPath {
             get {
@@ -106,11 +106,20 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Domain Name.
+        ///   Looks up a localized string similar to User Domain Name:.
         /// </summary>
         public static string ApplicationUserDomainName {
             get {
                 return ResourceManager.GetString("ApplicationUserDomainName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application User Name:.
+        /// </summary>
+        public static string ApplicationUserName {
+            get {
+                return ResourceManager.GetString("ApplicationUserName", resourceCulture);
             }
         }
         
@@ -268,7 +277,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Method Caller File Name.
+        ///   Looks up a localized string similar to Method Caller File Name:.
         /// </summary>
         public static string MethodCallerFileName {
             get {
@@ -277,7 +286,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Method Caller Line Number.
+        ///   Looks up a localized string similar to Method Caller Line Number:.
         /// </summary>
         public static string MethodCallerLineNumber {
             get {
@@ -286,7 +295,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Method Caller Method Name.
+        ///   Looks up a localized string similar to Method Caller Method Name:.
         /// </summary>
         public static string MethodCallerMethodName {
             get {
@@ -304,7 +313,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Method Parameters.
+        ///   Looks up a localized string similar to Method Parameters:.
         /// </summary>
         public static string MethodParameters {
             get {
@@ -412,7 +421,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cookies Values.
+        ///   Looks up a localized string similar to Cookies Values:.
         /// </summary>
         public static string WebApplicationCookiesValues {
             get {
@@ -421,7 +430,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current URL.
+        ///   Looks up a localized string similar to Current URL:.
         /// </summary>
         public static string WebApplicationCurrentURL {
             get {
@@ -430,7 +439,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current URL Parameters.
+        ///   Looks up a localized string similar to Current URL Parameters:.
         /// </summary>
         public static string WebApplicationCurrentURLParameters {
             get {
@@ -439,7 +448,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Headers Values.
+        ///   Looks up a localized string similar to Headers Values:.
         /// </summary>
         public static string WebApplicationHeadersValues {
             get {
@@ -448,7 +457,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Secure Connection.
+        ///   Looks up a localized string similar to Secure Connection:.
         /// </summary>
         public static string WebApplicationIsSecureConnection {
             get {
@@ -457,7 +466,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Previous URL.
+        ///   Looks up a localized string similar to Previous URL:.
         /// </summary>
         public static string WebApplicationPreviousURL {
             get {
@@ -466,7 +475,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Domain.
+        ///   Looks up a localized string similar to User Domain:.
         /// </summary>
         public static string WebApplicationUserDomainName {
             get {
@@ -475,7 +484,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User IP.
+        ///   Looks up a localized string similar to User IP:.
         /// </summary>
         public static string WebApplicationUserHostIP {
             get {
@@ -484,7 +493,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Preferred Language.
+        ///   Looks up a localized string similar to User Preferred Language:.
         /// </summary>
         public static string WebApplicationUserLanguagePreferences {
             get {

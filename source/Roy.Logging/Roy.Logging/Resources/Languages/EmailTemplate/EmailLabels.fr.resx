@@ -118,22 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationFriendlyName" xml:space="preserve">
-    <value>Nom Familier</value>
+    <value>Nom Familier:</value>
   </data>
   <data name="ApplicationInformationHeader" xml:space="preserve">
     <value>INFORMATIONS SUR LA DEMANDE</value>
   </data>
   <data name="ApplicationIsDebuggingEnabled" xml:space="preserve">
-    <value>Le Débogage est-il Activé</value>
+    <value>Le Débogage est-il Activé:</value>
   </data>
   <data name="ApplicationIsFullyTrusted" xml:space="preserve">
-    <value>Est Entièrement Fiable</value>
+    <value>Est Entièrement Fiable:</value>
   </data>
   <data name="ApplicationPhysicalApplicationPath" xml:space="preserve">
-    <value>Chemin Physique</value>
+    <value>Chemin Physique:</value>
   </data>
   <data name="ApplicationUserDomainName" xml:space="preserve">
-    <value>Nom de Domaine Utilisateur</value>
+    <value>Nom de Domaine Utilisateur:</value>
+  </data>
+  <data name="ApplicationUserName" xml:space="preserve">
+    <value>Nom d'Utilisateur de l'Application:</value>
   </data>
   <data name="AssemblyLocationTag" xml:space="preserve">
     <value>Lieu d'Assemblage :</value>
@@ -148,7 +151,7 @@
     <value>Message Personnalisé:</value>
   </data>
   <data name="DomainName" xml:space="preserve">
-    <value>Nom de Domaine:</value>
+    <value>Nom de Domaine::</value>
   </data>
   <data name="ErrorId" xml:space="preserve">
     <value>Identifiant d'Erreur :</value>
@@ -187,19 +190,19 @@
     <value>INFORMATIONS DU JOURNAL</value>
   </data>
   <data name="MethodCallerFileName" xml:space="preserve">
-    <value>Nom du Fichier de l'appelant de la Méthode</value>
+    <value>Nom du Fichier de l'appelant de la Méthode:</value>
   </data>
   <data name="MethodCallerLineNumber" xml:space="preserve">
-    <value>Numéro de Ligne de l'appelant de la Méthode</value>
+    <value>Numéro de Ligne de l'appelant de la Méthode:</value>
   </data>
   <data name="MethodCallerMethodName" xml:space="preserve">
-    <value>Nom de la Méthode de l’appelant de la Méthode</value>
+    <value>Nom de la Méthode de l’appelant de la Méthode:</value>
   </data>
   <data name="MethodInformationHeader" xml:space="preserve">
     <value>Informations sur la Méthode</value>
   </data>
   <data name="MethodParameters" xml:space="preserve">
-    <value>Paramètres de la Méthode</value>
+    <value>Paramètres de la Méthode:</value>
   </data>
   <data name="OperativeSystem" xml:space="preserve">
     <value>Système Opérationnel:</value>
@@ -235,30 +238,30 @@
     <value>Valeur Enregistrée au Format JSON :</value>
   </data>
   <data name="WebApplicationCookiesValues" xml:space="preserve">
-    <value>Valeurs des Cookies</value>
+    <value>Valeurs des Cookies:</value>
   </data>
   <data name="WebApplicationCurrentURL" xml:space="preserve">
-    <value>URL Actuelle</value>
+    <value>URL Actuelle:</value>
   </data>
   <data name="WebApplicationCurrentURLParameters" xml:space="preserve">
-    <value>Paramètres d'URL Actuels</value>
+    <value>Paramètres d'URL Actuels:</value>
   </data>
   <data name="WebApplicationHeadersValues" xml:space="preserve">
-    <value>Valeurs des En-têtes</value>
+    <value>Valeurs des En-têtes:</value>
   </data>
   <data name="WebApplicationIsSecureConnection" xml:space="preserve">
-    <value>Connexion Sécurisée</value>
+    <value>Connexion Sécurisée:</value>
   </data>
   <data name="WebApplicationPreviousURL" xml:space="preserve">
-    <value>URL Précédente</value>
+    <value>URL Précédente:</value>
   </data>
   <data name="WebApplicationUserDomainName" xml:space="preserve">
-    <value>Domaine Utilisateur</value>
+    <value>Domaine Utilisateur:</value>
   </data>
   <data name="WebApplicationUserHostIP" xml:space="preserve">
-    <value>IP de l'Utilisateur</value>
+    <value>IP de l'Utilisateur:</value>
   </data>
   <data name="WebApplicationUserLanguagePreferences" xml:space="preserve">
-    <value>Langue Préférée de l'Utilisateur</value>
+    <value>Langue Préférée de l'Utilisateur:</value>
   </data>
 </root>

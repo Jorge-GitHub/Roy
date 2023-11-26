@@ -282,6 +282,10 @@ public struct EmailLabel
     /// </summary>
     public const string ApplicationUserDomainNameTag = "*|ApplicationUserDomainName|*";
     /// <summary>
+    /// Id tag for replacing the application user domain name label on the HTML template.
+    /// </summary>
+    public const string ApplicationUserNameTag = "*|ApplicationUserName|*";
+    /// <summary>
     /// Id tag for replacing the application information header label on the HTML template (Language resource).
     /// </summary>
     public const string ApplicationInformationHeader = "ApplicationInformationHeader";
@@ -305,6 +309,10 @@ public struct EmailLabel
     /// Id tag for replacing the application user domain name label on the HTML template (Language resource).
     /// </summary>
     public const string ApplicationUserDomainName = "ApplicationUserDomainName";
+    /// <summary>
+    /// Id tag for replacing the application user name label on the HTML template (Language resource).
+    /// </summary>
+    public const string ApplicationUserName = "ApplicationUserName";
     /// <summary>
     /// Id tag for replacing the web application current URL label on the HTML template.
     /// </summary>

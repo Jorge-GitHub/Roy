@@ -189,6 +189,9 @@ internal class LabelDecorator
         body.Replace(EmailLabel.ApplicationUserDomainNameTag,
             EmailLabels.ResourceManager.GetString(
                 EmailLabel.ApplicationUserDomainName, culture));
+        body.Replace(EmailLabel.ApplicationUserNameTag,
+            EmailLabels.ResourceManager.GetString(
+                EmailLabel.ApplicationUserName, culture));
         this.ReplaceWebApplicationInformationLabels(body, culture);
     }
 

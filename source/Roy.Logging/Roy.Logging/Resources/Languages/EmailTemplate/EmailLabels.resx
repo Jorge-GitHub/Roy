@@ -118,22 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationFriendlyName" xml:space="preserve">
-    <value>Friendly Name</value>
+    <value>Friendly Name:</value>
   </data>
   <data name="ApplicationInformationHeader" xml:space="preserve">
     <value>APPLICATION INFORMATION</value>
   </data>
   <data name="ApplicationIsDebuggingEnabled" xml:space="preserve">
-    <value>Debugging Enabled</value>
+    <value>Debugging Enabled:</value>
   </data>
   <data name="ApplicationIsFullyTrusted" xml:space="preserve">
-    <value>Fully Trusted</value>
+    <value>Fully Trusted:</value>
   </data>
   <data name="ApplicationPhysicalApplicationPath" xml:space="preserve">
-    <value>Physical Path</value>
+    <value>Physical Path:</value>
   </data>
   <data name="ApplicationUserDomainName" xml:space="preserve">
-    <value>User Domain Name</value>
+    <value>User Domain Name:</value>
+  </data>
+  <data name="ApplicationUserName" xml:space="preserve">
+    <value>Application User Name:</value>
   </data>
   <data name="AssemblyLocationTag" xml:space="preserve">
     <value>Assembly Location:</value>
@@ -187,19 +190,19 @@
     <value>LOG INFORMATION</value>
   </data>
   <data name="MethodCallerFileName" xml:space="preserve">
-    <value>Method Caller File Name</value>
+    <value>Method Caller File Name:</value>
   </data>
   <data name="MethodCallerLineNumber" xml:space="preserve">
-    <value>Method Caller Line Number</value>
+    <value>Method Caller Line Number:</value>
   </data>
   <data name="MethodCallerMethodName" xml:space="preserve">
-    <value>Method Caller Method Name</value>
+    <value>Method Caller Method Name:</value>
   </data>
   <data name="MethodInformationHeader" xml:space="preserve">
     <value>Method Information</value>
   </data>
   <data name="MethodParameters" xml:space="preserve">
-    <value>Method Parameters</value>
+    <value>Method Parameters:</value>
   </data>
   <data name="OperativeSystem" xml:space="preserve">
     <value>Operative System:</value>
@@ -235,30 +238,30 @@
     <value>Value Logged in JSON Format:</value>
   </data>
   <data name="WebApplicationCookiesValues" xml:space="preserve">
-    <value>Cookies Values</value>
+    <value>Cookies Values:</value>
   </data>
   <data name="WebApplicationCurrentURL" xml:space="preserve">
-    <value>Current URL</value>
+    <value>Current URL:</value>
   </data>
   <data name="WebApplicationCurrentURLParameters" xml:space="preserve">
-    <value>Current URL Parameters</value>
+    <value>Current URL Parameters:</value>
   </data>
   <data name="WebApplicationHeadersValues" xml:space="preserve">
-    <value>Headers Values</value>
+    <value>Headers Values:</value>
   </data>
   <data name="WebApplicationIsSecureConnection" xml:space="preserve">
-    <value>Secure Connection</value>
+    <value>Secure Connection:</value>
   </data>
   <data name="WebApplicationPreviousURL" xml:space="preserve">
-    <value>Previous URL</value>
+    <value>Previous URL:</value>
   </data>
   <data name="WebApplicationUserDomainName" xml:space="preserve">
-    <value>User Domain</value>
+    <value>User Domain:</value>
   </data>
   <data name="WebApplicationUserHostIP" xml:space="preserve">
-    <value>User IP</value>
+    <value>User IP:</value>
   </data>
   <data name="WebApplicationUserLanguagePreferences" xml:space="preserve">
-    <value>User Preferred Language</value>
+    <value>User Preferred Language:</value>
   </data>
 </root>
