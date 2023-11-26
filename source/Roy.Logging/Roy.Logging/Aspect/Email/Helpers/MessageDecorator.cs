@@ -396,7 +396,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveMethodInformationSection(StringBuilder body)
     {
-        body.RemoveBetween(Tags.MethodStartTag, Tags.MethodEndTag);
+        body.RemoveBetweenTags(Tags.MethodStartTag, Tags.MethodEndTag);
     }
 
     /// <summary>
@@ -407,7 +407,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveMachineInformationSection(StringBuilder body)
     {
-        body.RemoveBetween(Tags.MachineStartTag, Tags.MachineEndTag);
+        body.RemoveBetweenTags(Tags.MachineStartTag, Tags.MachineEndTag);
     }
 
     /// <summary>
@@ -418,7 +418,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveApplicationInformationSection(StringBuilder body)
     {
-        body.RemoveBetween(Tags.ApplicationStartTag, Tags.ApplicationEndTag);
+        body.RemoveBetweenTags(Tags.ApplicationStartTag, Tags.ApplicationEndTag);
         this.RemoveWebApplicationInformationSection(body);
     }
 
@@ -430,6 +430,6 @@ internal class MessageDecorator
     /// </param>
     private void RemoveWebApplicationInformationSection(StringBuilder body)
     {
-        body.RemoveBetween(Tags.WebApplicationStartTag, Tags.WebApplicationEndTag);
+        body.RemoveBetweenTags(Tags.WebApplicationStartTag, Tags.WebApplicationEndTag);
     }
 }
