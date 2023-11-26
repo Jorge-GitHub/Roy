@@ -70,7 +70,7 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application Information.
+        ///   Looks up a localized string similar to APPLICATION INFORMATION.
         /// </summary>
         public static string ApplicationInformationHeader {
             get {

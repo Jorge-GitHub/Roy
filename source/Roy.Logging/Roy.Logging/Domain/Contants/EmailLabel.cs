@@ -240,7 +240,7 @@ public struct EmailLabel
     /// <summary>
     /// Id tag for replacing method information header label on the HTML template.
     /// </summary>
-    public const string MethodInformationHeader = "MethodInformationHeaderHeader";
+    public const string MethodInformationHeader = "MethodInformationHeader";
     /// <summary>
     /// Id tag for replacing method information header label on the HTML template.
     /// </summary>

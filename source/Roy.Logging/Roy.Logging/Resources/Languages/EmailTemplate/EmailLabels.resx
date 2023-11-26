@@ -121,7 +121,7 @@
     <value>Friendly Name</value>
   </data>
   <data name="ApplicationInformationHeader" xml:space="preserve">
-    <value>Application Information</value>
+    <value>APPLICATION INFORMATION</value>
   </data>
   <data name="ApplicationIsDebuggingEnabled" xml:space="preserve">
     <value>Debugging Enabled</value>
