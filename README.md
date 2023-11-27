@@ -129,6 +129,8 @@ This behavior can be changed by using the object LogExtension.Settings static pr
 You can make any changes to the settings by calling LogExtension.Settings static property.
 I will write more documentation as soon as I have some spare time.
 
+For more information visit Roy's [wiki](https://github.com/Jorge-GitHub/Roy/wiki).
+
 ## Author
 - [Jorge Gonzalez](https://github.com/Jorge-GitHub)
 
