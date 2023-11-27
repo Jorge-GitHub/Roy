@@ -40,7 +40,7 @@ public class LogDetail : MessageDetail
     /// Web application HttpContext details.
     /// </param>
     public LogDetail(object LogValue,
-        string id, string message, StackFrame frame, LogSetting logSettings,
+        string id, string message, StackFrame frame, InformationSetting logSettings,
         WebApplicationHttpContext webApplicationHttpContext)
         : base(Level.Log, id, message, frame, logSettings, webApplicationHttpContext)
     {

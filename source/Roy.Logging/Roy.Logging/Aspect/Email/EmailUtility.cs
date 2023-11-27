@@ -25,7 +25,7 @@ internal class EmailUtility
     /// <param name="settings">
     /// Log settings.
     /// </param>
-    public void Send(EmailSetting setting, MessageDetail message, LogSetting settings)
+    public void Send(EmailSetting setting, MessageDetail message, InformationSetting settings)
     {
         setting.SetDefaultValues(message.Level,
             message.IsExceptionType(), message.Id);
@@ -51,7 +51,7 @@ internal class EmailUtility
     /// Log settings.
     /// </param>
     private void Send(EmailSetting setting, ReceiverSetting receiver, 
-        MessageDetail bodyDetail, LogSetting settings)
+        MessageDetail bodyDetail, InformationSetting settings)
     {
         MimeMessage message = setting.ToMimeMessage(receiver, bodyDetail, settings);
         SmtpClient client = new SmtpClient();

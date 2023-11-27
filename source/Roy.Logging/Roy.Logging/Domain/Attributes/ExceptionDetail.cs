@@ -58,7 +58,7 @@ public class ExceptionDetail : MessageDetail
     public ExceptionDetail(Exception exception,
         Level level, string id, string message,
         object[] listOfParameters, StackFrame frame,
-        LogSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
+        InformationSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
         : base(level, id, message, frame, logSettings, webApplicationHttpContext)
     {
         this.LoadObject(exception, level, listOfParameters);

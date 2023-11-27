@@ -66,16 +66,19 @@ public class IssueSetting
     public List<APISetting> APIs { get; set; }
     /// <summary>
     /// Logs to save on a file. If null or empty, it will log/save any issue.
+    /// You can filter the values issues types that you do not want to log by adding values to this list.
     /// </summary>
     public List<Level> LevelsToSaveOnFile { get; set; }
     /// <summary>
     /// Logs to log into the system event log. If null or empty, it will log/save any issue.
+    /// You can filter the values issues types that you do not want to log by adding values to this list.
     /// </summary>
     public List<Level> LevelsToLogOnSystemEvent { get; set; }
     /// <summary>
-    /// Log settings
+    /// Load information settings. You can load server, application, method, 
+    /// and web application (MVC only) information.
     /// </summary>
-    public LogSetting LogSettings { get; set; }
+    public InformationSetting LoadInformationSettings { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -84,7 +87,7 @@ public class IssueSetting
     {
         this.Emails = new List<EmailSetting>();
         this.APIs = new List<APISetting>();
-        this.LogSettings = new LogSetting();
+        this.LoadInformationSettings = new InformationSetting();
         this.DefaultLevel = Level.Error;
         this.LevelsToSaveOnFile = new List<Level>();
         this.LevelsToLogOnSystemEvent = new List<Level>();

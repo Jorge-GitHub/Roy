@@ -34,7 +34,7 @@ internal static class EmailExtensions
     /// MimeMessage.
     /// </returns>
     public static MimeMessage ToMimeMessage(this EmailSetting setting, 
-        ReceiverSetting receiver, MessageDetail bodyDetail, LogSetting settings)
+        ReceiverSetting receiver, MessageDetail bodyDetail, InformationSetting settings)
     {
         MimeMessage message = new MimeMessage();
         message.From.Add(new MailboxAddress(
@@ -69,7 +69,7 @@ internal static class EmailExtensions
     /// </returns>
     public static MimeEntity ToMessageBody(this EmailSetting setting, 
         ReceiverSetting receiver, MessageDetail bodyDetail,
-        LogSetting settings)
+        InformationSetting settings)
     {
         BodyBuilder builder = new BodyBuilder();
         bool isTextBody = receiver.IsTextBody.HasValue ? 

@@ -68,7 +68,7 @@ public class MessageDetail
     /// </param>
     public MessageDetail(Level level,
         string id, string message, StackFrame frame,
-        LogSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
+        InformationSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
     {
         this.LoadObject(level, id, message, frame, logSettings, webApplicationHttpContext);
     }
@@ -95,7 +95,7 @@ public class MessageDetail
     /// Web application HttpContext details.
     /// </param>
     private void LoadObject(Level level, string id, string message,
-        StackFrame frame, LogSetting logSettings,
+        StackFrame frame, InformationSetting logSettings,
         WebApplicationHttpContext webApplicationHttpContext)
     {
         this.Date = DateTime.Now;
@@ -117,7 +117,7 @@ public class MessageDetail
     /// <param name="webApplicationHttpContext">
     /// Web application HttpContext details.
     /// </param>
-    private void LoadInformation(LogSetting logSettings, StackFrame frame,
+    private void LoadInformation(InformationSetting logSettings, StackFrame frame,
         WebApplicationHttpContext webApplicationHttpContext)
     {
         try

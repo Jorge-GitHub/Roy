@@ -274,7 +274,7 @@ public static class ExceptionExtension
             {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, listOfParameters, 
-                    frame, setting.Exception.LogSettings, webApplicationHttpContext);
+                    frame, setting.Exception.LoadInformationSettings, webApplicationHttpContext);
 
                 new RecordService().SaveAsync(exceptionDetail, 
                     setting.Exception);
