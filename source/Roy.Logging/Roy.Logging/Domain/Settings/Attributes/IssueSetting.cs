@@ -58,10 +58,13 @@ public class IssueSetting
     public bool SaveIssueOnEventSystem { get; set; }
     /// <summary>
     /// Email settings.
+    /// You can send emails to multiple people based on multiple Level 
+    /// conditions, such as Error or Trace.
     /// </summary>
     public List<EmailSetting> Emails { get; set; }
     /// <summary>
     /// APIs settings.
+    /// You can call multiple APIs based on multiple Level conditions, such as Error or Trace.
     /// </summary>
     public List<APISetting> APIs { get; set; }
     /// <summary>
