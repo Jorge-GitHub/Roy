@@ -43,7 +43,7 @@ public class IssueSetting
     /// </summary>
     public bool Append { get; set; }
     /// <summary>
-    /// Determinate whether the exception/log  is enable or not.
+    /// Determinate whether the exception/log is enable or not.
     /// You can disable all the exception/logs' logging by settings this value to true.
     /// </summary>
     public bool Disable { get; set; }

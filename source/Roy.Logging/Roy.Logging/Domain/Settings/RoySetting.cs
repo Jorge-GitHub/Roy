@@ -12,7 +12,7 @@ public class RoySetting
     /// </summary>
     public IssueSetting Exception { get; set; }
     /// <summary>
-    /// Exception settings.
+    /// Log settings.
     /// </summary>
     public IssueSetting Log { get; set; }
 
