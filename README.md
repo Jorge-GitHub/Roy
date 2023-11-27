@@ -116,4 +116,7 @@ This behavior can be changed by using the object LogExtension.Settings static pr
 You can make any changes to the settings by calling LogExtension.Settings static property.
 I will write more documentation as soon as I have some spare time.
 
+## Author
+- [Jorge Gonzalez](https://github.com/Jorge-GitHub)
+
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
