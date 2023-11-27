@@ -1,7 +1,7 @@
 ﻿namespace Roy.Logging.Domain.Settings.Attributes;
 
 /// <summary>
-/// Log settings. You can load server, application, method, 
+/// Load information settings. You can load server, application, method, 
 /// and web application (MVC only) information.
 /// </summary>
 public class InformationSetting

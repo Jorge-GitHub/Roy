@@ -26,7 +26,7 @@ public class ReceiverSetting
     /// </summary>
     public string Body { get; set; }
     /// <summary>
-    /// If message would be send as text or HTML.
+    /// Flag that determinate whether the message would be send as text or HTML.
     /// By default it will be send as HTML.
     /// </summary>
     public bool? IsTextBody { get; set; }
