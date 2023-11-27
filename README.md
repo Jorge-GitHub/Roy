@@ -109,6 +109,10 @@ Roy Logging JSON sample object:
   }
 ```
 ---
+### How to Use
+
+Download the latest [release](https://github.com/Jorge-GitHub/Roy/releases), then add a refrecence to Avalon.Base.Extension.dll and Roy.Logging.dll, libraries. If you are developing a MVC application, then add a reference to Roy.Logging.MVC.dll too.
+
 By default, the exceptions and logs will be saved on the bin folder for instance, "bin\Debug\net7.0".
 Inside this folder, Roy will create an “exceptions” and a "logs" folder.
 This behavior can be changed by using the object LogExtension.Settings static property.
