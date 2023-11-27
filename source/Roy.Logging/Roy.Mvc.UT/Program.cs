@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Diagnostics;
 using Roy.Logging.MVC.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +23,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.UseRoyExceptionHandler(builder, true);
+app.UseRoyExceptionHandler(builder);
 
 app.Run();

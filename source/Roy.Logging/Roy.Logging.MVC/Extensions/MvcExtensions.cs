@@ -19,18 +19,15 @@ public static class MvcExtensions
     /// <param name="builder">
     /// WebApplication builder.
     /// </param>
-    /// <param name="loadSettings">
-    /// Flag that determinate whether to load or  not the settings.
-    /// </param>
     /// <remarks>
     /// We will use the default settings if we fail to load the 
     /// settings from the configuration file.
     /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app,
-        WebApplicationBuilder builder, bool loadSettings)
+        WebApplicationBuilder builder)
     {
         RoySetting settings = null;
-        if (loadSettings && builder.IsNotNull())
+        if (builder.IsNotNull())
         {
             try
             {
