@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/Jorge-GitHub/Roy/blob/main/resources/logo-biggerfont-white.PNG" 
+  <img src="https://jorge-github.github.io/Roy/web/images/logo-biggerfont-white.PNG" 
       alt="Anything you want, you got it."/>
 </p>
 
