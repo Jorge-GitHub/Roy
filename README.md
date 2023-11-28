@@ -11,6 +11,13 @@ Anything you want, you got it. Anything you need, you got it. Anything at all, y
 ---
 ### Features
 
+- Logging into local files (append or create a new one)
+- Logging into event system (Windows/Linux)
+- Submit logs to APIs
+- Email logs to multiple accounts
+- Easy to customize
+
+  
 Roy by default will save the exceptions and logs on the “exceptions” and "logs" folders. These folders will be created inside the bin folder. This behavior can be changed by using the LogExtension.Settings object.
 
 In addition, Roy can save the errors and logs on the computer event system (Windows/Linux), send the errors and logs by email, or call an API. These behaviors can be set by using the LogExtension.Settings object. Check the [settings wiki](https://github.com/Jorge-GitHub/Roy/wiki/Roy-%7C-Settings) for more information.
