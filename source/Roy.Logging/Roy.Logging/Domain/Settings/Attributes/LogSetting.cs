@@ -1,9 +1,10 @@
 ﻿namespace Roy.Logging.Domain.Settings.Attributes;
 
 /// <summary>
-/// Log settings.
+/// Load information settings. You can load server, application, method, 
+/// and web application (MVC only) information.
 /// </summary>
-public class LogSetting
+public class InformationSetting
 {
     /// <summary>
     /// Flag that determinate whether to log the method information or not
@@ -22,7 +23,7 @@ public class LogSetting
     /// <summary>
     /// Constructor.
     /// </summary>
-    public LogSetting()
+    public InformationSetting()
     {
         this.LogMethodInformation = true;
     }

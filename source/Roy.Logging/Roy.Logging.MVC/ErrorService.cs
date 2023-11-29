@@ -27,7 +27,7 @@ internal static class ErrorService
                 if (contextFeature != null)
                 {
                     WebApplicationHttpContext? webAppContect = null;
-                    if (LogExtension.Settings.Exception.LogSettings.LogApplicationInformation)
+                    if (LogExtension.Settings.Exception.LoadInformationSettings.LogApplicationInformation)
                     {
                         webAppContect = context.ToWebApplicationHttpContext();
                     }

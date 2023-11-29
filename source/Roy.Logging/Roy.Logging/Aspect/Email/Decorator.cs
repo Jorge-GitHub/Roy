@@ -30,7 +30,7 @@ internal class Decorator
     /// Message to be send to the user.
     /// </returns>
     public string GenerateBody(string content, MessageDetail bodyDetail, 
-        CultureInfo culture, LogSetting settings)
+        CultureInfo culture, InformationSetting settings)
     {
         StringBuilder body = new StringBuilder(content);
         new LabelDecorator().Decorate(body, bodyDetail is ExceptionDetail, culture);

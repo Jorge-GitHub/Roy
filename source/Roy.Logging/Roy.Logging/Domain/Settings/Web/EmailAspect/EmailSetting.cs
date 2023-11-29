@@ -23,6 +23,7 @@ public class EmailSetting
     public string From { get; set; }
     /// <summary>
     /// Display from value.
+    /// This is the name that will appear on the senders section.
     /// </summary>
     public string DisplayNameFrom { get; set; }
     /// <summary>
@@ -59,7 +60,9 @@ public class EmailSetting
     /// </summary>
     public bool DisableEmailSending { get; set; }
     /// <summary>
-    /// Language.
+    /// Language. Language to use for the email format. 
+    /// Currently Roy supports English, Spanish, French, and German. 
+    /// The default value is English.
     /// </summary>
     public Language Language { get; set; }
     /// <summary>

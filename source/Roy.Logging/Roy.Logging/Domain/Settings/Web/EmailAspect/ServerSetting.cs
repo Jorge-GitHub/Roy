@@ -14,11 +14,11 @@ public class ServerSetting
     /// </summary>
     public string Host { get; set; }
     /// <summary>
-    /// Email server port. Default value is 587.
+    /// Email server port. The default value is 587.
     /// </summary>
     public int Port { get; set; }
     /// <summary>
-    /// Email server time out. default value -1.
+    /// Email server time out. The default value -1.
     /// To enable time out set this value to greater than 0.
     /// </summary>
     public int TimeOut { get; set; }

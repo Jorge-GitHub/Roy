@@ -25,7 +25,7 @@ public class EmailService
     /// Log settings.
     /// </param>
     public async void SendAsync(MessageDetail bodyDetail, 
-        List<EmailSetting> emails, LogSetting settings)
+        List<EmailSetting> emails, InformationSetting settings)
     {
         foreach (EmailSetting setting in emails)
         {

@@ -43,7 +43,7 @@ public class IssueSetting
     /// </summary>
     public bool Append { get; set; }
     /// <summary>
-    /// Determinate whether the exception/log  is enable or not.
+    /// Determinate whether the exception/log is enable or not.
     /// You can disable all the exception/logs' logging by settings this value to true.
     /// </summary>
     public bool Disable { get; set; }
@@ -58,24 +58,30 @@ public class IssueSetting
     public bool SaveIssueOnEventSystem { get; set; }
     /// <summary>
     /// Email settings.
+    /// You can send emails to multiple people based on multiple Level 
+    /// conditions, such as Error or Trace.
     /// </summary>
     public List<EmailSetting> Emails { get; set; }
     /// <summary>
     /// APIs settings.
+    /// You can call multiple APIs based on multiple Level conditions, such as Error or Trace.
     /// </summary>
     public List<APISetting> APIs { get; set; }
     /// <summary>
     /// Logs to save on a file. If null or empty, it will log/save any issue.
+    /// You can filter the values issues types that you do not want to log by adding values to this list.
     /// </summary>
     public List<Level> LevelsToSaveOnFile { get; set; }
     /// <summary>
     /// Logs to log into the system event log. If null or empty, it will log/save any issue.
+    /// You can filter the values issues types that you do not want to log by adding values to this list.
     /// </summary>
     public List<Level> LevelsToLogOnSystemEvent { get; set; }
     /// <summary>
-    /// Log settings
+    /// Load information settings. You can load server, application, method, 
+    /// and web application (MVC only) information.
     /// </summary>
-    public LogSetting LogSettings { get; set; }
+    public InformationSetting LoadInformationSettings { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -84,7 +90,7 @@ public class IssueSetting
     {
         this.Emails = new List<EmailSetting>();
         this.APIs = new List<APISetting>();
-        this.LogSettings = new LogSetting();
+        this.LoadInformationSettings = new InformationSetting();
         this.DefaultLevel = Level.Error;
         this.LevelsToSaveOnFile = new List<Level>();
         this.LevelsToLogOnSystemEvent = new List<Level>();

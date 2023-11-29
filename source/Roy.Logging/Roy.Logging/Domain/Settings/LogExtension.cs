@@ -2,6 +2,9 @@
 
 namespace Roy.Logging.Domain.Settings;
 
+/// <summary>
+/// Log extensions settings.
+/// </summary>
 public static class LogExtension
 {
     /// <summary>

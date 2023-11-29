@@ -47,7 +47,7 @@ internal class MessageDecorator
     /// Log settings.
     /// </param>
     public void Decorate(StringBuilder body, MessageDetail bodyDetail, 
-        CultureInfo culture, LogSetting settings)
+        CultureInfo culture, InformationSetting settings)
     {
         this.PopulateMessageDetails(body, bodyDetail, culture, settings);
         if (bodyDetail is ExceptionDetail)
@@ -76,7 +76,7 @@ internal class MessageDecorator
     /// Log settings.
     /// </param>
     private void PopulateMessageDetails(StringBuilder body, 
-        MessageDetail bodyDetail, CultureInfo culture, LogSetting settings)
+        MessageDetail bodyDetail, CultureInfo culture, InformationSetting settings)
     {
         body.Replace(Tags.Id, bodyDetail.Id);
         body.Replace(Tags.Message, bodyDetail.Message);
@@ -103,7 +103,7 @@ internal class MessageDecorator
     /// Log settings.
     /// </param>
     private void PopulateInformationDetails(StringBuilder body,
-        MessageDetail bodyDetail, CultureInfo culture, LogSetting settings)
+        MessageDetail bodyDetail, CultureInfo culture, InformationSetting settings)
     {
         if (settings.LogMethodInformation)
         {
