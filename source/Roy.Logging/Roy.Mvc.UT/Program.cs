@@ -1,7 +1,6 @@
 using Roy.Logging.MVC.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.LoadRoySettings();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -26,6 +25,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.UseRoyExceptionHandler();
+app.UseRoyExceptionHandler(builder);
 
 app.Run();

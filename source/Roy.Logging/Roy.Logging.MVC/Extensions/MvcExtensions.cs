@@ -32,6 +32,7 @@ public static class MvcExtensions
             catch { }
         }
     }
+
     /// <summary>
     /// Load Roy logging on errors and log all the errors not managed by the code.
     /// </summary>
