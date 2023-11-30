@@ -8,7 +8,7 @@ Anything you want, you got it. Anything you need, you got it. Anything at all, y
 
 [Roy's Website](https://jorge-github.github.io/Roy/)
 
-[Donate](https://www.paypal.com/donate/?hosted_button_id=R7WNFY544K8LQ)
+[![Donate](https://jorge-github.github.io/Roy/web/images/donate.png)](https://www.paypal.com/donate/?hosted_button_id=R7WNFY544K8LQ)
 
 ---
 ### Features
@@ -145,4 +145,4 @@ For more information visit Roy's [wiki](https://github.com/Jorge-GitHub/Roy/wiki
 
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
-[Donate](https://www.paypal.com/donate/?hosted_button_id=R7WNFY544K8LQ)
+[![Donate](https://jorge-github.github.io/Roy/web/images/donate.png)](https://www.paypal.com/donate/?hosted_button_id=R7WNFY544K8LQ)
