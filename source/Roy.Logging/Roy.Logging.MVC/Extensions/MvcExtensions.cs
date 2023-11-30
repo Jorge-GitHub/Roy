@@ -11,7 +11,29 @@ namespace Roy.Logging.MVC.Extensions;
 public static class MvcExtensions
 {
     /// <summary>
-    /// Load Roy logging on errors.
+    /// Load settings from the configuration file.
+    /// </summary>
+    /// <param name="builder">
+    /// WebApplication builder.
+    /// </param>
+    public static void LoadRoySettings(this WebApplicationBuilder builder)
+    {
+        if (builder.IsNotNull())
+        {
+            try
+            {
+                RoySetting settings = builder.Configuration.GetSection("RoyLogging")
+                    .Get<RoySetting>();
+                if (settings.IsNotNull())
+                {
+                    LogExtension.Settings = settings;
+                }
+            }
+            catch { }
+        }
+    }
+    /// <summary>
+    /// Load Roy logging on errors and log all the errors not managed by the code.
     /// </summary>
     /// <param name="app">
     /// Web application.
@@ -26,17 +48,8 @@ public static class MvcExtensions
     public static void UseRoyExceptionHandler(this WebApplication app,
         WebApplicationBuilder builder)
     {
-        RoySetting settings = null;
-        if (builder.IsNotNull())
-        {
-            try
-            {
-                settings = builder.Configuration.GetSection("RoyLogging")
-                    .Get<RoySetting>();
-            }
-            catch { }
-        }
-        app.UseRoyExceptionHandler(settings);
+        builder.LoadRoySettings();
+        app.UseRoyExceptionHandler();
     }
 
     /// <summary>
