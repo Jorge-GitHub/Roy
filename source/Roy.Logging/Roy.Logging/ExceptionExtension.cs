@@ -258,7 +258,7 @@ public static class ExceptionExtension
     /// Optional: Web application HttpContext details.
     /// </param>
     /// <param name="listOfParameters">
-    /// List of parameters.
+    /// Optional: List of parameters.
     /// </param>
     public static async void SaveAsync(this Exception exception,
         Level level, string message, string identity, 
@@ -273,8 +273,9 @@ public static class ExceptionExtension
                 && setting.Log.Disable.IsNotTrue())
             {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
-                    level, identity, message, listOfParameters, 
-                    frame, setting.Exception.LoadInformationSettings, webApplicationHttpContext);
+                    level, identity, message, frame, 
+                    setting.Exception.LoadInformationSettings, 
+                    webApplicationHttpContext, listOfParameters);
 
                 new RecordService().SaveAsync(exceptionDetail, 
                     setting.Exception);

@@ -39,10 +39,15 @@ public class LogDetail : MessageDetail
     /// <param name="webApplicationHttpContext">
     /// Web application HttpContext details.
     /// </param>
-    public LogDetail(object LogValue,
-        string id, string message, StackFrame frame, InformationSetting logSettings,
-        WebApplicationHttpContext webApplicationHttpContext)
-        : base(Level.Log, id, message, frame, logSettings, webApplicationHttpContext)
+    /// <param name="listOfParameters">
+    /// Optional: List of parameters.
+    /// </param>
+    public LogDetail(object LogValue, Level level, string id, 
+        string message, StackFrame frame, InformationSetting logSettings,
+        WebApplicationHttpContext webApplicationHttpContext,
+        object[] listOfParameters)
+        : base(level, id, message, frame, logSettings, 
+            webApplicationHttpContext, listOfParameters)
     {
         this.LoadObject(LogValue);
     }

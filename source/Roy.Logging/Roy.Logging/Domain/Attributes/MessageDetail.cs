@@ -44,6 +44,10 @@ public class MessageDetail
     /// Stack frame making the call to the method.
     /// </summary>
     public Method StackFrame { get; set; }
+    /// <summary>
+    /// list of parameters.
+    /// </summary>
+    public object[] ListOfParameters { get; set; }
 
     /// <summary>
     /// Loads the object.
@@ -66,11 +70,16 @@ public class MessageDetail
     /// <param name="webApplicationHttpContext">
     /// Web application HttpContext details.
     /// </param>
+    /// <param name="listOfParameters">
+    /// List of parameters.
+    /// </param>
     public MessageDetail(Level level,
         string id, string message, StackFrame frame,
-        InformationSetting logSettings, WebApplicationHttpContext webApplicationHttpContext)
+        InformationSetting logSettings, WebApplicationHttpContext webApplicationHttpContext,
+        object[] listOfParameters)
     {
-        this.LoadObject(level, id, message, frame, logSettings, webApplicationHttpContext);
+        this.LoadObject(level, id, message, frame, logSettings, 
+            webApplicationHttpContext, listOfParameters);
     }
 
     /// <summary>
@@ -94,14 +103,19 @@ public class MessageDetail
     /// <param name="webApplicationHttpContext">
     /// Web application HttpContext details.
     /// </param>
+    /// <param name="listOfParameters">
+    /// Optional: List of parameters.
+    /// </param>
     private void LoadObject(Level level, string id, string message,
         StackFrame frame, InformationSetting logSettings,
-        WebApplicationHttpContext webApplicationHttpContext)
+        WebApplicationHttpContext webApplicationHttpContext,
+        object[] listOfParameters)
     {
         this.Date = DateTime.Now;
         this.Level = level;
         this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
         this.Message = message;
+        this.ListOfParameters = listOfParameters;
         this.LoadInformation(logSettings, frame, webApplicationHttpContext);
     }
 
