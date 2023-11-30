@@ -100,4 +100,8 @@ Easy to use.</PackageReleaseNotes>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Aspect\Database\" />
+  </ItemGroup>
+
 </Project>

@@ -4,6 +4,7 @@ using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
+using Roy.Logging.Services;
 using System.Diagnostics;
 
 namespace Roy.Logging;
@@ -208,7 +209,7 @@ public static class LoggerExtension
                     frame, setting.Log.LoadInformationSettings, webApplicationHttpContext,
                     listOfParameters);
 
-                new RecordService().SaveAsync(
+                new Record().SaveAsync(
                     detail, setting.Log);
             }
         }

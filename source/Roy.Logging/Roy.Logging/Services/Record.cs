@@ -3,12 +3,12 @@ using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Helpers;
 
-namespace Roy.Logging;
+namespace Roy.Logging.Services;
 
 /// <summary>
 /// Register service.
 /// </summary>
-internal class RecordService
+internal class Record
 {
     /// <summary>
     /// Save message.
@@ -34,7 +34,7 @@ internal class RecordService
         {
             if (setting.Emails.HasElements())
             {
-                new EmailService().SendAsync(message, setting.Emails, 
+                new EmailService().SendAsync(message, setting.Emails,
                     setting.LoadInformationSettings);
             }
         }

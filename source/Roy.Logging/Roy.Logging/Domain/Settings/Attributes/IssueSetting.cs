@@ -1,4 +1,5 @@
 ﻿using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Database;
 using Roy.Logging.Domain.Settings.Web.APIAspect;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 
@@ -67,6 +68,12 @@ public class IssueSetting
     /// You can call multiple APIs based on multiple Level conditions, such as Error or Trace.
     /// </summary>
     public List<APISetting> APIs { get; set; }
+    /// <summary>
+    /// Database settings.
+    /// You can save the log in multiple databases 
+    /// based on multiple Level conditions, such as Error or Trace.
+    /// </summary>
+    public List<DatabaseSetting> Databases { get; set; }
     /// <summary>
     /// Logs to save on a file. If null or empty, it will log/save any issue.
     /// You can filter the values issues types that you do not want to log by adding values to this list.
