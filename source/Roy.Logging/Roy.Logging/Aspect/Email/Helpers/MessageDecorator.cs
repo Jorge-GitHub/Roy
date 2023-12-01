@@ -144,12 +144,9 @@ internal class MessageDecorator
     {
         body.Replace(Tags.ExceptionMessage, bodyDetail.ExceptionMessage);
         body.Replace(Tags.StackTrace, bodyDetail.StackTrace);
-        body.Replace(Tags.ExceptionParametersListJSON,
-            this.SerializeObject(bodyDetail.ListOfParameters));
-        body.Replace(Tags.ExceptionJSON,
-            this.SerializeObject(bodyDetail.ExceptionTrace));
-        body.Replace(Tags.IssueJSON,
-            this.SerializeObject(bodyDetail));
+        body.Replace(Tags.ExceptionParametersListJSON, bodyDetail.ToJSON());
+        body.Replace(Tags.ExceptionJSON, bodyDetail.ExceptionTrace.ToJSON());
+        body.Replace(Tags.IssueJSON, bodyDetail.ToJSON());
 
         if (bodyDetail.ExceptionTrace.IsNotNull())
         {
@@ -173,33 +170,9 @@ internal class MessageDecorator
     /// </param>
     private void PopulateLogDetails(StringBuilder body, LogDetail bodyDetail)
     {
-        body.Replace(Tags.IssueJSON,
-            this.SerializeObject(bodyDetail));
+        body.Replace(Tags.IssueJSON, bodyDetail.ToJSON());
         body.Replace(Tags.LogValueJSON,
-            this.SerializeObject(bodyDetail.LogValue));
-    }
-
-    /// <summary>
-    /// Serialize the object.
-    /// </summary>
-    /// <param name="objectDetail">
-    /// Object to serialize.
-    /// </param>
-    /// <returns>
-    /// Serialized version of the object.
-    /// </returns>
-    private string SerializeObject(object objectDetail)
-    {
-        try
-        {
-            if (objectDetail.IsNotNull())
-            {
-                return JsonSerializer.Serialize(objectDetail);
-            }
-        }
-        catch { }
-
-        return string.Empty;
+            bodyDetail.LogValue.ToJSON());
     }
 
     /// <summary>
@@ -218,7 +191,7 @@ internal class MessageDecorator
             body.Replace(Tags.MethodCallerFileName, method.CallerFileName);
             body.Replace(Tags.MethodCallerMethodName, method.CallerMethodName);
             body.Replace(Tags.MethodCallerLineNumber, method.CallerLineNumber.ToString());
-            body.Replace(Tags.MethodParametersJSON, this.SerializeObject(method.Parameters));
+            body.Replace(Tags.MethodParametersJSON, method.ToJSON());
         }
         else
         {
