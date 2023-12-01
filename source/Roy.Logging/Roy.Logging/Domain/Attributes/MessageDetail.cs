@@ -48,6 +48,10 @@ public class MessageDetail
     /// list of parameters.
     /// </summary>
     public object[] ListOfParameters { get; set; }
+    /// <summary>
+    /// Message type.
+    /// </summary>
+    public MessageType Type { get; set; }
 
     /// <summary>
     /// Loads the object.
@@ -67,6 +71,9 @@ public class MessageDetail
     /// <param name="logSettings">
     /// Log settings.
     /// </param>
+    /// <param name="type">
+    /// Message's type.
+    /// </param>
     /// <param name="webApplicationHttpContext">
     /// Web application HttpContext details.
     /// </param>
@@ -75,10 +82,11 @@ public class MessageDetail
     /// </param>
     public MessageDetail(Level level,
         string id, string message, StackFrame frame,
-        InformationSetting logSettings, WebApplicationHttpContext webApplicationHttpContext,
+        InformationSetting logSettings, MessageType type, 
+        WebApplicationHttpContext webApplicationHttpContext,
         object[] listOfParameters)
     {
-        this.LoadObject(level, id, message, frame, logSettings, 
+        this.LoadObject(level, id, message, frame, logSettings, type,
             webApplicationHttpContext, listOfParameters);
     }
 
@@ -97,8 +105,11 @@ public class MessageDetail
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
     /// </param>
-    /// <param name="logSettings">
-    /// Log settings.
+    /// <param name="informationSettings">
+    /// Information settings.
+    /// </param>
+    /// <param name="type">
+    /// Message's type.
     /// </param>
     /// <param name="webApplicationHttpContext">
     /// Web application HttpContext details.
@@ -107,7 +118,7 @@ public class MessageDetail
     /// Optional: List of parameters.
     /// </param>
     private void LoadObject(Level level, string id, string message,
-        StackFrame frame, InformationSetting logSettings,
+        StackFrame frame, InformationSetting informationSettings, MessageType type,
         WebApplicationHttpContext webApplicationHttpContext,
         object[] listOfParameters)
     {
@@ -115,15 +126,16 @@ public class MessageDetail
         this.Level = level;
         this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
         this.Message = message;
+        this.Type = type;
         this.ListOfParameters = listOfParameters;
-        this.LoadInformation(logSettings, frame, webApplicationHttpContext);
+        this.LoadInformation(informationSettings, frame, webApplicationHttpContext);
     }
 
     /// <summary>
     /// Load the system information.
     /// </summary>
-    /// <param name="logSettings">
-    /// Log settings.
+    /// <param name="informationSettings">
+    /// Information settings.
     /// </param>
     /// <param name="frame">
     /// Stack frame containing the method calling the log.
@@ -131,12 +143,12 @@ public class MessageDetail
     /// <param name="webApplicationHttpContext">
     /// Web application HttpContext details.
     /// </param>
-    private void LoadInformation(InformationSetting logSettings, StackFrame frame,
+    private void LoadInformation(InformationSetting informationSettings, StackFrame frame,
         WebApplicationHttpContext webApplicationHttpContext)
     {
         try
         {
-            if (logSettings.LogApplicationInformation)
+            if (informationSettings.LogApplicationInformation)
             {
                 if (webApplicationHttpContext.IsNotNull())
                 {
@@ -148,11 +160,11 @@ public class MessageDetail
                     this.ApplicationInformation = new Application(true);
                 }
             }
-            if (logSettings.LogMachineInformation)
+            if (informationSettings.LogMachineInformation)
             {
                 this.MachineInformation = new Machine(true);
             }
-            if (logSettings.LogMethodInformation)
+            if (informationSettings.LogMethodInformation)
             {
                 this.StackFrame = new Method(frame);
             }

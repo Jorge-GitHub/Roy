@@ -31,6 +31,15 @@ internal class Record
         catch { }
 
         try
+        { 
+            if (setting.Databases.HasElements())
+            {
+                new DatabaseService().SaveAsync(message, setting.Databases);
+            }
+        } 
+        catch { }
+
+        try
         {
             if (setting.Emails.HasElements())
             {
