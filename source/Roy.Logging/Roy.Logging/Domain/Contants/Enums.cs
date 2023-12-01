@@ -39,13 +39,3 @@ public enum Language
     French = 3,
     German = 4
 }
-
-/// <summary>
-/// Message type.
-/// </summary>
-public enum MessageType
-{
-    None = 0,
-    Exception = 1,
-    Log = 2,
-}
