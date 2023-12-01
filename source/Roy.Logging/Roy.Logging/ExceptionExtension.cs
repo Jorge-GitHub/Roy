@@ -4,7 +4,7 @@ using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
-using Roy.Logging.Services;
+using Roy.Logging.Helpers;
 using System.Diagnostics;
 
 namespace Roy.Logging;
@@ -278,7 +278,7 @@ public static class ExceptionExtension
                     setting.Exception.LoadInformationSettings, 
                     webApplicationHttpContext, listOfParameters);
 
-                new Record().SaveAsync(exceptionDetail, 
+                new RecordService().SaveAsync(exceptionDetail, 
                     setting.Exception);
             }
         }
