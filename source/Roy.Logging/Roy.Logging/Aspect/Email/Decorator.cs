@@ -1,6 +1,7 @@
 ﻿using Roy.Logging.Aspect.Email.Helpers;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Attributes;
+using Roy.Logging.Extensions;
 using System.Globalization;
 using System.Text;
 
@@ -33,7 +34,7 @@ internal class Decorator
         CultureInfo culture, InformationSetting settings)
     {
         StringBuilder body = new StringBuilder(content);
-        new LabelDecorator().Decorate(body, bodyDetail is ExceptionDetail, culture);
+        new LabelDecorator().Decorate(body, bodyDetail.IsExceptionType(), culture);
         new MessageDecorator().Decorate(body, bodyDetail, culture, settings);
 
         return body.ToString();

@@ -50,7 +50,7 @@ internal class MessageDecorator
         CultureInfo culture, InformationSetting settings)
     {
         this.PopulateMessageDetails(body, bodyDetail, culture, settings);
-        if (bodyDetail is ExceptionDetail)
+        if (bodyDetail.IsExceptionType())
         {
             this.PopulateExceptionDetails(body, (ExceptionDetail)bodyDetail);
         }

@@ -1,4 +1,5 @@
-﻿using Roy.Logging.Domain.Attributes;
+﻿using Roy.Logging.Aspect.Database;
+using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Database;
 
 namespace Roy.Logging.Helpers;
@@ -6,8 +7,21 @@ namespace Roy.Logging.Helpers;
 /// <summary>
 /// Database service.
 /// </summary>
-public class DatabaseService
+internal class DatabaseService
 {
+    /// <summary>
+    /// Database utility.
+    /// </summary>
+    private DatabaseUtility Utility {  get; set; }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public DatabaseService()
+    {
+        this.Utility = new DatabaseUtility();
+    }
+
     /// <summary>
     /// Save the message into the databases.
     /// </summary>
@@ -20,9 +34,13 @@ public class DatabaseService
     public async void SaveAsync(MessageDetail message,
         List<DatabaseSetting> settings)
     {
-        foreach(DatabaseSetting database in settings)
+        foreach(DatabaseSetting setting in settings)
         {
-
+            // 1 create a record object
+            this.Utility.Save(message, setting);
+            // // (object is going to be used to limit the string lengths and set the default table name and query type)
+            // 2 create script
+            // 3 submit query
         }
     }
 }

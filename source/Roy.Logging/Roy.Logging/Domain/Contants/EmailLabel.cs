@@ -3,7 +3,7 @@
 /// <summary>
 /// Labels used on the email HTML template.
 /// </summary>
-public struct EmailLabel
+internal struct EmailLabel
 {
     /// <summary>
     /// Id tag for replacing exception information header label on the HTML template.

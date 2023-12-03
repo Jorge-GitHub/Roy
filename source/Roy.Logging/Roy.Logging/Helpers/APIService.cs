@@ -25,12 +25,16 @@ internal class APIService
     {
         foreach (APISetting api in settings)
         {
-            if ((!api.LevelsToPost.HasElements() ||
-                api.LevelsToPost.Any(item => item.Equals(message.Level)))
-                && !api.DisablePost)
+            try
             {
-                this.Utility.Post(api, message);
+                if ((!api.LevelsToPost.HasElements() ||
+                    api.LevelsToPost.Any(item => item.Equals(message.Level)))
+                    && !api.DisablePost)
+                {
+                    this.Utility.Post(api, message);
+                }
             }
+            catch { } // Keep posting the remaining messages.
         }
     }
 

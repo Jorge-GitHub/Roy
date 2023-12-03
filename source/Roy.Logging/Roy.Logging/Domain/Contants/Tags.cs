@@ -3,7 +3,7 @@
 /// <summary>
 /// Tags.
 /// </summary>
-public struct Tags
+internal struct Tags
 {
     /// <summary>
     /// Id tag for replacing Id on the HTML template.

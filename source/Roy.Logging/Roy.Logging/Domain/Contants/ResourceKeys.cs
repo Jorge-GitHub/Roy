@@ -1,6 +1,9 @@
 ﻿namespace Roy.Logging.Domain.Contants;
 
-public struct ResourceKey
+/// <summary>
+/// Resources key.
+/// </summary>
+internal struct ResourceKey
 {
     /// <summary>
     /// Id used to get the exception HTML body message from the resources.

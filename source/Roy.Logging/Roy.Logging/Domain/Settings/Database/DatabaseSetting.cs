@@ -27,7 +27,7 @@ public class DatabaseSetting
     /// <summary>
     /// Issues levels to save. If null or empty, it will save all the issues.
     /// </summary>
-    public List<Level> LevelsToSave{ get; set; }
+    public List<Level> LevelsToSave { get; set; }
     /// <summary>
     /// Default table's name.
     /// </summary>
