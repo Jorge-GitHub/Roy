@@ -47,7 +47,7 @@ public class MessageDetail
     /// <summary>
     /// list of parameters.
     /// </summary>
-    public object[] ListOfParameters { get; set; }
+    public object[] CustomListOfParameters { get; set; }
 
     /// <summary>
     /// Loads the object.
@@ -116,7 +116,7 @@ public class MessageDetail
         this.Level = level;
         this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
         this.Message = message;
-        this.ListOfParameters = listOfParameters;
+        this.CustomListOfParameters = listOfParameters;
         this.LoadInformation(informationSettings, frame, webApplicationHttpContext);
     }
 

@@ -147,6 +147,9 @@
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
   </data>
+  <data name="CustomListOfParametersJSON" xml:space="preserve">
+    <value>Custom List of Parameters in JSON Format:</value>
+  </data>
   <data name="CustomMessage" xml:space="preserve">
     <value>Custom Message:</value>
   </data>

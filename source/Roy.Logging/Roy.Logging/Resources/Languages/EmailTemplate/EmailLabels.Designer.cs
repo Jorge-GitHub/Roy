@@ -151,6 +151,15 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom List of Parameters in JSON Format:.
+        /// </summary>
+        public static string CustomListOfParametersJSON {
+            get {
+                return ResourceManager.GetString("CustomListOfParametersJSON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom Message:.
         /// </summary>
         public static string CustomMessage {

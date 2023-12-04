@@ -26,6 +26,10 @@ internal struct EmailLabel
     /// </summary>
     public const string CustomMessage = "CustomMessage";
     /// <summary>
+    /// Id tag for replacing custom list of parameters label on the HTML template.
+    /// </summary>
+    public const string CustomListOfParametersJSON = "CustomListOfParametersJSON";
+    /// <summary>
     /// Id tag for replacing exception message tag label on the HTML template.
     /// </summary>
     public const string ExceptionMessage = "ExceptionMessageTag";
@@ -129,6 +133,10 @@ internal struct EmailLabel
     /// Id tag for replacing custom message label on the HTML template.
     /// </summary>
     public const string CustomMessageTag = "*|CustomMessage|*";
+    /// <summary>
+    /// Id tag for replacing custom list of parameters tag label on the HTML template.
+    /// </summary>
+    public const string CustomListOfParametersJSONTag = "*|CustomListOfParametersJSONTag|*";
     /// <summary>
     /// Id tag for replacing exception message tag label on the HTML template.
     /// </summary>

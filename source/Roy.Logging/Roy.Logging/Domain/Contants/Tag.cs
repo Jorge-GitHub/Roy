@@ -3,7 +3,7 @@
 /// <summary>
 /// Tags.
 /// </summary>
-internal struct Tags
+internal struct Tag
 {
     /// <summary>
     /// Id tag for replacing Id on the HTML template.
@@ -25,6 +25,10 @@ internal struct Tags
     /// Id tag for replacing custom message on the HTML template.
     /// </summary>
     public const string Message = "*|Message|*";
+    /// <summary>
+    /// Id tag for replacing the custom list of parameters on the HTML template.
+    /// </summary>
+    public const string CustomListOfParametersJSON = "*|CustomListOfParametersJSON|*";
     /// <summary>
     /// Id tag for replacing source on the HTML template.
     /// </summary>

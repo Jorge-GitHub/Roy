@@ -31,15 +31,6 @@ internal class RecordService
 
         try
         {
-            if (setting.Databases.HasElements())
-            {
-                new DatabaseService().SaveAsync(message, setting.Databases);
-            }
-        }
-        catch { }
-
-        try
-        {
             if (setting.Emails.HasElements())
             {
                 new EmailService().SendAsync(message, setting.Emails,
@@ -63,6 +54,15 @@ internal class RecordService
             if (setting.SaveIssueOnEventSystem)
             {
                 new SystemEventLogService().LogAsync(message, setting);
+            }
+        }
+        catch { }
+
+        try
+        {
+            if (setting.Databases.HasElements())
+            {
+                new DatabaseService().SaveAsync(message, setting.Databases);
             }
         }
         catch { }

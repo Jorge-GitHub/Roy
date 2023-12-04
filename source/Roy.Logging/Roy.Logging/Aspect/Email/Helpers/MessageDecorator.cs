@@ -9,7 +9,6 @@ using Roy.Logging.Extensions;
 using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Globalization;
 using System.Text;
-using System.Text.Json;
 
 namespace Roy.Logging.Aspect.Email.Helpers;
 
@@ -78,12 +77,14 @@ internal class MessageDecorator
     private void PopulateMessageDetails(StringBuilder body, 
         MessageDetail bodyDetail, CultureInfo culture, InformationSetting settings)
     {
-        body.Replace(Tags.Id, bodyDetail.Id);
-        body.Replace(Tags.Message, bodyDetail.Message);
-        body.Replace(Tags.Date, bodyDetail.Date.ToString(
+        body.Replace(Tag.Id, bodyDetail.Id);
+        body.Replace(Tag.Message, bodyDetail.Message);
+        body.Replace(Tag.Date, bodyDetail.Date.ToString(
             StringValues.LogDateFormat));
-        body.Replace(Tags.Level, bodyDetail.Level.ToCurrentCultureString(culture));
-        body.Replace(Tags.CurrentYear, DateTime.Now.Year.ToString());
+        body.Replace(Tag.Level, bodyDetail.Level.ToCurrentCultureString(culture));
+        body.Replace(Tag.CurrentYear, DateTime.Now.Year.ToString());
+        body.Replace(Tag.CustomListOfParametersJSON, 
+            bodyDetail.CustomListOfParameters.ToJSON());
         this.PopulateInformationDetails(body, bodyDetail, culture, settings);
     }
 
@@ -142,16 +143,16 @@ internal class MessageDecorator
     /// </param>
     private void PopulateExceptionDetails(StringBuilder body, ExceptionDetail bodyDetail)
     {
-        body.Replace(Tags.ExceptionMessage, bodyDetail.ExceptionMessage);
-        body.Replace(Tags.StackTrace, bodyDetail.StackTrace);
-        body.Replace(Tags.ExceptionParametersListJSON, bodyDetail.ToJSON());
-        body.Replace(Tags.ExceptionJSON, bodyDetail.ExceptionTrace.ToJSON());
-        body.Replace(Tags.IssueJSON, bodyDetail.ToJSON());
+        body.Replace(Tag.ExceptionMessage, bodyDetail.ExceptionMessage);
+        body.Replace(Tag.StackTrace, bodyDetail.StackTrace);
+        body.Replace(Tag.ExceptionParametersListJSON, bodyDetail.ToJSON());
+        body.Replace(Tag.ExceptionJSON, bodyDetail.ExceptionTrace.ToJSON());
+        body.Replace(Tag.IssueJSON, bodyDetail.ToJSON());
 
         if (bodyDetail.ExceptionTrace.IsNotNull())
         {
-            body.Replace(Tags.Source, bodyDetail.ExceptionTrace.Source);
-            body.Replace(Tags.HelpLink, bodyDetail.ExceptionTrace.HelpLink);
+            body.Replace(Tag.Source, bodyDetail.ExceptionTrace.Source);
+            body.Replace(Tag.HelpLink, bodyDetail.ExceptionTrace.HelpLink);
         }
         else
         {
@@ -170,8 +171,8 @@ internal class MessageDecorator
     /// </param>
     private void PopulateLogDetails(StringBuilder body, LogDetail bodyDetail)
     {
-        body.Replace(Tags.IssueJSON, bodyDetail.ToJSON());
-        body.Replace(Tags.LogValueJSON,
+        body.Replace(Tag.IssueJSON, bodyDetail.ToJSON());
+        body.Replace(Tag.LogValueJSON,
             bodyDetail.LogValue.ToJSON());
     }
 
@@ -188,10 +189,10 @@ internal class MessageDecorator
     {
         if (method.IsNotNull())
         {
-            body.Replace(Tags.MethodCallerFileName, method.CallerFileName);
-            body.Replace(Tags.MethodCallerMethodName, method.CallerMethodName);
-            body.Replace(Tags.MethodCallerLineNumber, method.CallerLineNumber.ToString());
-            body.Replace(Tags.MethodParametersJSON, method.ToJSON());
+            body.Replace(Tag.MethodCallerFileName, method.CallerFileName);
+            body.Replace(Tag.MethodCallerMethodName, method.CallerMethodName);
+            body.Replace(Tag.MethodCallerLineNumber, method.CallerLineNumber.ToString());
+            body.Replace(Tag.MethodParametersJSON, method.ToJSON());
         }
         else
         {
@@ -225,12 +226,12 @@ internal class MessageDecorator
             }
             else
             {
-                body.Replace(Tags.MachineCLRVersion, computer.CLRVersion);
-                body.Replace(Tags.MachineDomainName, computer.DomainName);
-                body.Replace(Tags.MachineName, computer.Name);
-                body.Replace(Tags.MachineOperativeSystem, computer.OperativeSystem);
-                body.Replace(Tags.MachineOperativeSystemVersion, computer.OperativeSystemVersion);
-                body.Replace(Tags.MachineUserAccountName, computer.UserAccountName);
+                body.Replace(Tag.MachineCLRVersion, computer.CLRVersion);
+                body.Replace(Tag.MachineDomainName, computer.DomainName);
+                body.Replace(Tag.MachineName, computer.Name);
+                body.Replace(Tag.MachineOperativeSystem, computer.OperativeSystem);
+                body.Replace(Tag.MachineOperativeSystemVersion, computer.OperativeSystemVersion);
+                body.Replace(Tag.MachineUserAccountName, computer.UserAccountName);
             }
         }
         else
@@ -293,15 +294,15 @@ internal class MessageDecorator
             }
             else
             {
-                body.Replace(Tags.AssemblyLocation, application.AssemblyLocation);
-                body.Replace(Tags.ApplicationIsDebuggingEnabled, 
+                body.Replace(Tag.AssemblyLocation, application.AssemblyLocation);
+                body.Replace(Tag.ApplicationIsDebuggingEnabled, 
                     this.TagHelper.GetCultureTrueOrFalse(application.IsDebuggingEnabled, culture));
-                body.Replace(Tags.ApplicationPhysicalApplicationPath, application.PhysicalApplicationPath);
-                body.Replace(Tags.ApplicationFriendlyName, application.FriendlyName);
-                body.Replace(Tags.ApplicationIsFullyTrusted,
+                body.Replace(Tag.ApplicationPhysicalApplicationPath, application.PhysicalApplicationPath);
+                body.Replace(Tag.ApplicationFriendlyName, application.FriendlyName);
+                body.Replace(Tag.ApplicationIsFullyTrusted,
                     this.TagHelper.GetCultureTrueOrFalse(application.IsFullyTrusted, culture));
-                body.Replace(Tags.ApplicationUserDomainName, application.UserDomainName);
-                body.Replace(Tags.ApplicationUserName, application.UserName);
+                body.Replace(Tag.ApplicationUserDomainName, application.UserDomainName);
+                body.Replace(Tag.ApplicationUserName, application.UserName);
             }
         }
         else
@@ -335,18 +336,18 @@ internal class MessageDecorator
         }
         else
         {
-            body.Replace(Tags.WebApplicationCurrentURL, webApplication.CurrentURL);
-            body.Replace(Tags.WebApplicationCurrentURLParameters, webApplication.CurrentURLParameters);
-            body.Replace(Tags.WebApplicationPreviousURL, webApplication.PreviousURL);
-            body.Replace(Tags.WebApplicationUserHostIP, webApplication.UserHostIP);
-            body.Replace(Tags.WebApplicationIsSecureConnection,
+            body.Replace(Tag.WebApplicationCurrentURL, webApplication.CurrentURL);
+            body.Replace(Tag.WebApplicationCurrentURLParameters, webApplication.CurrentURLParameters);
+            body.Replace(Tag.WebApplicationPreviousURL, webApplication.PreviousURL);
+            body.Replace(Tag.WebApplicationUserHostIP, webApplication.UserHostIP);
+            body.Replace(Tag.WebApplicationIsSecureConnection,
                 this.TagHelper.GetCultureTrueOrFalse(webApplication.IsSecureConnection, culture));
-            body.Replace(Tags.WebApplicationUserDomainName, webApplication.UserDomainName);
-            body.Replace(Tags.WebApplicationCookiesValues, webApplication.CookiesValues
+            body.Replace(Tag.WebApplicationUserDomainName, webApplication.UserDomainName);
+            body.Replace(Tag.WebApplicationCookiesValues, webApplication.CookiesValues
                 .ToStringStringBuilder().ToString());
-            body.Replace(Tags.WebApplicationHeadersValues, webApplication.HeadersValues
+            body.Replace(Tag.WebApplicationHeadersValues, webApplication.HeadersValues
                 .ToStringStringBuilder().ToString());
-            body.Replace(Tags.WebApplicationUserLanguagePreferences, webApplication.UserLanguagePreferences);
+            body.Replace(Tag.WebApplicationUserLanguagePreferences, webApplication.UserLanguagePreferences);
         }
     }
 
@@ -369,7 +370,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveMethodInformationSection(StringBuilder body)
     {
-        body.RemoveBetweenTags(Tags.MethodStartTag, Tags.MethodEndTag);
+        body.RemoveBetweenTags(Tag.MethodStartTag, Tag.MethodEndTag);
     }
 
     /// <summary>
@@ -380,7 +381,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveMachineInformationSection(StringBuilder body)
     {
-        body.RemoveBetweenTags(Tags.MachineStartTag, Tags.MachineEndTag);
+        body.RemoveBetweenTags(Tag.MachineStartTag, Tag.MachineEndTag);
     }
 
     /// <summary>
@@ -391,7 +392,7 @@ internal class MessageDecorator
     /// </param>
     private void RemoveApplicationInformationSection(StringBuilder body)
     {
-        body.RemoveBetweenTags(Tags.ApplicationStartTag, Tags.ApplicationEndTag);
+        body.RemoveBetweenTags(Tag.ApplicationStartTag, Tag.ApplicationEndTag);
         this.RemoveWebApplicationInformationSection(body);
     }
 
@@ -403,6 +404,6 @@ internal class MessageDecorator
     /// </param>
     private void RemoveWebApplicationInformationSection(StringBuilder body)
     {
-        body.RemoveBetweenTags(Tags.WebApplicationStartTag, Tags.WebApplicationEndTag);
+        body.RemoveBetweenTags(Tag.WebApplicationStartTag, Tag.WebApplicationEndTag);
     }
 }

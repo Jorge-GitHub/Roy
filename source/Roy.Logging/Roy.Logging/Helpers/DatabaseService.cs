@@ -19,7 +19,7 @@ internal class DatabaseService
     /// </summary>
     public DatabaseService()
     {
-        this.Utility = new DatabaseUtility();
+        this.InitializeObject();
     }
 
     /// <summary>
@@ -42,5 +42,13 @@ internal class DatabaseService
             // 2 create script
             // 3 submit query
         }
+    }
+
+    /// <summary>
+    /// Initialize the object.
+    /// </summary>
+    private void InitializeObject()
+    {
+        this.Utility = new DatabaseUtility();
     }
 }

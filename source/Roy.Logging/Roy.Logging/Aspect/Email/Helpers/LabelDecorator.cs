@@ -32,6 +32,8 @@ internal class LabelDecorator
             .GetString(EmailLabel.IssueLevel, culture));
         body.Replace(EmailLabel.CustomMessageTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.CustomMessage, culture));
+        body.Replace(EmailLabel.CustomListOfParametersJSONTag, EmailLabels.ResourceManager
+            .GetString(EmailLabel.CustomListOfParametersJSON, culture));
         body.Replace(EmailLabel.AssemblyLocationTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.AssemblyLocation, culture));
         body.Replace(EmailLabel.StackFrameInJSONFormatTag, EmailLabels.ResourceManager

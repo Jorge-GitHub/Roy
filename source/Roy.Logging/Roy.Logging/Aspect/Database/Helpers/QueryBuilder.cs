@@ -21,7 +21,7 @@ internal class QueryBuilder
     /// </summary>
     public QueryBuilder()
     {
-        this.SchemaHelper = new SettingManager();
+        this.InitializeObject();
     }
 
     /// <summary>
@@ -41,10 +41,9 @@ internal class QueryBuilder
     /// </returns>
     public StringBuilder Create(MessageDetail message, QuerySetting querySetting)
     {
-        bool isExceptionType = message.IsExceptionType();
         StringBuilder query = new StringBuilder(querySetting.Query);
         this.PopulateMessageDetails(query, message);
-        if (isExceptionType)
+        if (message.IsExceptionType())
         {
             this.PopulateExceptionDetails(query, (ExceptionDetail)message);
         }
@@ -67,7 +66,7 @@ internal class QueryBuilder
     /// </param>
     private void PopulateMessageDetails(StringBuilder query, MessageDetail message)
     {
-        query.Replace(Tags.Id, message.Id);
+        query.Replace(SchemaTag.Id, message.Id);
     }
 
     /// <summary>
@@ -94,5 +93,13 @@ internal class QueryBuilder
     /// </param>
     private void PopulateLogDetails(StringBuilder query, MessageDetail message)
     {
-    } 
+    }
+
+    /// <summary>
+    /// Initialize the object.
+    /// </summary>
+    private void InitializeObject()
+    {
+        this.SchemaHelper = new SettingManager();
+    }
 }

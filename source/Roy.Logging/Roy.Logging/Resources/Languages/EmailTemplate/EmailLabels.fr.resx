@@ -147,6 +147,9 @@
   <data name="Copyright" xml:space="preserve">
     <value>Droits d'Auteur</value>
   </data>
+  <data name="CustomListOfParametersJSON" xml:space="preserve">
+    <value />
+  </data>
   <data name="CustomMessage" xml:space="preserve">
     <value>Message Personnalisé:</value>
   </data>
@@ -262,6 +265,6 @@
     <value>IP de l'Utilisateur:</value>
   </data>
   <data name="WebApplicationUserLanguagePreferences" xml:space="preserve">
-    <value>Langue Préférée de l'Utilisateur:</value>
+    <value>Liste personnalisée de paramètres au format JSON :</value>
   </data>
 </root>
