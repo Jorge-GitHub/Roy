@@ -28,19 +28,4 @@ public class DatabaseSetting
     /// Issues levels to save. If null or empty, it will save all the issues.
     /// </summary>
     public List<Level> LevelsToSave { get; set; }
-    /// <summary>
-    /// Default table's name.
-    /// </summary>
-    private string DefaultTableName { get; set; }
-
-    /// <summary>
-    /// Sets the default table's name.
-    /// </summary>
-    /// <param name="defaultTableName">
-    /// Default table's name.
-    /// </param>
-    public void SetDefaultTableName(string defaultTableName)
-    {
-        this.DefaultTableName = defaultTableName;
-    }
 }

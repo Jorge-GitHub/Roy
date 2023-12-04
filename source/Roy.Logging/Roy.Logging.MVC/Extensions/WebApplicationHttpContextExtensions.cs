@@ -90,7 +90,7 @@ public static class WebApplicationHttpContextExtensions
         }
         catch
         {
-            stringValues.Add(StringValue.FailedToLoad);
+            stringValues.Add(Logging.Domain.Contants.StringValues.FailedToLoad);
         }
 
         return stringValues;
@@ -105,14 +105,14 @@ public static class WebApplicationHttpContextExtensions
     /// <returns>
     /// key value pair list value.
     /// </returns>
-    public static List<string> GetValues(this IEnumerable<KeyValuePair<string, StringValues>> values)
+    public static List<string> GetValues(this IEnumerable<KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>> values)
     {
         List<string> stringValues = new List<string>();
         try
         {
             if (values.IsNotNull() && values.Count() > 0)
             {
-                foreach (KeyValuePair<string, StringValues> item in values)
+                foreach (KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues> item in values)
                 {
                     stringValues.Add($"{item.Key}:{item.Value}");
                 }
@@ -120,7 +120,7 @@ public static class WebApplicationHttpContextExtensions
         }
         catch
         {
-            stringValues.Add(StringValue.FailedToLoad);
+            stringValues.Add(Logging.Domain.Contants.StringValues.FailedToLoad);
         }
 
         return stringValues;

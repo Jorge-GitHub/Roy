@@ -81,7 +81,7 @@ internal class MessageDecorator
         body.Replace(Tags.Id, bodyDetail.Id);
         body.Replace(Tags.Message, bodyDetail.Message);
         body.Replace(Tags.Date, bodyDetail.Date.ToString(
-            StringValue.LogDateFormat));
+            StringValues.LogDateFormat));
         body.Replace(Tags.Level, bodyDetail.Level.ToCurrentCultureString(culture));
         body.Replace(Tags.CurrentYear, DateTime.Now.Year.ToString());
         this.PopulateInformationDetails(body, bodyDetail, culture, settings);

@@ -1,4 +1,6 @@
 ﻿using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Settings.Database;
 using Roy.Logging.Extensions;
 using System.Text;
 
@@ -10,6 +12,19 @@ namespace Roy.Logging.Aspect.Database.Helpers;
 internal class QueryBuilder
 {
     /// <summary>
+    /// Schema helper.
+    /// </summary>
+    private SettingManager SchemaHelper {  get; set; }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public QueryBuilder()
+    {
+        this.SchemaHelper = new SettingManager();
+    }
+
+    /// <summary>
     /// Creates the query to run to insert the message in the database.
     /// </summary>
     /// <param name="query">
@@ -18,14 +33,18 @@ internal class QueryBuilder
     /// <param name="message">
     /// Message detail to use for building the query.
     /// </param>
+    /// <param name="setting">
+    /// Database settings.
+    /// </param>
     /// <returns>
     /// Query.
     /// </returns>
-    public StringBuilder Create(MessageDetail message)
+    public StringBuilder Create(MessageDetail message, QuerySetting querySetting)
     {
-        StringBuilder query = new StringBuilder(); // get query
+        bool isExceptionType = message.IsExceptionType();
+        StringBuilder query = new StringBuilder(querySetting.Query);
         this.PopulateMessageDetails(query, message);
-        if (message.IsExceptionType())
+        if (isExceptionType)
         {
             this.PopulateExceptionDetails(query, (ExceptionDetail)message);
         }
@@ -48,6 +67,7 @@ internal class QueryBuilder
     /// </param>
     private void PopulateMessageDetails(StringBuilder query, MessageDetail message)
     {
+        query.Replace(Tags.Id, message.Id);
     }
 
     /// <summary>
@@ -74,5 +94,5 @@ internal class QueryBuilder
     /// </param>
     private void PopulateLogDetails(StringBuilder query, MessageDetail message)
     {
-    }
+    } 
 }
