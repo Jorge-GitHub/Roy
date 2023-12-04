@@ -1,7 +1,9 @@
 ﻿using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.Database;
 using Roy.Logging.Domain.Settings.Database;
 using Roy.Logging.Extensions;
+using System.Globalization;
 using System.Text;
 
 namespace Roy.Logging.Aspect.Database.Helpers;
@@ -12,24 +14,8 @@ namespace Roy.Logging.Aspect.Database.Helpers;
 internal class QueryBuilder
 {
     /// <summary>
-    /// Schema helper.
-    /// </summary>
-    private SettingManager SchemaHelper {  get; set; }
-
-    /// <summary>
-    /// Constructor.
-    /// </summary>
-    public QueryBuilder()
-    {
-        this.InitializeObject();
-    }
-
-    /// <summary>
     /// Creates the query to run to insert the message in the database.
     /// </summary>
-    /// <param name="query">
-    /// String containing the query.
-    /// </param>
     /// <param name="message">
     /// Message detail to use for building the query.
     /// </param>
@@ -39,34 +25,64 @@ internal class QueryBuilder
     /// <returns>
     /// Query.
     /// </returns>
-    public StringBuilder Create(MessageDetail message, QuerySetting querySetting)
+    public StringBuilder Create(MessageDetail message,
+        DatabaseSetting setting)
     {
-        StringBuilder query = new StringBuilder(querySetting.Query);
-        this.PopulateMessageDetails(query, message);
+        StringBuilder query = new StringBuilder(setting.Query);
+        this.PopulateDatabaseValues(query, setting);
         if (message.IsExceptionType())
-        {
-            this.PopulateExceptionDetails(query, (ExceptionDetail)message);
+        {   
+            this.PopulateExceptionDetails(query, message, 
+                setting.Culture);
         }
         else
         {
-            this.PopulateLogDetails(query, (LogDetail)message);
+            this.PopulateLogDetails(query, message,
+                setting.Culture);
         }
 
         return query;
     }
 
     /// <summary>
-    /// Populate the message details in the query.
+    /// Populates the database values.
     /// </summary>
     /// <param name="query">
     /// String containing the query.
     /// </param>
-    /// <param name="message">
-    /// Object used to populate the query.
+    /// <param name="setting">
+    /// Database settings.
     /// </param>
-    private void PopulateMessageDetails(StringBuilder query, MessageDetail message)
+    private void PopulateDatabaseValues(StringBuilder query, DatabaseSetting setting)
     {
-        query.Replace(SchemaTag.Id, message.Id);
+        query.Replace(SchemaTag.DatabaseName, setting.DatabaseName);
+        query.Replace(SchemaTag.TableName, setting.TableName);
+    }
+
+    /// <summary>
+    /// Populate the values being shared by the exception and logs issues.
+    /// </summary>
+    /// <param name="query">
+    /// String containing the query.
+    /// </param>
+    /// <param name="record">
+    /// Record used to populate the query.
+    /// </param>
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void PopulateBasicValues(StringBuilder query, Record record, CultureInfo culture)
+    {
+        query.Replace(SchemaTag.Id, record.Id);
+        query.Replace(SchemaTag.Date, record.Date.ToString(
+            StringValues.LogDateFormat));
+        query.Replace(SchemaTag.Level, record.Level
+            .ToCurrentCultureString(culture));
+        query.Replace(SchemaTag.Id, record.Id);
+        query.Replace(SchemaTag.Id, record.Id);
+        query.Replace(SchemaTag.Id, record.Id);
+        query.Replace(SchemaTag.Id, record.Id);
+        query.Replace(SchemaTag.Id, record.Id);
     }
 
     /// <summary>
@@ -78,8 +94,14 @@ internal class QueryBuilder
     /// <param name="message">
     /// Object used to populate the query.
     /// </param>
-    private void PopulateExceptionDetails(StringBuilder query, MessageDetail message)
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void PopulateExceptionDetails(StringBuilder query, 
+        MessageDetail message, CultureInfo culture)
     {
+        ExceptionRecord record = new ExceptionRecord((ExceptionDetail)message);
+        this.PopulateBasicValues(query, record, culture);
     }
 
     /// <summary>
@@ -91,15 +113,13 @@ internal class QueryBuilder
     /// <param name="message">
     /// Object used to populate the query.
     /// </param>
-    private void PopulateLogDetails(StringBuilder query, MessageDetail message)
+    /// <param name="culture">
+    /// Culture info.
+    /// </param>
+    private void PopulateLogDetails(StringBuilder query, 
+        MessageDetail message, CultureInfo culture)
     {
-    }
-
-    /// <summary>
-    /// Initialize the object.
-    /// </summary>
-    private void InitializeObject()
-    {
-        this.SchemaHelper = new SettingManager();
+        LogRecord record = new LogRecord((LogDetail)message);
+        this.PopulateBasicValues(query, record, culture);
     }
 }

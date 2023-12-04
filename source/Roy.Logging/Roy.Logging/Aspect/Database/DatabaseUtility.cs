@@ -15,10 +15,6 @@ internal class DatabaseUtility
     /// Query builder helper.
     /// </summary>
     private QueryBuilder Builder {  get; set; }
-    /// <summary>
-    /// Setting manager. 
-    /// </summary>
-    private SettingManager SettingHelper { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -40,9 +36,9 @@ internal class DatabaseUtility
     public void Save(MessageDetail message, DatabaseSetting setting)
     {
         // Create query
-        QuerySetting querySetting = this.SettingHelper
-            .GetQuerySettings(setting, message.IsExceptionType());
-        StringBuilder query = this.Builder.Create(message, querySetting);
+        setting.SetDefaultValues(message.Level,
+            message.IsExceptionType());
+        StringBuilder query = this.Builder.Create(message, setting);
 
         // Save on database.
     }
@@ -53,6 +49,5 @@ internal class DatabaseUtility
     private void InitializeObject()
     {
         this.Builder = new QueryBuilder();
-        this.SettingHelper = new SettingManager();
     }
 }

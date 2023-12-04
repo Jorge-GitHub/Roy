@@ -1,4 +1,5 @@
 ﻿using Roy.Logging.Domain.Contants;
+using System.Globalization;
 
 namespace Roy.Logging.Domain.Settings.Database;
 
@@ -28,4 +29,18 @@ public class DatabaseSetting
     /// Issues levels to save. If null or empty, it will save all the issues.
     /// </summary>
     public List<Level> LevelsToSave { get; set; }
+    /// <summary>
+    /// Language. Language to use for the email format. 
+    /// Currently Roy supports English, Spanish, French, and German. 
+    /// The default value is English.
+    /// </summary>
+    public Language Language { get; set; }
+    /// <summary>
+    /// Culture.
+    /// </summary>
+    public CultureInfo Culture { get; set; }
+    /// <summary>
+    // Query to run.
+    /// </summary>
+    public string Query { get; set; }
 }

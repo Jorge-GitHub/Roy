@@ -6,6 +6,14 @@
 internal class SchemaTag
 {
     /// <summary>
+    /// Tag for replacing the database's name on the query template.
+    /// </summary>
+    public const string DatabaseName = "*|DatabaseName|*";
+    /// <summary>
+    /// Tag for replacing the table's name on the query template.
+    /// </summary>
+    public const string TableName = "*|TableName|*";
+    /// <summary>
     /// Tag for replacing the Id on the query template.
     /// </summary>
     public const string Id = "*|ID|*";

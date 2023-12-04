@@ -2,16 +2,16 @@
 using Avalon.Base.Extension.Types;
 using Avalon.Base.Extension.Types.StringExtensions;
 using MimeKit;
+using Roy.Logging.Aspect.Email;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
-using Roy.Logging.Extensions;
 using Roy.Logging.Resources;
 using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Text;
 
-namespace Roy.Logging.Aspect.Email;
+namespace Roy.Logging.Extensions;
 
 internal static class EmailExtensions
 {
@@ -33,7 +33,7 @@ internal static class EmailExtensions
     /// <returns>
     /// MimeMessage.
     /// </returns>
-    public static MimeMessage ToMimeMessage(this EmailSetting setting, 
+    public static MimeMessage ToMimeMessage(this EmailSetting setting,
         ReceiverSetting receiver, MessageDetail bodyDetail, InformationSetting settings)
     {
         MimeMessage message = new MimeMessage();
@@ -45,7 +45,7 @@ internal static class EmailExtensions
         message.Bcc.AddEmails(receiver.BCC);
         message.Cc.AddEmails(receiver.CC);
         message.Body = setting.ToMessageBody(receiver, bodyDetail, settings);
-        
+
         return message;
     }
 
@@ -67,12 +67,12 @@ internal static class EmailExtensions
     /// <returns>
     /// Message body.
     /// </returns>
-    public static MimeEntity ToMessageBody(this EmailSetting setting, 
+    public static MimeEntity ToMessageBody(this EmailSetting setting,
         ReceiverSetting receiver, MessageDetail bodyDetail,
         InformationSetting settings)
     {
         BodyBuilder builder = new BodyBuilder();
-        bool isTextBody = receiver.IsTextBody.HasValue ? 
+        bool isTextBody = receiver.IsTextBody.HasValue ?
             receiver.IsTextBody.Value : setting.DefaultIsTextBody;
         string body = receiver.Body.ToDefaultValueIfEmpty(
                 setting.DefaultEmailBody);
@@ -80,7 +80,7 @@ internal static class EmailExtensions
             body, bodyDetail, setting.Culture, settings);
         if (isTextBody)
         {
-            builder.TextBody = body;            
+            builder.TextBody = body;
         }
         else
         {
@@ -132,7 +132,7 @@ internal static class EmailExtensions
     /// <param name="issueId">
     /// Issue's ID.
     /// </param>
-    public static void SetDefaultValues(this EmailSetting setting, 
+    public static void SetDefaultValues(this EmailSetting setting,
         Level level, bool isAnException, string issueId)
     {
         setting.Culture = setting.Language.ToCultureInfo();
