@@ -99,9 +99,9 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         /// <summary>
         ///   Looks up a localized string similar to Physical Path:.
         /// </summary>
-        public static string ApplicationPhysicalApplicationPath {
+        public static string ApplicationPhysicalPath {
             get {
-                return ResourceManager.GetString("ApplicationPhysicalApplicationPath", resourceCulture);
+                return ResourceManager.GetString("ApplicationPhysicalPath", resourceCulture);
             }
         }
         

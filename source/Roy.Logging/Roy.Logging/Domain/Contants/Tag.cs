@@ -112,7 +112,7 @@ internal struct Tag
     /// <summary>
     /// Id tag for replacing the application physical path value on the HTML template.
     /// </summary>
-    public const string ApplicationPhysicalApplicationPath = "*|Application_PhysicalApplicationPath|*";
+    public const string ApplicationPhysicalPath = "*|Application_PhysicalApplicationPath|*";
     /// <summary>
     /// Id tag for replacing the application friendly name value on the HTML template.
     /// </summary>

@@ -294,7 +294,7 @@ internal class MessageDecorator
                 body.Replace(Tag.AssemblyLocation, application.AssemblyLocation);
                 body.Replace(Tag.ApplicationIsDebuggingEnabled, 
                     this.TagHelper.GetCultureTrueOrFalse(application.IsDebuggingEnabled, culture));
-                body.Replace(Tag.ApplicationPhysicalApplicationPath, application.PhysicalApplicationPath);
+                body.Replace(Tag.ApplicationPhysicalPath, application.PhysicalApplicationPath);
                 body.Replace(Tag.ApplicationFriendlyName, application.FriendlyName);
                 body.Replace(Tag.ApplicationIsFullyTrusted,
                     this.TagHelper.GetCultureTrueOrFalse(application.IsFullyTrusted, culture));

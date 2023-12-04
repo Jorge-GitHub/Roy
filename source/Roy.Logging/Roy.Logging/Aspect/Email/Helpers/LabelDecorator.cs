@@ -177,9 +177,9 @@ internal class LabelDecorator
         body.Replace(EmailLabel.ApplicationIsDebuggingEnabledTag,
             EmailLabels.ResourceManager.GetString(
                 EmailLabel.ApplicationIsDebuggingEnabled, culture));
-        body.Replace(EmailLabel.ApplicationPhysicalPath,
+        body.Replace(EmailLabel.ApplicationPhysicalPathTag,
             EmailLabels.ResourceManager.GetString(
-                EmailLabel.ApplicationPhysicalApplicationPath, culture));
+                EmailLabel.ApplicationPhysicalPath, culture));
         body.Replace(EmailLabel.ApplicationFriendlyNameTag,
             EmailLabels.ResourceManager.GetString(
                 EmailLabel.ApplicationFriendlyName, culture));

@@ -32,7 +32,7 @@ public static class TagsList
     public static readonly string[] ApplicationTags =
     {
         Tag.AssemblyLocation, Tag.ApplicationIsDebuggingEnabled,
-        Tag.ApplicationPhysicalApplicationPath, Tag.ApplicationFriendlyName,
+        Tag.ApplicationPhysicalPath, Tag.ApplicationFriendlyName,
         Tag.ApplicationIsFullyTrusted, Tag.ApplicationUserDomainName,
         Tag.ApplicationUserName
     };

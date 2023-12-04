@@ -268,7 +268,7 @@ internal struct EmailLabel
     /// <summary>
     /// Id tag for replacing the application physical path label on the HTML template.
     /// </summary>
-    public const string ApplicationPhysicalPath = "*|ApplicationPhysicalPath|*";
+    public const string ApplicationPhysicalPathTag = "*|ApplicationPhysicalPath|*";
     /// <summary>
     /// Id tag for replacing the application friendly name label on the HTML template.
     /// </summary>
@@ -296,7 +296,7 @@ internal struct EmailLabel
     /// <summary>
     /// Id tag for replacing the application physical path label on the HTML template (Language resource).
     /// </summary>
-    public const string ApplicationPhysicalApplicationPath = "ApplicationPhysicalApplicationPath";
+    public const string ApplicationPhysicalPath = "ApplicationPhysicalPath";
     /// <summary>
     /// Id tag for replacing the application friendly name label on the HTML template (Language resource).
     /// </summary>
