@@ -18,9 +18,6 @@ internal struct Queries
                 ,[CustomListOfParametersJSON]
                 ,[ExceptionMessage]
                 ,[ExceptionStackTrace]
-                ,[ExceptionParametersListJSON]
-                ,[ExceptionTraceSource]
-                ,[ExceptionTraceHelpLink]
                 ,[ExceptionJSON]
                 ,[MethodCallerFileName]
                 ,[MethodCallerMethodName]
@@ -57,9 +54,6 @@ internal struct Queries
                 ,*|CustomListOfParametersJSON|*
                 ,*|ExceptionMessage|*
                 ,*|ExceptionStackTrace|*
-                ,*|ExceptionParametersListJSON|*
-                ,*|ExceptionTraceSource|*
-                ,*|ExceptionTraceHelpLink|*
                 ,*|ExceptionJSON|*
                 ,*|MethodCallerFileName|*
                 ,*|MethodCallerMethodName|*

@@ -190,12 +190,6 @@
                                     &lt;/span&gt;
                                 &lt;/p&gt;
                                 &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
-                                    *|ParametersListInJSONFormat|*
-                                    &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
-                                        *|ExceptionParametersListJSON|*
-                                    &lt;/span&gt;
-                                &lt;/p&gt;
-                                &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
                                     *|SourceTag|*
                                     &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
                                         *|Source|*

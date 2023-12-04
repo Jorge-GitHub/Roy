@@ -349,15 +349,6 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameters List In JSON Format:.
-        /// </summary>
-        public static string ParametersListInJSONFormat {
-            get {
-                return ResourceManager.GetString("ParametersListInJSONFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Roy Logging - Issue Level: *|Level|* - Id: *|IssueId|*.
         /// </summary>
         public static string RoyLoginSubject {

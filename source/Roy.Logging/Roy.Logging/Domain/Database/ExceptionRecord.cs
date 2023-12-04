@@ -1,4 +1,5 @@
-﻿using Roy.Logging.Domain.Attributes;
+﻿using Avalon.Base.Extension.Types;
+using Roy.Logging.Domain.Attributes;
 
 namespace Roy.Logging.Domain.Database;
 
@@ -7,6 +8,18 @@ namespace Roy.Logging.Domain.Database;
 /// </summary>
 internal class ExceptionRecord : Record
 {
+    /// <summary>
+    /// Exception's message.
+    /// </summary>
+    public string ExceptionMessage { get; set; }
+    /// <summary>
+    /// Exception's stack trace.
+    /// </summary>
+    public string ExceptionStackTrace { get; set; }
+    /// <summary>
+    /// Exception in JSON format.
+    /// </summary>
+    public string ExceptionJSON { get; set; }
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -22,9 +35,12 @@ internal class ExceptionRecord : Record
     /// Initialize the object.
     /// </summary>
     /// <param name="message">
-    /// Message's details.
+    /// Exception message's details.
     /// </param>
     private void InitializeObject(ExceptionDetail message)
     {
+        this.ExceptionJSON = message.ExceptionTrace.ToJSON();
+        this.ExceptionMessage = message.ExceptionMessage;
+        this.ExceptionStackTrace = message.StackTrace;
     }
 }

@@ -86,6 +86,7 @@ internal class MessageDecorator
         body.Replace(Tag.CustomListOfParametersJSON, 
             bodyDetail.CustomListOfParameters.ToJSON());
         this.PopulateInformationDetails(body, bodyDetail, culture, settings);
+        body.Replace(Tag.IssueJSON, bodyDetail.ToJSON());
     }
 
     /// <summary>
@@ -145,10 +146,7 @@ internal class MessageDecorator
     {
         body.Replace(Tag.ExceptionMessage, bodyDetail.ExceptionMessage);
         body.Replace(Tag.StackTrace, bodyDetail.StackTrace);
-        body.Replace(Tag.ExceptionParametersListJSON, bodyDetail.ToJSON());
         body.Replace(Tag.ExceptionJSON, bodyDetail.ExceptionTrace.ToJSON());
-        body.Replace(Tag.IssueJSON, bodyDetail.ToJSON());
-
         if (bodyDetail.ExceptionTrace.IsNotNull())
         {
             body.Replace(Tag.Source, bodyDetail.ExceptionTrace.Source);
@@ -171,7 +169,6 @@ internal class MessageDecorator
     /// </param>
     private void PopulateLogDetails(StringBuilder body, LogDetail bodyDetail)
     {
-        body.Replace(Tag.IssueJSON, bodyDetail.ToJSON());
         body.Replace(Tag.LogValueJSON,
             bodyDetail.LogValue.ToJSON());
     }

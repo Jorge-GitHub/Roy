@@ -213,9 +213,6 @@
   <data name="OperativeSystemVersion" xml:space="preserve">
     <value>Version du Système d'Exploitation :</value>
   </data>
-  <data name="ParametersListInJSONFormat" xml:space="preserve">
-    <value>Liste des Paramètres au Format JSON :</value>
-  </data>
   <data name="RoyLoginSubject" xml:space="preserve">
     <value>Roy Enregistrement - Niveau de Problème: *|Level|* - Identifiant: *|IssueId|*</value>
   </data>

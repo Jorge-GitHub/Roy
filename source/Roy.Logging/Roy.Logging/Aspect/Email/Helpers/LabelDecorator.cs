@@ -73,8 +73,6 @@ internal class LabelDecorator
             .GetString(EmailLabel.ErrorId, culture));
         body.Replace(EmailLabel.ExceptionMessageTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.ExceptionMessage, culture));
-        body.Replace(EmailLabel.ParametersListInJSONFormatTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ParametersListInJSONFormat, culture));
         body.Replace(EmailLabel.SourceTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.Source, culture));
         body.Replace(EmailLabel.StackTraceTag, EmailLabels.ResourceManager

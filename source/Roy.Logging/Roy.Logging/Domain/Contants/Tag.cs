@@ -86,10 +86,6 @@ internal struct Tag
     /// </summary>
     public const string CurrentYear = "*|CurrentYear|*";
     /// <summary>
-    /// Id tag for replacing exception parameters list in JSON format on the HTML template.
-    /// </summary>
-    public const string ExceptionParametersListJSON = "*|ExceptionParametersListJSON|*";
-    /// <summary>
     /// Id tag for replacing the issue in JSON format on the HTML template.
     /// </summary>
     public const string LogValueJSON = "*|LogValueJSON|*";

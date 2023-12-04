@@ -34,10 +34,6 @@ internal struct EmailLabel
     /// </summary>
     public const string ExceptionMessage = "ExceptionMessageTag";
     /// <summary>
-    /// Id tag for replacing parameters list in JSON format label on the HTML template.
-    /// </summary>
-    public const string ParametersListInJSONFormat = "ParametersListInJSONFormat";
-    /// <summary>
     /// Id tag for replacing source tag label on the HTML template.
     /// </summary>
     public const string Source = "SourceTag";
@@ -141,10 +137,6 @@ internal struct EmailLabel
     /// Id tag for replacing exception message tag label on the HTML template.
     /// </summary>
     public const string ExceptionMessageTag = "*|ExceptionMessageTag|*";
-    /// <summary>
-    /// Id tag for replacing parameters list in JSON format label on the HTML template.
-    /// </summary>
-    public const string ParametersListInJSONFormatTag = "*|ParametersListInJSONFormat|*";
     /// <summary>
     /// Id tag for replacing source tag label on the HTML template.
     /// </summary>
