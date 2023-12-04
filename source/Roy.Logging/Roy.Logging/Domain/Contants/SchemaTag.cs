@@ -30,21 +30,13 @@ internal class SchemaTag
     /// </summary>
     public const string ExceptionMessage = "*|ExceptionMessage|*";
     /// <summary>
-    /// Tag for replacing exception stack trace on the query template.
+    /// Tag for replacing exception source on the query template.
     /// </summary>
-    public const string ExceptionStackTrace = "*|ExceptionStackTrace|*";
-    /// <summary>
-    /// Tag for replacing the exception parameters list in JSON format on the query template.
-    /// </summary>
-    public const string ExceptionParametersListJSON = "*|ExceptionParametersListJSON|*";
-    /// <summary>
-    /// Tag for replacing the exception trace source on the query template.
-    /// </summary>
-    public const string ExceptionTraceSource = "*|ExceptionTraceSource|*";
+    public const string ExceptionSource = "*|ExceptionSource|*";
     /// <summary>
     /// Tag for replacing the exception trace help link on the query template.
     /// </summary>
-    public const string ExceptionTraceHelpLink = "*|ExceptionTraceHelpLink|*";
+    public const string ExceptionHelpLink = "*|ExceptionHelpLink|*";
     /// <summary>
     /// Tag for replacing the exception in JSON format on the query template.
     /// </summary>
