@@ -56,11 +56,11 @@ internal class Record
     /// information is normally extracted from the debugging symbols
     /// for the executable.
     /// </summary>
-    public string? MethodCallerFileName { get; private set; }
+    public string MethodCallerFileName { get; private set; }
     /// <summary>
     /// Method name making the call.
     /// </summary>
-    public string? MethodCallerMethodName { get; private set; }
+    public string MethodCallerMethodName { get; private set; }
     /// <summary>
     /// Line number in the file containing the code being executed.
     /// This information is normally extracted from the debugging symbols
@@ -75,7 +75,7 @@ internal class Record
     /// Flag that indicates whether the current 
     /// HTTP request is in debug mode
     /// </summary>
-    public bool ApplicationApplicationIsDebuggingEnabled { get; private set; }
+    public bool ApplicationIsDebuggingEnabled { get; private set; }
     /// <summary>
     /// Physical file system of the current 
     /// executing server application's root directory.
@@ -218,7 +218,7 @@ internal class Record
     {
         if (application.IsNotNull())
         {
-            this.ApplicationApplicationIsDebuggingEnabled = application.IsDebuggingEnabled;
+            this.ApplicationIsDebuggingEnabled = application.IsDebuggingEnabled;
             this.ApplicationAssemblyLocation = application.AssemblyLocation.LimitLength(500);
             this.ApplicationFriendlyName = application.FriendlyName.LimitLength(100);
             this.ApplicationIsFullyTrusted = application.IsFullyTrusted;

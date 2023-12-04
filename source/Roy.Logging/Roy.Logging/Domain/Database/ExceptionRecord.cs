@@ -1,6 +1,5 @@
 ﻿using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Attributes;
-using Roy.Logging.Domain.Contants;
 
 namespace Roy.Logging.Domain.Database;
 

@@ -333,7 +333,7 @@
                                     &lt;/span&gt;
                                 &lt;/p&gt;
                                 &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
-                                    *|ApplicationPhysicalApplicationPath|*
+                                    *|ApplicationPhysicalPath|*
                                     &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
                                         *|Application_PhysicalApplicationPath|*
                                     &lt;/span&gt;
@@ -644,7 +644,7 @@
                                     &lt;/span&gt;
                                 &lt;/p&gt;
                                 &lt;p style="color:#747474; font-size:13px; font-family:PTSansRegular, Arial, Helvetica, sans-serif; font-weight:normal; margin-bottom:13px;"&gt;
-                                    *|ApplicationPhysicalApplicationPath|*
+                                    *|ApplicationPhysicalPath|*
                                     &lt;span style="color:#333333; font-size:14px; font-family:MuseoSlab500Regular, arial, helvetica, sans-serif; font-weight:bold;"&gt;
                                         *|Application_PhysicalApplicationPath|*
                                     &lt;/span&gt;

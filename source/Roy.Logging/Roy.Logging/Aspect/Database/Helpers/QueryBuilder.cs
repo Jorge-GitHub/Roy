@@ -25,8 +25,7 @@ internal class QueryBuilder
     /// <returns>
     /// Query.
     /// </returns>
-    public StringBuilder Create(MessageDetail message,
-        DatabaseSetting setting)
+    public StringBuilder Create(MessageDetail message, DatabaseSetting setting)
     {
         StringBuilder query = new StringBuilder(setting.Query);
         this.PopulateDatabaseValues(query, setting);
@@ -78,11 +77,41 @@ internal class QueryBuilder
             StringValues.LogDateFormat));
         query.Replace(SchemaTag.Level, record.Level
             .ToCurrentCultureString(culture));
-        query.Replace(SchemaTag.Id, record.Id);
-        query.Replace(SchemaTag.Id, record.Id);
-        query.Replace(SchemaTag.Id, record.Id);
-        query.Replace(SchemaTag.Id, record.Id);
-        query.Replace(SchemaTag.Id, record.Id);
+        query.Replace(SchemaTag.Message, record.Message);
+        query.Replace(SchemaTag.MachineCLRVersion, record.MachineCLRVersion);
+        query.Replace(SchemaTag.MachineDomainName, record.MachineDomainName);
+        query.Replace(SchemaTag.MachineName, record.MachineName);
+        query.Replace(SchemaTag.MachineOperativeSystemVersion, 
+            record.MachineOperativeSystemVersion);
+        query.Replace(SchemaTag.MachineUserAccountName, record.MachineUserAccountName);
+        query.Replace(SchemaTag.MachineOperativeSystem, record.MachineOperativeSystem);
+        query.Replace(SchemaTag.MethodCallerFileName, record.MethodCallerFileName);
+        query.Replace(SchemaTag.MethodCallerMethodName, record.MethodCallerMethodName);
+        query.Replace(SchemaTag.MethodCallerLineNumber, 
+            record.MethodCallerLineNumber.ToString());
+        query.Replace(SchemaTag.ApplicationIsDebuggingEnabled, 
+            record.ApplicationIsDebuggingEnabled.ToString());
+        query.Replace(SchemaTag.ApplicationPhysicalPath, 
+            record.ApplicationPhysicalPath.ToString());
+        query.Replace(SchemaTag.ApplicationAssemblyLocation, record.ApplicationAssemblyLocation);
+        query.Replace(SchemaTag.ApplicationFriendlyName, record.ApplicationFriendlyName);
+        query.Replace(SchemaTag.ApplicationIsFullyTrusted, 
+            record.ApplicationIsFullyTrusted.ToString());
+        query.Replace(SchemaTag.ApplicationUserDomainName, record.ApplicationUserDomainName);
+        query.Replace(SchemaTag.ApplicationUserName, record.ApplicationUserName);
+        query.Replace(SchemaTag.WebApplicationCurrentURL, record.WebApplicationCurrentURL);
+        query.Replace(SchemaTag.WebApplicationCurrentURLParameters, 
+            record.WebApplicationCurrentURLParameters);
+        query.Replace(SchemaTag.WebApplicationPreviousURL, record.WebApplicationPreviousURL);
+        query.Replace(SchemaTag.WebApplicationUserHostIP, record.WebApplicationUserHostIP);
+        query.Replace(SchemaTag.WebApplicationIsSecureConnection, 
+            record.WebApplicationIsSecureConnection.ToString());
+        query.Replace(SchemaTag.WebApplicationDomainName, record.WebApplicationDomainName);
+        query.Replace(SchemaTag.WebApplicationCookiesValues, record.WebApplicationCookiesValues);
+        query.Replace(SchemaTag.WebApplicationHeadersValues, record.WebApplicationHeadersValues);
+        query.Replace(SchemaTag.WebApplicationUserLanguagePreferences, 
+            record.WebApplicationUserLanguagePreferences);
+        query.Replace(SchemaTag.CustomListOfParametersJSON, record.CustomListOfParametersJSON);
     }
 
     /// <summary>
@@ -102,6 +131,11 @@ internal class QueryBuilder
     {
         ExceptionRecord record = new ExceptionRecord((ExceptionDetail)message);
         this.PopulateBasicValues(query, record, culture);
+        query.Replace(SchemaTag.ExceptionMessage, record.ExceptionMessage);
+        query.Replace(SchemaTag.ExceptionStackTrace, record.ExceptionStackTrace);
+        query.Replace(SchemaTag.ExceptionJSON, record.ExceptionJSON);
+        query.Replace(SchemaTag.ExceptionSource, record.Source);
+        query.Replace(SchemaTag.ExceptionHelpLink, record.HelpLink);
     }
 
     /// <summary>
@@ -121,5 +155,6 @@ internal class QueryBuilder
     {
         LogRecord record = new LogRecord((LogDetail)message);
         this.PopulateBasicValues(query, record, culture);
+        query.Replace(SchemaTag.LogValueJSON, record.LogValueInJSONFormat);
     }
 }

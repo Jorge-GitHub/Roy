@@ -1,7 +1,6 @@
 ﻿using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Settings.Database;
-using Roy.Logging.Domain.Settings.Web.EmailAspect;
 
 namespace Roy.Logging.Extensions;
 

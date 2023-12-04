@@ -38,6 +38,10 @@ internal class SchemaTag
     /// </summary>
     public const string ExceptionMessage = "*|ExceptionMessage|*";
     /// <summary>
+    /// Tag for replacing the exception stack trace on the query template.
+    /// </summary>
+    public const string ExceptionStackTrace = "*|ExceptionStackTrace|*";
+    /// <summary>
     /// Tag for replacing exception source on the query template.
     /// </summary>
     public const string ExceptionSource = "*|ExceptionSource|*";
@@ -96,7 +100,7 @@ internal class SchemaTag
     /// <summary>
     /// Tag for replacing the application physical path on the query template.
     /// </summary>
-    public const string ApplicationPhysicalApplicationPath = "*|ApplicationPhysicalApplicationPath|*";
+    public const string ApplicationPhysicalPath = "*|ApplicationPhysicalPath|*";
     /// <summary>
     /// Tag for replacing the application assembly location on the query template.
     /// </summary>

@@ -36,10 +36,7 @@ internal class DatabaseUtility
     public void Save(MessageDetail message, DatabaseSetting setting)
     {
         // Create query
-        setting.SetDefaultValues(message.Level,
-            message.IsExceptionType());
         StringBuilder query = this.Builder.Create(message, setting);
-
         // Save on database.
     }
 

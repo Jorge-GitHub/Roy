@@ -1,6 +1,7 @@
 ﻿using Roy.Logging.Aspect.Database;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Database;
+using Roy.Logging.Extensions;
 
 namespace Roy.Logging.Helpers;
 
@@ -36,11 +37,8 @@ internal class DatabaseService
     {
         foreach(DatabaseSetting setting in settings)
         {
-            // 1 create a record object
+            setting.SetDefaultValues(message.Level, message.IsExceptionType());
             this.Utility.Save(message, setting);
-            // // (object is going to be used to limit the string lengths and set the default table name and query type)
-            // 2 create script
-            // 3 submit query
         }
     }
 

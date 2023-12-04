@@ -70,7 +70,7 @@ internal struct Queries
                 ,*|MachineUserAccountName|*
                 ,*|MachineOperativeSystem|*
                 ,*|ApplicationIsDebuggingEnabled|*
-                ,*|ApplicationPhysicalApplicationPath|*
+                ,*|ApplicationPhysicalPath|*
                 ,*|ApplicationAssemblyLocation|*
                 ,*|ApplicationFriendlyName|*
                 ,*|ApplicationIsFullyTrusted|*
@@ -146,7 +146,7 @@ internal struct Queries
                 ,*|MachineUserAccountName|*
                 ,*|MachineOperativeSystem|*
                 ,*|ApplicationIsDebuggingEnabled|*
-                ,*|ApplicationPhysicalApplicationPath|*
+                ,*|ApplicationPhysicalPath|*
                 ,*|ApplicationAssemblyLocation|*
                 ,*|ApplicationFriendlyName|*
                 ,*|ApplicationIsFullyTrusted|*
