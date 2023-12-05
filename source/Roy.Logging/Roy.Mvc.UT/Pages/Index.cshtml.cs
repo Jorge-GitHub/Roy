@@ -7,8 +7,8 @@ namespace Roy.Mvc.UT.Pages
     {
         public void OnGet()
         {
-            new Author { Description = "Great singer", Name = "Roy" }.LogAsync();
-            //FileStream file = new FileStream("filedoesnotexist.json", FileMode.Open);
+            //new Author { Description = "Great singer", Name = "Roy" }.LogAsync();
+            FileStream file = new FileStream("filedoesnotexist.json", FileMode.Open);
         }
     }
 

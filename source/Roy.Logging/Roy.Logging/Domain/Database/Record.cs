@@ -167,8 +167,7 @@ internal class Record
         this.CustomListOfParametersJSON = message.CustomListOfParameters.ToJSON();
         this.InitializeMachineInformation(message.MachineInformation);
         this.InitializeMethodInformation(message.StackFrame);
-        this.InitializeApplicationInformation(message.ApplicationInformation);
-        this.InitializeWebApplicationInformation(message.WebApplicationInformation);
+        this.InitializeApplicationInformation(message);
     }
 
     /// <summary>
@@ -213,17 +212,15 @@ internal class Record
     /// <param name="application">
     /// Application information.
     /// </param>
-    private void InitializeApplicationInformation(Application application)
+    private void InitializeApplicationInformation(MessageDetail message)
     {
-        if (application.IsNotNull())
+        if (message.WebApplicationInformation.IsNotNull())
         {
-            this.ApplicationIsDebuggingEnabled = application.IsDebuggingEnabled;
-            this.ApplicationAssemblyLocation = application.AssemblyLocation.LimitLength(500);
-            this.ApplicationFriendlyName = application.FriendlyName.LimitLength(100);
-            this.ApplicationIsFullyTrusted = application.IsFullyTrusted;
-            this.ApplicationUserDomainName = application.UserDomainName.LimitLength(500);
-            this.ApplicationUserName = application.UserName.LimitLength(250);
-            this.ApplicationPhysicalPath = application.PhysicalApplicationPath.LimitLength(500);
+            this.InitializeWebApplicationInformation(message.WebApplicationInformation);
+        }
+        else
+        {
+            this.LoadApplicationInformation(message.ApplicationInformation);
         }
     }
 
@@ -237,6 +234,7 @@ internal class Record
     {
         if (webApplication.IsNotNull())
         {
+            this.LoadApplicationInformation(webApplication);
             this.WebApplicationCookiesValues = webApplication.CookiesValues
                 .ToStringStringBuilder().ToString().LimitLength(1000);
             this.WebApplicationCurrentURL = webApplication.CurrentURL.LimitLength(1000);
@@ -251,5 +249,22 @@ internal class Record
             this.WebApplicationUserLanguagePreferences = webApplication.UserLanguagePreferences
                 .LimitLength(100);
         }
+    }
+
+    /// <summary>
+    /// Loads the application information.
+    /// </summary>
+    /// <param name="application">
+    /// Application information.
+    /// </param>
+    private void LoadApplicationInformation(Application application)
+    {
+        this.ApplicationIsDebuggingEnabled = application.IsDebuggingEnabled;
+        this.ApplicationAssemblyLocation = application.AssemblyLocation.LimitLength(500);
+        this.ApplicationFriendlyName = application.FriendlyName.LimitLength(100);
+        this.ApplicationIsFullyTrusted = application.IsFullyTrusted;
+        this.ApplicationUserDomainName = application.UserDomainName.LimitLength(500);
+        this.ApplicationUserName = application.UserName.LimitLength(250);
+        this.ApplicationPhysicalPath = application.PhysicalApplicationPath.LimitLength(500);
     }
 }
