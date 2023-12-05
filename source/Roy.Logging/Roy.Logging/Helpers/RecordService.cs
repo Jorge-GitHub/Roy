@@ -1,12 +1,11 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Attributes;
-using Roy.Logging.Helpers;
 
-namespace Roy.Logging;
+namespace Roy.Logging.Helpers;
 
 /// <summary>
-/// Register service.
+/// Record register service.
 /// </summary>
 internal class RecordService
 {
@@ -34,7 +33,7 @@ internal class RecordService
         {
             if (setting.Emails.HasElements())
             {
-                new EmailService().SendAsync(message, setting.Emails, 
+                new EmailService().SendAsync(message, setting.Emails,
                     setting.LoadInformationSettings);
             }
         }
@@ -55,6 +54,15 @@ internal class RecordService
             if (setting.SaveIssueOnEventSystem)
             {
                 new SystemEventLogService().LogAsync(message, setting);
+            }
+        }
+        catch { }
+
+        try
+        {
+            if (setting.Databases.HasElements())
+            {
+                new DatabaseService().SaveAsync(message, setting.Databases);
             }
         }
         catch { }

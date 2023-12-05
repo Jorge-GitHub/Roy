@@ -29,12 +29,16 @@ public class EmailService
     {
         foreach (EmailSetting setting in emails)
         {
-            if ((!setting.LevelsToReport.HasElements() ||
-                setting.LevelsToReport.Any(item => item.Equals(bodyDetail.Level)))
-                && !setting.DisableEmailSending)
+            try
             {
-                this.Utility.Send(setting, bodyDetail, settings);
+                if ((!setting.LevelsToReport.HasElements() ||
+                    setting.LevelsToReport.Any(item => item.Equals(bodyDetail.Level)))
+                    && !setting.DisableEmailSending)
+                {
+                    this.Utility.Send(setting, bodyDetail, settings);
+                }
             }
+            catch { } // Keep sending the remaining emails.
         }
     }
 

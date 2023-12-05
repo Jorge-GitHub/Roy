@@ -3,7 +3,7 @@
 /// <summary>
 /// Labels used on the email HTML template.
 /// </summary>
-public struct EmailLabel
+internal struct EmailLabel
 {
     /// <summary>
     /// Id tag for replacing exception information header label on the HTML template.
@@ -26,13 +26,13 @@ public struct EmailLabel
     /// </summary>
     public const string CustomMessage = "CustomMessage";
     /// <summary>
+    /// Id tag for replacing custom list of parameters label on the HTML template.
+    /// </summary>
+    public const string CustomListOfParametersJSON = "CustomListOfParametersJSON";
+    /// <summary>
     /// Id tag for replacing exception message tag label on the HTML template.
     /// </summary>
     public const string ExceptionMessage = "ExceptionMessageTag";
-    /// <summary>
-    /// Id tag for replacing parameters list in JSON format label on the HTML template.
-    /// </summary>
-    public const string ParametersListInJSONFormat = "ParametersListInJSONFormat";
     /// <summary>
     /// Id tag for replacing source tag label on the HTML template.
     /// </summary>
@@ -130,13 +130,13 @@ public struct EmailLabel
     /// </summary>
     public const string CustomMessageTag = "*|CustomMessage|*";
     /// <summary>
+    /// Id tag for replacing custom list of parameters tag label on the HTML template.
+    /// </summary>
+    public const string CustomListOfParametersJSONTag = "*|CustomListOfParametersJSONTag|*";
+    /// <summary>
     /// Id tag for replacing exception message tag label on the HTML template.
     /// </summary>
     public const string ExceptionMessageTag = "*|ExceptionMessageTag|*";
-    /// <summary>
-    /// Id tag for replacing parameters list in JSON format label on the HTML template.
-    /// </summary>
-    public const string ParametersListInJSONFormatTag = "*|ParametersListInJSONFormat|*";
     /// <summary>
     /// Id tag for replacing source tag label on the HTML template.
     /// </summary>
@@ -268,7 +268,7 @@ public struct EmailLabel
     /// <summary>
     /// Id tag for replacing the application physical path label on the HTML template.
     /// </summary>
-    public const string ApplicationPhysicalApplicationPathTag = "*|ApplicationPhysicalApplicationPath|*";
+    public const string ApplicationPhysicalPathTag = "*|ApplicationPhysicalPath|*";
     /// <summary>
     /// Id tag for replacing the application friendly name label on the HTML template.
     /// </summary>
@@ -296,7 +296,7 @@ public struct EmailLabel
     /// <summary>
     /// Id tag for replacing the application physical path label on the HTML template (Language resource).
     /// </summary>
-    public const string ApplicationPhysicalApplicationPath = "ApplicationPhysicalApplicationPath";
+    public const string ApplicationPhysicalPath = "ApplicationPhysicalPath";
     /// <summary>
     /// Id tag for replacing the application friendly name label on the HTML template (Language resource).
     /// </summary>

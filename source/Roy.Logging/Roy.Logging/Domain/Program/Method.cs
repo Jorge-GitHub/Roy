@@ -98,7 +98,7 @@ public class Method
             if (parameter.Name.IsNotNullOrEmpty()) {
                 this.Parameters.Add(new Parameter(
                     parameter.Name,
-                    parameter.ToString()));
+                    parameter.ToJSON()));
             }
         });
     }

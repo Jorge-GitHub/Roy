@@ -3,7 +3,7 @@
 /// <summary>
 /// General labels.
 /// </summary>
-public struct GeneralLabel
+internal struct GeneralLabel
 {
     /// <summary>
     /// Tag used for getting the language version on the resource for true.

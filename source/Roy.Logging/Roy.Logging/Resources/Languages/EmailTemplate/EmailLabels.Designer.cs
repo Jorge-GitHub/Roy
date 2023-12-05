@@ -99,9 +99,9 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         /// <summary>
         ///   Looks up a localized string similar to Physical Path:.
         /// </summary>
-        public static string ApplicationPhysicalApplicationPath {
+        public static string ApplicationPhysicalPath {
             get {
-                return ResourceManager.GetString("ApplicationPhysicalApplicationPath", resourceCulture);
+                return ResourceManager.GetString("ApplicationPhysicalPath", resourceCulture);
             }
         }
         
@@ -147,6 +147,15 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         public static string Copyright {
             get {
                 return ResourceManager.GetString("Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom List of Parameters in JSON Format:.
+        /// </summary>
+        public static string CustomListOfParametersJSON {
+            get {
+                return ResourceManager.GetString("CustomListOfParametersJSON", resourceCulture);
             }
         }
         
@@ -336,15 +345,6 @@ namespace Roy.Logging.Resources.Languages.EmailTemplate {
         public static string OperativeSystemVersion {
             get {
                 return ResourceManager.GetString("OperativeSystemVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parameters List In JSON Format:.
-        /// </summary>
-        public static string ParametersListInJSONFormat {
-            get {
-                return ResourceManager.GetString("ParametersListInJSONFormat", resourceCulture);
             }
         }
         

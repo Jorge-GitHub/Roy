@@ -32,6 +32,8 @@ internal class LabelDecorator
             .GetString(EmailLabel.IssueLevel, culture));
         body.Replace(EmailLabel.CustomMessageTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.CustomMessage, culture));
+        body.Replace(EmailLabel.CustomListOfParametersJSONTag, EmailLabels.ResourceManager
+            .GetString(EmailLabel.CustomListOfParametersJSON, culture));
         body.Replace(EmailLabel.AssemblyLocationTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.AssemblyLocation, culture));
         body.Replace(EmailLabel.StackFrameInJSONFormatTag, EmailLabels.ResourceManager
@@ -71,8 +73,6 @@ internal class LabelDecorator
             .GetString(EmailLabel.ErrorId, culture));
         body.Replace(EmailLabel.ExceptionMessageTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.ExceptionMessage, culture));
-        body.Replace(EmailLabel.ParametersListInJSONFormatTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.ParametersListInJSONFormat, culture));
         body.Replace(EmailLabel.SourceTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.Source, culture));
         body.Replace(EmailLabel.StackTraceTag, EmailLabels.ResourceManager
@@ -177,9 +177,9 @@ internal class LabelDecorator
         body.Replace(EmailLabel.ApplicationIsDebuggingEnabledTag,
             EmailLabels.ResourceManager.GetString(
                 EmailLabel.ApplicationIsDebuggingEnabled, culture));
-        body.Replace(EmailLabel.ApplicationPhysicalApplicationPathTag,
+        body.Replace(EmailLabel.ApplicationPhysicalPathTag,
             EmailLabels.ResourceManager.GetString(
-                EmailLabel.ApplicationPhysicalApplicationPath, culture));
+                EmailLabel.ApplicationPhysicalPath, culture));
         body.Replace(EmailLabel.ApplicationFriendlyNameTag,
             EmailLabels.ResourceManager.GetString(
                 EmailLabel.ApplicationFriendlyName, culture));

@@ -3,7 +3,7 @@
 /// <summary>
 /// Tags.
 /// </summary>
-public struct Tags
+internal struct Tag
 {
     /// <summary>
     /// Id tag for replacing Id on the HTML template.
@@ -25,6 +25,10 @@ public struct Tags
     /// Id tag for replacing custom message on the HTML template.
     /// </summary>
     public const string Message = "*|Message|*";
+    /// <summary>
+    /// Id tag for replacing the custom list of parameters on the HTML template.
+    /// </summary>
+    public const string CustomListOfParametersJSON = "*|CustomListOfParametersJSON|*";
     /// <summary>
     /// Id tag for replacing source on the HTML template.
     /// </summary>
@@ -82,10 +86,6 @@ public struct Tags
     /// </summary>
     public const string CurrentYear = "*|CurrentYear|*";
     /// <summary>
-    /// Id tag for replacing exception parameters list in JSON format on the HTML template.
-    /// </summary>
-    public const string ExceptionParametersListJSON = "*|ExceptionParametersListJSON|*";
-    /// <summary>
     /// Id tag for replacing the issue in JSON format on the HTML template.
     /// </summary>
     public const string LogValueJSON = "*|LogValueJSON|*";
@@ -112,7 +112,7 @@ public struct Tags
     /// <summary>
     /// Id tag for replacing the application physical path value on the HTML template.
     /// </summary>
-    public const string ApplicationPhysicalApplicationPath = "*|Application_PhysicalApplicationPath|*";
+    public const string ApplicationPhysicalPath = "*|Application_PhysicalApplicationPath|*";
     /// <summary>
     /// Id tag for replacing the application friendly name value on the HTML template.
     /// </summary>

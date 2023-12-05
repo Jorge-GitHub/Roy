@@ -46,7 +46,7 @@ public class LogDetail : MessageDetail
         string message, StackFrame frame, InformationSetting logSettings,
         WebApplicationHttpContext webApplicationHttpContext,
         object[] listOfParameters)
-        : base(level, id, message, frame, logSettings, 
+        : base(level, id, message, frame, logSettings,
             webApplicationHttpContext, listOfParameters)
     {
         this.LoadObject(LogValue);

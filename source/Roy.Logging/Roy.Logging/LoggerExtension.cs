@@ -4,6 +4,7 @@ using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
+using Roy.Logging.Helpers;
 using System.Diagnostics;
 
 namespace Roy.Logging;
@@ -205,8 +206,8 @@ public static class LoggerExtension
                     : Guid.NewGuid().ToString("N");
                 
                 LogDetail detail = new LogDetail(value, level,  identity, message, 
-                    frame, setting.Log.LoadInformationSettings, webApplicationHttpContext,
-                    listOfParameters);
+                    frame, setting.Log.LoadInformationSettings, 
+                    webApplicationHttpContext, listOfParameters);
 
                 new RecordService().SaveAsync(
                     detail, setting.Log);

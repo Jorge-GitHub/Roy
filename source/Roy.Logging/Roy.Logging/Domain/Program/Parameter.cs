@@ -5,8 +5,14 @@
 /// </summary>
 public class Parameter
 {
+    /// <summary>
+    /// Parameter's name.
+    /// </summary>
     public string Name { get; set; }
-    public string Content { get; set; }
+    /// <summary>
+    /// Parameter's value.
+    /// </summary>
+    public string Value { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -20,6 +26,6 @@ public class Parameter
     public Parameter(string name, string content)
     {
         this.Name = name;
-        this.Content = content;
+        this.Value = content;
     }
 }

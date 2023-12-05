@@ -129,7 +129,7 @@
   <data name="ApplicationIsFullyTrusted" xml:space="preserve">
     <value>Ist Voll Vertrauenswürdig:</value>
   </data>
-  <data name="ApplicationPhysicalApplicationPath" xml:space="preserve">
+  <data name="ApplicationPhysicalPath" xml:space="preserve">
     <value>Physischer Weg:</value>
   </data>
   <data name="ApplicationUserDomainName" xml:space="preserve">
@@ -146,6 +146,9 @@
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Urheberrechte ©</value>
+  </data>
+  <data name="CustomListOfParametersJSON" xml:space="preserve">
+    <value>Benutzerdefinierte Liste von Parametern im JSON-Format:</value>
   </data>
   <data name="CustomMessage" xml:space="preserve">
     <value>Benutzerdefinierte Nachricht:</value>
@@ -209,9 +212,6 @@
   </data>
   <data name="OperativeSystemVersion" xml:space="preserve">
     <value>Betriebssystemversion:</value>
-  </data>
-  <data name="ParametersListInJSONFormat" xml:space="preserve">
-    <value>Parameterliste im JSON-Format:</value>
   </data>
   <data name="RoyLoginSubject" xml:space="preserve">
     <value>Roy Protokollierung - Issue Level: *|Level|* - Id: *|IssueId|*</value>
