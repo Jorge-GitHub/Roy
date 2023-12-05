@@ -47,6 +47,7 @@ internal struct Queries
                 ,[WebApplicationCookiesValues]
                 ,[WebApplicationHeadersValues]
                 ,[WebApplicationUserLanguagePreferences]
+            )
         VALUES
            (
                 @Id
@@ -85,8 +86,7 @@ internal struct Queries
                 ,@WebApplicationCookiesValues
                 ,@WebApplicationHeadersValues
                 ,@WebApplicationUserLanguagePreferences
-            )
-        GO";
+            )";
 
     /// <summary>
     /// Query to insert the log into the database.
@@ -161,6 +161,5 @@ internal struct Queries
                 ,@WebApplicationCookiesValues
                 ,@WebApplicationHeadersValues
                 ,@WebApplicationUserLanguagePreferences
-            )
-        GO";
+            )";
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Avalon.Base.Extension.Data;
+using Microsoft.Data.SqlClient;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Database;
@@ -46,15 +47,15 @@ internal class ParametersBuilder
         ExceptionRecord record = new ExceptionRecord((ExceptionDetail)message);
         List<SqlParameter> parameters = this.GetMessageDetailParameters(record);
         parameters.Add(new SqlParameter(ParameterTag.ExceptionMessage, 
-            record.ExceptionMessage));
+            record.ExceptionMessage.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ExceptionStackTrace, 
-            record.ExceptionStackTrace));
+            record.ExceptionStackTrace.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ExceptionJSON, 
-            record.ExceptionJSON));
+            record.ExceptionJSON.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ExceptionSource, 
-            record.Source));
+            record.Source.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ExceptionHelpLink, 
-            record.HelpLink));
+            record.HelpLink.ToDBNullIfEmpty()));
 
         return parameters;
     }
@@ -73,7 +74,7 @@ internal class ParametersBuilder
         LogRecord record = new LogRecord((LogDetail)message);
         List<SqlParameter> parameters = this.GetMessageDetailParameters(record);
         parameters.Add(new SqlParameter(ParameterTag.LogValueJSON, 
-            record.LogValueInJSONFormat));
+            record.LogValueInJSONFormat.ToDBNullIfEmpty()));
 
         return parameters;
     }
@@ -93,59 +94,62 @@ internal class ParametersBuilder
         parameters.Add(new SqlParameter(ParameterTag.Id, record.Id));
         parameters.Add(new SqlParameter(ParameterTag.Date, record.Date));
         parameters.Add(new SqlParameter(ParameterTag.Level, record.Level));
-        parameters.Add(new SqlParameter(ParameterTag.Message, record.Message));
-        parameters.Add(new SqlParameter(ParameterTag.
-            MachineCLRVersion, record.MachineCLRVersion));
+        parameters.Add(new SqlParameter(ParameterTag.Message, 
+            record.Message.ToDBNullIfEmpty()));
+        parameters.Add(new SqlParameter(ParameterTag.MachineCLRVersion, 
+            record.MachineCLRVersion.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MachineDomainName, 
-            record.MachineDomainName));
+            record.MachineDomainName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MachineName, 
-            record.MachineName));
+            record.MachineName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MachineOperativeSystemVersion,
-            record.MachineOperativeSystemVersion));
+            record.MachineOperativeSystemVersion.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MachineUserAccountName, 
-            record.MachineUserAccountName));
+            record.MachineUserAccountName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MachineOperativeSystem, 
-            record.MachineOperativeSystem));
+            record.MachineOperativeSystem.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MethodCallerFileName, 
-            record.MethodCallerFileName));
+            record.MethodCallerFileName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MethodCallerMethodName, 
-            record.MethodCallerMethodName));
+            record.MethodCallerMethodName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.MethodCallerLineNumber,
             record.MethodCallerLineNumber));
+        parameters.Add(new SqlParameter(ParameterTag.MethodParametersJSON,
+            record.MethodParametersJSON.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ApplicationIsDebuggingEnabled,
             record.ApplicationIsDebuggingEnabled));
         parameters.Add(new SqlParameter(ParameterTag.ApplicationPhysicalPath,
-            record.ApplicationPhysicalPath));
+            record.ApplicationPhysicalPath.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ApplicationAssemblyLocation, 
-            record.ApplicationAssemblyLocation));
+            record.ApplicationAssemblyLocation.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ApplicationFriendlyName, 
-            record.ApplicationFriendlyName));
+            record.ApplicationFriendlyName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ApplicationIsFullyTrusted,
             record.ApplicationIsFullyTrusted));
         parameters.Add(new SqlParameter(ParameterTag.ApplicationUserDomainName, 
-            record.ApplicationUserDomainName));
+            record.ApplicationUserDomainName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.ApplicationUserName, 
-            record.ApplicationUserName));
+            record.ApplicationUserName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationCurrentURL, 
-            record.WebApplicationCurrentURL));
+            record.WebApplicationCurrentURL.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationCurrentURLParameters,
-            record.WebApplicationCurrentURLParameters));
+            record.WebApplicationCurrentURLParameters.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationPreviousURL, 
-            record.WebApplicationPreviousURL));
+            record.WebApplicationPreviousURL.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationUserHostIP, 
-            record.WebApplicationUserHostIP));
+            record.WebApplicationUserHostIP.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationIsSecureConnection,
             record.WebApplicationIsSecureConnection));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationDomainName, 
-            record.WebApplicationDomainName));
+            record.WebApplicationDomainName.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationCookiesValues, 
-            record.WebApplicationCookiesValues));
+            record.WebApplicationCookiesValues.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationHeadersValues, 
-            record.WebApplicationHeadersValues));
+            record.WebApplicationHeadersValues.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.WebApplicationUserLanguagePreferences,
-            record.WebApplicationUserLanguagePreferences));
+            record.WebApplicationUserLanguagePreferences.ToDBNullIfEmpty()));
         parameters.Add(new SqlParameter(ParameterTag.CustomListOfParametersJSON, 
-            record.CustomListOfParametersJSON));
+            record.CustomListOfParametersJSON.ToDBNullIfEmpty()));
 
         return parameters;
     }
