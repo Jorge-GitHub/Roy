@@ -1,7 +1,6 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Attributes;
-using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 
 namespace Roy.Logging.Domain.Database;
@@ -22,7 +21,7 @@ internal class Record
     /// <summary>
     /// Exception level.
     /// </summary>
-    public Level Level { get; private set; }
+    public string Level { get; private set; }
     /// <summary>
     /// Log message.
     /// </summary>
@@ -163,7 +162,7 @@ internal class Record
     {
         this.Id = message.Id.LimitLength(32);
         this.Date = message.Date;
-        this.Level = message.Level;
+        this.Level = message.Level.ToString().LimitLength(11);
         this.Message = message.Message;
         this.CustomListOfParametersJSON = message.CustomListOfParameters.ToJSON();
         this.InitializeMachineInformation(message.MachineInformation);

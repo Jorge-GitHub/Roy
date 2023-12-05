@@ -46,8 +46,7 @@ internal class DatabaseUtility
     {
         StringBuilder query = this.Builder.Create(message, setting);
         this.Database.ExecuteQuery(setting.StringConnection, 
-            query.ToString(), this.Parameters.GetParameters(
-                message, setting.Culture));
+            query.ToString(), this.Parameters.GetParameters(message));
     }
 
     

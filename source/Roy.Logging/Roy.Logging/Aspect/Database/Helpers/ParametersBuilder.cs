@@ -3,7 +3,6 @@ using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Database;
 using Roy.Logging.Extensions;
-using System.Globalization;
 
 namespace Roy.Logging.Aspect.Database.Helpers;
 
@@ -18,21 +17,18 @@ internal class ParametersBuilder
     /// <param name="message">
     /// Message's details.
     /// </param>
-    /// <param name="culture">
-    /// Culture info.
-    /// </param>
     /// <returns>
     /// Parameters list.
     /// </returns>
-    public List<SqlParameter> GetParameters(MessageDetail message, CultureInfo culture)
+    public List<SqlParameter> GetParameters(MessageDetail message)
     {
         if (message.IsExceptionType())
         {
-            return this.GetExceptionDetailParameters(message, culture);
+            return this.GetExceptionDetailParameters(message);
         }
         else
         {
-            return this.GetLogDetailParameters(message, culture);
+            return this.GetLogDetailParameters(message);
         }
     }
 
@@ -42,17 +38,13 @@ internal class ParametersBuilder
     /// <param name="message">
     /// Message's details.
     /// </param>
-    /// <param name="culture">
-    /// Culture info.
-    /// </param>
     /// <returns>
     /// Parameters list.
     /// </returns>
-    private List<SqlParameter> GetExceptionDetailParameters(
-        MessageDetail message, CultureInfo culture)
+    private List<SqlParameter> GetExceptionDetailParameters(MessageDetail message)
     {
         ExceptionRecord record = new ExceptionRecord((ExceptionDetail)message);
-        List<SqlParameter> parameters = this.GetMessageDetailParameters(record, culture);
+        List<SqlParameter> parameters = this.GetMessageDetailParameters(record);
         parameters.Add(new SqlParameter(ParameterTag.ExceptionMessage, 
             record.ExceptionMessage));
         parameters.Add(new SqlParameter(ParameterTag.ExceptionStackTrace, 
@@ -73,17 +65,13 @@ internal class ParametersBuilder
     /// <param name="message">
     /// Message's details.
     /// </param>
-    /// <param name="culture">
-    /// Culture info.
-    /// </param>
     /// <returns>
     /// Parameters list.
     /// </returns>
-    private List<SqlParameter> GetLogDetailParameters(
-        MessageDetail message, CultureInfo culture)
+    private List<SqlParameter> GetLogDetailParameters(MessageDetail message)
     {
         LogRecord record = new LogRecord((LogDetail)message);
-        List<SqlParameter> parameters = this.GetMessageDetailParameters(record, culture);
+        List<SqlParameter> parameters = this.GetMessageDetailParameters(record);
         parameters.Add(new SqlParameter(ParameterTag.LogValueJSON, 
             record.LogValueInJSONFormat));
 
@@ -96,22 +84,16 @@ internal class ParametersBuilder
     /// <param name="record">
     /// Record used to populate the query.
     /// </param>
-    /// <param name="culture">
-    /// Culture info.
-    /// </param>
     /// <returns>
     /// Parameters list.
     /// </returns>
-    private List<SqlParameter> GetMessageDetailParameters(
-        Record record, CultureInfo culture)
+    private List<SqlParameter> GetMessageDetailParameters(Record record)
     {
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter(ParameterTag.Id, record.Id));
         parameters.Add(new SqlParameter(ParameterTag.Date, record.Date));
-        parameters.Add(new SqlParameter(ParameterTag.Level, record.Level
-            .ToCurrentCultureString(culture)));
-        parameters.Add(new SqlParameter(ParameterTag.
-            Message, record.Message));
+        parameters.Add(new SqlParameter(ParameterTag.Level, record.Level));
+        parameters.Add(new SqlParameter(ParameterTag.Message, record.Message));
         parameters.Add(new SqlParameter(ParameterTag.
             MachineCLRVersion, record.MachineCLRVersion));
         parameters.Add(new SqlParameter(ParameterTag.MachineDomainName, 
