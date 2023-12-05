@@ -68,7 +68,9 @@ internal static class DatabaseSettingExtensions
         {
             setting.Query = Queries.InsertExceptionQuery;
         }
-
-        setting.Query = Queries.InsertLogQuery;
+        else
+        {
+            setting.Query = Queries.InsertLogQuery;
+        }
     }
 }

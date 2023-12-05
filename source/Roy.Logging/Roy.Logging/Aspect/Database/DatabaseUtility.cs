@@ -44,9 +44,9 @@ internal class DatabaseUtility
     /// </param>
     public void Save(MessageDetail message, DatabaseSetting setting)
     {
-        StringBuilder query = this.Builder.Create(message, setting);
-        this.Database.ExecuteQuery(setting.StringConnection, 
-            query.ToString(), this.Parameters.GetParameters(message));
+        this.Database.ExecuteQuery(setting.StringConnection,
+            this.Builder.Create(message, setting).ToString(), 
+            this.Parameters.GetParameters(message));
     }
 
     
