@@ -24,7 +24,6 @@ internal static class DatabaseSettingExtensions
     public static void SetDefaultValues(this DatabaseSetting setting,
         Level level, bool isAnException)
     {
-        setting.Culture = setting.Language.ToCultureInfo();
         setting.SetTableName(isAnException);
         setting.SetQuery(isAnException);
     }

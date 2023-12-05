@@ -30,16 +30,6 @@ public class DatabaseSetting
     /// </summary>
     public List<Level> LevelsToSave { get; set; }
     /// <summary>
-    /// Language. Language to use for the email format. 
-    /// Currently Roy supports English, Spanish, French, and German. 
-    /// The default value is English.
-    /// </summary>
-    public Language Language { get; set; }
-    /// <summary>
-    /// Culture.
-    /// </summary>
-    public CultureInfo Culture { get; set; }
-    /// <summary>
     // Query to run.
     /// </summary>
     public string Query { get; set; }
