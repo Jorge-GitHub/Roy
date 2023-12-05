@@ -140,6 +140,9 @@ by modifying the object LogExtension.Settings static property.
 
 You can make any changes to the settings by calling the LogExtension.Settings static property.
 
+I will write more documentation as soon as I have some spare time.
+
+For more information visit Roy's [wiki](https://github.com/Jorge-GitHub/Roy/wiki).
 
 ## Author
 - [Jorge Gonzalez](https://github.com/Jorge-GitHub)
