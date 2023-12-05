@@ -16,14 +16,17 @@ Logging service library for .NET.
 ### Features
 
 - Logging into local files (append or create a new file)
-- Logging into the event system (Windows/Linux)
-- Submit logs to APIs
+- Logging into multiple databases
 - E-mail logs to multiple accounts
+- Submit logs to APIs 
+- Logging into the event system (Windows/Linux)
+- Log any exception (MVC Only)
 - Easy to customize
 
 By default, Roy will save the exceptions and logs in the “exceptions” and "logs" folders. These folders will be created inside the bin folder. This behavior can be changed by using the LogExtension.Settings object.
 
-Roy can also save the errors and logs on the computer event system (Windows/Linux), send the errors and logs by E-mail, or call an API. 
+Roy can also save the exceptions and logs on the computer event system (Windows/Linux), send the exceptions and logs by E-mail, 
+save exceptions and logs into multiple databases, and/or submit them to multiple APIs. 
 These behaviors can be set by using the LogExtension.Settings object. Check the Settings Wiki for more information.
 
 ---
