@@ -1,4 +1,5 @@
-﻿using Roy.Logging.Aspect.Database.Helpers;
+﻿using Microsoft.Data.SqlClient;
+using Roy.Logging.Aspect.Database.Helpers;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Database;
 using Roy.Logging.Extensions;
@@ -15,6 +16,14 @@ internal class DatabaseUtility
     /// Query builder helper.
     /// </summary>
     private QueryBuilder Builder {  get; set; }
+    /// <summary>
+    /// Database logic.
+    /// </summary>
+    private DatabaseLogic Database {  get; set; }
+    /// <summary>
+    /// Parameters builder logic.
+    /// </summary>
+    private ParametersBuilder Parameters{ get; set; }
 
     /// <summary>
     /// Constructor.
@@ -35,10 +44,13 @@ internal class DatabaseUtility
     /// </param>
     public void Save(MessageDetail message, DatabaseSetting setting)
     {
-        // Create query
         StringBuilder query = this.Builder.Create(message, setting);
-        // Save on database.
+        this.Database.ExecuteQuery(setting.StringConnection, 
+            query.ToString(), this.Parameters.GetParameters(
+                message, setting.Culture));
     }
+
+    
 
     /// <summary>
     /// Initialize the object.
@@ -46,5 +58,7 @@ internal class DatabaseUtility
     private void InitializeObject()
     {
         this.Builder = new QueryBuilder();
+        this.Database = new DatabaseLogic();
+        this.Parameters = new ParametersBuilder();
     }
 }

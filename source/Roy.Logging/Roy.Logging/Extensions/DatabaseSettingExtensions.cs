@@ -44,11 +44,11 @@ internal static class DatabaseSettingExtensions
         {
             if (isAnException)
             {
-                setting.TableName = SchemaValues.DefaultExceptionTableName;
+                setting.TableName = DatabaseTag.DefaultExceptionTableName;
             }
             else
             {
-                setting.TableName = SchemaValues.DefaultLogTableName;
+                setting.TableName = DatabaseTag.DefaultLogTableName;
             }
         }
     }
