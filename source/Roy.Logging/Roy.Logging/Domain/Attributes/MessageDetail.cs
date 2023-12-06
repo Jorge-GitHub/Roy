@@ -15,7 +15,7 @@ public class MessageDetail
     /// <summary>
     /// Date time.
     /// </summary>
-    public DateTime Date { get; set; }
+    public DateTimeOffset Date { get; set; }
     /// <summary>
     /// Exception level.
     /// </summary>
@@ -112,7 +112,7 @@ public class MessageDetail
         WebApplicationHttpContext webApplicationHttpContext,
         object[] listOfParameters)
     {
-        this.Date = DateTime.Now;
+        this.Date = DateTimeOffset.Now;
         this.Level = level;
         this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
         this.Message = message;

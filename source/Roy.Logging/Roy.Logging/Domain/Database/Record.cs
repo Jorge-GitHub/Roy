@@ -17,7 +17,7 @@ internal class Record
     /// <summary>
     /// Date time.
     /// </summary>
-    public DateTime Date { get; private set; }
+    public DateTimeOffset Date { get; private set; }
     /// <summary>
     /// Exception level.
     /// </summary>
