@@ -46,7 +46,7 @@ Easy to use.</PackageReleaseNotes>
 
   <ItemGroup>
     <Reference Include="Avalon.Base.Extension">
-      <HintPath>..\..\Libraries\Avalon\Avalon.Base.Extension.dll</HintPath>
+      <HintPath>..\..\libraries\Avalon\Avalon.Base.Extension.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore">
       <HintPath>libs\Microsoft.AspNetCore.dll</HintPath>

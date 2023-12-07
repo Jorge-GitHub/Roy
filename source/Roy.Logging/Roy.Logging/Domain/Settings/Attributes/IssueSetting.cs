@@ -70,7 +70,7 @@ public class IssueSetting
     public List<APISetting> APIs { get; set; }
     /// <summary>
     /// Database settings.
-    /// You can save the log in multiple databases 
+    /// You can save the log into multiple databases 
     /// based on multiple Level conditions, such as Error or Trace.
     /// </summary>
     public List<DatabaseSetting> Databases { get; set; }

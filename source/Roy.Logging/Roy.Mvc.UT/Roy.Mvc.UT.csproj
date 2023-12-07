@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Reference Include="Avalon.Base.Extension">
-      <HintPath>..\..\Libraries\Avalon\Avalon.Base.Extension.dll</HintPath>
+      <HintPath>..\..\libraries\Avalon\Avalon.Base.Extension.dll</HintPath>
     </Reference>
   </ItemGroup>
 

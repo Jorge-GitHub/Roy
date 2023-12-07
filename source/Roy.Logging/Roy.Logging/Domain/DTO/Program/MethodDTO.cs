@@ -22,7 +22,7 @@ public class MethodDTO
     /// </summary>
     public int CallerLineNumber { get; set; }
     /// <summary>
-    /// Parameters.
+    /// Method's parameters.
     /// </summary>
     public List<ParameterDTO>? Parameters { get; set; }
 }
