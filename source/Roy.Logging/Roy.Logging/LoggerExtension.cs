@@ -4,7 +4,7 @@ using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
-using Roy.Logging.Helpers;
+using Roy.Logging.Services;
 using System.Diagnostics;
 
 namespace Roy.Logging;

@@ -1,8 +1,10 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Settings.Attributes;
+using Roy.Logging.Helpers;
 
-namespace Roy.Logging.Helpers;
+namespace Roy.Logging.Services;
 
 /// <summary>
 /// Record register service.
@@ -18,8 +20,9 @@ internal class RecordService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    public async void SaveAsync(MessageDetail message, IssueSetting setting)
+    public async Task<ProcessMessage> SaveAsync(MessageDetail message, IssueSetting setting)
     {
+        ProcessMessage process = new ProcessMessage();
         try
         {
             if (setting.SaveLogOnFile)
@@ -66,5 +69,7 @@ internal class RecordService
             }
         }
         catch { }
+
+        return process;
     }
 }
