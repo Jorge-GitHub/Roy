@@ -42,7 +42,7 @@ public class MessageDTO
     /// </summary>
     public MethodDTO? StackFrame { get; set; }
     /// <summary>
-    /// list of parameters.
+    /// List of parameters.
     /// </summary>
     public object[]? CustomListOfParameters { get; set; }
 }

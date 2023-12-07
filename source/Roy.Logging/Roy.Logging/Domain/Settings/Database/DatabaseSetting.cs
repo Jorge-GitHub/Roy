@@ -1,5 +1,4 @@
 ﻿using Roy.Logging.Domain.Contants;
-using System.Globalization;
 
 namespace Roy.Logging.Domain.Settings.Database;
 

@@ -7,12 +7,12 @@ public class ApplicationDTO
 {
     /// <summary>
     /// Flag that indicates whether the current 
-    /// HTTP request is in debug mode
+    /// application is in debug mode or not.
     /// </summary>
     public bool IsDebuggingEnabled { get; set; }
     /// <summary>
-    /// Physical file system of the current 
-    /// executing server application's root directory.
+    /// Physical file system location of the 
+    /// current executing server application.
     /// </summary>
     public string? PhysicalApplicationPath { get; set; }
     /// <summary>
@@ -24,7 +24,7 @@ public class ApplicationDTO
     /// </summary>
     public string? FriendlyName { get; set; }
     /// <summary>
-    /// Flag that determinate whether the application is executing in full trust.
+    /// Flag that determinate whether the application is executing in full trust or not.
     /// </summary>
     public bool IsFullyTrusted { get; set; }
     /// <summary>
