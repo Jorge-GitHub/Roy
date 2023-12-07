@@ -2,6 +2,7 @@
 using Roy.Logging;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.DTO.Communication;
 using Roy.Logging.Domain.Settings;
 using Roy.Logging.Extensions.DTO;
 
@@ -9,10 +10,10 @@ namespace Roy.Mvc.UT.Pages;
 
 public class IndexModel : PageModel
 {
-    public void OnGet()
+    public async void OnGet()
     {
         // Uncomment a line below for testing.
-        new Author { Description = "Great singer", Name = "Roy" }.LogAsync();
+        ProcessMessageDTO message = await (new Author { Description = "Great singer", Name = "Roy" }).LogAsync();
         // FileStream file = new FileStream("filedoesnotexist.json", FileMode.Open);
         // TestPost();
     }
