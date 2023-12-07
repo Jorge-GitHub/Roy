@@ -16,7 +16,8 @@ public class DatabaseSetting
     /// </summary>
     public string StringConnection { get; set; }
     /// <summary>
-    /// Table's name.
+    /// Table's name. Set this value if you need to change the table name. 
+    /// Otherwise, Roy will use the default tables names (RoyException/RoyLog).
     /// </summary>
     public string TableName { get; set; }
     /// <summary>
