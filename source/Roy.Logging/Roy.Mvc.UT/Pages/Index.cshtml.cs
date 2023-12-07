@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Roy.Logging;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
-using Roy.Logging.Domain.DTO;
 using Roy.Logging.Domain.Settings;
 using Roy.Logging.Extensions.DTO;
 
@@ -12,9 +12,9 @@ public class IndexModel : PageModel
     public void OnGet()
     {
         // Uncomment a line below for testing.
-        // new Author { Description = "Great singer", Name = "Roy" }.LogAsync();
+        new Author { Description = "Great singer", Name = "Roy" }.LogAsync();
         // FileStream file = new FileStream("filedoesnotexist.json", FileMode.Open);
-        TestPost();
+        // TestPost();
     }
 
     public async void TestPost()
