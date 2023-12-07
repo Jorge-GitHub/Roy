@@ -33,10 +33,13 @@ internal class WindowsEvent
             eventLog.WriteEntry(message.LimitLength(31000),
                level.ToEventLogEntryType());
         }
-        catch { }
+        catch
+        {
+            throw;
+        }
         finally
         {
-            if (eventLog != null)
+            if (eventLog.IsNotNull())
             {
                 eventLog.Close();
                 eventLog.Dispose();

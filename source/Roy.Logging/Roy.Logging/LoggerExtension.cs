@@ -1,9 +1,12 @@
 ﻿using Avalon.Base.Extension.Types;
 using Avalon.Base.Extension.Types.BooleanExtensions;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.DTO.Communication;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
+using Roy.Logging.Extensions.Communication;
 using Roy.Logging.Services;
 using System.Diagnostics;
 
@@ -32,13 +35,17 @@ public static class LoggerExtension
     /// <param name="listOfParameters">
     /// Optional: List of parameters.
     /// </param>
-    public static void LogAsync<TValue>(this TValue value,
-        Level level = Level.Log, 
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> LogAsync<TValue>(
+        this TValue value, Level level = Level.Log, 
         WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, 
-            null, level, webApplicationHttpContext, listOfParameters);
+        return await value.LogAsync(string.Empty, string.Empty, 
+            LogExtension.Settings, null, level, 
+            webApplicationHttpContext, listOfParameters);
     }
 
     /// <summary>
@@ -62,11 +69,15 @@ public static class LoggerExtension
     /// <param name="listOfParameters">
     /// Optional: List of parameters.
     /// </param>
-    public static void LogAsync<TValue>(this TValue value, StackFrame frame,
-        Level level = Level.Log, WebApplicationHttpContext? webApplicationHttpContext = null,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> LogAsync<TValue>(
+        this TValue value, StackFrame frame, Level level = Level.Log, 
+        WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, 
+        return await value.LogAsync(string.Empty, string.Empty, LogExtension.Settings, 
             frame, level, webApplicationHttpContext, listOfParameters);
     }
 
@@ -88,12 +99,15 @@ public static class LoggerExtension
     /// <param name="listOfParameters">
     /// Optional: List of parameters.
     /// </param>
-    public static async void LogAsync<TValue>(this TValue value,
-        RoySetting settings, Level level = Level.Log, 
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> LogAsync<TValue>(
+        this TValue value, RoySetting settings, Level level = Level.Log, 
         WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        value.LogAsync(string.Empty, string.Empty, settings, 
+        return await value.LogAsync(string.Empty, string.Empty, settings, 
             null, level, webApplicationHttpContext, listOfParameters);
     }
 
@@ -118,12 +132,15 @@ public static class LoggerExtension
     /// <param name="listOfParameters">
     /// Optional: List of parameters.
     /// </param>
-    public static async void LogAsync<TValue>(this TValue value,
-        string message, Level level = Level.Log,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> LogAsync<TValue>(
+        this TValue value, string message, Level level = Level.Log,
         WebApplicationHttpContext ? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        value.LogAsync(message, string.Empty, LogExtension.Settings, 
+        return await value.LogAsync(message, string.Empty, LogExtension.Settings, 
             null, level, webApplicationHttpContext, listOfParameters);
     }
 
@@ -151,12 +168,15 @@ public static class LoggerExtension
     /// <param name="listOfParameters">
     /// Optional: List of parameters.
     /// </param>
-    public static async void LogAsync<TValue>(this TValue value,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> LogAsync<TValue>(this TValue value,
         string message, string identity, Level level = Level.Log,
         WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        value.LogAsync(message, identity, 
+        return await value.LogAsync(message, identity, 
             LogExtension.Settings, null, level,
             webApplicationHttpContext, listOfParameters);
     }
@@ -191,11 +211,16 @@ public static class LoggerExtension
     /// <param name="listOfParameters">
     /// Optional: List of parameters.
     /// </param>
-    public static async void LogAsync<TValue>(this TValue value, 
-        string message, string identity,  RoySetting setting, StackFrame frame,
-        Level level = Level.Log, WebApplicationHttpContext? webApplicationHttpContext = null,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> LogAsync<TValue>(
+        this TValue value, string message, string identity, 
+        RoySetting setting, StackFrame frame, Level level = Level.Log, 
+        WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
+        ProcessMessage process = new ProcessMessage();
         try
         {
             setting = setting ?? LogExtension.Settings;
@@ -209,10 +234,15 @@ public static class LoggerExtension
                     frame, setting.Log.LoadInformationSettings, 
                     webApplicationHttpContext, listOfParameters);
 
-                new RecordService().SaveAsync(
+                process = new RecordService().Save(
                     detail, setting.Log);
             }
         }
-        catch { }
+        catch (Exception ex)
+        {
+            process.Errors.Add(ex);
+        }
+
+        return process.ToDTO();
     }
 }

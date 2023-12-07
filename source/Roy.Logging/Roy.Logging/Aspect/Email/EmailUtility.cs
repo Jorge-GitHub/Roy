@@ -2,6 +2,7 @@
 using MailKit.Net.Smtp;
 using MimeKit;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Extensions;
@@ -25,13 +26,24 @@ internal class EmailUtility
     /// <param name="settings">
     /// Log settings.
     /// </param>
-    public void Send(EmailSetting setting, MessageDetail message, InformationSetting settings)
+    /// <param name="process">
+    /// Message returned by the logging service.
+    /// </param>
+    public void Send(EmailSetting setting, MessageDetail message, 
+        InformationSetting settings, ProcessMessage process)
     {
         setting.SetDefaultValues(message.Level,
             message.IsExceptionType(), message.Id);
         foreach (ReceiverSetting receiver in setting.Receivers)
         {
-            this.Send(setting, receiver, message, settings);
+            try
+            {
+                this.Send(setting, receiver, message, settings);
+            }
+            catch (Exception ex)
+            {
+                process.Errors.Add(ex);
+            }
         }
     }
 
@@ -68,7 +80,10 @@ internal class EmailUtility
             }
             client.Send(message);
         }
-        catch { } // We let the system keep sending emails to the other recipients.
+        catch
+        {
+            throw;
+        }
         finally
         {
             client.Disconnect(true);

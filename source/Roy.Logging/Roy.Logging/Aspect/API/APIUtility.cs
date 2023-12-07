@@ -41,7 +41,10 @@ internal class APIUtility
                     client.PostAsJsonAsync(setting.URL, log);
                 }
             } 
-            catch { } // We let the system keep posting messages to the other APIs.
+            catch 
+            {
+                throw;
+            }
             finally
             {
                 if (client != null)

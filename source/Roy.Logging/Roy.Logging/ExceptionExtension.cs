@@ -1,9 +1,12 @@
 ﻿using Avalon.Base.Extension.Types;
 using Avalon.Base.Extension.Types.BooleanExtensions;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Contants;
+using Roy.Logging.Domain.DTO.Communication;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
+using Roy.Logging.Extensions.Communication;
 using Roy.Logging.Services;
 using System.Diagnostics;
 
@@ -23,10 +26,13 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(this Exception exception,
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
+        return await exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
             string.Empty, string.Empty, LogExtension.Settings, null,
             webApplicationHttpContext);
     }
@@ -43,10 +49,14 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception, StackFrame frame,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, StackFrame frame,
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
+        return await exception.SaveAsync(LogExtension.Settings.Exception.DefaultLevel,
             string.Empty, string.Empty, LogExtension.Settings, frame, 
             webApplicationHttpContext, null);
     }
@@ -63,10 +73,13 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(this Exception exception,
         RoySetting settings, WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(settings.Exception.DefaultLevel,
+        return await exception.SaveAsync(settings.Exception.DefaultLevel,
             string.Empty, string.Empty, settings, null, 
             webApplicationHttpContext, null);
     }
@@ -83,10 +96,14 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception, Level level,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, Level level, 
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(level, string.Empty, string.Empty,
+        return await exception.SaveAsync(level, string.Empty, string.Empty,
             LogExtension.Settings, null, webApplicationHttpContext, null);
     }
 
@@ -105,10 +122,14 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception, Level level,
-        StackFrame frame, WebApplicationHttpContext? webApplicationHttpContext = null)
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, Level level, StackFrame frame,
+        WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(level, string.Empty, string.Empty,
+        return await exception.SaveAsync(level, string.Empty, string.Empty,
             LogExtension.Settings, frame, webApplicationHttpContext, null);
     }
 
@@ -127,12 +148,15 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
-        Level level, RoySetting settings, 
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, Level level, RoySetting settings, 
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(level, string.Empty, string.Empty,
-            settings, null, webApplicationHttpContext, null);
+        return await exception.SaveAsync(level, string.Empty, 
+            string.Empty, settings, null, webApplicationHttpContext, null);
     }
 
     /// <summary>
@@ -147,10 +171,14 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
-        string message, WebApplicationHttpContext? webApplicationHttpContext = null)
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, string message, 
+        WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(Level.Error, message, string.Empty,
+        return await exception.SaveAsync(Level.Error, message, string.Empty,
             LogExtension.Settings, null, webApplicationHttpContext, null);
     }
 
@@ -169,11 +197,14 @@ public static class ExceptionExtension
     /// <param name="webApplicationHttpContext">
     /// Optional: Web application HttpContext details.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
-        string message, string identity, 
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, string message, string identity, 
         WebApplicationHttpContext? webApplicationHttpContext = null)
     {
-        exception.SaveAsync(Level.Error, message, identity,
+        return await exception.SaveAsync(Level.Error, message, identity,
             LogExtension.Settings, null, webApplicationHttpContext, null);
     }
 
@@ -195,13 +226,17 @@ public static class ExceptionExtension
     /// <param name="listOfParameters">
     /// List of parameters.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
-        string message, string identity,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, string message, string identity,
         WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, null, webApplicationHttpContext, listOfParameters);
+        return await exception.SaveAsync(Level.Error, message, identity,
+            LogExtension.Settings, null, webApplicationHttpContext, 
+            listOfParameters);
     }
 
     /// <summary>
@@ -225,13 +260,17 @@ public static class ExceptionExtension
     /// <param name="listOfParameters">
     /// List of parameters.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
-        string message, string identity,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, string message, string identity,
         StackFrame frame, WebApplicationHttpContext? webApplicationHttpContext = null, 
         params object[] listOfParameters)
     {
-        exception.SaveAsync(Level.Error, message, identity,
-            LogExtension.Settings, frame, webApplicationHttpContext, listOfParameters);
+        return await exception.SaveAsync(Level.Error, message, 
+            identity, LogExtension.Settings, frame, 
+            webApplicationHttpContext, listOfParameters);
     }
 
     /// <summary>
@@ -261,12 +300,16 @@ public static class ExceptionExtension
     /// <param name="listOfParameters">
     /// Optional: List of parameters.
     /// </param>
-    public static async void SaveAsync(this Exception exception,
-        Level level, string message, string identity, 
-        RoySetting setting, StackFrame frame,
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public static async Task<ProcessMessageDTO> SaveAsync(
+        this Exception exception, Level level, string message,
+        string identity, RoySetting setting, StackFrame frame,
         WebApplicationHttpContext webApplicationHttpContext,
         params object[] listOfParameters)
     {
+        ProcessMessage process = new ProcessMessage();
         try
         {
             setting = setting ?? LogExtension.Settings;
@@ -278,10 +321,15 @@ public static class ExceptionExtension
                     setting.Exception.LoadInformationSettings, 
                     webApplicationHttpContext, listOfParameters);
 
-                new RecordService().SaveAsync(exceptionDetail, 
+                new RecordService().Save(exceptionDetail, 
                     setting.Exception);
             }
         }
-        catch { }
+        catch (Exception ex)
+        {
+            process.Errors.Add(ex);
+        }
+
+        return process.ToDTO();
     }
 }

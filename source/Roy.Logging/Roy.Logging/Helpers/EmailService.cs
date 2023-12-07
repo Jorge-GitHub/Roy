@@ -3,6 +3,7 @@ using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Aspect.Email;
 using Roy.Logging.Domain.Settings.Attributes;
+using Roy.Logging.Domain.Communication;
 
 namespace Roy.Logging.Helpers;
 
@@ -24,8 +25,12 @@ public class EmailService
     /// <param name="settings">
     /// Log settings.
     /// </param>
+    /// <param name="process">
+    /// Message returned by the logging service.
+    /// </param>
     public async void SendAsync(MessageDetail bodyDetail, 
-        List<EmailSetting> emails, InformationSetting settings)
+        List<EmailSetting> emails, InformationSetting settings,
+        ProcessMessage process)
     {
         foreach (EmailSetting setting in emails)
         {
@@ -35,10 +40,13 @@ public class EmailService
                     setting.LevelsToReport.Any(item => item.Equals(bodyDetail.Level)))
                     && !setting.DisableEmailSending)
                 {
-                    this.Utility.Send(setting, bodyDetail, settings);
+                    this.Utility.Send(setting, bodyDetail, settings, process);
                 }
             }
-            catch { } // Keep sending the remaining emails.
+            catch (Exception ex)
+            {
+                process.Errors.Add(ex);
+            }
         }
     }
 

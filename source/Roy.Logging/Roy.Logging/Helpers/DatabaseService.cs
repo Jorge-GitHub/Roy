@@ -1,5 +1,6 @@
 ﻿using Roy.Logging.Aspect.Database;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Settings.Database;
 using Roy.Logging.Extensions;
 
@@ -32,13 +33,23 @@ internal class DatabaseService
     /// <param name="settings">
     /// List of database's settings.
     /// </param>
-    public async void SaveAsync(MessageDetail message,
-        List<DatabaseSetting> settings)
+    /// <param name="process">
+    /// Message returned by the logging service.
+    /// </param>
+    public void Save(MessageDetail message,
+        List<DatabaseSetting> settings, ProcessMessage process)
     {
         foreach(DatabaseSetting setting in settings)
         {
-            setting.SetDefaultValues(message.Level, message.IsExceptionType());
-            this.Utility.Save(message, setting);
+            try
+            {
+                setting.SetDefaultValues(message.Level, message.IsExceptionType());
+                this.Utility.Save(message, setting);
+            }
+            catch (Exception ex)
+            {
+                process.Errors.Add(ex);
+            }
         }
     }
 

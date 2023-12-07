@@ -20,37 +20,44 @@ internal class RecordService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    public async Task<ProcessMessage> SaveAsync(MessageDetail message, IssueSetting setting)
+    /// <returns>
+    /// Message returned by the logging service.
+    /// </returns>
+    public ProcessMessage Save(MessageDetail message, IssueSetting setting)
     {
         ProcessMessage process = new ProcessMessage();
+        this.SaveInternal(message, setting, process);
+        this.SaveExternal(message, setting, process);
+
+        return process;
+    }
+
+    /// <summary>
+    /// Save message internally (files/event system).
+    /// </summary>
+    /// <param name="message">
+    /// Message to save.
+    /// </param>
+    /// <param name="setting">
+    /// Settings.
+    /// </param>
+    /// <param name="process">
+    /// Message returned by the logging service.
+    /// </param>
+    private void SaveInternal(MessageDetail message, IssueSetting setting, 
+        ProcessMessage process)
+    {
         try
         {
             if (setting.SaveLogOnFile)
             {
-                new FileService().SaveAsync(message, setting);
+                new FileService().Save(message, setting);
             }
         }
-        catch { }
-
-        try
+        catch (Exception ex)
         {
-            if (setting.Emails.HasElements())
-            {
-                new EmailService().SendAsync(message, setting.Emails,
-                    setting.LoadInformationSettings);
-            }
+            process.Errors.Add(ex);
         }
-        catch { }
-
-        try
-        {
-            if (setting.APIs.HasElements())
-            {
-                new APIService().PostAsync(message, setting.APIs);
-            }
-        }
-        catch { }
-
 
         try
         {
@@ -59,17 +66,63 @@ internal class RecordService
                 new SystemEventLogService().LogAsync(message, setting);
             }
         }
-        catch { }
+        catch (Exception ex)
+        {
+            process.Errors.Add(ex);
+        }
+    }
+
+    /// <summary>
+    /// Save message externally (email/api/database).
+    /// </summary>
+    /// <param name="message">
+    /// Message to save.
+    /// </param>
+    /// <param name="setting">
+    /// Settings.
+    /// </param>
+    /// <param name="process">
+    /// Message returned by the logging service.
+    /// </param>
+    private void SaveExternal(MessageDetail message, IssueSetting setting, 
+        ProcessMessage process)
+    {
+        try
+        {
+            if (setting.Emails.HasElements())
+            {
+                new EmailService().SendAsync(message, setting.Emails,
+                    setting.LoadInformationSettings, process);
+            }
+        }
+        catch (Exception ex)
+        {
+            process.Errors.Add(ex);
+        }
+
+        try
+        {
+            if (setting.APIs.HasElements())
+            {
+                new APIService().Post(message, setting.APIs, process);
+            }
+        }
+        catch (Exception ex)
+        {
+            process.Errors.Add(ex);
+        }
 
         try
         {
             if (setting.Databases.HasElements())
             {
-                new DatabaseService().SaveAsync(message, setting.Databases);
+                new DatabaseService().Save(message,
+                    setting.Databases, process);
             }
         }
-        catch { }
-
-        return process;
+        catch (Exception ex)
+        {
+            process.Errors.Add(ex);
+        }
     }
 }
