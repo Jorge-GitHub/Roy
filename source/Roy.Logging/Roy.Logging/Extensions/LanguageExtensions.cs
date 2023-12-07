@@ -6,7 +6,7 @@ namespace Roy.Logging.Extensions;
 /// <summary>
 /// Language extensions.
 /// </summary>
-public static class LanguageExtensions
+internal static class LanguageExtensions
 {
     /// <summary>
     /// Convert a language enum into a Culture info.

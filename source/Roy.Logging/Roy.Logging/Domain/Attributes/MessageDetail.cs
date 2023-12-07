@@ -13,6 +13,10 @@ namespace Roy.Logging.Domain.Attributes;
 public class MessageDetail
 {
     /// <summary>
+    /// Id.
+    /// </summary>
+    public string Id { get; set; }
+    /// <summary>
     /// Date time.
     /// </summary>
     public DateTimeOffset Date { get; set; }
@@ -20,10 +24,6 @@ public class MessageDetail
     /// Exception level.
     /// </summary>
     public Level Level { get; set; }
-    /// <summary>
-    /// Id.
-    /// </summary>
-    public string Id { get; set; }
     /// <summary>
     /// Log message.
     /// </summary>

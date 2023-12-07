@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Roy.Logging\Roy.Logging.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Avalon.Base.Extension">
+      <HintPath>..\..\Libraries\Avalon\Avalon.Base.Extension.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
