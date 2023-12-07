@@ -25,6 +25,10 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.MapControllerRoute(
+    name: "DefaultApi",
+    pattern: "api/{controller}/{action}");
+
 app.UseRoyExceptionHandler(builder);
 
 app.Run();

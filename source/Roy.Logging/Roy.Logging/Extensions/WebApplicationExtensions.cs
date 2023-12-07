@@ -5,7 +5,7 @@ namespace Roy.Logging.Extensions;
 /// <summary>
 /// Web application extensions.
 /// </summary>
-public static class WebApplicationExtensions
+internal static class WebApplicationExtensions
 {
     /// <summary>
     /// to web application details.

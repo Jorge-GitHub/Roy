@@ -3,9 +3,7 @@ using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Settings.Attributes;
-using Roy.Logging.Extensions;
 using System.Reflection;
-using System.Text.Json;
 
 namespace Roy.Logging.Helpers;
 
@@ -23,7 +21,7 @@ internal class FileService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    public async void SaveAsync(MessageDetail message, IssueSetting setting)
+    public void Save(MessageDetail message, IssueSetting setting)
     {
         if ((!setting.LevelsToSaveOnFile.HasElements() 
             || setting.LevelsToSaveOnFile.Any(
@@ -32,28 +30,8 @@ internal class FileService
 
             string fileLocation = this.GetFileLocation(setting.FolderLocation,
                 setting.FileName, message.Id, message.Level, setting.DefaultFolderName);
-            string json = this.GetJSON(message);
-            this.LogTextAsync(json, fileLocation, setting.Append);
+            this.LogText(message.ToJSON(), fileLocation, setting.Append);
         }
-    }
-
-    /// <summary>
-    /// Get the JSON to log.
-    /// </summary>
-    /// <param name="message">
-    /// Message to log.
-    /// </param>
-    /// <returns>
-    /// JSON.
-    /// </returns>
-    private string GetJSON(MessageDetail message)
-    {
-        if (message.IsExceptionType())
-        {
-            return JsonSerializer.Serialize(message as ExceptionDetail);
-        }
-
-        return JsonSerializer.Serialize(message as LogDetail);
     }
 
     /// <summary>
@@ -68,16 +46,16 @@ internal class FileService
     /// <param name="appendLog">
     /// Flag that determinate whether to append or not the log.
     /// </param>
-    private async void LogTextAsync(string text,
+    private void LogText(string text,
         string fileLocation, bool appendLog)
     {
         if (appendLog)
         {
-            File.AppendAllTextAsync(fileLocation, text);
+            File.AppendAllText(fileLocation, text);
         }
         else
         {
-            File.WriteAllTextAsync(fileLocation, text);
+            File.WriteAllText(fileLocation, text);
         }
     }
 

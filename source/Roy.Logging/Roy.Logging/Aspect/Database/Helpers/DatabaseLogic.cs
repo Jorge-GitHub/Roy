@@ -38,8 +38,9 @@ internal class DatabaseLogic
             }
             command.ExecuteNonQuery();
         }
-        catch (Exception ex)
+        catch
         {
+            throw;
         }
         finally
         {

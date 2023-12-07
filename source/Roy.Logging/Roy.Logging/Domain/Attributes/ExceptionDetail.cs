@@ -60,7 +60,7 @@ public class ExceptionDetail : MessageDetail
         : base(level, id, message, frame, logSettings,
             webApplicationHttpContext, listOfParameters)
     {
-        this.LoadObject(exception, level, listOfParameters);
+        this.LoadObject(exception, level);
     }
 
     /// <summary>
@@ -72,8 +72,7 @@ public class ExceptionDetail : MessageDetail
     /// <param name="level">
     /// Exception's level.
     /// </param>
-    private void LoadObject(Exception exception, Level level,
-        object[] listOfParameters)
+    private void LoadObject(Exception exception, Level level)
     {
         this.ExceptionMessage = exception.Message;
         this.SetExceptionTrace(exception, level);

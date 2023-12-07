@@ -5,7 +5,7 @@ namespace Roy.Logging.Extensions;
 /// <summary>
 /// Message detail extensions.
 /// </summary>
-public static class MessageDetailExtensions
+internal static class MessageDetailExtensions
 {
     /// <summary>
     /// Determinate whether the Message detail is an exception type or not.

@@ -1,7 +1,9 @@
 ﻿using Avalon.Base.Extension.Types;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.DTO;
 using Roy.Logging.Domain.Settings.Web.APIAspect;
 using Roy.Logging.Extensions;
+using Roy.Logging.Extensions.DTO;
 using System.Net.Http.Json;
 
 namespace Roy.Logging.Aspect.API;
@@ -30,14 +32,19 @@ internal class APIUtility
                 client = new HttpClient();
                 if(message.IsExceptionType())
                 {
-                    client.PostAsJsonAsync(setting.URL, message as ExceptionDetail);
+                    ExceptionDTO exception = (message as ExceptionDetail).ToDTO();
+                    client.PostAsJsonAsync(setting.URL, exception);
                 }
                 else
                 {
-                    client.PostAsJsonAsync(setting.URL, message as LogDetail);
+                    LogDTO log = (message as LogDetail).ToDTO();
+                    client.PostAsJsonAsync(setting.URL, log);
                 }
             } 
-            catch { } // We let the system keep posting messages to the other APIs.
+            catch 
+            {
+                throw;
+            }
             finally
             {
                 if (client != null)

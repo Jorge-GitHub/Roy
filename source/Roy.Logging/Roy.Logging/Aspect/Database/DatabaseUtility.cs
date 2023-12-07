@@ -49,8 +49,6 @@ internal class DatabaseUtility
             this.Parameters.GetParameters(message));
     }
 
-    
-
     /// <summary>
     /// Initialize the object.
     /// </summary>

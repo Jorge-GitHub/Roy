@@ -13,17 +13,17 @@ namespace Roy.Logging.Domain.Attributes;
 public class MessageDetail
 {
     /// <summary>
+    /// Id.
+    /// </summary>
+    public string Id { get; set; }
+    /// <summary>
     /// Date time.
     /// </summary>
-    public DateTime Date { get; set; }
+    public DateTimeOffset Date { get; set; }
     /// <summary>
     /// Exception level.
     /// </summary>
     public Level Level { get; set; }
-    /// <summary>
-    /// Id.
-    /// </summary>
-    public string Id { get; set; }
     /// <summary>
     /// Log message.
     /// </summary>
@@ -112,7 +112,7 @@ public class MessageDetail
         WebApplicationHttpContext webApplicationHttpContext,
         object[] listOfParameters)
     {
-        this.Date = DateTime.Now;
+        this.Date = DateTimeOffset.Now;
         this.Level = level;
         this.Id = id.IsNotNullOrEmpty() ? id : Guid.NewGuid().ToString("N");
         this.Message = message;

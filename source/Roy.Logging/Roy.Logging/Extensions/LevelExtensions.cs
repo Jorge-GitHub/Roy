@@ -8,7 +8,7 @@ namespace Roy.Logging.Extensions;
 /// <summary>
 /// Level extensions.
 /// </summary>
-public static class LevelExtensions
+internal static class LevelExtensions
 {
     /// <summary>
     /// Convert an issue level into its current culture (language) representation.

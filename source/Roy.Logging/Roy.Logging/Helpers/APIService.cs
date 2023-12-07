@@ -1,6 +1,7 @@
 ﻿using Avalon.Base.Extension.Collections;
 using Roy.Logging.Aspect.API;
 using Roy.Logging.Domain.Attributes;
+using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Settings.Web.APIAspect;
 
 namespace Roy.Logging.Helpers;
@@ -21,7 +22,11 @@ internal class APIService
     /// <param name="settings">
     /// API settings.
     /// </param>
-    public async void PostAsync(MessageDetail message, List<APISetting> settings)
+    /// <param name="process">
+    /// Message returned by the logging service.
+    /// </param>
+    public void Post(MessageDetail message, 
+        List<APISetting> settings, ProcessMessage process)
     {
         foreach (APISetting api in settings)
         {
@@ -34,7 +39,10 @@ internal class APIService
                     this.Utility.Post(api, message);
                 }
             }
-            catch { } // Keep posting the remaining messages.
+            catch (Exception ex)
+            {
+                process.Errors.Add(ex);
+            }
         }
     }
 
