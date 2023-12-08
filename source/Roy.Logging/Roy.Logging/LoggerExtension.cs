@@ -18,7 +18,7 @@ namespace Roy.Logging;
 public static class LoggerExtension
 {
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -49,7 +49,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -82,7 +82,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -112,7 +112,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -145,7 +145,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -182,7 +182,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
