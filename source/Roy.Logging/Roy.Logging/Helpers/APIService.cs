@@ -26,7 +26,7 @@ internal class APIService
     /// Message returned by the logging service.
     /// </param>
     public void Post(MessageDetail message, 
-        List<APISetting> settings, ProcessMessage process)
+        List<APISetting> settings, InternalProcessMessage process)
     {
         foreach (APISetting api in settings)
         {

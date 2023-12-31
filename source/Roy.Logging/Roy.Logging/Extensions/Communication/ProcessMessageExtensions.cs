@@ -18,7 +18,7 @@ internal static class ProcessMessageExtensions
     /// <returns>
     /// ProcessMessageDTO object.
     /// </returns>
-    public static ProcessMessageDTO ToDTO(this ProcessMessage process)
+    public static ProcessMessageDTO ToDTO(this InternalProcessMessage process)
     {
         if(process.IsNotNull())
         {

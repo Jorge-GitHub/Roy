@@ -220,7 +220,7 @@ public static class LoggerExtension
         WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        ProcessMessage process = new ProcessMessage();
+        InternalProcessMessage process = new InternalProcessMessage();
         try
         {
             setting = setting ?? LogExtension.Settings;

@@ -5,7 +5,7 @@ namespace Roy.Logging.Domain.Communication;
 /// <summary>
 /// Message returned by the logging service.
 /// </summary>
-public class ProcessMessage
+public class InternalProcessMessage
 {
     /// <summary>
     /// Flag that indicates whether the process succeeded.
@@ -19,7 +19,7 @@ public class ProcessMessage
     /// <summary>
     /// Constructor
     /// </summary>
-    public ProcessMessage()
+    public InternalProcessMessage()
     {
         this.Errors = new List<Exception>();
     }
