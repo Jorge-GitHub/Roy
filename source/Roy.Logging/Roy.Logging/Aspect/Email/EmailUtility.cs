@@ -30,7 +30,7 @@ internal class EmailUtility
     /// Message returned by the logging service.
     /// </param>
     public void Send(EmailSetting setting, MessageDetail message, 
-        InformationSetting settings, ProcessMessage process)
+        InformationSetting settings, InternalProcessMessage process)
     {
         setting.SetDefaultValues(message.Level,
             message.IsExceptionType(), message.Id);

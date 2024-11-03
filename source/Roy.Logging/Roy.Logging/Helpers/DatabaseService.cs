@@ -37,7 +37,7 @@ internal class DatabaseService
     /// Message returned by the logging service.
     /// </param>
     public void Save(MessageDetail message,
-        List<DatabaseSetting> settings, ProcessMessage process)
+        List<DatabaseSetting> settings, InternalProcessMessage process)
     {
         foreach(DatabaseSetting setting in settings)
         {

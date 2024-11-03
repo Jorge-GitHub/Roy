@@ -23,9 +23,9 @@ internal class RecordService
     /// <returns>
     /// Message returned by the logging service.
     /// </returns>
-    public ProcessMessage Save(MessageDetail message, IssueSetting setting)
+    public InternalProcessMessage Save(MessageDetail message, IssueSetting setting)
     {
-        ProcessMessage process = new ProcessMessage();
+        InternalProcessMessage process = new InternalProcessMessage();
         this.SaveInternal(message, setting, process);
         this.SaveExternal(message, setting, process);
 
@@ -45,7 +45,7 @@ internal class RecordService
     /// Message returned by the logging service.
     /// </param>
     private void SaveInternal(MessageDetail message, IssueSetting setting, 
-        ProcessMessage process)
+        InternalProcessMessage process)
     {
         try
         {
@@ -85,7 +85,7 @@ internal class RecordService
     /// Message returned by the logging service.
     /// </param>
     private void SaveExternal(MessageDetail message, IssueSetting setting, 
-        ProcessMessage process)
+        InternalProcessMessage process)
     {
         try
         {

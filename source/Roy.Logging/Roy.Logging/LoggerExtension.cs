@@ -18,7 +18,7 @@ namespace Roy.Logging;
 public static class LoggerExtension
 {
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -49,7 +49,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -82,7 +82,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -112,7 +112,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -145,7 +145,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -182,7 +182,7 @@ public static class LoggerExtension
     }
 
     /// <summary>
-    /// Log settings.
+    /// Log the object or primitive.
     /// </summary>
     /// <typeparam name="TValue">
     /// Value type to log.
@@ -220,7 +220,7 @@ public static class LoggerExtension
         WebApplicationHttpContext? webApplicationHttpContext = null,
         params object[] listOfParameters)
     {
-        ProcessMessage process = new ProcessMessage();
+        InternalProcessMessage process = new InternalProcessMessage();
         try
         {
             setting = setting ?? LogExtension.Settings;

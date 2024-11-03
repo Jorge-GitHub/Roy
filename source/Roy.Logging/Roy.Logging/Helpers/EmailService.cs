@@ -30,7 +30,7 @@ public class EmailService
     /// </param>
     public async void SendAsync(MessageDetail bodyDetail, 
         List<EmailSetting> emails, InformationSetting settings,
-        ProcessMessage process)
+        InternalProcessMessage process)
     {
         foreach (EmailSetting setting in emails)
         {
