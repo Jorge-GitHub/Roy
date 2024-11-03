@@ -96,26 +96,29 @@ You can load the Roy Logging settings from the appsettings.json file by passing 
 ### Roy Logging JSON Sample Object:
 
 ```js client
+{
+  "AllowedHosts": "*",
   "RoyLogging": {
     "Exception": {
-      "DefaultFolderName": "exceptions",
+      "DefaultFolderName": "exceptionsUT",
       "SaveLogOnFile": true,
-      "LogSettings": {
+      "LoadInformationSettings": {
         "LogApplicationInformation": true,
-        "LogMachineInformation": true
+        "LogMachineInformation": true,
+        "LogMethodInformation": true
       },
       "Emails": [
         {
-          "UserAccount": "youremail@email.com",
-          "UserPassword": "password",
-          "From": "me@yahoo.com",
+          "UserAccount": "shania60@ethereal.email",
+          "UserPassword": "wK2jPUxzqdnsDBNCUj",
+          "From": "roy@yahoo.com",
           "DisplayNameFrom": "ROY Logger",
           "Server": {
-            "Host": "smtp.yourserver.com"
+            "Host": "smtp.ethereal.email"
           },
           "Receivers": [
             {
-              "To": "roy@email.com",
+              "To": "royorbinson@gmail.com",
               "BCC": "",
               "CC": "",
               "Subject": ""
@@ -124,13 +127,65 @@ You can load the Roy Logging settings from the appsettings.json file by passing 
           "Language": "English"
         }
       ],
-      "APIs": []
+      "APIs": [
+        {
+          "URL": "https://api.restful-api.dev/objects",
+          "LevelsToPost": [
+            "Critical"
+          ]
+        }
+      ],
+      "Databases": [
+        {
+          "DatabaseName": "RoyDev",
+          "StringConnection": "Data Source=DBName;Initial Catalog=RoyDev;Integrated Security=false;Trusted_Connection=True;TrustServerCertificate=True;User ID=madona;Password=45Pasword3",
+          "TableName": ""
+        }
+      ]
     },
     "Log": {
-      "DefaultFolderName": "logs",
-      "SaveLogOnFile": true
+      "DefaultFolderName": "logsUT",
+      "LoadInformationSettings": {
+        "LogApplicationInformation": true,
+        "LogMachineInformation": true,
+        "LogMethodInformation": true
+      },
+      "Emails": [
+        {
+          "UserAccount": "shania60@ethereal.email",
+          "UserPassword": "wK2jPUxzqdnsDBNCUj",
+          "From": "roy@yahoo.com",
+          "DisplayNameFrom": "ROY Logger",
+          "Server": {
+            "Host": "smtp.ethereal.email"
+          },
+          "Receivers": [
+            {
+              "To": "royorbinson@gmail.com",
+              "BCC": "",
+              "CC": "",
+              "Subject": ""
+            }
+          ],
+          "Language": "English",
+          "LevelsToReport": [ "Warning" ]
+        }
+      ],
+      "APIs": [
+        {
+          "URL": "https://api.restful-api.dev/objects"
+        }
+      ],
+      "Databases": [
+        {
+          "DatabaseName": "RoyDev",
+          "StringConnection": "Data Source=DBName;Initial Catalog=RoyDev;Integrated Security=false;Trusted_Connection=True;TrustServerCertificate=True;User ID=madona;Password=45Pasword3",
+          "TableName": ""
+        }
+      ]
     }
   }
+}
 ```
 ---
 ### How to Use
