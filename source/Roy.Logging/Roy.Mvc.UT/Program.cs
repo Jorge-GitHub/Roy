@@ -29,6 +29,9 @@ app.MapControllerRoute(
     name: "DefaultApi",
     pattern: "api/{controller}/{action}");
 
-app.UseRoyExceptionHandler(builder);
+app.UseRoyExceptionHandler(builder, true);
+//app.UseRoyExceptionHandler(builder);
+//app.UseRoyToLogMissingFiles();
+//app.UseRoyToLogMissingFiles(builder);
 
 app.Run();

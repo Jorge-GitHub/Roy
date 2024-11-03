@@ -1,7 +1,5 @@
 ﻿using Avalon.Base.Extension.Types;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
-using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 
 namespace Roy.Logging.MVC.Extensions;

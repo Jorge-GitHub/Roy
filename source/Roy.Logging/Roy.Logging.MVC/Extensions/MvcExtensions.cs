@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Roy.Logging.Domain.Settings;
+using Roy.Logging.MVC.Middleware;
 
 namespace Roy.Logging.MVC.Extensions;
 
@@ -40,17 +41,20 @@ public static class MvcExtensions
     /// Web application.
     /// </param>
     /// <param name="builder">
-    /// WebApplication builder.
+    /// A builder for web applications and services.
+    /// </param>
+    /// <param name="logMissingFiles">
+    /// Flag that determinate whether to log missing files or not.
     /// </param>
     /// <remarks>
     /// We will use the default settings if we fail to load the 
     /// settings from the configuration file.
     /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app,
-        WebApplicationBuilder builder)
+        WebApplicationBuilder builder, bool logMissingFiles = false)
     {
         builder.LoadRoySettings();
-        app.UseRoyExceptionHandler();
+        app.UseRoyExceptionHandler(logMissingFiles);
     }
 
     /// <summary>
@@ -62,17 +66,20 @@ public static class MvcExtensions
     /// <param name="settings">
     /// Settings.
     /// </param>
+    /// <param name="logMissingFiles">
+    /// Flag that determinate whether to log missing files or not.
+    /// </param>
     /// <remarks>
     /// We will use the default settings if the settings parameter is null.
     /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app, 
-        RoySetting settings)
+        RoySetting settings, bool logMissingFiles = false)
     {
         if (settings.IsNotNull())
         {
             LogExtension.Settings = settings;
         }
-        app.UseRoyExceptionHandler();
+        app.UseRoyExceptionHandler(logMissingFiles);
     }
 
     /// <summary>
@@ -81,7 +88,11 @@ public static class MvcExtensions
     /// <param name="app">
     /// Web application.
     /// </param>
-    public static void UseRoyExceptionHandler(this WebApplication app)
+    /// <param name="logMissingFiles">
+    /// Flag that determinate whether to log missing files or not.
+    /// </param>
+    public static void UseRoyExceptionHandler(this WebApplication app, 
+        bool logMissingFiles = false)
     {
         app.UseExceptionHandler(appError =>
         {
@@ -89,5 +100,35 @@ public static class MvcExtensions
                 ErrorService.LogError(context);
             });
         });
+
+        if(logMissingFiles){
+            app.UseRoyToLogMissingFiles();
+        }
+    }
+
+    /// <summary>
+    /// Log missing files.
+    /// </summary>
+    /// <param name="app">
+    /// Web application.
+    /// </param>
+    /// <param name="builder">
+    /// A builder for web applications and services.
+    /// </param>
+    public static void UseRoyToLogMissingFiles(this WebApplication app, WebApplicationBuilder builder)
+    {
+        builder.LoadRoySettings();
+        app.UseRoyToLogMissingFiles();
+    }
+
+    /// <summary>
+    /// Log missing files.
+    /// </summary>
+    /// <param name="app">
+    /// Web application.
+    /// </param>
+    public static void UseRoyToLogMissingFiles(this WebApplication app)
+    {
+        app.UseMiddleware<FileRequestMiddleware>();
     }
 }
