@@ -25,7 +25,8 @@ public enum Level
     Warning = 7,
     Notice = 8,
     Information = 9,
-    Log = 10
+    Log = 10,
+    MissingFile = 11,
 }
 
 /// <summary>
