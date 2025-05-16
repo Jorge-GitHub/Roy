@@ -7,7 +7,10 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-
+app.UseRoyExceptionHandler(builder, true);
+//app.UseRoyExceptionHandler(builder);
+//app.UseRoyToLogMissingFiles();
+//app.UseRoyToLogMissingFiles(builder);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -28,10 +31,5 @@ app.MapRazorPages();
 app.MapControllerRoute(
     name: "DefaultApi",
     pattern: "api/{controller}/{action}");
-
-app.UseRoyExceptionHandler(builder, true);
-//app.UseRoyExceptionHandler(builder);
-//app.UseRoyToLogMissingFiles();
-//app.UseRoyToLogMissingFiles(builder);
 
 app.Run();

@@ -54,7 +54,18 @@ public static class MvcExtensions
         WebApplicationBuilder builder, bool logMissingFiles = false)
     {
         builder.LoadRoySettings();
-        app.UseRoyExceptionHandler(logMissingFiles);
+        // creo que aqui se me durmio. es por eso que no esta logueando errores.
+        RoySetting settings = null;
+        if (builder.IsNotNull())
+        {
+            try
+            {
+                settings = builder.Configuration.GetSection("RoyLogging")
+                    .Get<RoySetting>();
+            }
+            catch { }
+        }
+        app.UseRoyExceptionHandler(settings, logMissingFiles);
     }
 
     /// <summary>
@@ -117,7 +128,6 @@ public static class MvcExtensions
     /// </param>
     public static void UseRoyToLogMissingFiles(this WebApplication app, WebApplicationBuilder builder)
     {
-        builder.LoadRoySettings();
         app.UseRoyToLogMissingFiles();
     }
 
