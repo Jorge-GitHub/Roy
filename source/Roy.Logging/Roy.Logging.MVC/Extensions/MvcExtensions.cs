@@ -1,5 +1,6 @@
 ﻿using Avalon.Base.Extension.Types;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Roy.Logging.Domain.Settings;
 using Roy.Logging.MVC.Middleware;
