@@ -21,8 +21,7 @@ internal class UTHelper
     /// <returns>
     /// File's location.
     /// </returns>
-    public string GetfullPathToFile(string DefaultFolderName,
-        string fileName)
+    public string GetfullPathToFile(string DefaultFolderName, string fileName)
     {
         string folderLocation = Path.GetDirectoryName(
             Assembly.GetExecutingAssembly().Location);

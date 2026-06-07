@@ -43,8 +43,11 @@ internal class DatabaseService
         {
             try
             {
-                setting.SetDefaultValues(message.Level, message.IsExceptionType());
-                this.Utility.Save(message, setting);
+                if (!setting.Disable)
+                {
+                    setting.SetDefaultValues(message.Level, message.IsExceptionType());
+                    this.Utility.Save(message, setting);
+                }
             }
             catch (Exception ex)
             {
