@@ -28,9 +28,9 @@ internal class FileService
                 item => item.Equals(message.Level))))
         {
 
-            string fileLocation = this.GetFileLocation(setting.FolderLocation,
-                setting.FileName, message.Id, message.Level, setting.DefaultFolderName);
-            this.LogText(message.ToJSON(), fileLocation, setting.Append);
+            string fileLocation = this.GetFileLocation(setting.FolderLocation!,
+                setting.FileName!, message.Id, message.Level, setting.DefaultFolderName!);
+            this.LogText(message.ToJson(), fileLocation, setting.Append);
         }
     }
 
@@ -93,10 +93,10 @@ internal class FileService
         if (folderLocation.IsNullOrEmpty())
         {
             folderLocation = Path.GetDirectoryName(
-                Assembly.GetExecutingAssembly().Location);
+                Assembly.GetExecutingAssembly().Location!)!;
             if (defaultFolderName.IsNotNullOrEmpty())
             {
-                folderLocation = Path.Combine(folderLocation,
+                folderLocation = Path.Combine(folderLocation!,
                     defaultFolderName);
             }
         }

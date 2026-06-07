@@ -164,7 +164,7 @@ internal class Record
         this.Date = message.Date;
         this.Level = message.Level.ToString().LimitLength(11);
         this.Message = message.Message;
-        this.CustomListOfParametersJSON = message.CustomListOfParameters.ToJSON();
+        this.CustomListOfParametersJSON = message.CustomListOfParameters.ToJson();
         this.InitializeMachineInformation(message.MachineInformation);
         this.InitializeMethodInformation(message.StackFrame);
         this.InitializeApplicationInformation(message);
@@ -199,10 +199,10 @@ internal class Record
     {
         if(method.IsNotNull())
         {
-            this.MethodCallerFileName = method.CallerFileName.LimitLength(1000);
+            this.MethodCallerFileName = method.CallerFileName!.LimitLength(1000);
             this.MethodCallerLineNumber = method.CallerLineNumber;
-            this.MethodCallerMethodName = method.CallerMethodName.LimitLength(500);
-            this.MethodParametersJSON = method.Parameters.ToJSON();
+            this.MethodCallerMethodName = method.CallerMethodName!.LimitLength(500);
+            this.MethodParametersJSON = method.Parameters.ToJson();
         }
     }
 

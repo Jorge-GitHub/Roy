@@ -31,6 +31,6 @@ internal class LogRecord : Record
     /// </param>
     private void InitializeObject(LogDetail message)
     {
-        this.LogValueInJSONFormat = message.LogValue.ToJSON();
+        this.LogValueInJSONFormat = message.LogValue.ToJson();
     }
 }

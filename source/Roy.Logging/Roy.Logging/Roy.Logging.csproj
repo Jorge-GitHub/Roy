@@ -46,7 +46,7 @@ Easy to use.</PackageReleaseNotes>
 
   <ItemGroup>
     <Reference Include="Avalon.Base.Extension">
-      <HintPath>..\..\libraries\Avalon\Avalon.Base.Extension.dll</HintPath>
+      <HintPath>..\..\..\..\..\Libraries\Avalon\OpenSource\Avalon.Base.Extension.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -47,13 +47,13 @@ internal class ExceptionRecord : Record
     /// </param>
     private void InitializeObject(ExceptionDetail message)
     {
-        this.ExceptionJSON = message.ExceptionTrace.ToJSON();
+        this.ExceptionJSON = message.ExceptionTrace.ToJson();
         this.ExceptionMessage = message.ExceptionMessage;
         this.ExceptionStackTrace = message.StackTrace;
         if (message.ExceptionTrace.IsNotNull())
         {
-            this.Source = message.ExceptionTrace.Source;
-            this.HelpLink = message.ExceptionTrace.HelpLink.LimitLength(250);
+            this.Source = message.ExceptionTrace.Source!;
+            this.HelpLink = message.ExceptionTrace.HelpLink!.LimitLength(250);
         }
     }
 }
