@@ -1,0 +1,17 @@
+<Project>
+
+  <!--
+    Avalon.Libraries (AvalonTeamRepo/Avalon.Libraries): at AVALON_LIBRARIES when set, else
+    C:\Repos\Avalon.Libraries\. The projects read Avalon.Base.Extension from it
+    ($(AvalonLibraries)), and the build publishes Roy.Logging and Roy.Logging.MVC into it
+    (AvalonLibraryFolder in each project).
+  -->
+  <PropertyGroup>
+    <AvalonLibrariesRepository Condition="'$(AvalonLibrariesRepository)' == ''">$(AVALON_LIBRARIES)</AvalonLibrariesRepository>
+    <AvalonLibrariesRepository Condition="'$(AvalonLibrariesRepository)' == ''">C:/Repos/Avalon.Libraries/</AvalonLibrariesRepository>
+    <AvalonLibrariesRepository>$([MSBuild]::EnsureTrailingSlash('$(AvalonLibrariesRepository)'))</AvalonLibrariesRepository>
+  </PropertyGroup>
+
+  <Import Project="$(AvalonLibrariesRepository)Avalon.Libraries.props" Condition="Exists('$(AvalonLibrariesRepository)Avalon.Libraries.props')" />
+
+</Project>
