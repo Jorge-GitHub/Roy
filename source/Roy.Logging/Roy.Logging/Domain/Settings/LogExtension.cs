@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Types;
 
 namespace Roy.Logging.Domain.Settings;
 

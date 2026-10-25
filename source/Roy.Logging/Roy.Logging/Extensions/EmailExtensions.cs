@@ -1,6 +1,6 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.Types;
-using Avalon.Base.Extension.Types.StringExtensions;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.Types;
+using Avalon.Base.Extensions.Types.StringExtensions;
 using MimeKit;
 using Roy.Logging.Aspect.Email;
 using Roy.Logging.Domain.Attributes;

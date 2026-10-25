@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Collections;
+﻿using Avalon.Base.Extensions.Collections;
 using Roy.Logging.Aspect.API;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Communication;

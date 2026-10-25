@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Types;
 using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.DTO.Communication;
 

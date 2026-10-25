@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Types;
 using MailKit.Net.Smtp;
 using MimeKit;
 using Roy.Logging.Domain.Attributes;

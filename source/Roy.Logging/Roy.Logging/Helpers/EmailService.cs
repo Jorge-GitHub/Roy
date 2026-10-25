@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Collections;
+﻿using Avalon.Base.Extensions.Collections;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Aspect.Email;

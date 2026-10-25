@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.Data;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.Data;
 using Microsoft.Data.SqlClient;
 
 namespace Roy.Logging.Aspect.Database.Helpers;

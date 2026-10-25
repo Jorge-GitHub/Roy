@@ -47,8 +47,8 @@ Easy to use.</PackageReleaseNotes>
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Avalon.Base.Extension">
-      <HintPath>$(AvalonLibraries)Base/Avalon.Base.Extension.dll</HintPath>
+    <Reference Include="Avalon.Base.Extensions">
+      <HintPath>$(AvalonLibraries)Base/Avalon.Base.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
 

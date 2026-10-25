@@ -2,7 +2,7 @@
 
   <!--
     Avalon.Libraries (AvalonTeamRepo/Avalon.Libraries): at AVALON_LIBRARIES when set, else
-    C:\Repos\Avalon.Libraries\. The projects read Avalon.Base.Extension from it
+    C:\Repos\Avalon.Libraries\. The projects read Avalon.Base.Extensions from it
     ($(AvalonLibraries)), and the build publishes Roy.Logging and Roy.Logging.MVC into it
     (AvalonLibraryFolder in each project).
   -->

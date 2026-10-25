@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Types;
 using Microsoft.AspNetCore.Http;
 using Roy.Logging.Domain.Program;
 

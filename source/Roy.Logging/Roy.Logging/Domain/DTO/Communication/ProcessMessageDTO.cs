@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Collections;
+﻿using Avalon.Base.Extensions.Collections;
 
 namespace Roy.Logging.Domain.DTO.Communication;
 
