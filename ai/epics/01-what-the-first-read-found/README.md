@@ -161,8 +161,25 @@ Taken as recommended on George's "fix the bugs you found" (2026-10-27), since he
 answered them and each had a recommendation he could read: 1 (async for real), 2 (the stack
 trace at every level), 5 (only paths with an extension), 6 (the rethrowing middleware), 7 (the
 proof in `Roy.UT`) and 9 (`1.0.19`). For 8, a feature branch in George's checkout and no
-worktree: the tree was clean and nothing else was in flight. 11: started. Still George's: 3
-(the license) and 10 (the legacy folder).
+worktree: the tree was clean and nothing else was in flight. 11: started.
+
+3, answered (2026-10-27): "is ok, ignore this". The license stays as it is, MIT in the csproj
+files and GPLv3 in the `LICENSE` file and the README badge.
+
+10, answered (2026-10-27): "yes keep it. this is an open source project. a person should be
+able to download it and compile it." The folder stays. The DLL in it was the old singular
+`Avalon.Base.Extension.dll`, which the code no longer compiles against, so the current
+`Avalon.Base.Extensions.dll` was added under `source\libraries\Avalon\Base\`, and
+`Directory.Build.props` falls back to that folder when Avalon.Libraries is absent. Proven with
+the Avalon.Libraries path pointed at nothing: the solution builds, 27 of 27 pass, nothing is
+published. With Avalon.Libraries present, nothing changes. The README says how to build from
+source. The `.pdb` is left out, as `.gitignore` ignores every `.pdb` and the old one was never
+committed either.
+
+Also on 2026-10-27, outside the epic: the `System.Security.Cryptography.Pkcs` 10.0.0
+vulnerability (through MailKit and Microsoft.Data.SqlClient) is cleared by a direct reference
+to 10.0.14 in `Roy.Logging` (`70bd789`); the build is down to 195 warnings. The ethereal
+account and the by-hand run of `Roy.Mvc.UT`: "ignore is ok".
 
 ## Waiting For George
 
@@ -201,20 +218,12 @@ as they were asked.
 ## What Is Left (2026-10-27)
 
 - **George:** merge `feature/first-read-fixes` into `dev/1.0.19` and push; that was the goal.
-- **Decision 3, the license:** one line in each csproj and the `LICENSE` file once he says MIT
-  or GPLv3 (feature 08's *As Built*).
-- **Decision 10:** `source\libraries\Avalon\` stays until he says.
-- **A new `smtp.ethereal.email` account:** the three Live email tests fail with "535:
-  Authentication failed" on the old one (feature 01's *As Built*). The values live in
-  `Roy.UT\Entities\UTHelper.cs` and `Roy.Mvc.UT\appsettings.json`.
-- **Not from this epic:** `System.Security.Cryptography.Pkcs` 10.0.0, a transitive package,
-  carries a known vulnerability (`NU1902`, `NU1903`, 16 lines of the build). A direct reference
-  to a patched version would clear it; not done, not asked.
-- **Found and fixed on the way,** for the record: the full exception at `Trace` and `Debug` had
-  never serialized for a thrown exception (feature 06); `Level.MissingFile` was never used
-  (feature 05).
-- **The by-hand run** of `Roy.Mvc.UT` in Production and Development (feature 05's *Tests*).
 - **The Avalon fork,** `Avalon.Service.Logging`, copies the code after the merge.
+- **For the record,** found and fixed on the way: the full exception at `Trace` and `Debug` had
+  never serialized for a thrown exception (feature 06); `Level.MissingFile` was never used
+  (feature 05); the clone of the repository did not build without Avalon.Libraries (decision
+  10). Set aside by George: the expired ethereal account behind the three Live email failures,
+  and the by-hand run of `Roy.Mvc.UT`.
 
 ## Features
 

@@ -5,6 +5,10 @@
     C:\Repos\Avalon.Libraries\. The projects read Avalon.Base.Extensions from it
     ($(AvalonLibraries)), and the build publishes Roy.Logging and Roy.Logging.MVC into it
     (AvalonLibraryFolder in each project).
+
+    Without it (a clone of the open-source repository), $(AvalonLibraries) falls back to
+    source\libraries\Avalon\, which carries Avalon.Base.Extensions.dll under Base\, so the
+    solution builds on its own. Nothing is published then.
   -->
   <PropertyGroup>
     <AvalonLibrariesRepository Condition="'$(AvalonLibrariesRepository)' == ''">$(AVALON_LIBRARIES)</AvalonLibrariesRepository>
@@ -13,5 +17,9 @@
   </PropertyGroup>
 
   <Import Project="$(AvalonLibrariesRepository)Avalon.Libraries.props" Condition="Exists('$(AvalonLibrariesRepository)Avalon.Libraries.props')" />
+
+  <PropertyGroup Condition="'$(AvalonLibraries)' == ''">
+    <AvalonLibraries>$(MSBuildThisFileDirectory)../libraries/Avalon/</AvalonLibraries>
+  </PropertyGroup>
 
 </Project>
