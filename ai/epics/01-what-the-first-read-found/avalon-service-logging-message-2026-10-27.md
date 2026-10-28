@@ -34,14 +34,17 @@ George, 2026-10-27, word for word:
 
 Also settled, for the record:
 
-- Below Service there is Layer too, not only Framework and Base: `ai\platform\avalon-layers.md`
-  in this repo has Service at 7, Layer at 8, Framework at 9, Base at 10, and says a layer may
-  use the layers below it and the other libraries in its own layer. So this library may
-  reference Avalon.Layer.*, Avalon.Framework.*, Avalon.Base.* and its Service siblings
-  (Templates, Communication, Monitor, …); never Aspect, Adapter, Connector, Foundation or a
-  product. George also said on 2026-10-27 that AI sits below Service (DocumentSearch uses
-  Avalon.Ai.Llm), which `avalon-layers.md` (AI at 4) does not say yet; Logging does not need
-  AI, so only the document is affected.
+- What this library may reference: Avalon.Framework.*, Avalon.Base.*, and its Service
+  siblings (Templates, Communication, Monitor, …): `ai\platform\avalon-layers.md` in this repo
+  says a layer may use the layers below it and the other libraries in its own layer. Never
+  Aspect, Adapter, Connector, Foundation or a product. Layer (Application, Repository) sits
+  below Service in that document, so the rule would allow it, but no Service library uses it
+  today: every one of them reads Framework and Base only, and Layer's base classes serve the
+  products' own application services and repositories, in the tiers above. George's words,
+  "below service is only framework and base", are the practice; this library follows it, and
+  touches Layer only on his word. George also said on 2026-10-27 that AI sits below Service
+  (DocumentSearch uses Avalon.Ai.Llm), which `avalon-layers.md` (AI at 4) does not say yet;
+  Logging does not need AI, so only the document is affected.
 - Roy stays the public project. Nothing in Roy changes from this repository's work. If the
   port finds a bug in logic Roy shares, write it up for George; he decides whether it goes
   back to Roy.
@@ -113,8 +116,8 @@ The library, in this shape, in this repository:
    `ai\specs\architecture\library-catalog.md` is empty, so read each library's source under
    `C:\Repos\Base\`, `C:\Repos\Framework\`, `C:\Repos\Layer\` and `C:\Repos\Service\`:
    - **Database** (George's example): `Avalon.Framework.DataAccess`, with
-     `Avalon.Layer.Repository` and `Avalon.Framework.Domain` entities the way this repository's
-     `clean-architecture.md` and `coding-rules.md` say (a repository runs a configured query by
+     `Avalon.Framework.Domain` entities, the way this repository's `clean-architecture.md` and
+     `coding-rules.md` say (a repository runs a configured query by
      its ID and maps rows; a row is a DTO mapped to an entity at the boundary). This replaces
      `DatabaseLogic`, `QueryBuilder`, `ParametersBuilder`, `Queries.cs`, `Record`,
      `ExceptionRecord` and `LogRecord`, about 600 lines. The two tables become entities.
