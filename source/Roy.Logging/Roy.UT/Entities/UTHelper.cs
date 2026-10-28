@@ -142,6 +142,24 @@ internal class UTHelper
     }
 
     /// <summary>
+    /// An exception that was really thrown, so it carries a stack trace.
+    /// </summary>
+    /// <returns>
+    /// The caught exception.
+    /// </returns>
+    public Exception ThrowAndCatch()
+    {
+        try
+        {
+            throw new InvalidOperationException("Thrown for the test");
+        }
+        catch (Exception exception)
+        {
+            return exception;
+        }
+    }
+
+    /// <summary>
     /// Get the email settings.
     /// </summary>
     /// <returns>

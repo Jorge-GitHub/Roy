@@ -204,6 +204,7 @@ public static class MessageDetailDTOExtensions
                 CallerFileName = method.CallerFileName,
                 CallerMethodName = method.CallerMethodName,
                 CallerLineNumber = method.CallerLineNumber,
+                Parameters = method.Parameters.ToDTO(),
             };
 
             return methodDTO;

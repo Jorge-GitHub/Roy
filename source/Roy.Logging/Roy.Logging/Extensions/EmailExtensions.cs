@@ -39,14 +39,50 @@ internal static class EmailExtensions
         MimeMessage message = new MimeMessage();
         message.From.Add(new MailboxAddress(
             setting.DisplayNameFrom, setting.From));
-        message.Subject = receiver.Subject.ToDefaultValueIfEmpty(
-            setting.DefaultEmailSubject);
+        message.Subject = setting.GetSubject(receiver, bodyDetail);
         message.To.AddEmails(receiver.To);
         message.Bcc.AddEmails(receiver.BCC);
         message.Cc.AddEmails(receiver.CC);
         message.Body = setting.ToMessageBody(receiver, bodyDetail, settings);
 
         return message;
+    }
+
+    /// <summary>
+    /// Get the subject for this message: the receiver's, else the setting's default,
+    /// else the resource's, with the issue's Id and level filled in. The setting is
+    /// left as it is, so the next message gets its own Id.
+    /// </summary>
+    /// <param name="setting">
+    /// Email settings.
+    /// </param>
+    /// <param name="receiver">
+    /// Receiver settings.
+    /// </param>
+    /// <param name="bodyDetail">
+    /// Message the email is about.
+    /// </param>
+    /// <returns>
+    /// Subject.
+    /// </returns>
+    public static string GetSubject(this EmailSetting setting,
+        ReceiverSetting receiver, MessageDetail bodyDetail)
+    {
+        string template = receiver.Subject.ToDefaultValueIfEmpty(
+            setting.DefaultEmailSubject);
+        if (template.IsNullOrEmpty())
+        {
+            string subjectHolderId = bodyDetail.IsExceptionType() ?
+                ResourceKey.ExceptionSubject : ResourceKey.RoyLoginSubject;
+            template = EmailLabels.ResourceManager
+                .GetString(subjectHolderId, setting.Culture);
+        }
+        StringBuilder subject = new StringBuilder(template);
+        subject.Replace(EmailLabel.IssueIdTag, bodyDetail.Id);
+        subject.Replace(EmailLabel.LevelTag,
+            bodyDetail.Level.ToCurrentCultureString(setting.Culture));
+
+        return subject.ToString();
     }
 
     /// <summary>
@@ -118,7 +154,8 @@ internal static class EmailExtensions
     }
 
     /// <summary>
-    /// Set the default values.
+    /// Set the default values: the culture, and the body template. The subject is
+    /// built per message by GetSubject.
     /// </summary>
     /// <param name="setting">
     /// Email settings.
@@ -136,17 +173,6 @@ internal static class EmailExtensions
         Level level, bool isAnException, string issueId)
     {
         setting.Culture = setting.Language.ToCultureInfo();
-
-        if (setting.DefaultEmailSubject.IsNullOrEmpty())
-        {
-            string subjectHolderId = isAnException ?
-                ResourceKey.ExceptionSubject : ResourceKey.RoyLoginSubject;
-            StringBuilder subject = new StringBuilder(EmailLabels.ResourceManager
-                .GetString(subjectHolderId, setting.Culture));
-            subject.Replace(EmailLabel.IssueIdTag, issueId);
-            subject.Replace(EmailLabel.LevelTag, level.ToCurrentCultureString(setting.Culture));
-            setting.DefaultEmailSubject = subject.ToString();
-        }
 
         if (setting.DefaultEmailBody.IsNullOrEmpty())
         {

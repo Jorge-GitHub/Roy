@@ -94,4 +94,8 @@ Easy to use.</PackageReleaseNotes>
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Roy.UT" />
+  </ItemGroup>
+
 </Project>

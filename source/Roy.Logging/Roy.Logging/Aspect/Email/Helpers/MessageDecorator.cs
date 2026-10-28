@@ -6,6 +6,7 @@ using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Extensions;
+using Roy.Logging.Json;
 using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Globalization;
 using System.Text;
@@ -146,7 +147,7 @@ internal class MessageDecorator
     {
         body.Replace(Tag.ExceptionMessage, bodyDetail.ExceptionMessage);
         body.Replace(Tag.StackTrace, bodyDetail.StackTrace);
-        body.Replace(Tag.ExceptionJSON, bodyDetail.ExceptionTrace.ToJson());
+        body.Replace(Tag.ExceptionJSON, ExceptionJsonConverter.ToJson(bodyDetail.ExceptionTrace));
         if (bodyDetail.ExceptionTrace.IsNotNull())
         {
             body.Replace(Tag.Source, bodyDetail.ExceptionTrace.Source);

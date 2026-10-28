@@ -162,6 +162,36 @@ public class ExceptionTest
     }
 
     /// <summary>
+    /// Test that an exception record at the default level says where it was thrown.
+    /// </summary>
+    [TestMethod]
+    public async Task TestStackTraceAtErrorLevel()
+    {
+        ProcessMessageDTO result = await this.Helper.ThrowAndCatch().SaveAsync();
+
+        this.Helper.AssertNoErrors(result);
+        JsonElement json = this.Helper.ReadJson(
+            this.Helper.GetSingleFile(this.Helper.ExceptionsFolder));
+        StringAssert.Contains(json.GetProperty("StackTrace").GetString(), "ThrowAndCatch");
+        Assert.IsFalse(json.TryGetProperty("ExceptionTrace", out _));
+    }
+
+    /// <summary>
+    /// Test that Debug adds the full exception on top of the stack trace.
+    /// </summary>
+    [TestMethod]
+    public async Task TestFullExceptionAtDebugLevel()
+    {
+        ProcessMessageDTO result = await this.Helper.ThrowAndCatch().SaveAsync(Level.Debug);
+
+        this.Helper.AssertNoErrors(result);
+        JsonElement json = this.Helper.ReadJson(
+            this.Helper.GetSingleFile(this.Helper.ExceptionsFolder));
+        StringAssert.Contains(json.GetProperty("StackTrace").GetString(), "ThrowAndCatch");
+        Assert.IsTrue(json.TryGetProperty("ExceptionTrace", out _));
+    }
+
+    /// <summary>
     /// Test that an API that cannot be reached is reported in the result.
     /// Before the post was awaited, the failure was lost.
     /// </summary>
