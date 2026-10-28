@@ -49,11 +49,26 @@ public class LogTest
         ProcessMessageDTO result = await utObject.LogAsync();
 
         this.Helper.AssertNoErrors(result);
+        Assert.IsTrue(result.Succeed);
         string file = this.Helper.GetSingleFile(this.Helper.LogsFolder);
         StringAssert.StartsWith(Path.GetFileName(file), "Log.");
         JsonElement json = this.Helper.ReadJson(file);
         Assert.AreEqual("Roy", json.GetProperty("LogValue").GetProperty("Name").GetString());
         Assert.AreEqual((int)Level.Log, json.GetProperty("Level").GetInt32());
+    }
+
+    /// <summary>
+    /// Test that disabling the logs saves nothing and fails nothing.
+    /// </summary>
+    [TestMethod]
+    public async Task TestLogDisabled()
+    {
+        LogExtension.Settings.Log.Disable = true;
+
+        ProcessMessageDTO result = await this.Helper.GetDefaultSampleObject().LogAsync();
+
+        Assert.IsTrue(result.Succeed);
+        Assert.IsFalse(Directory.Exists(this.Helper.LogsFolder));
     }
 
     /// <summary>
