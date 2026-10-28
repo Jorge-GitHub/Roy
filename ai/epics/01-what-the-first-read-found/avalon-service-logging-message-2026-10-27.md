@@ -28,9 +28,21 @@ George, 2026-10-27, word for word:
   code. but the architecture and idea would be the same. enable logging by just adding a few
   lines on the program.cs"
 - The name is `Avalon.Service.Logging`, in the Service tier: "Logging", not "Telemetry" and not
-  "ErrorHandler". `C:\Repos\Service\Avalon.Service.ErrorHandler` keeps its .NET Framework tree
-  for the 4.5.2 and 4.8 applications that read it; its net7.0 tree is early Roy and this
-  library supersedes it.
+  "ErrorHandler".
+- **Names in the code:** "use avalon not roy. remove anything roy related." No `Roy` anywhere:
+  not in a type (`RoySetting`, `RoyExceptionMiddleware`), a method (`UseRoyExceptionHandler`),
+  the configuration section (`RoyLogging`), a resource file (`RoyValues.resx`, the
+  `RoyLoginSubject` key), a string (`"ROY Logger"`, the `Roy` syslog identity, the email
+  footer), a table, a file name or a comment. Avalon names instead, for example
+  `UseAvalonLogging`, an `AvalonLogging` section, `LoggingSetting`.
+- **Tables:** "same select the default names removing roy." Roy's `RoyException` and `RoyLog`
+  become `Exception` and `Log`, in whatever database the connection string names, as today.
+  Whether they sit in a schema of their own is this repository's `sql-rules.md` to say.
+- **`Avalon.Service.ErrorHandler`:** "ignore that library do not care about." Nothing in it is
+  read, retired or touched.
+- **Products:** "we will use it with nexus but this is not something this agent should worry.
+  the goal is to create the library not replace it in another projects." The library is the
+  whole job; switching Nexus or any product to it is someone else's, later.
 
 Also settled, for the record:
 
@@ -147,25 +159,17 @@ The library, in this shape, in this repository:
 
 ## Questions
 
-1. Do the public names keep "Roy" (`UseRoyExceptionHandler`, the `RoyLogging` section,
-   `RoySetting`), or become Avalon names (for example `UseAvalonLogging`, an `AvalonLogging`
-   section, `LoggingSetting`)? Recommended: Avalon names; each product's `Program.cs` line
-   changes once, at the switch.
-2. What are the two tables called, and where do they live: each product's own database, or one
-   shared logging database? Roy's are `RoyException` and `RoyLog`, in whatever database the
-   connection string names.
-3. Do all five sinks stay? Recommended: yes, "the architecture and idea would be the same".
-4. Do the four email languages stay? Recommended: yes.
-5. Once this library builds, does the net7.0 tree of `Avalon.Service.ErrorHandler` get retired?
-   Recommended: yes; the .NET Framework tree stays.
-6. Which product switches first from `Roy.Logging.dll` to this library, and does each product's
-   own agent do it, by message?
+George answered the names, the tables, ErrorHandler and the products on 2026-10-27 (*What is
+already decided*). Two remain:
+
+1. Do all five places a record is written stay: the file, the event log, the email, the HTTP
+   API and the database? Recommended: yes, "the architecture and idea would be the same".
+2. Do the four email languages (English, Spanish, French, German) stay? Recommended: yes.
 
 ## What to send back
 
 When the library builds and publishes into `Avalon.Libraries\Avalon\Service\`: the commit or
-version to pick up, the lines a product adds to `Program.cs` and to `appsettings.json`, and
-which of the questions above George has answered and how. Until then, nothing waits on Roy's
-side.
+version to pick up, and the lines a product adds to `Program.cs` and to `appsettings.json`.
+Until then, nothing waits on Roy's side.
 
 ## The answer
