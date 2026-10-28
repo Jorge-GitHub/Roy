@@ -1,4 +1,5 @@
-﻿using Roy.Logging.Aspect.Database;
+﻿using Avalon.Base.Extensions.Collections;
+using Roy.Logging.Aspect.Database;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Settings.Database;
@@ -43,7 +44,9 @@ internal class DatabaseService
         {
             try
             {
-                if (!setting.Disable)
+                if ((!setting.LevelsToSave.HasElements() ||
+                    setting.LevelsToSave.Any(item => item.Equals(message.Level)))
+                    && !setting.Disable)
                 {
                     setting.SetDefaultValues(message.Level, message.IsExceptionType());
                     this.Utility.Save(message, setting);

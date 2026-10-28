@@ -97,6 +97,7 @@ public class IssueSetting
     {
         this.Emails = new List<EmailSetting>();
         this.APIs = new List<APISetting>();
+        this.Databases = new List<DatabaseSetting>();
         this.LoadInformationSettings = new InformationSetting();
         this.DefaultLevel = Level.Error;
         this.LevelsToSaveOnFile = new List<Level>();

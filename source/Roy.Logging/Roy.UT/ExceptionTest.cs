@@ -5,6 +5,7 @@ using Roy.Logging;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.DTO.Communication;
 using Roy.Logging.Domain.Settings;
+using Roy.Logging.Domain.Settings.Database;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.UT.Entities;
 using System.Diagnostics;
@@ -52,6 +53,7 @@ public class ExceptionTest
             .SaveAsync(new StackFrame(0, true));
 
         this.Helper.AssertNoErrors(result);
+        Assert.IsTrue(result.Succeed);
         string file = this.Helper.GetSingleFile(this.Helper.ExceptionsFolder);
         StringAssert.StartsWith(Path.GetFileName(file), "Error.");
         JsonElement json = this.Helper.ReadJson(file);
@@ -94,6 +96,69 @@ public class ExceptionTest
         ProcessMessageDTO result = await new Exception("Test Exception").SaveAsync();
 
         Assert.AreEqual(1, result.Errors.Count);
+        Assert.IsFalse(result.Succeed);
+    }
+
+    /// <summary>
+    /// Test that disabling the exceptions saves nothing and fails nothing.
+    /// </summary>
+    [TestMethod]
+    public async Task TestExceptionDisabled()
+    {
+        LogExtension.Settings.Exception.Disable = true;
+
+        ProcessMessageDTO result = await new Exception("Test Exception").SaveAsync();
+
+        Assert.IsTrue(result.Succeed);
+        Assert.IsFalse(Directory.Exists(this.Helper.ExceptionsFolder));
+    }
+
+    /// <summary>
+    /// Test that disabling the logs does not disable the exceptions.
+    /// </summary>
+    [TestMethod]
+    public async Task TestLogDisableDoesNotStopExceptions()
+    {
+        LogExtension.Settings.Log.Disable = true;
+
+        ProcessMessageDTO result = await new Exception("Test Exception").SaveAsync();
+
+        Assert.IsTrue(result.Succeed);
+        this.Helper.GetSingleFile(this.Helper.ExceptionsFolder);
+    }
+
+    /// <summary>
+    /// Test that a database set to other levels is left alone.
+    /// </summary>
+    [TestMethod]
+    public async Task TestDatabaseLevelFilter()
+    {
+        DatabaseSetting setting = this.Helper.GetOfflineDatabaseSetting();
+        setting.LevelsToSave.Add(Level.Warning);
+        LogExtension.Settings.Exception.Databases.Add(setting);
+        LogExtension.Settings.Exception.SaveLogOnFile = false;
+
+        // Level is Error, the setting saves Warning only: no connection is attempted,
+        // so the bad connection string raises no error.
+        ProcessMessageDTO result = await new Exception("Test Exception").SaveAsync();
+
+        this.Helper.AssertNoErrors(result);
+    }
+
+    /// <summary>
+    /// Test that a database that cannot be reached is reported in the result.
+    /// </summary>
+    [TestMethod]
+    public async Task TestDatabaseFailureIsReported()
+    {
+        LogExtension.Settings.Exception.Databases.Add(
+            this.Helper.GetOfflineDatabaseSetting());
+        LogExtension.Settings.Exception.SaveLogOnFile = false;
+
+        ProcessMessageDTO result = await new Exception("Test Exception").SaveAsync();
+
+        Assert.AreEqual(1, result.Errors.Count);
+        Assert.IsFalse(result.Succeed);
     }
 
     /// <summary>

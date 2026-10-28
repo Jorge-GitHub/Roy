@@ -1,5 +1,6 @@
 ﻿using Roy.Logging.Domain.DTO.Communication;
 using Roy.Logging.Domain.Settings;
+using Roy.Logging.Domain.Settings.Database;
 using Roy.Logging.Domain.Settings.Web.APIAspect;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using System.Text.Json;
@@ -178,6 +179,22 @@ internal class UTHelper
         settings.UserAccount = string.Empty;
 
         return settings;
+    }
+
+    /// <summary>
+    /// Get database settings whose connection string cannot be parsed, so any attempt
+    /// to save fails before any network and shows up in the errors.
+    /// </summary>
+    /// <returns>
+    /// Database settings.
+    /// </returns>
+    public DatabaseSetting GetOfflineDatabaseSetting()
+    {
+        return new DatabaseSetting()
+        {
+            DatabaseName = "Roy",
+            StringConnection = "not a connection string"
+        };
     }
 
     /// <summary>
