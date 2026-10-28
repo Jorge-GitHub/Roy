@@ -19,7 +19,7 @@
   <Import Project="$(AvalonLibrariesRepository)Avalon.Libraries.props" Condition="Exists('$(AvalonLibrariesRepository)Avalon.Libraries.props')" />
 
   <PropertyGroup Condition="'$(AvalonLibraries)' == ''">
-    <AvalonLibraries>$(MSBuildThisFileDirectory)../libraries/Avalon/</AvalonLibraries>
+    <AvalonLibraries>$(MSBuildThisFileDirectory)../Libraries/Avalon/</AvalonLibraries>
   </PropertyGroup>
 
 </Project>
