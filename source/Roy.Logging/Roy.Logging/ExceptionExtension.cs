@@ -314,7 +314,7 @@ public static class ExceptionExtension
         {
             setting = setting ?? LogExtension.Settings;
             if (exception.IsNotNull() && setting.IsNotNull() 
-                && setting.Log.Disable.IsNotTrue())
+                && setting.Exception.Disable.IsNotTrue())
             {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, frame, 

@@ -10,7 +10,7 @@ public class ProcessMessageDTO
     /// <summary>
     /// Flag that indicates whether the process succeeded.
     /// </summary>
-    public bool Succeed => this.Errors.HasElements();
+    public bool Succeed => !this.Errors.HasElements();
     /// <summary>
     /// Errors throw while saving/logging the object.
     /// </summary>
