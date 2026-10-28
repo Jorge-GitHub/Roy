@@ -3,9 +3,12 @@
 ## Status
 
 Written 2026-10-27 from a read of the whole codebase on `dev/1.0.19` (`22fb062`, clean).
-Built the same day on `feature/first-read-fixes` from `dev/1.0.19`, in George's checkout: one
-commit per feature, `6428949` to `a755cb5`, and one for warnings, `fe1b7a1`. Not merged, not
-pushed. George's "fix the bugs you found" started it; where he had not answered a question,
+Built the same day in George's checkout: one commit per feature, `6428949` to `a755cb5`, one
+for warnings, `fe1b7a1`, then the vulnerability fix, the clone build and the message for
+Avalon.Service.Logging. Merged into `dev/1.0.19` and pushed to GitHub the same day (the work
+had been on a branch, `feature/first-read-fixes`, which was not what George wanted: Roy's work
+goes straight on the dev branch; the branch was fast-forwarded in and deleted). George's "fix
+the bugs you found" started it; where he had not answered a question,
 its recommended answer was taken (*Decisions Made*). Two questions are still his, and the rest
 of what is left is in *What Is Left*.
 

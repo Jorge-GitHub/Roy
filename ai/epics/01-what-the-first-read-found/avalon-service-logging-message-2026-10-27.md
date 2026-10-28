@@ -53,9 +53,10 @@ Also settled, for the record:
 
 ## What we already do
 
-The code to copy is in `C:\Repos\OpenSource\Roy`, branch `feature/first-read-fixes`, 15 commits
-over `dev/1.0.19`: the bug fixes of 2026-10-27, which George merges into `dev/1.0.19`. Take it
-from there, not from `main`, which is 212 commits behind. Read first
+The code to copy is in `C:\Repos\OpenSource\Roy`, branch `dev/1.0.19`, at `a361ea2` or later,
+pushed to GitHub on 2026-10-27. It holds the bug fixes of that day. (An earlier version of this
+message named a branch `feature/first-read-fixes`; it was merged into `dev/1.0.19` and deleted.)
+Take it from there, not from `main`, which is far behind. Read first
 `ai\epics\01-what-the-first-read-found\README.md` and its eight feature files: they describe
 the architecture, every bug fixed with the proof, and the traps below. Roy's README shows the
 calls and the `appsettings.json` shape.
