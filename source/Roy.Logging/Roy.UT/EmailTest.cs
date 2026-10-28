@@ -25,9 +25,9 @@ public class EmailTest
         ReceiverSetting receiver = setting.Receivers[0];
         InformationSetting information = new InformationSetting();
         ExceptionDetail first = new ExceptionDetail(new Exception("one"), Level.Error,
-            "id-one", string.Empty, null, information, null, null);
+            "id-one", string.Empty, null!, information, null!, null!);
         ExceptionDetail second = new ExceptionDetail(new Exception("two"), Level.Error,
-            "id-two", string.Empty, null, information, null, null);
+            "id-two", string.Empty, null!, information, null!, null!);
 
         setting.SetDefaultValues(first.Level, true, first.Id);
         MimeMessage firstMessage = setting.ToMimeMessage(receiver, first, information);
@@ -50,7 +50,7 @@ public class EmailTest
         setting.DefaultEmailSubject = "Roy says *|IssueId|* is *|Level|*";
         InformationSetting information = new InformationSetting();
         ExceptionDetail detail = new ExceptionDetail(new Exception("one"), Level.Error,
-            "id-one", string.Empty, null, information, null, null);
+            "id-one", string.Empty, null!, information, null!, null!);
 
         setting.SetDefaultValues(detail.Level, true, detail.Id);
         MimeMessage message = setting.ToMimeMessage(setting.Receivers[0], detail, information);

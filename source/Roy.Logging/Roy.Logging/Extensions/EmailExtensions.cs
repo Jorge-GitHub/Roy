@@ -75,7 +75,7 @@ internal static class EmailExtensions
             string subjectHolderId = bodyDetail.IsExceptionType() ?
                 ResourceKey.ExceptionSubject : ResourceKey.RoyLoginSubject;
             template = EmailLabels.ResourceManager
-                .GetString(subjectHolderId, setting.Culture);
+                .GetString(subjectHolderId, setting.Culture) ?? string.Empty;
         }
         StringBuilder subject = new StringBuilder(template);
         subject.Replace(EmailLabel.IssueIdTag, bodyDetail.Id);

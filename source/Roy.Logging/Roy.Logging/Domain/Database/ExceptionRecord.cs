@@ -48,7 +48,7 @@ internal class ExceptionRecord : Record
     /// </param>
     private void InitializeObject(ExceptionDetail message)
     {
-        this.ExceptionJSON = ExceptionJsonConverter.ToJson(message.ExceptionTrace);
+        this.ExceptionJSON = ExceptionJsonConverter.ToJson(message.ExceptionTrace) ?? string.Empty;
         this.ExceptionMessage = message.ExceptionMessage;
         this.ExceptionStackTrace = message.StackTrace;
         if (message.ExceptionTrace.IsNotNull())

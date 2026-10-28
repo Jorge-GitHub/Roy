@@ -22,7 +22,7 @@ public class ExceptionTest
     /// <summary>
     /// This test's helper and folder.
     /// </summary>
-    private UTHelper Helper { get; set; }
+    private UTHelper Helper { get; set; } = new UTHelper();
 
     /// <summary>
     /// Fresh settings and an empty folder for every test.
@@ -30,7 +30,6 @@ public class ExceptionTest
     [TestInitialize]
     public void Initialize()
     {
-        this.Helper = new UTHelper();
         this.Helper.ResetSettings();
     }
 

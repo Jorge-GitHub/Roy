@@ -47,7 +47,7 @@ public class DtoTest
     public void TestExceptionDtoSerializesAtDebug()
     {
         ExceptionDetail detail = new ExceptionDetail(new UTHelper().ThrowAndCatch(),
-            Level.Debug, "id", string.Empty, null, new InformationSetting(), null, null);
+            Level.Debug, "id", string.Empty, null!, new InformationSetting(), null!, null!);
 
         string json = JsonSerializer.Serialize(detail.ToDTO());
 
