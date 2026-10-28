@@ -62,4 +62,25 @@ once by hand and reported in *As Built*.
 
 ## As Built
 
-Not built.
+Built 2026-10-27, commit `6428949` on `feature/first-read-fixes` (from `dev/1.0.19` at
+`22fb062`, in George's checkout: the tree was clean and nothing else was in flight, so no
+worktree).
+
+- **Before** (the baseline, a full build of the solution and `Roy.UT`): 225 warnings, 0 errors;
+  12 of 12 passed in 39 s, every one green whatever it did, since none asserted.
+- **After:** the default run, `dotnet test --filter TestCategory!=Live`, 10 of 10 in 2 s (the
+  later features raised it to 27). Each test alone green; the suite twice in a row green.
+  Files go to `%TEMP%\Roy.UT\<guid>\` and are deleted on cleanup; the 17 files George's earlier
+  runs left in `bin\Debug\net10.0\exceptions\` and `logs\` were not touched and nothing was
+  added to them.
+- **Live, run once:** `TestAPIException` and `TesLogOnSystemEvent` pass. The three email tests
+  (`TestEmailException`, `TestEmailExceptionFrenchVersion`, `TestEmailLog`) fail with "535:
+  Authentication failed" from `smtp.ethereal.email`: the throwaway ethereal account has expired.
+  The old tests passed because they asserted nothing. A new account is George's (the epic's
+  *What Is Left*).
+- `UTHelper.AssertNoErrors` puts the first sink error in the assertion message; that is what
+  showed the 535.
+- `LogTest.TestLogSystemInformation` stays synchronous on purpose: a `StackFrame(0)` taken in
+  an `async` test names the state machine's `MoveNext`, not the test.
+- Added beyond *Scope*: `TestEmailExceptionSendingFailureIsReported`, the control for the
+  offline email filter test (an attempt to send to `127.0.0.1:1` is one error).

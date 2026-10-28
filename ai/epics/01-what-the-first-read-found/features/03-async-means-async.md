@@ -73,4 +73,14 @@ to the `Aspect` utilities (sync; `APIUtility.Post` starts a `Task` and drops it)
 
 ## As Built
 
-Not built.
+Built 2026-10-27, commit `2dd23cd`. Decision 1 taken as recommended.
+
+- **Before** (the old library with the new test): 1 of 17 fails, `TestAPIFailureIsReported`:
+  the dropped task lost the refused connection.
+- **After:** 17 of 17. The whole solution: 218 warnings, 0 errors. The one `CS4014` left was
+  `FileRequestMiddleware`, feature 05's.
+- The baseline had reported no `CS1998` at all, so there was none to remove; *Tests* expected
+  some.
+- **Live:** `TestAPIException` passes with `EnsureSuccessStatusCode` against
+  `api.restful-api.dev` and `jsonplaceholder.typicode.com`.
+- One `HttpClient` per call, as before (*Not In This Feature*).

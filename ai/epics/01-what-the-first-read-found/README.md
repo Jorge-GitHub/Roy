@@ -3,8 +3,17 @@
 ## Status
 
 Written 2026-10-27 from a read of the whole codebase on `dev/1.0.19` (`22fb062`, clean).
-Nothing built, nothing changed. Waits for George's answers in *Waiting For George* before any
-code changes.
+Built the same day on `feature/first-read-fixes` from `dev/1.0.19`, in George's checkout: one
+commit per feature, `6428949` to `a755cb5`, and one for warnings, `fe1b7a1`. Not merged, not
+pushed. George's "fix the bugs you found" started it; where he had not answered a question,
+its recommended answer was taken (*Decisions Made*). Two questions are still his, and the rest
+of what is left is in *What Is Left*.
+
+Final numbers, a clean rebuild of the solution: 211 warnings (225 at the baseline), 114
+distinct file and line (131), none in a file that did not have that warning before; 0 errors.
+`Roy.UT`: 27 of 27 in the default run, offline, in 5 s. Live: 2 pass, 3 email tests fail on
+the expired ethereal account. The builds refreshed the four Roy files in
+`C:\Repos\Avalon.Libraries\Avalon\OpenSource\`, uncommitted there, as always.
 
 ## Goal
 
@@ -127,10 +136,10 @@ under `source\Roy.Logging\`.
   reads `Avalon.Base.Extensions.dll`. Its MVC section does not say where `UseRoyExceptionHandler`
   goes relative to the app's own error handling (feature 05 makes that matter).
 - `Roy.Mvc.UT\appsettings.json` holds a SQL Server connection string for `AVALONDEV`, user
-  `madona`, with its password, committed and in the history. The README's copy of the same JSON
-  has a placeholder. The `ethereal.email` accounts are the fake SMTP service the tests use on
-  purpose (`UTHelper.GetEmailSetting`: "This is a fake SMTP that is why I am hard coding this
-  fake password").
+  `madona`, with a password, and `ethereal.email` accounts with theirs. All of them are test
+  values (decision 4), like the README's sample JSON; the ethereal ones are the fake SMTP
+  service the tests use on purpose (`UTHelper.GetEmailSetting`: "This is a fake SMTP that is
+  why I am hard coding this fake password"). Nothing to do.
 
 ### The tests (feature 01)
 
@@ -141,7 +150,24 @@ under `source\Roy.Logging\`.
   a test does depends on which ran before it. Four of them talk to `smtp.ethereal.email` or
   public APIs; one writes to the Windows Application event log; one sleeps ten seconds.
 
+## Decisions Made (George, 2026-10-27)
+
+4. **The credentials in `Roy.Mvc.UT\appsettings.json` are fake** ("those password and ids are
+   fake. nothing to worry."). The `AVALONDEV` connection string and the ethereal accounts are
+   test values. Nothing to rotate, nothing to move out of the file; it stays as it is, and
+   feature 08 no longer touches it.
+
+Taken as recommended on George's "fix the bugs you found" (2026-10-27), since he had not
+answered them and each had a recommendation he could read: 1 (async for real), 2 (the stack
+trace at every level), 5 (only paths with an extension), 6 (the rethrowing middleware), 7 (the
+proof in `Roy.UT`) and 9 (`1.0.19`). For 8, a feature branch in George's checkout and no
+worktree: the tree was clean and nothing else was in flight. 11: started. Still George's: 3
+(the license) and 10 (the legacy folder).
+
 ## Waiting For George
+
+Answered or taken, 2026-10-27, as *Decisions Made* says. Open: 3 and 10. The questions stay
+as they were asked.
 
 1. **Async for real?** Feature 03 makes the pipeline asynchronous end to end: every sink is
    awaited, `SaveAsync` and `LogAsync` return when the sinks are done, and the MVC callers await
@@ -153,11 +179,7 @@ under `source\Roy.Logging\`.
    the one field an error log is for.
 3. **The license.** MIT (the csproj) or GPLv3 (the `LICENSE` file and the README badge). Not a
    choice a session makes. Feature 08 makes the three agree once George says which.
-4. **The password in `Roy.Mvc.UT\appsettings.json`.** It is in the history, so the fix is to
-   change it on `AVALONDEV` (George's) and to keep the file free of it after that. Recommended:
-   the committed file keeps the `Databases` entry with an empty `StringConnection`, and the real
-   one goes in `dotnet user-secrets` for `Roy.Mvc.UT`, which the configuration binder reads in
-   Development on its own.
+4. Answered: *Decisions Made*.
 5. **Which 404s are missing files?** Every 404 (today), or only requests whose path has a file
    extension. Recommended: only paths with an extension, so an API's own 404s are not logged as
    files.
@@ -176,6 +198,24 @@ under `source\Roy.Logging\`.
 10. **The legacy folder.** Delete `source\libraries\Avalon\` (nothing reads it), or keep it.
 11. **Start.** Approve the epic and start with feature 01.
 
+## What Is Left (2026-10-27)
+
+- **George:** merge `feature/first-read-fixes` into `dev/1.0.19` and push; that was the goal.
+- **Decision 3, the license:** one line in each csproj and the `LICENSE` file once he says MIT
+  or GPLv3 (feature 08's *As Built*).
+- **Decision 10:** `source\libraries\Avalon\` stays until he says.
+- **A new `smtp.ethereal.email` account:** the three Live email tests fail with "535:
+  Authentication failed" on the old one (feature 01's *As Built*). The values live in
+  `Roy.UT\Entities\UTHelper.cs` and `Roy.Mvc.UT\appsettings.json`.
+- **Not from this epic:** `System.Security.Cryptography.Pkcs` 10.0.0, a transitive package,
+  carries a known vulnerability (`NU1902`, `NU1903`, 16 lines of the build). A direct reference
+  to a patched version would clear it; not done, not asked.
+- **Found and fixed on the way,** for the record: the full exception at `Trace` and `Debug` had
+  never serialized for a thrown exception (feature 06); `Level.MissingFile` was never used
+  (feature 05).
+- **The by-hand run** of `Roy.Mvc.UT` in Production and Development (feature 05's *Tests*).
+- **The Avalon fork,** `Avalon.Service.Logging`, copies the code after the merge.
+
 ## Features
 
 - `features/01-tests-that-can-prove-a-fix.md`: `Roy.UT` runs green in any order, offline, in
@@ -193,7 +233,7 @@ under `source\Roy.Logging\`.
 - `features/07-found-on-the-way.md`: the duplicate replace, the unused usings and field, the
   file name, the package references nothing uses, the legacy DLL folder.
 - `features/08-the-package-says-what-it-is.md`: version, copyright, license, MVC metadata, the
-  README, the password.
+  README.
 
 ## Order
 
@@ -236,8 +276,7 @@ last: it bumps the version. Each feature is approved, built, tested and merged b
   `ProcessMessageDTO` says which.
 - Every public type, member and namespace that existed before exists after, with the same
   signature, except `EmailService.SendAsync` (decision 1).
-- The two csproj files, the `LICENSE` file and the README agree on version and license, and no
-  secret is in the tree.
+- The two csproj files, the `LICENSE` file and the README agree on version and license.
 
 ## Out Of Scope
 

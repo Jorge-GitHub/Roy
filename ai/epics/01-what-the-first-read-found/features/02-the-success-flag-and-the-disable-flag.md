@@ -49,4 +49,9 @@ logs, each on its own.
 
 ## As Built
 
-Not built.
+Built 2026-10-27: `8ffba0b` (the three library lines) and `eca4707` (the log tests). The
+exception tests travelled in feature 04's commit, `2f4b483`, because `ExceptionTest.cs`
+already carried 04's tests by then.
+
+- **Before** (the old library with the new tests): 6 of 13 fail, every `Succeed` assertion.
+- **After:** 13 of 13.

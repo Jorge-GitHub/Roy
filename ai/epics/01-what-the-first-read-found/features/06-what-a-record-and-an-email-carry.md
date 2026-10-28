@@ -57,4 +57,25 @@ See the epic's *What a record and an email carry*.
 
 ## As Built
 
-Not built.
+Built 2026-10-27, commit `e4d216c`. Decision 2 taken as recommended.
+
+- **Before** (the three library files stashed, the new tests): 5 of 26 fail:
+  `TestStackTraceAtErrorLevel`, `TestFullExceptionAtDebugLevel`, `TestEachSubjectHasItsOwnId`,
+  `TestCustomSubjectGetsTheId`, `TestMethodParametersReachTheDTO`.
+- **After the change in *Scope*:** four pass and `TestFullExceptionAtDebugLevel` still fails:
+  "System.NotSupportedException: Serialization and deserialization of
+  'System.Reflection.MethodBase' instances is not supported. Path: $.ExceptionTrace.TargetSite."
+  A thrown exception's `TargetSite` is a `MethodBase`, which System.Text.Json refuses, so no sink
+  had ever written the full exception at `Trace` or `Debug` for a real exception. The old
+  `TesLogOnSystemEvent` passed because `new Exception(...)` never thrown has no `TargetSite`, and
+  because it asserted nothing.
+- **Fixed in this feature,** since it is what the record carries: `Roy.Logging.Json.ExceptionJsonConverter`
+  (public, one new type, no signature changed) writes `Type`, `Message`, `Source`, `HelpLink`,
+  `HResult`, `StackTrace`, `Data` and `InnerException`, recursively. It is `[JsonConverter]` on
+  `ExceptionDetail.ExceptionTrace` and `ExceptionDTO.ExceptionTrace` (the file, event log and
+  API paths), and `ExceptionJsonConverter.ToJson` serves `ExceptionRecord.ExceptionJSON` (the
+  database) and the email body's `ExceptionJSON` tag. Its `Read` gives a plain `Exception` with
+  the message back, for an API that deserializes `ExceptionDTO`.
+- **After the fix:** 27 of 27, with one more test, `DtoTest.TestExceptionDtoSerializesAtDebug`.
+- `Roy.Logging.csproj` has `InternalsVisibleTo` `Roy.UT`, for the subject test through
+  `EmailExtensions`.

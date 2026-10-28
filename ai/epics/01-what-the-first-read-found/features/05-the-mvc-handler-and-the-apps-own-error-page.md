@@ -81,4 +81,22 @@ By hand, in *As Built*: `Roy.Mvc.UT` run with `ASPNETCORE_ENVIRONMENT=Production
 
 ## As Built
 
-Not built.
+Built 2026-10-27, commit `3739654`. Decisions 5, 6 and 7 taken as recommended: paths with an
+extension, the rethrowing middleware, the proof in `Roy.UT` with
+`Microsoft.AspNetCore.TestHost` 10.0.8 and a `FrameworkReference` to `Microsoft.AspNetCore.App`.
+
+- **Before** (the old `Roy.Logging.MVC`, the new middleware file stashed with it, the new
+  tests): 2 of 4 fail. `TestRoyAfterTheAppsErrorPageLogsAndThePageShows`: the body is empty,
+  Roy's `UseExceptionHandler` swallowed the exception and wrote nothing, so the app's page never
+  showed. `TestMissingFilesAreLoggedAndOtherNotFoundsAreNot`: two records, `/api/nothing` was
+  logged too. The two others pass before and after. This is the diagnosis in *What Happens
+  Today*, proven: with the old handler, the app's error page and Roy could not both work, in
+  either order, which is what the Spanish note was about.
+- **After:** 4 of 4; the whole suite 21 of 21; the `CS4014` is gone.
+- Also done, in the lines rewritten: the missing-file record is saved at `Level.MissingFile`,
+  which `e579273` added for it and nothing used; `webAppContect` is `webAppContext`.
+- In `TestRoyAloneLogs` the test server hands the pipeline's exception back to the client
+  instead of answering 500; the test accepts either and asserts on the record.
+- **Not done:** the by-hand run of `Roy.Mvc.UT` in Production and Development. The test server
+  tests exercise the same pipeline, and `Program.cs` now registers Roy after `/Error`; George
+  can run it when he opens the solution.

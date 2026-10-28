@@ -54,4 +54,10 @@ See the epic's *A setting that is read but not honoured*.
 
 ## As Built
 
-Not built.
+Built 2026-10-27, commit `2f4b483` (before 03, so the method was still `Save`; 03 made it
+`SaveAsync` on top).
+
+- **Before** (`DatabaseService` alone stashed, the constructors in): 1 of 16 fails,
+  `TestDatabaseLevelFilter`.
+- **After:** 16 of 16.
+- `SettingTest.TestListsStartEmpty` covers the three constructors.
