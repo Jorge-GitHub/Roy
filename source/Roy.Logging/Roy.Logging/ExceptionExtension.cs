@@ -321,8 +321,8 @@ public static class ExceptionExtension
                     setting.Exception.LoadInformationSettings, 
                     webApplicationHttpContext, listOfParameters);
 
-                process = new RecordService().Save(
-                    exceptionDetail, setting.Exception);
+                process = await new RecordService().SaveAsync(
+                    exceptionDetail, setting.Exception).ConfigureAwait(false);
             }
         }
         catch (Exception ex)

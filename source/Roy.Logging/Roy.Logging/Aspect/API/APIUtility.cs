@@ -16,41 +16,32 @@ internal class APIUtility
     /// <summary>
     /// Post the message to the API.
     /// </summary>
-    /// <param name="settings">
+    /// <param name="setting">
     /// API settings.
     /// </param>
     /// <param name="message">
     /// Message to post.
     /// </param> 
-    public void Post(APISetting setting, MessageDetail message)
+    public async Task PostAsync(APISetting setting, MessageDetail message)
     {
         if (setting.URL.IsNotNullOrEmpty())
         {
-            HttpClient client = null;
-            try
+            using (HttpClient client = new HttpClient())
             {
-                client = new HttpClient();
-                if(message.IsExceptionType())
+                HttpResponseMessage response;
+                if (message.IsExceptionType())
                 {
                     ExceptionDTO exception = (message as ExceptionDetail).ToDTO();
-                    client.PostAsJsonAsync(setting.URL, exception);
+                    response = await client.PostAsJsonAsync(setting.URL, exception)
+                        .ConfigureAwait(false);
                 }
                 else
                 {
                     LogDTO log = (message as LogDetail).ToDTO();
-                    client.PostAsJsonAsync(setting.URL, log);
+                    response = await client.PostAsJsonAsync(setting.URL, log)
+                        .ConfigureAwait(false);
                 }
-            } 
-            catch 
-            {
-                throw;
-            }
-            finally
-            {
-                if (client != null)
-                {
-                    client.Dispose();
-                }
+                response.EnsureSuccessStatusCode();
             }
         }
     }

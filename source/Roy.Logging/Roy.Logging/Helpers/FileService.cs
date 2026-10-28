@@ -21,7 +21,7 @@ internal class FileService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    public void Save(MessageDetail message, IssueSetting setting)
+    public async Task SaveAsync(MessageDetail message, IssueSetting setting)
     {
         if ((!setting.LevelsToSaveOnFile.HasElements() 
             || setting.LevelsToSaveOnFile.Any(
@@ -30,7 +30,8 @@ internal class FileService
 
             string fileLocation = this.GetFileLocation(setting.FolderLocation!,
                 setting.FileName!, message.Id, message.Level, setting.DefaultFolderName!);
-            this.LogText(message.ToJson(), fileLocation, setting.Append);
+            await this.LogTextAsync(message.ToJson(), fileLocation, setting.Append)
+                .ConfigureAwait(false);
         }
     }
 
@@ -46,16 +47,16 @@ internal class FileService
     /// <param name="appendLog">
     /// Flag that determinate whether to append or not the log.
     /// </param>
-    private void LogText(string text,
+    private async Task LogTextAsync(string text,
         string fileLocation, bool appendLog)
     {
         if (appendLog)
         {
-            File.AppendAllText(fileLocation, text);
+            await File.AppendAllTextAsync(fileLocation, text).ConfigureAwait(false);
         }
         else
         {
-            File.WriteAllText(fileLocation, text);
+            await File.WriteAllTextAsync(fileLocation, text).ConfigureAwait(false);
         }
     }
 

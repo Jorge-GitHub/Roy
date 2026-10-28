@@ -162,6 +162,22 @@ public class ExceptionTest
     }
 
     /// <summary>
+    /// Test that an API that cannot be reached is reported in the result.
+    /// Before the post was awaited, the failure was lost.
+    /// </summary>
+    [TestMethod]
+    public async Task TestAPIFailureIsReported()
+    {
+        LogExtension.Settings.Exception.APIs.Add(this.Helper.GetOfflineAPISetting());
+        LogExtension.Settings.Exception.SaveLogOnFile = false;
+
+        ProcessMessageDTO result = await new Exception("Test Exception").SaveAsync();
+
+        Assert.AreEqual(1, result.Errors.Count);
+        Assert.IsInstanceOfType(result.Errors[0], typeof(HttpRequestException));
+    }
+
+    /// <summary>
     /// Default test execution.
     /// </summary>
     [TestMethod, TestCategory("Live")]

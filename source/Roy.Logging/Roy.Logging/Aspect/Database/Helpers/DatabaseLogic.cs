@@ -22,20 +22,20 @@ internal class DatabaseLogic
     /// <param name="parameters">
     /// List of SQL parameters.
     /// </param>
-    public void ExecuteQuery(string stringConnection, string query,
+    public async Task ExecuteQueryAsync(string stringConnection, string query,
         List<SqlParameter> parameters)
     {
         parameters.ToSafeSQL();
         using (SqlConnection connection = new SqlConnection(stringConnection))
         {
-            connection.Open();
+            await connection.OpenAsync().ConfigureAwait(false);
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 if (parameters.HasElements())
                 {
                     command.Parameters.AddRange(parameters.ToArray());
                 }
-                command.ExecuteNonQuery();
+                await command.ExecuteNonQueryAsync().ConfigureAwait(false);
             }
         }
     }

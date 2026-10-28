@@ -198,6 +198,18 @@ internal class UTHelper
     }
 
     /// <summary>
+    /// Get API settings that point at a port nothing listens on, so the post is
+    /// refused at once and shows up in the errors.
+    /// </summary>
+    /// <returns>
+    /// API settings.
+    /// </returns>
+    public APISetting GetOfflineAPISetting()
+    {
+        return new APISetting() { URL = "http://127.0.0.1:1/" };
+    }
+
+    /// <summary>
     /// Get API settings.
     /// </summary>
     /// <returns>

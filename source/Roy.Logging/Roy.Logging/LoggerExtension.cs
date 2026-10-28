@@ -234,8 +234,8 @@ public static class LoggerExtension
                     frame, setting.Log.LoadInformationSettings, 
                     webApplicationHttpContext, listOfParameters);
 
-                process = new RecordService().Save(
-                    detail, setting.Log);
+                process = await new RecordService().SaveAsync(
+                    detail, setting.Log).ConfigureAwait(false);
             }
         }
         catch (Exception ex)

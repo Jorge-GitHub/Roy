@@ -37,7 +37,7 @@ internal class DatabaseService
     /// <param name="process">
     /// Message returned by the logging service.
     /// </param>
-    public void Save(MessageDetail message,
+    public async Task SaveAsync(MessageDetail message,
         List<DatabaseSetting> settings, InternalProcessMessage process)
     {
         foreach(DatabaseSetting setting in settings)
@@ -49,7 +49,7 @@ internal class DatabaseService
                     && !setting.Disable)
                 {
                     setting.SetDefaultValues(message.Level, message.IsExceptionType());
-                    this.Utility.Save(message, setting);
+                    await this.Utility.SaveAsync(message, setting).ConfigureAwait(false);
                 }
             }
             catch (Exception ex)

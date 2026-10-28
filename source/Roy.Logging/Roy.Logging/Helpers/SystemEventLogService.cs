@@ -23,7 +23,7 @@ internal class SystemEventLogService
     /// Windows maximum number of characters per event is around 32000.
     /// We limit it to 31000.
     /// </remarks>
-    public void LogAsync(MessageDetail message, IssueSetting setting)
+    public void Log(MessageDetail message, IssueSetting setting)
     {
         if ((!setting.LevelsToLogOnSystemEvent.HasElements()
             || setting.LevelsToLogOnSystemEvent.Any(

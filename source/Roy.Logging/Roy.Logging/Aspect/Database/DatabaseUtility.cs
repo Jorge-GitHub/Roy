@@ -42,11 +42,11 @@ internal class DatabaseUtility
     /// <param name="setting">
     /// Database settings.
     /// </param>
-    public void Save(MessageDetail message, DatabaseSetting setting)
+    public async Task SaveAsync(MessageDetail message, DatabaseSetting setting)
     {
-        this.Database.ExecuteQuery(setting.StringConnection,
+        await this.Database.ExecuteQueryAsync(setting.StringConnection,
             this.Builder.Create(message, setting).ToString(), 
-            this.Parameters.GetParameters(message));
+            this.Parameters.GetParameters(message)).ConfigureAwait(false);
     }
 
     /// <summary>

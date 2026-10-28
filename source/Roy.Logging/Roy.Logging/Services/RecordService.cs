@@ -23,11 +23,12 @@ internal class RecordService
     /// <returns>
     /// Message returned by the logging service.
     /// </returns>
-    public InternalProcessMessage Save(MessageDetail message, IssueSetting setting)
+    public async Task<InternalProcessMessage> SaveAsync(MessageDetail message,
+        IssueSetting setting)
     {
         InternalProcessMessage process = new InternalProcessMessage();
-        this.SaveInternal(message, setting, process);
-        this.SaveExternal(message, setting, process);
+        await this.SaveInternalAsync(message, setting, process).ConfigureAwait(false);
+        await this.SaveExternalAsync(message, setting, process).ConfigureAwait(false);
 
         return process;
     }
@@ -44,14 +45,14 @@ internal class RecordService
     /// <param name="process">
     /// Message returned by the logging service.
     /// </param>
-    private void SaveInternal(MessageDetail message, IssueSetting setting, 
+    private async Task SaveInternalAsync(MessageDetail message, IssueSetting setting, 
         InternalProcessMessage process)
     {
         try
         {
             if (setting.SaveLogOnFile)
             {
-                new FileService().Save(message, setting);
+                await new FileService().SaveAsync(message, setting).ConfigureAwait(false);
             }
         }
         catch (Exception ex)
@@ -63,7 +64,7 @@ internal class RecordService
         {
             if (setting.SaveIssueOnEventSystem)
             {
-                new SystemEventLogService().LogAsync(message, setting);
+                new SystemEventLogService().Log(message, setting);
             }
         }
         catch (Exception ex)
@@ -84,15 +85,15 @@ internal class RecordService
     /// <param name="process">
     /// Message returned by the logging service.
     /// </param>
-    private void SaveExternal(MessageDetail message, IssueSetting setting, 
+    private async Task SaveExternalAsync(MessageDetail message, IssueSetting setting, 
         InternalProcessMessage process)
     {
         try
         {
             if (setting.Emails.HasElements())
             {
-                new EmailService().SendAsync(message, setting.Emails,
-                    setting.LoadInformationSettings, process);
+                await new EmailService().SendAsync(message, setting.Emails,
+                    setting.LoadInformationSettings, process).ConfigureAwait(false);
             }
         }
         catch (Exception ex)
@@ -104,7 +105,8 @@ internal class RecordService
         {
             if (setting.APIs.HasElements())
             {
-                new APIService().Post(message, setting.APIs, process);
+                await new APIService().PostAsync(message, setting.APIs, process)
+                    .ConfigureAwait(false);
             }
         }
         catch (Exception ex)
@@ -116,8 +118,8 @@ internal class RecordService
         {
             if (setting.Databases.HasElements())
             {
-                new DatabaseService().Save(message,
-                    setting.Databases, process);
+                await new DatabaseService().SaveAsync(message,
+                    setting.Databases, process).ConfigureAwait(false);
             }
         }
         catch (Exception ex)
