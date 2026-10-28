@@ -43,6 +43,9 @@ George, 2026-10-27, word for word:
 - **Products:** "we will use it with nexus but this is not something this agent should worry.
   the goal is to create the library not replace it in another projects." The library is the
   whole job; switching Nexus or any product to it is someone else's, later.
+- **The five places a record is written** (the file, the event log, the email, the HTTP API and
+  the database) **and the four email languages** (English, Spanish, French, German) all stay:
+  "yes to all".
 
 Also settled, for the record:
 
@@ -159,12 +162,8 @@ The library, in this shape, in this repository:
 
 ## Questions
 
-George answered the names, the tables, ErrorHandler and the products on 2026-10-27 (*What is
-already decided*). Two remain:
-
-1. Do all five places a record is written stay: the file, the event log, the email, the HTTP
-   API and the database? Recommended: yes, "the architecture and idea would be the same".
-2. Do the four email languages (English, Spanish, French, German) stay? Recommended: yes.
+None open. George answered every question on 2026-10-27; the answers are in *What is already
+decided*.
 
 ## What to send back
 
