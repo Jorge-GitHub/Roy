@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Collections;
+﻿using Avalon.Base.Extensions.Collections;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Resources.Languages;
 using System.Globalization;

@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Types;
 using MailKit.Net.Smtp;
 using MimeKit;
 using Roy.Logging.Domain.Attributes;
@@ -29,7 +29,7 @@ internal class EmailUtility
     /// <param name="process">
     /// Message returned by the logging service.
     /// </param>
-    public void Send(EmailSetting setting, MessageDetail message, 
+    public async Task SendAsync(EmailSetting setting, MessageDetail message, 
         InformationSetting settings, InternalProcessMessage process)
     {
         setting.SetDefaultValues(message.Level,
@@ -38,7 +38,8 @@ internal class EmailUtility
         {
             try
             {
-                this.Send(setting, receiver, message, settings);
+                await this.SendAsync(setting, receiver, message, settings)
+                    .ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -62,32 +63,31 @@ internal class EmailUtility
     /// <param name="settings">
     /// Log settings.
     /// </param>
-    private void Send(EmailSetting setting, ReceiverSetting receiver, 
+    private async Task SendAsync(EmailSetting setting, ReceiverSetting receiver, 
         MessageDetail bodyDetail, InformationSetting settings)
     {
         MimeMessage message = setting.ToMimeMessage(receiver, bodyDetail, settings);
-        SmtpClient client = new SmtpClient();
-        try
+        using (SmtpClient client = new SmtpClient())
         {
-            client.Connect(setting.Server.Host, setting.Server.Port, setting.EnableSSL);
-            if (setting.UserAccount.IsNotNullOrEmpty())
+            try
             {
-                client.Authenticate(setting.UserAccount, setting.UserPassword);
+                await client.ConnectAsync(setting.Server.Host, setting.Server.Port,
+                    setting.EnableSSL).ConfigureAwait(false);
+                if (setting.UserAccount.IsNotNullOrEmpty())
+                {
+                    await client.AuthenticateAsync(setting.UserAccount,
+                        setting.UserPassword).ConfigureAwait(false);
+                }
+                if (setting.Server.TimeOut > 0)
+                {
+                    client.Timeout = setting.Server.TimeOut;
+                }
+                await client.SendAsync(message).ConfigureAwait(false);
             }
-            if (setting.Server.TimeOut > 0)
+            finally
             {
-                client.Timeout = setting.Server.TimeOut;
+                await client.DisconnectAsync(true).ConfigureAwait(false);
             }
-            client.Send(message);
-        }
-        catch
-        {
-            throw;
-        }
-        finally
-        {
-            client.Disconnect(true);
-            client.Dispose();
         }
     }
 }

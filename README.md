@@ -72,10 +72,15 @@ public void AmazingCode()
 ---
 ### Logging all the Exceptions on Your MVC Application
 
-To log any exception on your MVC app, add the code below to the Program.cs class before the app.Run() method call.
+To log every unhandled exception on your MVC app, call UseRoyExceptionHandler in Program.cs after your own error handling (UseExceptionHandler, UseDeveloperExceptionPage) and before the app.Run() method call. Roy logs the exception and throws it again, so your own error page still runs. Called before your own handler, Roy would never see the exception: the handler nearer the page catches it first.
 
 ```cs
-    // Add the line below on Program.cs file, before the app.Run() method call.
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Error");
+    }
+
+    // Add the line below after your own error handling, before the app.Run() method call.
     app.UseRoyExceptionHandler();
 
     ...
@@ -190,7 +195,8 @@ You can load the Roy Logging settings from the appsettings.json file by passing 
 ---
 ### How to Use
 
-Download the latest [release](https://github.com/Jorge-GitHub/Roy/releases), then add a reference to Avalon.Base.Extension.dll and Roy.Logging.dll libraries. If you are developing an MVC application, you will also need to add a reference to Roy.Logging.MVC.dll.
+Download the latest [release](https://github.com/Jorge-GitHub/Roy/releases), then add a reference to Avalon.Base.Extensions.dll and Roy.Logging.dll libraries. If you are developing an MVC application, you will also need to add a reference to Roy.Logging.MVC.dll.
+To build from source, clone the repository and build source/Roy.Logging/Roy.Logging.sln with the .NET 10 SDK. The Avalon.Base.Extensions.dll it needs is in source/Libraries/Avalon/Base, so nothing else is required.
 
 By default, the exceptions and logs will be saved in the bin folder. For instance, "bin\Debug\net7.0". 
 Inside this folder, Roy will create an “exceptions” and a "logs" folder. This behavior can be changed 

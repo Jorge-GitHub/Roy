@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Collections;
+﻿using Avalon.Base.Extensions.Collections;
 using Roy.Logging.Aspect.API;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Communication;
@@ -25,7 +25,7 @@ internal class APIService
     /// <param name="process">
     /// Message returned by the logging service.
     /// </param>
-    public void Post(MessageDetail message, 
+    public async Task PostAsync(MessageDetail message, 
         List<APISetting> settings, InternalProcessMessage process)
     {
         foreach (APISetting api in settings)
@@ -36,7 +36,7 @@ internal class APIService
                     api.LevelsToPost.Any(item => item.Equals(message.Level)))
                     && !api.DisablePost)
                 {
-                    this.Utility.Post(api, message);
+                    await this.Utility.PostAsync(api, message).ConfigureAwait(false);
                 }
             }
             catch (Exception ex)

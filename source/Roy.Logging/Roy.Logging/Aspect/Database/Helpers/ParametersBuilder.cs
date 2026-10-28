@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Data;
+﻿using Avalon.Base.Extensions.Data;
 using Microsoft.Data.SqlClient;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;

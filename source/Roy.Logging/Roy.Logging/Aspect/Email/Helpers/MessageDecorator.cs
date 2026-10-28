@@ -1,11 +1,12 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.System.Text;
-using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.System.Text;
+using Avalon.Base.Extensions.Types;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings.Attributes;
 using Roy.Logging.Extensions;
+using Roy.Logging.Json;
 using Roy.Logging.Resources.Languages.EmailTemplate;
 using System.Globalization;
 using System.Text;
@@ -84,9 +85,9 @@ internal class MessageDecorator
         body.Replace(Tag.Level, bodyDetail.Level.ToCurrentCultureString(culture));
         body.Replace(Tag.CurrentYear, DateTime.Now.Year.ToString());
         body.Replace(Tag.CustomListOfParametersJSON, 
-            bodyDetail.CustomListOfParameters.ToJSON());
+            bodyDetail.CustomListOfParameters.ToJson());
         this.PopulateInformationDetails(body, bodyDetail, culture, settings);
-        body.Replace(Tag.IssueJSON, bodyDetail.ToJSON());
+        body.Replace(Tag.IssueJSON, bodyDetail.ToJson());
     }
 
     /// <summary>
@@ -146,7 +147,7 @@ internal class MessageDecorator
     {
         body.Replace(Tag.ExceptionMessage, bodyDetail.ExceptionMessage);
         body.Replace(Tag.StackTrace, bodyDetail.StackTrace);
-        body.Replace(Tag.ExceptionJSON, bodyDetail.ExceptionTrace.ToJSON());
+        body.Replace(Tag.ExceptionJSON, ExceptionJsonConverter.ToJson(bodyDetail.ExceptionTrace));
         if (bodyDetail.ExceptionTrace.IsNotNull())
         {
             body.Replace(Tag.Source, bodyDetail.ExceptionTrace.Source);
@@ -170,7 +171,7 @@ internal class MessageDecorator
     private void PopulateLogDetails(StringBuilder body, LogDetail bodyDetail)
     {
         body.Replace(Tag.LogValueJSON,
-            bodyDetail.LogValue.ToJSON());
+            bodyDetail.LogValue.ToJson());
     }
 
     /// <summary>
@@ -189,7 +190,7 @@ internal class MessageDecorator
             body.Replace(Tag.MethodCallerFileName, method.CallerFileName);
             body.Replace(Tag.MethodCallerMethodName, method.CallerMethodName);
             body.Replace(Tag.MethodCallerLineNumber, method.CallerLineNumber.ToString());
-            body.Replace(Tag.MethodParametersJSON, method.ToJSON());
+            body.Replace(Tag.MethodParametersJSON, method.ToJson());
         }
         else
         {

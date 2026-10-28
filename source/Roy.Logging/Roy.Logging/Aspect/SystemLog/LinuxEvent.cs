@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.Types.StringExtensions;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.Types.StringExtensions;
 using Roy.Logging.Domain.Contants;
 using System.Runtime.InteropServices;
 

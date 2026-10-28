@@ -33,4 +33,12 @@ public class DatabaseSetting
     // Query to run.
     /// </summary>
     public string Query { get; set; }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public DatabaseSetting()
+    {
+        this.LevelsToSave = new List<Level>();
+    }
 }

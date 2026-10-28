@@ -1,5 +1,6 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Types;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Roy.Logging.Domain.Settings;
 using Roy.Logging.MVC.Middleware;
@@ -49,6 +50,9 @@ public static class MvcExtensions
     /// <remarks>
     /// We will use the default settings if we fail to load the 
     /// settings from the configuration file.
+    /// Call it after the application's own error handling (UseExceptionHandler,
+    /// UseDeveloperExceptionPage) and before app.Run(): Roy logs the exception and
+    /// throws it again, so that handling still runs.
     /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app,
         WebApplicationBuilder builder, bool logMissingFiles = false)
@@ -71,6 +75,9 @@ public static class MvcExtensions
     /// </param>
     /// <remarks>
     /// We will use the default settings if the settings parameter is null.
+    /// Call it after the application's own error handling (UseExceptionHandler,
+    /// UseDeveloperExceptionPage) and before app.Run(): Roy logs the exception and
+    /// throws it again, so that handling still runs.
     /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app, 
         RoySetting settings, bool logMissingFiles = false)
@@ -91,15 +98,16 @@ public static class MvcExtensions
     /// <param name="logMissingFiles">
     /// Flag that determinate whether to log missing files or not.
     /// </param>
+    /// <remarks>
+    /// Call it after the application's own error handling (UseExceptionHandler,
+    /// UseDeveloperExceptionPage) and before app.Run(): Roy logs the exception and
+    /// throws it again, so that handling still runs. Called before it, Roy would
+    /// never see the exception: the handler nearer the page catches it first.
+    /// </remarks>
     public static void UseRoyExceptionHandler(this WebApplication app, 
         bool logMissingFiles = false)
     {
-        app.UseExceptionHandler(appError =>
-        {
-            appError.Run(async context => {
-                ErrorService.LogError(context);
-            });
-        });
+        app.UseMiddleware<RoyExceptionMiddleware>();
 
         if(logMissingFiles){
             app.UseRoyToLogMissingFiles();
@@ -117,7 +125,6 @@ public static class MvcExtensions
     /// </param>
     public static void UseRoyToLogMissingFiles(this WebApplication app, WebApplicationBuilder builder)
     {
-        builder.LoadRoySettings();
         app.UseRoyToLogMissingFiles();
     }
 

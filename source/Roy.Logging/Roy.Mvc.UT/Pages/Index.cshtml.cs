@@ -13,8 +13,9 @@ public class IndexModel : PageModel
     public async void OnGet()
     {
         // Uncomment a line below for testing.
-        ProcessMessageDTO message = await (new Author { Description = "Great singer", Name = "Roy" }).LogAsync();
+        //ProcessMessageDTO message = await (new Author { Description = "Great singer", Name = "Roy" }).LogAsync();
         // FileStream file = new FileStream("filedoesnotexist.json", FileMode.Open);
+        throw new Exception("test");
         // TestPost();
     }
 

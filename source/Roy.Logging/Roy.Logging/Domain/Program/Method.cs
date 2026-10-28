@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.Types;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -95,10 +95,10 @@ public class Method
         ParameterInfo[] parameterInfos = method.GetParameters();
         parameterInfos.Span(parameter =>
         {
-            if (parameter.Name.IsNotNullOrEmpty()) {
+            if (parameter.Name!.IsNotNullOrEmpty()) {
                 this.Parameters.Add(new Parameter(
-                    parameter.Name,
-                    parameter.ToJSON()));
+                    parameter.Name!,
+                    parameter.ToJson()));
             }
         });
     }

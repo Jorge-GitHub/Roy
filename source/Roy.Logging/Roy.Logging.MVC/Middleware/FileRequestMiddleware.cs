@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Roy.Logging.Domain.Contants;
 
 namespace Roy.Logging.MVC.Middleware;
 
@@ -30,12 +31,18 @@ internal class FileRequestMiddleware
     /// <returns>
     /// The current task
     /// </returns>
+    /// <remarks>
+    /// A request is taken for a file when its path has an extension, so an API's
+    /// own 404 answers are not logged as missing files.
+    /// </remarks>
     public async Task InvokeAsync(HttpContext context)
     {
         await this._nextComponent(context);
-        if (context.Response.StatusCode.Equals(this._notFoundId))
+        if (context.Response.StatusCode.Equals(this._notFoundId)
+            && Path.HasExtension(context.Request.Path.Value))
         {
-            new Exception($"File not found for HTTP request: '{context.Request.Path}'. Please verify the file path and ensure the file exists.").SaveAsync();
+            await new Exception($"File not found for HTTP request: '{context.Request.Path}'. Please verify the file path and ensure the file exists.")
+                .SaveAsync(Level.MissingFile);
         }
     }
 }

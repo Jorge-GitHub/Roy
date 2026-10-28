@@ -1,4 +1,5 @@
-﻿using Roy.Logging.Aspect.Database;
+﻿using Avalon.Base.Extensions.Collections;
+using Roy.Logging.Aspect.Database;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Settings.Database;
@@ -36,15 +37,20 @@ internal class DatabaseService
     /// <param name="process">
     /// Message returned by the logging service.
     /// </param>
-    public void Save(MessageDetail message,
+    public async Task SaveAsync(MessageDetail message,
         List<DatabaseSetting> settings, InternalProcessMessage process)
     {
         foreach(DatabaseSetting setting in settings)
         {
             try
             {
-                setting.SetDefaultValues(message.Level, message.IsExceptionType());
-                this.Utility.Save(message, setting);
+                if ((!setting.LevelsToSave.HasElements() ||
+                    setting.LevelsToSave.Any(item => item.Equals(message.Level)))
+                    && !setting.Disable)
+                {
+                    setting.SetDefaultValues(message.Level, message.IsExceptionType());
+                    await this.Utility.SaveAsync(message, setting).ConfigureAwait(false);
+                }
             }
             catch (Exception ex)
             {

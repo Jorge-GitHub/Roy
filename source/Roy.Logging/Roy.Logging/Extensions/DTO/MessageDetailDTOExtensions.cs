@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.Types;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.DTO;
@@ -7,7 +7,6 @@ using Roy.Logging.Domain.DTO.Program;
 using Roy.Logging.Domain.Program;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Roy.Logging.Extensions.DTO;
 
@@ -204,6 +203,7 @@ public static class MessageDetailDTOExtensions
                 CallerFileName = method.CallerFileName,
                 CallerMethodName = method.CallerMethodName,
                 CallerLineNumber = method.CallerLineNumber,
+                Parameters = method.Parameters.ToDTO(),
             };
 
             return methodDTO;

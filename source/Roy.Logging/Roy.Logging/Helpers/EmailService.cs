@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Collections;
+﻿using Avalon.Base.Extensions.Collections;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Web.EmailAspect;
 using Roy.Logging.Aspect.Email;
@@ -28,7 +28,7 @@ public class EmailService
     /// <param name="process">
     /// Message returned by the logging service.
     /// </param>
-    public async void SendAsync(MessageDetail bodyDetail, 
+    public async Task SendAsync(MessageDetail bodyDetail, 
         List<EmailSetting> emails, InformationSetting settings,
         InternalProcessMessage process)
     {
@@ -40,7 +40,8 @@ public class EmailService
                     setting.LevelsToReport.Any(item => item.Equals(bodyDetail.Level)))
                     && !setting.DisableEmailSending)
                 {
-                    this.Utility.Send(setting, bodyDetail, settings, process);
+                    await this.Utility.SendAsync(setting, bodyDetail, settings, process)
+                        .ConfigureAwait(false);
                 }
             }
             catch (Exception ex)

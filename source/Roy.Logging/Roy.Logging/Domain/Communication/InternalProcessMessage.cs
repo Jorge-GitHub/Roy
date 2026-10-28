@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Collections;
+﻿using Avalon.Base.Extensions.Collections;
 
 namespace Roy.Logging.Domain.Communication;
 
@@ -10,7 +10,7 @@ public class InternalProcessMessage
     /// <summary>
     /// Flag that indicates whether the process succeeded.
     /// </summary>
-    public bool Succeed => this.Errors.HasElements();
+    public bool Succeed => !this.Errors.HasElements();
     /// <summary>
     /// Errors throw while saving/logging the object.
     /// </summary>

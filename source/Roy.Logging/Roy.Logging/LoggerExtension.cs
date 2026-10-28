@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Types;
-using Avalon.Base.Extension.Types.BooleanExtensions;
+﻿using Avalon.Base.Extensions.Types;
+using Avalon.Base.Extensions.Types.BooleanExtensions;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Contants;
@@ -234,8 +234,8 @@ public static class LoggerExtension
                     frame, setting.Log.LoadInformationSettings, 
                     webApplicationHttpContext, listOfParameters);
 
-                process = new RecordService().Save(
-                    detail, setting.Log);
+                process = await new RecordService().SaveAsync(
+                    detail, setting.Log).ConfigureAwait(false);
             }
         }
         catch (Exception ex)

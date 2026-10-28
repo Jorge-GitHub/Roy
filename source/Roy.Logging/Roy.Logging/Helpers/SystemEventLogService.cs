@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.Types;
 using Roy.Logging.Aspect.SystemLog;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Settings.Attributes;
@@ -23,7 +23,7 @@ internal class SystemEventLogService
     /// Windows maximum number of characters per event is around 32000.
     /// We limit it to 31000.
     /// </remarks>
-    public void LogAsync(MessageDetail message, IssueSetting setting)
+    public void Log(MessageDetail message, IssueSetting setting)
     {
         if ((!setting.LevelsToLogOnSystemEvent.HasElements()
             || setting.LevelsToLogOnSystemEvent.Any(

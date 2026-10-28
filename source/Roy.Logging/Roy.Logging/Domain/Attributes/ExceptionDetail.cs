@@ -1,7 +1,9 @@
 ﻿using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings.Attributes;
+using Roy.Logging.Json;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace Roy.Logging.Domain.Attributes;
 
@@ -15,12 +17,13 @@ public class ExceptionDetail : MessageDetail
     /// </summary>
     public string ExceptionMessage { get; set; }
     /// <summary>
-    /// Exception StackTrace.
+    /// Exception StackTrace. Set at every level.
     /// </summary>
     public string StackTrace { get; set; }
     /// <summary>
     /// Full exception error.
     /// </summary>
+    [JsonConverter(typeof(ExceptionJsonConverter))]
     public Exception ExceptionTrace { get; set; }
 
     /// <summary>
@@ -89,10 +92,10 @@ public class ExceptionDetail : MessageDetail
     /// </param>
     private void SetExceptionTrace(Exception exception, Level level)
     {
+        this.StackTrace = exception.StackTrace ?? string.Empty;
         if (level.Equals(Level.Trace) || level.Equals(Level.Debug))
         {
             this.ExceptionTrace = exception;
-            this.StackTrace = exception.StackTrace ?? string.Empty;
         }
     }
 }

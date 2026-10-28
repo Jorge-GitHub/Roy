@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Collections;
-using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Collections;
+using Avalon.Base.Extensions.Types;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Contants;
 using Roy.Logging.Domain.Settings.Attributes;
@@ -21,16 +21,17 @@ internal class FileService
     /// <param name="setting">
     /// Settings.
     /// </param>
-    public void Save(MessageDetail message, IssueSetting setting)
+    public async Task SaveAsync(MessageDetail message, IssueSetting setting)
     {
         if ((!setting.LevelsToSaveOnFile.HasElements() 
             || setting.LevelsToSaveOnFile.Any(
                 item => item.Equals(message.Level))))
         {
 
-            string fileLocation = this.GetFileLocation(setting.FolderLocation,
-                setting.FileName, message.Id, message.Level, setting.DefaultFolderName);
-            this.LogText(message.ToJSON(), fileLocation, setting.Append);
+            string fileLocation = this.GetFileLocation(setting.FolderLocation!,
+                setting.FileName!, message.Id, message.Level, setting.DefaultFolderName!);
+            await this.LogTextAsync(message.ToJson(), fileLocation, setting.Append)
+                .ConfigureAwait(false);
         }
     }
 
@@ -46,16 +47,16 @@ internal class FileService
     /// <param name="appendLog">
     /// Flag that determinate whether to append or not the log.
     /// </param>
-    private void LogText(string text,
+    private async Task LogTextAsync(string text,
         string fileLocation, bool appendLog)
     {
         if (appendLog)
         {
-            File.AppendAllText(fileLocation, text);
+            await File.AppendAllTextAsync(fileLocation, text).ConfigureAwait(false);
         }
         else
         {
-            File.WriteAllText(fileLocation, text);
+            await File.WriteAllTextAsync(fileLocation, text).ConfigureAwait(false);
         }
     }
 
@@ -93,10 +94,10 @@ internal class FileService
         if (folderLocation.IsNullOrEmpty())
         {
             folderLocation = Path.GetDirectoryName(
-                Assembly.GetExecutingAssembly().Location);
+                Assembly.GetExecutingAssembly().Location!)!;
             if (defaultFolderName.IsNotNullOrEmpty())
             {
-                folderLocation = Path.Combine(folderLocation,
+                folderLocation = Path.Combine(folderLocation!,
                     defaultFolderName);
             }
         }

@@ -19,4 +19,12 @@ public class APISetting
     /// API's URL to post the message.
     /// </summary>
     public string URL { get; set; }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public APISetting()
+    {
+        this.LevelsToPost = new List<Level>();
+    }
 }

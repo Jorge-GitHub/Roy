@@ -8,7 +8,6 @@ namespace Roy.Logging.Domain.Settings.Web.EmailAspect;
 /// </summary>
 public class EmailSetting
 {
-    private Language _Language;
     /// <summary>
     /// User account's name.
     /// </summary>

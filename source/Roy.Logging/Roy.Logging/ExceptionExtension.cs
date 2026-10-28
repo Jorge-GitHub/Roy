@@ -1,5 +1,5 @@
-﻿using Avalon.Base.Extension.Types;
-using Avalon.Base.Extension.Types.BooleanExtensions;
+﻿using Avalon.Base.Extensions.Types;
+using Avalon.Base.Extensions.Types.BooleanExtensions;
 using Roy.Logging.Domain.Attributes;
 using Roy.Logging.Domain.Communication;
 using Roy.Logging.Domain.Contants;
@@ -314,15 +314,15 @@ public static class ExceptionExtension
         {
             setting = setting ?? LogExtension.Settings;
             if (exception.IsNotNull() && setting.IsNotNull() 
-                && setting.Log.Disable.IsNotTrue())
+                && setting.Exception.Disable.IsNotTrue())
             {                
                 ExceptionDetail exceptionDetail = new ExceptionDetail(exception,
                     level, identity, message, frame, 
                     setting.Exception.LoadInformationSettings, 
                     webApplicationHttpContext, listOfParameters);
 
-                process = new RecordService().Save(
-                    exceptionDetail, setting.Exception);
+                process = await new RecordService().SaveAsync(
+                    exceptionDetail, setting.Exception).ConfigureAwait(false);
             }
         }
         catch (Exception ex)

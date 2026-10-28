@@ -1,4 +1,4 @@
-﻿using Avalon.Base.Extension.Types;
+﻿using Avalon.Base.Extensions.Types;
 using Roy.Logging.Domain.Attributes;
 
 namespace Roy.Logging.Domain.Database;
@@ -31,6 +31,6 @@ internal class LogRecord : Record
     /// </param>
     private void InitializeObject(LogDetail message)
     {
-        this.LogValueInJSONFormat = message.LogValue.ToJSON();
+        this.LogValueInJSONFormat = message.LogValue.ToJson();
     }
 }
