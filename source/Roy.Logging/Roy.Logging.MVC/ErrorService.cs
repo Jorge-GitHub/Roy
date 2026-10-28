@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Roy.Logging.Domain.Program;
 using Roy.Logging.Domain.Settings;
 using Roy.Logging.MVC.Extensions;
@@ -17,22 +16,22 @@ internal static class ErrorService
     /// <param name="context">
     /// HTTP-specific information about an individual HTTP request.
     /// </param>
-    public static void LogError(HttpContext context)
+    /// <param name="exception">
+    /// Exception thrown by the request.
+    /// </param>
+    public static async Task LogErrorAsync(HttpContext context, Exception exception)
     {
-        if (context != null)
+        if (exception != null)
         {
             try
             {
-                var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
-                if (contextFeature != null)
+                WebApplicationHttpContext? webAppContext = null;
+                if (context != null && LogExtension.Settings.Exception
+                    .LoadInformationSettings.LogApplicationInformation)
                 {
-                    WebApplicationHttpContext? webAppContect = null;
-                    if (LogExtension.Settings.Exception.LoadInformationSettings.LogApplicationInformation)
-                    {
-                        webAppContect = context.ToWebApplicationHttpContext();
-                    }
-                    contextFeature.Error.SaveAsync(webAppContect);
+                    webAppContext = context.ToWebApplicationHttpContext();
                 }
+                await exception.SaveAsync(webAppContext);
             }
             catch { }
         }

@@ -72,10 +72,15 @@ public void AmazingCode()
 ---
 ### Logging all the Exceptions on Your MVC Application
 
-To log any exception on your MVC app, add the code below to the Program.cs class before the app.Run() method call.
+To log every unhandled exception on your MVC app, call UseRoyExceptionHandler in Program.cs after your own error handling (UseExceptionHandler, UseDeveloperExceptionPage) and before the app.Run() method call. Roy logs the exception and throws it again, so your own error page still runs. Called before your own handler, Roy would never see the exception: the handler nearer the page catches it first.
 
 ```cs
-    // Add the line below on Program.cs file, before the app.Run() method call.
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Error");
+    }
+
+    // Add the line below after your own error handling, before the app.Run() method call.
     app.UseRoyExceptionHandler();
 
     ...
