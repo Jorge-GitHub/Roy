@@ -195,7 +195,7 @@ You can load the Roy Logging settings from the appsettings.json file by passing 
 ---
 ### How to Use
 
-Download the latest [release](https://github.com/Jorge-GitHub/Roy/releases), then add a reference to Avalon.Base.Extension.dll and Roy.Logging.dll libraries. If you are developing an MVC application, you will also need to add a reference to Roy.Logging.MVC.dll.
+Download the latest [release](https://github.com/Jorge-GitHub/Roy/releases), then add a reference to Avalon.Base.Extensions.dll and Roy.Logging.dll libraries. If you are developing an MVC application, you will also need to add a reference to Roy.Logging.MVC.dll.
 
 By default, the exceptions and logs will be saved in the bin folder. For instance, "bin\Debug\net7.0". 
 Inside this folder, Roy will create an “exceptions” and a "logs" folder. This behavior can be changed 
