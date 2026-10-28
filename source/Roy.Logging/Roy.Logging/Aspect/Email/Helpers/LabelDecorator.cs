@@ -123,8 +123,6 @@ internal class LabelDecorator
             .GetString(EmailLabel.ServerName, culture));
         body.Replace(EmailLabel.OperativeSystemTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.OperativeSystem, culture));
-        body.Replace(EmailLabel.OperativeSystemTag, EmailLabels.ResourceManager
-            .GetString(EmailLabel.OperativeSystem, culture));
         body.Replace(EmailLabel.UserAccountNameTag, EmailLabels.ResourceManager
             .GetString(EmailLabel.UserAccountName, culture));
         body.Replace(EmailLabel.OperativeSystemVersionTag, EmailLabels.ResourceManager

@@ -7,7 +7,6 @@ using Roy.Logging.Domain.DTO.Program;
 using Roy.Logging.Domain.Program;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Roy.Logging.Extensions.DTO;
 

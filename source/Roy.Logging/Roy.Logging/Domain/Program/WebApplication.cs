@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace Roy.Logging.Domain.Program;
+﻿namespace Roy.Logging.Domain.Program;
 
 /// <summary>
 /// Web application details.
